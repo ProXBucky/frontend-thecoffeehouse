@@ -1,0 +1,64 @@
+.header-container {
+    color: black;
+    height: 60px;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    padding: 0px 140px 0px 140px;
+    position: sticky;
+    background: rgba(255, 255, 255, 0.8);
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #00000026;
+
+    .logo {
+        width: 20%;
+        // border: 1px solid red;
+        z-index: 100000;
+
+        .logo-image {
+            display: block;
+            height: 60px;
+            width: 255px;
+            object-fit: cover;
+        }
+    }
+
+    .navbar {
+        width: 70%;
+        // border: 1px solid blue;
+        display: flex;
+        justify-content: flex-start;
+        gap: 20px;
+        padding: 0px 75px 0px 75px;
+
+        .nav {
+            width: auto;
+            padding: 15px;
+
+            // border: 1px solid purple;
+            :hover {
+                color: #ec944a;
+            }
+
+            a {
+                color: black;
+            }
+        }
+    }
+
+    .cart {
+        // border: 1px solid black;
+        width: 10%;
+        padding: 15px;
+
+        :hover {
+            color: #ec944a;
+        }
+
+        a {
+            color: black;
+        }
+
+    }
+}
