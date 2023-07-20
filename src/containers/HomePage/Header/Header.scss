@@ -3,15 +3,15 @@
     height: 60px;
     width: 100%;
     z-index: 100;
-    display: flex;
     padding: 0px 140px 0px 140px;
-    position: sticky;
-    background: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    background: rgba(255, 255, 255, 0.9);
     top: 0;
-    left: 0;
     border-bottom: 1px solid #00000026;
+    display: flex;
 
     .logo {
+        padding-left: 40px;
         width: 20%;
         // border: 1px solid red;
         z-index: 100000;
@@ -48,9 +48,9 @@
     }
 
     .cart {
-        // border: 1px solid black;
         width: 10%;
         padding: 15px;
+        margin-right: 10px;
 
         :hover {
             color: #ec944a;

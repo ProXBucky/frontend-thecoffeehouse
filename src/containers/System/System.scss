@@ -1,0 +1,24 @@
+.system-container {
+    .navbar-container {
+        background-color: white;
+
+        ul {
+            cursor: pointer;
+
+            :hover {
+                background-color: #ec944a;
+                color: white;
+            }
+
+            .navbar-list {
+                border-bottom: 1px solid #dcdcdc;
+
+            }
+
+        }
+    }
+
+    .body-container {
+        background-color: #f5f2f0;
+    }
+}

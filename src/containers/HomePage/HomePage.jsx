@@ -1,5 +1,5 @@
 import "./HomePage.scss"
-import Slider from "./Slider/Slider"
+import Sliders from "./Slider/Sliders"
 import Footer from "./Footer/Footer"
 import BestSeller from "./Section/BestSellerCategory/BestSeller"
 
@@ -7,7 +7,7 @@ function HomePage() {
     return (
         <>
             <div className="homepage-container">
-                <Slider />
+                <Sliders />
                 <BestSeller />
                 <Footer />
             </div>
