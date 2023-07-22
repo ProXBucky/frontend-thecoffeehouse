@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from 'react-router-dom'
 import "./Register.scss"
 import { registerUser } from "../../api/Auth"
 import { toast } from "react-toastify";
@@ -14,6 +15,12 @@ export default function Register() {
 
     const [typePassword, setTypePass] = useState('true')
 
+    const history = useHistory();
+
+    const routeChange = () => {
+        history.push('/login');
+    }
+
     const handleOnChange = event => {
         const { name, value } = event.target;
         setInputValues({ ...inputValues, [name]: value });
@@ -23,26 +30,44 @@ export default function Register() {
         setTypePass(!typePassword)
     }
 
-    const handleRegister = async () => {
-        let res = await registerUser({
-            email: inputValues.emailRegister,
-            password: inputValues.passwordRegister,
-            firstName: inputValues.firstName,
-            lastName: inputValues.lastName,
-            address: inputValues.address,
-            phone: inputValues.phone
-        })
-        if (res.errCode === 0) {
-            toast.success('Register success, please login your account')
-        } else {
-            toast.error(res.errMessage)
+    const validateForm = () => {
+        let check = true;
+        const valueArr = ['emailRegister', 'passwordRegister', 'firstName', 'lastName', 'address', 'phone']
+        const valueLabel = ['Email', 'Password', 'First Name', 'Last Name', 'Address', 'Phone']
+        for (let i = 0; i < valueArr.length; i++) {
+            if (!inputValues[valueArr[i]]) {
+                toast.error('Please type ' + valueLabel[i])
+                check = false;
+                break
+            }
         }
-        setInputValues(initStateInput)
+        return check
     }
+
+    const handleRegister = async () => {
+        if (validateForm()) {
+            let res = await registerUser({
+                email: inputValues.emailRegister,
+                password: inputValues.passwordRegister,
+                firstName: inputValues.firstName,
+                lastName: inputValues.lastName,
+                address: inputValues.address,
+                phone: inputValues.phone
+            })
+            if (res.errCode === 0) {
+                toast.success('Register success, please login your account')
+            }
+            setInputValues(initStateInput)
+            routeChange()
+        }
+    }
+
+
+
 
     return (
         <>
-            <div className="container py-8 flex justify-center">
+            <div className="container py-8 flex justify-center mt-10">
                 <div className="content-right w-full max-w-lg px-5 text-center">
                     <h2 className="text-black">Register new account</h2>
                     <div className="text-left">

@@ -21,7 +21,7 @@ export default function Header() {
             </div>
             <div className='cart'>
                 <div className='nav'>
-                    <Link to="/shopping-cart">Giỏ hàng <i className="fa-solid fa-cart-shopping"></i></Link>
+                    <Link to="/shopping-cart"><i className="fa-solid fa-cart-shopping pr-2"></i>Giỏ hàng </Link>
                 </div>
             </div>
         </div>

@@ -1,0 +1,19 @@
+ul {
+    background-color: #f5f2f0;
+    cursor: pointer;
+
+    :hover {
+        background-color: #ec944a;
+        color: white;
+    }
+
+    .navbar-list {
+        border-bottom: 1px solid #dcdcdc;
+
+        :hover {
+            background-color: #ec944a;
+            color: white;
+        }
+    }
+
+}

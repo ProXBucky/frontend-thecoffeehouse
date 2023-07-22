@@ -1,5 +1,3 @@
-import { render } from "react-dom";
-import "./Slider.scss"
 import Slider from "react-slick";
 
 
@@ -56,13 +54,14 @@ export default function Sliders() {
         prevArrow: <SamplePrevArrow />
     };
 
+
     return (
-        <div className="slider relative">
+        <div className="slider relative mt-9 w-full h-[460px]">
             <Slider {...settings}>
                 {
-                    sliders.map((item) => {
+                    sliders.map((item, index) => {
                         return (
-                            <div>
+                            <div key={index}>
                                 <img src={item.urlSlider}></img>
                             </div>
                         )

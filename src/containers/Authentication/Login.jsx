@@ -22,17 +22,33 @@ export default function Login() {
     setTypePass(!typePassword)
   }
 
-  const handleLogin = async () => {
-    let res = await loginUser({
-      email: inputValues.emailLogin,
-      password: inputValues.passwordLogin
-    })
-    if (res.errCode === 0) {
-      toast.success('Login success')
-    } else {
-      toast.error(res.errMessage)
+  const validateForm = () => {
+    let check = true;
+    const valueArr = ['emailLogin', 'passwordLogin']
+    const valueLabel = ['Email', 'Password']
+    for (let i = 0; i < valueArr.length; i++) {
+      if (!inputValues[valueArr[i]]) {
+        toast.error('Please type ' + valueLabel[i])
+        check = false;
+        break
+      }
     }
-    setInputValues(initStateInput)
+    return check
+  }
+
+  const handleLogin = async () => {
+    if (validateForm()) {
+      let res = await loginUser({
+        email: inputValues.emailLogin,
+        password: inputValues.passwordLogin
+      })
+      if (res.errCode === 0) {
+        toast.success('Login success')
+      } else {
+        toast.error(res.errMessage)
+      }
+      setInputValues(initStateInput)
+    }
   }
 
 
