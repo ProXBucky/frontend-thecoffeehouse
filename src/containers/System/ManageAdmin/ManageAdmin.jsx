@@ -61,9 +61,9 @@ export default function ManageAdmin() {
             <div className="p-10">
                 <p className="text-3xl inline-block">Manage Admin</p>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreate()}>Add new admin</button>
-                <div className="w-ful mt-10 text-center">
+                <div className="w-ful mt-10 text-center text-sm">
                     <table className="w-full px-3 rounded-lg overflow-hidden">
-                        <thead className="h-16 bg-[#f68122] text-white border border-slate-300 overflow-hidden">
+                        <thead className="h-14 bg-[#f68122] text-white border border-slate-300 overflow-hidden">
                             <tr>
                                 <th className="px-5">ID</th>
                                 <th>Email</th>
@@ -78,7 +78,7 @@ export default function ManageAdmin() {
                                 admins && admins.length > 0 &&
                                 admins.map((item, index) => {
                                     return (
-                                        <tr className="h-14 even:bg-neutral-100 odd:bg-slate-300 border border-slate-300 overflow-hidden" key={index}>
+                                        <tr className="h-12 even:bg-neutral-100 odd:bg-slate-300 border border-slate-300 overflow-hidden" key={index}>
                                             <td>{item.id}</td>
                                             <td>{item.email}</td>
                                             <td>{item.firstName}</td>

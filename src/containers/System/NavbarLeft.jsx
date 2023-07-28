@@ -14,7 +14,8 @@ export default function NavbarLeft({ widthNav, toggleNav, navIsOpen }) {
     }
 
     return (
-        <div className="relative duration-200 ease-linear scroll-smooth h-full " style={{ width: `${widthNav}px` }}>
+
+        <div className="relative duration-200 ease-linear scroll-smooth overflow-hidden h-full py-10" style={{ width: `${widthNav}px` }}>
             <div className="button-close absolute right-3" onClick={handleToggleNavbar}>
                 {
                     navIsOpen === true ? <i className="fa-solid fa-xmark fa-xl cursor-pointer "></i>
@@ -23,21 +24,21 @@ export default function NavbarLeft({ widthNav, toggleNav, navIsOpen }) {
             </div>
             <div className="pt-12">
                 <ul className="text-black">
-                    <NavLink className="navbar-list px-4 py-4 block text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-admin">
+                    <NavLink className="navbar-list overflow-hidden px-4 py-4 block text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-admin">
                         <i className="fa-solid fa-user-tie fa-xl mr-4"></i>
-                        {navIsOpen && <p className="inline-block">Admin</p>}
+                        {navIsOpen && <label>Admin</label>}
                     </NavLink>
-                    <NavLink className="navbar-list px-4 py-4 block text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-product">
+                    <NavLink className="navbar-list overflow-hidden px-4 py-4 block text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-product">
                         <i className="fa-solid fa-database fa-xl mr-4"></i>
-                        {navIsOpen && <p className="inline-block">Products</p>}
+                        {navIsOpen && <label>Products</label>}
                     </NavLink>
-                    <NavLink className="navbar-list px-4 py-4 block text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-store">
+                    <NavLink className="navbar-list overflow-hidden px-4 py-4 block text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-store">
                         <i className="fa-solid fa-building fa-xl mr-4"></i>
-                        {navIsOpen && <p className="inline-block">Stores</p>}
+                        {navIsOpen && <label>Stores</label>}
                     </NavLink>
-                    <NavLink className="navbar-list px-4 py-4 block text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-blog">
+                    <NavLink className="navbar-list overflow-hidden px-4 py-4 block text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-blog">
                         <i className="fa-solid fa-book fa-xl mr-4"></i>
-                        {navIsOpen && <p className="inline-block">Blogs</p>}
+                        {navIsOpen && <label>Blogs</label>}
                     </NavLink>
                 </ul>
 

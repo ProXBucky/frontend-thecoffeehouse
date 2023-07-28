@@ -2,16 +2,20 @@ import { useState } from "react"
 import "./Login.scss"
 import { loginUser } from "../../api/Auth"
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
+import { UserSlice } from "../../redux/Slice/UserSlice";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
   const initStateInput = {
-    emailLogin: '', passwordLogin: '',
+    emailLogin: '',
+    passwordLogin: '',
   }
+  const history = useHistory()
 
   const [inputValues, setInputValues] = useState(initStateInput);
-
   const [typePassword, setTypePass] = useState('true')
+  const dispatch = useDispatch()
 
   const handleOnChange = event => {
     const { name, value } = event.target;
@@ -42,15 +46,22 @@ export default function Login() {
         email: inputValues.emailLogin,
         password: inputValues.passwordLogin
       })
-      if (res.errCode === 0) {
+      if (res && res.errCode === 0) {
+        dispatch(UserSlice.actions.loginUserSucces(res.userInfo))
         toast.success('Login success')
+        setInputValues(initStateInput)
+        history.push('/system')
       } else {
         toast.error(res.errMessage)
       }
-      setInputValues(initStateInput)
     }
   }
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleLogin()
+    }
+  }
 
 
   return (
@@ -73,7 +84,7 @@ export default function Login() {
               <div className="input-password ">
                 <input className="w-full bg-gray-100 border border-gray-200 rounded py-3 px-4 mb-3  focus:outline-none text-black"
                   type={typePassword ? 'password' : 'text'} placeholder="************"
-                  onChange={handleOnChange} name="passwordLogin" value={inputValues.passwordLogin}>
+                  onChange={handleOnChange} name="passwordLogin" onKeyPress={handleKeyPress}>
                 </input>
                 {typePassword ? <i className="icon fa-regular fa-eye" onClick={handleHideShowPassword}></i> : <i className="icon fa-regular fa-eye-slash" onClick={handleHideShowPassword}></i>}
               </div>

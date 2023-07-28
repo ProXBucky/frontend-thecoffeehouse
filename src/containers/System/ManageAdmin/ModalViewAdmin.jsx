@@ -28,32 +28,32 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
                                             <table className=" w-full rounded-lg overflow-hidden">
                                                 <tbody>
                                                     <tr>
-                                                        <th className="h-12 bg-purple-800 text-white">ID:</th>
-                                                        <td className="px-6 bg-purple-200">{dataUser.id}</td>
+                                                        <th className="h-12 bg-[#f68122] text-white">ID:</th>
+                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.id}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th className="h-12 bg-purple-800 text-white">Email:</th>
-                                                        <td className="px-6 bg-purple-200">{dataUser.email}</td>
+                                                        <th className="h-12 bg-[#f68122] text-white">Email:</th>
+                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.email}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th className="h-12 bg-purple-800 text-white">Password:</th>
-                                                        <td className="px-6 bg-purple-200">{dataUser.password}</td>
+                                                        <th className="h-12 bg-[#f68122] text-white">Password:</th>
+                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.password}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th className="h-12 bg-purple-800 text-white">First Name:</th>
-                                                        <td className="px-6 bg-purple-200">{dataUser.firstName}</td>
+                                                        <th className="h-12 bg-[#f68122] text-white">First Name:</th>
+                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.firstName}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th className="h-12 bg-purple-800 text-white">Last Name:</th>
-                                                        <td className="px-6 bg-purple-200">{dataUser.lastName}</td>
+                                                        <th className="h-12 bg-[#f68122] text-white">Last Name:</th>
+                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.lastName}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th className="h-12 bg-purple-800 text-white">Address:</th>
-                                                        <td className="px-6 bg-purple-200">{dataUser.address}</td>
+                                                        <th className="h-12 bg-[#f68122] text-white">Address:</th>
+                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.address}</td>
                                                     </tr>
                                                     <tr>
-                                                        <th className="h-12 bg-purple-800 text-white">Phone:</th>
-                                                        <td className="px-6 bg-purple-200">{dataUser.phone}</td>
+                                                        <th className="h-12 bg-[#f68122] text-white">Phone:</th>
+                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.phone}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

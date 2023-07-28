@@ -61,32 +61,32 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
                                                 <table className=" w-full rounded-lg overflow-hidden">
                                                     <tbody>
                                                         <tr className="div">
-                                                            <th className="h-12 bg-purple-800 text-white">ID:</th>
-                                                            <td><input className="px-6 bg-purple-200 w-full outline-none py-3 border border-b-purple-800 disabled:bg-purple-300" disabled value={dataUser.id} name="id" onChange={handleOnChange} /></td>
+                                                            <th className="h-12 bg-[#f68122] text-white">ID:</th>
+                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3 border border-b-[#f68122] disabled:bg-[#f77104]" disabled value={dataUser.id} name="id" onChange={handleOnChange} /></td>
                                                         </tr>
                                                         <tr className="div">
-                                                            <th className="h-12 bg-purple-800 text-white">Email:</th>
-                                                            <td><input className="px-6 bg-purple-200 w-full outline-none py-3 border border-b-purple-800 disabled:bg-purple-300" disabled value={dataUser.email} name="email" onChange={handleOnChange} /></td>
+                                                            <th className="h-12 bg-[#f68122] text-white">Email:</th>
+                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3 border border-b-[#f68122] disabled:bg-[#f77104]" disabled value={dataUser.email} name="email" onChange={handleOnChange} /></td>
                                                         </tr>
                                                         <tr className="div">
-                                                            <th className="h-12 bg-purple-800 text-white">Password:</th>
-                                                            <td><input className="px-6 bg-purple-200 w-full outline-none py-3 border border-b-purple-800" value={dataUser.password} name="password" onChange={handleOnChange} /></td>
+                                                            <th className="h-12 bg-[#f68122] text-white">Password:</th>
+                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3 border border-b-[#f68122]" value={dataUser.password} name="password" onChange={handleOnChange} /></td>
                                                         </tr>
                                                         <tr className="div">
-                                                            <th className="h-12 bg-purple-800 text-white">First Name:</th>
-                                                            <td><input className="px-6 bg-purple-200 w-full outline-none py-3 border border-b-purple-800" value={dataUser.firstName} name="firstName" onChange={handleOnChange} /></td>
+                                                            <th className="h-12 bg-[#f68122] text-white">First Name:</th>
+                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3 border border-b-[#f68122]" value={dataUser.firstName} name="firstName" onChange={handleOnChange} /></td>
                                                         </tr>
                                                         <tr className="div">
-                                                            <th className="h-12 bg-purple-800 text-white">Last Name:</th>
-                                                            <td><input className="px-6 bg-purple-200 w-full outline-none py-3 border border-b-purple-800" value={dataUser.lastName} name="lastName" onChange={handleOnChange} /></td>
+                                                            <th className="h-12 bg-[#f68122] text-white">Last Name:</th>
+                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3 border border-b-[#f68122]" value={dataUser.lastName} name="lastName" onChange={handleOnChange} /></td>
                                                         </tr>
                                                         <tr className="div">
-                                                            <th className="h-12 bg-purple-800 text-white">Address:</th>
-                                                            <td><input className="px-6 bg-purple-200 w-full outline-none py-3 border border-b-purple-800" value={dataUser.address} name="address" onChange={handleOnChange} /></td>
+                                                            <th className="h-12 bg-[#f68122] text-white">Address:</th>
+                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3 border border-b-[#f68122]" value={dataUser.address} name="address" onChange={handleOnChange} /></td>
                                                         </tr>
                                                         <tr className="div">
-                                                            <th className="h-12 bg-purple-800 text-white">Phone:</th>
-                                                            <td><input className="px-6 bg-purple-200 w-full outline-none py-3 " value={dataUser.phone} name="phone" onChange={handleOnChange} /></td>
+                                                            <th className="h-12 bg-[#f68122] text-white">Phone:</th>
+                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3 " value={dataUser.phone} name="phone" onChange={handleOnChange} /></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
