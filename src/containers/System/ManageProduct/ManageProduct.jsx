@@ -1,11 +1,20 @@
 import ModalCreateProduct from "./ModalCreateProduct"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { fetchAllcodeCategory, fetchAllcodeSize } from "../../../redux/Slice/AppSlice"
 
 export default function ManageProduct() {
     const [showModalCreate, setShowModalCreate] = useState(false)
     const [showModalView, setShowModalView] = useState(false)
     const [showModalEdit, setShowModalEdit] = useState(false)
     const [showModalDelete, setShowModalDelete] = useState(false)
+    const dispatch = useDispatch()
+
+
+    useEffect(() => {
+        dispatch(fetchAllcodeSize())
+        dispatch(fetchAllcodeCategory())
+    }, [])
 
     // const handleOnChange = (event) => {
     //     setDataUser({

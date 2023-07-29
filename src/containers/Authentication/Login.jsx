@@ -47,7 +47,7 @@ export default function Login() {
         password: inputValues.passwordLogin
       })
       if (res && res.errCode === 0) {
-        dispatch(UserSlice.actions.loginUserSucces(res.userInfo))
+        dispatch(UserSlice.actions.loginUserSucces(res.email))
         toast.success('Login success')
         setInputValues(initStateInput)
         history.push('/system')

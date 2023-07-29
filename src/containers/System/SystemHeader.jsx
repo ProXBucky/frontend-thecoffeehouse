@@ -5,15 +5,14 @@ import {
     Link,
     useHistory
 } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { UserSlice } from "../../redux/Slice/UserSlice";
-import { userInfoSelector } from "../../redux/selector"
 
-export default function SystemHeader() {
+
+export default function SystemHeader({ adminFullName }) {
     const history = useHistory()
     const dispatch = useDispatch()
-    const adminName = useSelector(userInfoSelector)
-    const adminFullName = `${adminName.firstName} ${adminName.lastName}`
+
     const handleLogout = () => {
         dispatch(UserSlice.actions.logOutUser())
         history.push('/')
@@ -25,7 +24,7 @@ export default function SystemHeader() {
     return (
         <div className="w-full h-[60px] flex border fixed top-0 justify-between px-5 z-50 bg-white">
             <div className="w-1/6 text-black flex items-center ">
-                <i class="fa-solid fa-arrow-rotate-left fa-xl cursor-pointer" onClick={backSystemRoute}></i>
+                <i className="fa-solid fa-arrow-rotate-left fa-xl cursor-pointer" onClick={backSystemRoute}></i>
             </div>
             <div className='w-2/3 flex justify-center '>
                 <Link className='logo' to="/">

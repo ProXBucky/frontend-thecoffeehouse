@@ -1,13 +1,35 @@
+import { useSelector } from "react-redux";
 import SystemRoute from "../../routes/SystemRoute";
 import NavbarLeft from "./NavbarLeft";
-import { useState } from "react";
+import SystemHeader from '../../containers/System/SystemHeader';
+import { userInfoSelector } from "../../redux/selector"
+import { getAdminByEmail } from "../../api/adminAPI";
+import { useEffect, useState } from "react";
 
 export default function System() {
     const [widthNav, setWidthNav] = useState(50)
     const [marginLeft, setMarginLeft] = useState(50)
     const [navIsOpen, setNavIsOpen] = useState(false)
 
-    function toggleNav() {
+    const [adminFullName, setAdminName] = useState('')
+    const userInfo = useSelector(userInfoSelector)
+
+
+    useEffect(() => {
+        fetchDataAdmin()
+    }, [])
+
+
+    const fetchDataAdmin = async () => {
+        let respone = await getAdminByEmail(userInfo)
+        if (respone && respone.errCode === 0) {
+            let fullName = `${respone.data.firstName} ${respone.data.lastName}`
+            setAdminName(fullName)
+        }
+    }
+
+
+    const toggleNav = () => {
         if (widthNav === 50) {
             setWidthNav(250)
             setMarginLeft(250)
@@ -19,8 +41,10 @@ export default function System() {
         }
     }
 
+
     return (
         <>
+            <SystemHeader adminFullName={adminFullName} />
             <div className="system-container flex flex-row text-black h-screen mt-8">
                 <div className=" px-2 h-full fixed bg-[#f5f2f0]">
                     <NavbarLeft widthNav={widthNav} toggleNav={toggleNav} navIsOpen={navIsOpen} />
