@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchDataAllcodes } from "../../api/appAPI"
+import { fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin } from "../../api/appAPI"
 
 export const fetchAllcodeCategory = createAsyncThunk(
     `app/fetchAllcodeCategory`,
@@ -17,6 +17,22 @@ export const fetchAllcodeSize = createAsyncThunk(
     }
 );
 
+export const fetchAllAdmins = createAsyncThunk(
+    `app/fetchAllAdmins`,
+    async () => {
+        const response = await fetchAllAdmin()
+        return response.data
+    }
+);
+
+export const fetchAllProduct = createAsyncThunk(
+    `app/fetchAllProduct`,
+    async () => {
+        const response = await fetchAllProductByCategory('ALL')
+        return response.data
+    }
+);
+
 export const AppSlice = createSlice({
     name: 'app',
     initialState: {
@@ -25,34 +41,68 @@ export const AppSlice = createSlice({
         size: [],
         city: [],
         category: [],
-        isLoading: false,
-        isError: false
+        statusFetch: '',
+        error: '',
+        adminArr: [],
+        allProductArr: [],
     },
     reducers: {
 
-
     },
-    extraReducers: {
-        [fetchAllcodeCategory.pending]: (state) => {
-            state.isLoading = true
-        },
-        [fetchAllcodeCategory.fulfilled]: (state, action) => {
-            state.category = action.payload
-            state.isLoading = false
-        },
-        [fetchAllcodeCategory.rejected]: (state) => {
-            state.isError = true
-        },
+    extraReducers(builder) {
+        builder
+            .addCase(fetchAllcodeCategory.pending, (state) => {
+                state.statusFetch = 'loading'
+            })
+            .addCase(fetchAllcodeCategory.fulfilled, (state, action) => {
+                state.statusFetch = 'succeeded'
+                state.category = action.payload
+            })
+            .addCase(fetchAllcodeCategory.rejected, (state, action) => {
+                state.statusFetch = 'failed'
+                state.error = action.error.message
+            })
 
-        [fetchAllcodeSize.pending]: (state) => {
-            state.isLoading = true
-        },
-        [fetchAllcodeSize.fulfilled]: (state, action) => {
-            state.size = action.payload
-            state.isLoading = false
-        },
-        [fetchAllcodeSize.rejected]: (state) => {
-            state.isError = true
-        },
+            /////////////////////////////
+
+            .addCase(fetchAllcodeSize.pending, (state) => {
+                state.statusFetch = 'loading'
+            })
+            .addCase(fetchAllcodeSize.fulfilled, (state, action) => {
+                state.statusFetch = 'succeeded'
+                state.size = action.payload
+            })
+            .addCase(fetchAllcodeSize.rejected, (state, action) => {
+                state.statusFetch = 'failed'
+                state.error = action.error.message
+            })
+
+            /////////////////////////////
+
+            .addCase(fetchAllAdmins.pending, (state) => {
+                state.statusFetch = 'loading'
+            })
+            .addCase(fetchAllAdmins.fulfilled, (state, action) => {
+                state.statusFetch = 'succeeded'
+                state.adminArr = action.payload
+            })
+            .addCase(fetchAllAdmins.rejected, (state, action) => {
+                state.statusFetch = 'failed'
+                state.error = action.error.message
+            })
+
+            /////////////////////////////
+
+            .addCase(fetchAllProduct.pending, (state) => {
+                state.statusFetch = 'loading'
+            })
+            .addCase(fetchAllProduct.fulfilled, (state, action) => {
+                state.statusFetch = 'succeeded'
+                state.allProductArr = action.payload
+            })
+            .addCase(fetchAllProduct.rejected, (state, action) => {
+                state.statusFetch = 'failed'
+                state.error = action.error.message
+            })
     }
 })

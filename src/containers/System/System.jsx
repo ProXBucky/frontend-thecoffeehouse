@@ -7,10 +7,6 @@ import { getAdminByEmail } from "../../api/adminAPI";
 import { useEffect, useState } from "react";
 
 export default function System() {
-    const [widthNav, setWidthNav] = useState(50)
-    const [marginLeft, setMarginLeft] = useState(50)
-    const [navIsOpen, setNavIsOpen] = useState(false)
-
     const [adminFullName, setAdminName] = useState('')
     const userInfo = useSelector(userInfoSelector)
 
@@ -18,7 +14,6 @@ export default function System() {
     useEffect(() => {
         fetchDataAdmin()
     }, [])
-
 
     const fetchDataAdmin = async () => {
         let respone = await getAdminByEmail(userInfo)
@@ -28,28 +23,14 @@ export default function System() {
         }
     }
 
-
-    const toggleNav = () => {
-        if (widthNav === 50) {
-            setWidthNav(250)
-            setMarginLeft(250)
-            setNavIsOpen(true)
-        } else {
-            setWidthNav(50)
-            setMarginLeft(50)
-            setNavIsOpen(false)
-        }
-    }
-
-
     return (
         <>
             <SystemHeader adminFullName={adminFullName} />
-            <div className="system-container flex flex-row text-black h-screen mt-8">
-                <div className=" px-2 h-full fixed bg-[#f5f2f0]">
-                    <NavbarLeft widthNav={widthNav} toggleNav={toggleNav} navIsOpen={navIsOpen} />
+            <div className="system-container flex text-black h-screen mt-8">
+                <div className="px-2 py-3 h-full fixed duration-200 ease-linear scroll-smooth bg-[#f5f2f0] w-[60px] hover:w-[200px] ">
+                    <NavbarLeft />
                 </div>
-                <div className=" w-full duration-200 ease-linear scroll-smooth px-5 pb-10" style={{ marginLeft: `${marginLeft}px` }}>
+                <div className="h-full duration-200 ease-linear scroll-smooth px-5 pb-10 w-full ml-[60px]" >
                     <SystemRoute />
                 </div>
             </div >

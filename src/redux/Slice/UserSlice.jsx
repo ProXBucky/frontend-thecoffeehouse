@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAdminByEmail } from "../../api/adminAPI"
+
 
 
 
 export const UserSlice = createSlice({
     name: 'user',
     initialState: {
-        userIsLogined: false,
+        // userIsLogined: false,
+        userIsLogined: true, // tam thoi
         userInfo: {},
         isError: false
     },

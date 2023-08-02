@@ -1,48 +1,45 @@
-import { getAllAdmin } from "../../../api/adminAPI"
 import { useState, useEffect, useCallback } from "react"
 import ModalEditAdmin from "./ModalEditAdmin"
 import ModalCreateAdmin from "./ModalCreateAdmin"
 import ModalDeleteAdmin from "./ModalDeleteAdmin"
 import ModalViewAdmin from "./ModalViewAdmin"
+import { fetchAllAdmins } from "../../../redux/Slice/AppSlice"
+import { adminArrSelector } from "../../../redux/selector"
+import { useDispatch, useSelector } from "react-redux"
 
 export default function ManageAdmin() {
-    const [admins, setAdmins] = useState([])
     const [showModalCreate, setShowModalCreate] = useState(false)
     const [showModalView, setShowModalView] = useState(false)
     const [showModalEdit, setShowModalEdit] = useState(false)
     const [showModalDelete, setShowModalDelete] = useState(false)
     const [dataUser, setDataUser] = useState({})
+    const dispatch = useDispatch()
+    const adminArr = useSelector(adminArrSelector)
 
 
     useEffect(() => {
-        fetchDataAdminList()
+        dispatch(fetchAllAdmins())
     }, [])
 
-    const fetchDataAdminList = async () => {
-        let res = await getAllAdmin()
-        if (res.errCode === 0) {
-            setAdmins(res.data)
-        }
-    }
 
     const fetchRequest = useCallback(() => {
-        fetchDataAdminList()
-    }, [admins]);
+        dispatch(fetchAllAdmins())
+    }, [adminArr]);
 
     const handleCreate = () => {
         setShowModalCreate(true)
     }
-    const handleView = async (item) => {
-        await setDataUser(item)
-        await setShowModalView(true)
+    const handleView = (item) => {
+        setDataUser(item)
+        setShowModalView(true)
     }
-    const handleDelete = async (item) => {
-        await setDataUser(item)
-        await setShowModalDelete(true)
+    const handleDelete = (item) => {
+        setDataUser(item)
+        setShowModalDelete(true)
     }
-    const handleEdit = async (item) => {
-        await setDataUser(item)
-        await setShowModalEdit(true)
+    const handleEdit = (item) => {
+        setDataUser(item)
+        setShowModalEdit(true)
     }
 
     const handleOnChange = (event) => {
@@ -75,8 +72,8 @@ export default function ManageAdmin() {
                         </thead>
                         <tbody>
                             {
-                                admins && admins.length > 0 &&
-                                admins.map((item, index) => {
+                                adminArr && adminArr.length > 0 &&
+                                adminArr.map((item, index) => {
                                     return (
                                         <tr className="h-12 even:bg-neutral-100 odd:bg-slate-300 border border-slate-300 overflow-hidden" key={index}>
                                             <td>{item.id}</td>

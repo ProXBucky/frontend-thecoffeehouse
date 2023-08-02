@@ -1,8 +1,5 @@
 import axios from "../../axios";
 
-const getAllAdmin = (body) => {
-    return axios.get('/api/get-all-admin', body)
-}
 
 const getAdminByEmail = (email) => {
     return axios.get(`/api/get-admin-by-email?email=${email}`)
@@ -20,4 +17,16 @@ const updateAdminData = (body) => {
     return axios.put('/api/update-admin-data', body)
 }
 
-export { getAllAdmin, deleteAdmin, updateAdminData, getAdminById, getAdminByEmail }
+const createNewProduct = (body) => {
+    return axios.post('/api/create-new-product', body)
+}
+
+const deleteProduct = (id) => {
+    return axios.delete(`/api/delete-product?id=${id}`)
+}
+
+const updateProductData = (body) => {
+    return axios.put('/api/update-product-data', body)
+}
+
+export { deleteAdmin, updateAdminData, getAdminById, getAdminByEmail, createNewProduct, deleteProduct, updateProductData }

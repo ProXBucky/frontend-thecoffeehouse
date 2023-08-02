@@ -30,9 +30,8 @@ function App() {
             <Route path="/login" component={withRouter(Login)} />
             <Route path="/register" component={withRouter(Register)} />
             <Route path="/404-error" component={withRouter(ErrorPage)} />
-            {/* <Route path="/system" component={isLogin ? withRouter(System) : withRouter(ErrorPage)} /> */}
-            <Route path="/system" component={withRouter(System)} />
-
+            <Route path="/system" component={isLogin ? withRouter(System) : withRouter(ErrorPage)} />
+            {/* <Route path="/system" component={withRouter(System)} /> */}
 
           </Switch>
 

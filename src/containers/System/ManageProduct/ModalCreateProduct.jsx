@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux"
 import { categoryAllcodeSelector, sizeAllcodeSelector } from "../../../redux/selector"
-import { productSize } from "./productSize";
-
-export default function ModalCreateProduct({ showModalCreate, setShowModalCreate }) {
+import { encodeBase64Func } from "../../../utils/base64";
+import { createNewProduct } from "../../../api/adminAPI"
+export default function ModalCreateProduct({ showModalCreate, setShowModalCreate, fetchRequest }) {
 
     const [inputValues, setInputValues] = useState({
         name: '',
@@ -39,27 +39,58 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
         setInputValues({ ...inputValues, [name]: value });
     };
 
-    const handlePreviewImage = (e) => {
-        setFile(URL.createObjectURL(e.target.files[0]));
+    const handlePreviewImage = async (e) => {
+        const { name, files } = e.target
+        let file = files[0]
+        if (file) {
+            setFile(URL.createObjectURL(file));
+            const base64 = await encodeBase64Func(file)
+            setInputValues({ ...inputValues, [name]: base64 });
+        }
     }
-    // const validateForm = () => {
-    //     let check = true;
-    //     const valueArr = ['email', 'password', 'firstName', 'lastName', 'address', 'phone']
-    //     const valueLabel = ['Email', 'Password', 'First Name', 'Last Name', 'Address', 'Phone']
-    //     for (let i = 0; i < valueArr.length; i++) {
-    //         if (!inputValues[valueArr[i]]) {
-    //             toast.error('Please type ' + valueLabel[i])
-    //             check = false;
-    //             break
-    //         }
-    //     }
-    //     return check
-    // }
+
+    const validateForm = () => {
+        let check = true;
+        const valueArr = ['name', 'originalPrice', 'category', 'image', 'description']
+        const valueLabel = ['Product Name', 'Original Price', 'Category', 'Image', 'Description']
+        for (let i = 0; i < valueArr.length; i++) {
+            if (!inputValues[valueArr[i]]) {
+                toast.error('Please type ' + valueLabel[i])
+                check = false;
+                break
+            }
+        }
+        return check
+    }
 
 
     const handleAction = async () => {
-        console.log(selectedCheckboxes)
-        console.log(inputValues)
+        if (validateForm()) {
+            const response = await createNewProduct({
+                name: inputValues.name,
+                originalPrice: inputValues.originalPrice,
+                category: inputValues.category,
+                size: selectedCheckboxes.toString(),
+                image: inputValues.image,
+                description: inputValues.description
+            })
+            if (response.errCode === 0) {
+                toast.success('Create new product succcess')
+            } else {
+                toast.error(response.errMessage)
+            }
+            setInputValues({
+                name: '',
+                originalPrice: '',
+                category: '',
+                image: '',
+                description: ''
+            })
+            setFile('')
+            setSelectedCheckboxes([])
+            setShowModalCreate(false)
+            fetchRequest()
+        }
     }
 
     return (
@@ -69,7 +100,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[90%] my-8 h-[80%]">
+                        <div className="relative w-[70%] my-8 h-[80%]">
                             <div className="border-2-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 <div className="flex items-start justify-between py-5 px-5 border-2-b border-2-solid border-2-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold ml-10">
@@ -92,6 +123,8 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                         <div>
                                             <label className="text-lg mr-4">Category</label><br />
                                             <select className="border-2 outline-none bg-white p-2 w-[170px] cursor-pointer" onChange={handleOnChange} name="category" value={inputValues.category} >
+                                                <option className="cursor-pointer" selected>None</option>
+
                                                 {
                                                     cateArr && cateArr.length > 0 &&
                                                     cateArr.map((item, index) => {
@@ -112,20 +145,17 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                                             <input type="checkbox" className="w-5 h-5 cursor-pointer mr-2" id={item.id} name="size" value={item.keyMap} onChange={handleChangeChecked} select={selectedCheckboxes.indexOf(item.id) > -1} />
                                                             <label htmlFor={item.id} className="text-base"> {item.valueEn} </label><br />
                                                         </div>
-
-
                                                     )
-
                                                 })
                                             }
                                         </div>
                                         <div className="pl-[120px] w-2/3 items-center">
                                             <label className="text-lg pr-2">Image</label>
-                                            <input id='upload-Img' type='file' hidden onChange={handlePreviewImage} />
+                                            <input id='upload-Img' type='file' hidden name="image" onChange={handlePreviewImage} />
                                             <label className='upload text-lg mr-2 cursor-pointer' htmlFor='upload-Img'><i className="fa-solid fa-arrow-up-from-bracket fa-lg"></i></label>
                                             <br />
                                             <div className="border-2 w-[300px] h-[100px] mt-3 flex justify-center">
-                                                <img src={file} className="cover h-[100px]  cursor-pointer scale-100 hover:scale-[5] ease-in duration-500" />
+                                                <img src={file} className="cover h-[100px]  cursor-pointer scale-100 hover:scale-[3] ease-in duration-100" />
                                             </div>
                                         </div>
                                     </div>
@@ -135,7 +165,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                             name="description"
                                             value={inputValues.description}
                                             onChange={handleOnChange}
-                                            defaultValue="Description of product"
+
                                         >
 
                                         </textarea>

@@ -95,7 +95,7 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
                                                 </label>
                                             </div>
                                             <div>
-                                                <label className="block">
+                                                <label className="block mb-3">
                                                     <span className="block font-medium text-slate-700 text-left text-lg">Address</span>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="Ha Noi" name="address" onChange={handleOnChange} value={inputValues.address} />
                                                 </label>

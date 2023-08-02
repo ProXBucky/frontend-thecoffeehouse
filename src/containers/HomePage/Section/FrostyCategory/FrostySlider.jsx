@@ -1,60 +1,25 @@
 import Slider from "react-slick";
+import { fetchAllProductByCategory } from "../../../../api/appAPI"
+import { useState, useEffect } from "react";
+import { decodeBase64Func } from "../../../../utils/base64"
 
 
-function SamplePrevArrow(props) {
-    const { style, onClick } = props;
-    return (
-        <div
-            className="absolute"
-            style={{ ...style, zIndex: "1", left: "-30px", top: "35%", cursor: "pointer" }}
-            onClick={onClick}
-        >
-            <i className="fa-solid fa-chevron-left fa-2xl text-black"></i>
-        </div>
-    );
-}
 
-function SampleNextArrow(props) {
-    const { style, onClick } = props;
-    return (
-        <div
-            className="absolute"
-            style={{ ...style, zIndex: "1", right: "-30px", top: "35%", cursor: "pointer" }}
-            onClick={onClick}
-        >
-            <i className="fa-solid fa-chevron-right fa-2xl text-black"></i>
-        </div>
-    );
-}
 
-const sliders = [
-    {
-        urlSlider: "/src/assets/ProductImg/CloudFeeHanh NhanNuong.webp"
-    },
-    {
-        urlSlider: "/src/assets/ProductImg/CloudFeeHanh NhanNuong.webp"
-    },
-    {
-        urlSlider: "/src/assets/ProductImg/CloudFeeHanh NhanNuong.webp"
-    },
-    {
-        urlSlider: "/src/assets/ProductImg/CloudFeeHanh NhanNuong.webp"
-    },
-    {
-        urlSlider: "/src/assets/ProductImg/CloudFeeHanh NhanNuong.webp"
-    },
-]
+export default function FrostySlider({ settings }) {
+    const [productArr, setProductArr] = useState([])
 
-const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 2,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />
-};
-export default function FrostySlider() {
+    useEffect(() => {
+        fetchProduct()
+    }, [])
+
+    const fetchProduct = async () => {
+        const res = await fetchAllProductByCategory('CA4')
+        if (res && res.errCode === 0) {
+            setProductArr(res.data)
+        }
+    }
+
 
     return (
         <div className="relative mt-9 h-[450px] px-[140px] mx-auto">
@@ -64,15 +29,16 @@ export default function FrostySlider() {
             </div>
             <Slider {...settings} className="w-full">
                 {
-                    sliders.map((item, index) => {
+                    productArr && productArr.length > 0 &&
+                    productArr.map((item, index) => {
                         return (
                             <div key={index} className="h-[325px] flex  px-[30px]">
                                 <div className="rounded-2xl overflow-hidden " style={{ boxShadow: '1px 1px 13px 0px #00000040' }}>
-                                    <img src={item.urlSlider} className="h-auto max-w-full" />
+                                    <img src={decodeBase64Func(item.image)} className="h-auto max-w-full" />
                                 </div>
                                 <div className="h-[60px] text-black mt-2">
-                                    <label className="font-semibold text-base">CloudFee Hạnh Nhân Nướng</label><br></br>
-                                    <label className="font-normal text-sm text-[#666]">49.000 đ</label>
+                                    <label className="font-semibold text-base">{item.name}</label><br></br>
+                                    <label className="font-normal text-sm text-[#666]">{item.originalPrice} đ</label>
                                 </div>
                             </div>
                         )
