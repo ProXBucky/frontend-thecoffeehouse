@@ -1,32 +1,30 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
 import { categoryAllcodeSelector, sizeAllcodeSelector } from "../../../redux/selector"
-import { decodeBase64Func, encodeBase64Func } from "../../../utils/base64";
+import { updateProductData } from "../../../api/adminAPI"
+import { toast } from "react-toastify"
 
-export default function ModalEditProduct({ showModalEdit, setShowModalEdit, dataProduct, handleOnChange, fetchRequest, handleChangeChecked, file, handlePreviewImage }) {
+export default function ModalEditProduct({ showModalEdit, setShowModalEdit, dataProduct, handleOnChange, fetchRequest, handleChangeChecked, selectedCheckboxes, file, handlePreviewImage }) {
     const cateArr = useSelector(categoryAllcodeSelector)
     const sizeArr = useSelector(sizeAllcodeSelector)
-    const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
-
-
 
     const handleAction = async () => {
-        // let res = await updateProductData({
-        //     id: dataProduct.id,  //for findOne
-        //     password: dataProduct.password,
-        //     firstName: dataProduct.firstName,
-        //     lastName: dataProduct.lastName,
-        //     address: dataProduct.address,
-        //     phone: dataProduct.phone
-        // })
-        // if (res.errCode === 0) {
-        //     toast.success('Update information success')
-        //     fetchRequest()
-        //     setShowModalEdit(false)
-        // } else {
-        //     toast.error(res.errMessage)
-        // }
-        console.log(dataProduct)
+        let res = await updateProductData({
+            id: dataProduct.id,  //for findOne
+            name: dataProduct.name,
+            description: dataProduct.description,
+            category: dataProduct.category,
+            size: selectedCheckboxes.toString(),
+            image: dataProduct.image,
+            originalPrice: dataProduct.originalPrice,
+        })
+        if (res.errCode === 0) {
+            toast.success('Update information success')
+            fetchRequest()
+            setShowModalEdit(false)
+        } else {
+            toast.error(res.errMessage)
+        }
     }
 
 
@@ -37,11 +35,11 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[70%] my-8">
+                        <div className="relative w-[70%] my-8 h-[75%]">
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
-                                        Edit product with {`id: ${dataProduct.id}`}
+                                        Edit product: {dataProduct.name}
                                     </h3>
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalEdit(false)}></i>
                                 </div>

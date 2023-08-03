@@ -17,6 +17,14 @@ export const fetchAllcodeSize = createAsyncThunk(
     }
 );
 
+export const fetchAllcodeCity = createAsyncThunk(
+    `app/fetchAllcodeCity`,
+    async () => {
+        const response = await fetchDataAllcodes("CITY")
+        return response.data
+    }
+);
+
 export const fetchAllAdmins = createAsyncThunk(
     `app/fetchAllAdmins`,
     async () => {
@@ -101,6 +109,20 @@ export const AppSlice = createSlice({
                 state.allProductArr = action.payload
             })
             .addCase(fetchAllProduct.rejected, (state, action) => {
+                state.statusFetch = 'failed'
+                state.error = action.error.message
+            })
+
+            /////////////////////////////
+
+            .addCase(fetchAllcodeCity.pending, (state) => {
+                state.statusFetch = 'loading'
+            })
+            .addCase(fetchAllcodeCity.fulfilled, (state, action) => {
+                state.statusFetch = 'succeeded'
+                state.city = action.payload
+            })
+            .addCase(fetchAllcodeCity.rejected, (state, action) => {
                 state.statusFetch = 'failed'
                 state.error = action.error.message
             })

@@ -2,6 +2,8 @@ import Slider from "react-slick";
 import { fetchAllProductByCategory } from "../../../../api/appAPI"
 import { useState, useEffect } from "react";
 import { decodeBase64Func } from "../../../../utils/base64"
+import { formatPrice } from "../../../../utils/formatPrice";
+
 
 export default function TeaSlider({ settings }) {
     const [productArr, setProductArr] = useState([])
@@ -34,7 +36,7 @@ export default function TeaSlider({ settings }) {
                                 </div>
                                 <div className="h-[60px] text-black mt-2">
                                     <label className="font-semibold text-base">{item.name}</label><br></br>
-                                    <label className="font-normal text-sm text-[#666]">{item.originalPrice} đ</label>
+                                    <label className="font-normal text-sm text-[#666]">{formatPrice(item.originalPrice)} đ</label>
                                 </div>
                             </div>
                         )

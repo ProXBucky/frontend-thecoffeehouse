@@ -29,4 +29,13 @@ const updateProductData = (body) => {
     return axios.put('/api/update-product-data', body)
 }
 
-export { deleteAdmin, updateAdminData, getAdminById, getAdminByEmail, createNewProduct, deleteProduct, updateProductData }
+const createNewStore = (body) => {
+    return axios.post('/api/create-new-store', body)
+}
+
+const uploadMultiImageStore = (body) => {
+    return axios.post('/api/upload-multi-image-store', body)
+}
+
+
+export { deleteAdmin, updateAdminData, getAdminById, getAdminByEmail, createNewProduct, deleteProduct, updateProductData, createNewStore, uploadMultiImageStore }

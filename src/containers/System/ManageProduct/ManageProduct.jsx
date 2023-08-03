@@ -3,40 +3,37 @@ import ModalDeleteProduct from "./ModalDeleteProduct"
 import ModalViewProduct from "./ModalViewProduct"
 import ModalEditProduct from "./ModalEditProduct"
 import { useEffect, useState, useCallback } from "react"
-import { fetchAllcodeCategory, fetchAllcodeSize, fetchAllProduct } from "../../../redux/Slice/AppSlice"
-import { useDispatch, useSelector } from "react-redux"
+import { fetchAllcodeCategory, fetchAllcodeSize } from "../../../redux/Slice/AppSlice"
+import { useDispatch } from "react-redux"
 import { decodeBase64Func, encodeBase64Func } from "../../../utils/base64"
 import { fetchAllProductByCategory } from "../../../api/appAPI"
-// import { productArrSelector } from "../../../redux/selector"
 
 export default function ManageProduct() {
     const [showModalCreate, setShowModalCreate] = useState(false)
     const [showModalView, setShowModalView] = useState(false)
     const [showModalEdit, setShowModalEdit] = useState(false)
     const [showModalDelete, setShowModalDelete] = useState(false)
-    const [dataProduct, setDataProduct] = useState('')
     const [file, setFile] = useState('')
-    // const allProductArr = useSelector(productArrSelector)
-    const [allProductArr, sets] = useState('')
+    const [allProductArr, setAllProductArr] = useState('')
+    const [dataProduct, setDataProduct] = useState('')
     const dispatch = useDispatch()
 
+    const fetchDataProduct = async () => {
+        const res = await fetchAllProductByCategory('ALL')
+        if (res && res.errCode === 0) {
+            setAllProductArr(res.data)
+        }
+    }
+
     useEffect(() => {
-        // dispatch(fetchAllProduct())
-        fetch()
+        fetchDataProduct()
         dispatch(fetchAllcodeSize())
         dispatch(fetchAllcodeCategory())
     }, [])
 
-    const fetch = async () => {
-        const res = await fetchAllProductByCategory('ALL')
-        if (res && res.errCode === 0) {
-            sets(res.data)
-        }
-    }
 
     const fetchRequest = useCallback(() => {
-        // dispatch(fetchAllProduct())
-        fetch()
+        fetchDataProduct()
     }, [allProductArr]);
 
     const handleCreate = () => {
@@ -98,7 +95,7 @@ export default function ManageProduct() {
 
     return (
         <>
-            <ModalEditProduct showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} dataProduct={dataProduct}
+            <ModalEditProduct showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} dataProduct={dataProduct} selectedCheckboxes={selectedCheckboxes}
                 handleOnChange={handleOnChange} fetchRequest={fetchRequest} handleChangeChecked={handleChangeChecked} file={file} handlePreviewImage={handlePreviewImage} />
             <ModalDeleteProduct showModalDelete={showModalDelete} setShowModalDelete={setShowModalDelete} dataProduct={dataProduct} fetchRequest={fetchRequest} />
             <ModalViewProduct showModalView={showModalView} setShowModalView={setShowModalView} dataProduct={dataProduct} />
@@ -110,8 +107,7 @@ export default function ManageProduct() {
                     <table className="w-full px-3 rounded-lg overflow-hidden">
                         <thead className="h-14 bg-[#f68122] text-white border border-slate-300 text-center overflow-hidden">
                             <tr>
-                                <th className="px-5">ID</th>
-                                <th>Image</th>
+                                <th className="px-5">Image</th>
                                 <th>Name</th>
                                 <th>Original Price</th>
                                 <th>Category</th>
@@ -124,7 +120,6 @@ export default function ManageProduct() {
                                 allProductArr.map((item, index) => {
                                     return (
                                         <tr className="h-12 font-medium text-base even:bg-neutral-100 odd:bg-slate-300 border border-slate-300 overflow-hidden" key={index}>
-                                            <td>{item.id}</td>
                                             <td className="py-4 flex justify-center">
                                                 {
                                                     item && item.image &&
@@ -135,7 +130,7 @@ export default function ManageProduct() {
                                             </td>
                                             <td>{item.name}</td>
                                             <td>{item.originalPrice}</td>
-                                            <td>{item.categoryData.valueEn}</td>
+                                            <td>{item.categoryData && item.categoryData.valueEn}</td>
                                             <td>
                                                 <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleView(item)}>
                                                     <i className="fa-regular fa-eye fa-md mr-1"></i>

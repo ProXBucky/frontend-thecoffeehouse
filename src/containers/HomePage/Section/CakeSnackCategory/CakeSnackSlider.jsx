@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import { fetchAllProductByCategory } from "../../../../api/appAPI"
 import { useState, useEffect } from "react";
 import { decodeBase64Func } from "../../../../utils/base64"
+import { formatPrice } from "../../../../utils/formatPrice";
 
 
 export default function CakeSnackSlider({ settings }) {
@@ -20,7 +21,7 @@ export default function CakeSnackSlider({ settings }) {
     }
 
     return (
-        <div className="relative mt-9 h-[450px] px-[140px] mx-auto bg-[#fed7b3]">
+        <div className="relative mt-9 h-[450px] px-[140px] mx-auto">
             <div className="header-section text-black flex justify-between h-20 py-5 px-10">
                 <p className="font-semibold text-2xl">Bánh ngọt và Snack</p>
                 <button className="text-white text-sm outline-none border-none hover:bg-[#ec944a]">Xem tất cả</button>
@@ -36,7 +37,7 @@ export default function CakeSnackSlider({ settings }) {
                                 </div>
                                 <div className="h-[60px] text-black mt-2">
                                     <label className="font-semibold text-base">{item.name}</label><br></br>
-                                    <label className="font-normal text-sm text-[#666]">{item.originalPrice} đ</label>
+                                    <label className="font-normal text-sm text-[#666]">{formatPrice(item.originalPrice)} đ</label>
                                 </div>
                             </div>
                         )
