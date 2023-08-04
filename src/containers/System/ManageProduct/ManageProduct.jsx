@@ -7,6 +7,7 @@ import { fetchAllcodeCategory, fetchAllcodeSize } from "../../../redux/Slice/App
 import { useDispatch } from "react-redux"
 import { decodeBase64Func, encodeBase64Func } from "../../../utils/base64"
 import { fetchAllProductByCategory } from "../../../api/appAPI"
+import { formatPrice } from "../../../utils/formatPrice"
 
 export default function ManageProduct() {
     const [showModalCreate, setShowModalCreate] = useState(false)
@@ -101,7 +102,7 @@ export default function ManageProduct() {
             <ModalViewProduct showModalView={showModalView} setShowModalView={setShowModalView} dataProduct={dataProduct} />
             <ModalCreateProduct showModalCreate={showModalCreate} setShowModalCreate={setShowModalCreate} fetchRequest={fetchRequest} />
             <div className="p-10">
-                <p className="text-3xl inline-block">Manage Product</p>
+                <p className="text-3xl font-medium  inline-block">Manage Product</p>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={handleCreate}>Add new product</button>
                 <div className="w-ful mt-10 text-center text-sm">
                     <table className="w-full px-3 rounded-lg overflow-hidden">
@@ -109,7 +110,7 @@ export default function ManageProduct() {
                             <tr>
                                 <th className="px-5">Image</th>
                                 <th>Name</th>
-                                <th>Original Price</th>
+                                <th>Original Price (VND)</th>
                                 <th>Category</th>
                                 <th>Action</th>
                             </tr>
@@ -129,7 +130,7 @@ export default function ManageProduct() {
                                                 }
                                             </td>
                                             <td>{item.name}</td>
-                                            <td>{item.originalPrice}</td>
+                                            <td>{formatPrice(item.originalPrice)}</td>
                                             <td>{item.categoryData && item.categoryData.valueEn}</td>
                                             <td>
                                                 <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleView(item)}>

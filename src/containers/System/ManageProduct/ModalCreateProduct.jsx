@@ -124,7 +124,6 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                             <label className="text-lg mr-4">Category</label><br />
                                             <select className="border-2 outline-none bg-white p-2 w-[170px] cursor-pointer" onChange={handleOnChange} name="category" value={inputValues.category} >
                                                 <option className="cursor-pointer" selected>None</option>
-
                                                 {
                                                     cateArr && cateArr.length > 0 &&
                                                     cateArr.map((item, index) => {
@@ -165,9 +164,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                             name="description"
                                             value={inputValues.description}
                                             onChange={handleOnChange}
-
                                         >
-
                                         </textarea>
                                     </div>
                                 </div>

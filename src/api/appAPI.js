@@ -12,7 +12,11 @@ const fetchAllProductByCategory = (category) => {
     return axios.get(`/api/get-all-product-by-category?category=${category}`)
 }
 
+const fetchAllStoreByCity = (city) => {
+    return axios.get(`/api/get-all-store-by-city?city=${city}`)
+}
 
 
 
-export { fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin }
+
+export { fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin, fetchAllStoreByCity }

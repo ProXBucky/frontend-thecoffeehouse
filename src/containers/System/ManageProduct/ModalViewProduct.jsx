@@ -1,21 +1,7 @@
-import { useState } from "react";
-import { useSelector } from "react-redux"
-import { categoryAllcodeSelector, sizeAllcodeSelector } from "../../../redux/selector"
 import { decodeBase64Func } from "../../../utils/base64";
 import { formatPrice } from "../../../utils/formatPrice"
 
 export default function ModalViewProduct({ showModalView, setShowModalView, dataProduct }) {
-    // const [dataProduct, setInputValues] = useState({
-    //     name: dataProduct.name,
-    //     originalPrice: dataProduct.originalPrice,
-    //     category: dataProduct.category,
-    //     image: dataProduct.image,
-    //     description: dataProduct.description
-    // });
-    const cateArr = useSelector(categoryAllcodeSelector)
-    const sizeArr = useSelector(sizeAllcodeSelector)
-    const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
-
 
 
     return (
@@ -29,7 +15,7 @@ export default function ModalViewProduct({ showModalView, setShowModalView, data
 
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
-                                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                                <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
                                         View product: {dataProduct.name}
                                     </h3>

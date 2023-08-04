@@ -56,7 +56,7 @@ export default function ManageAdmin() {
             <ModalViewAdmin showModalView={showModalView} setShowModalView={setShowModalView} dataUser={dataUser} />
             <ModalCreateAdmin showModalCreate={showModalCreate} setShowModalCreate={setShowModalCreate} fetchRequest={fetchRequest} />
             <div className="p-10">
-                <p className="text-3xl inline-block">Manage Admin</p>
+                <p className="text-3xl font-medium inline-block">Manage Admin</p>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreate()}>Add new admin</button>
                 <div className="w-ful mt-10 text-center text-sm">
                     <table className="w-full px-3 rounded-lg overflow-hidden">
@@ -95,7 +95,6 @@ export default function ManageAdmin() {
                                                     Delete
                                                 </button>
                                             </td>
-
                                         </tr>
                                     )
                                 })

@@ -14,12 +14,14 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         description: '',
         image: [],
         cityId: '',
+        mapLink: '',
         storeId: uuidv4()
     });
 
     const cityArr = useSelector(cityAllcodeSelector)
     const [images, setImages] = useState([]);
     const [imageURLS, setImageURLs] = useState([]);
+    const [mapURL, setMapURL] = useState();
 
     useEffect(() => {
         handleImageStore()
@@ -33,7 +35,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
             newImageUrls.push(URL.createObjectURL(image))
             let base64Img = await encodeBase64Func(image)
             base64Arr.push({
-                storeCode: inputValues.storeId,
+                storeId: inputValues.storeId,
                 image: base64Img
             })
         });
@@ -41,21 +43,25 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         setInputValues({ ...inputValues, ['image']: base64Arr });
     }
 
-    console.log(inputValues.image)
     const onImageChange = (e) => {
         setImages([...e.target.files]);
     }
 
     const handleOnChange = event => {
         const { name, value } = event.target;
+        if (name === 'mapLink') {
+            setMapURL(fixErrors(value))
+            setInputValues({ ...inputValues, [name]: value });
+
+        }
         setInputValues({ ...inputValues, [name]: value });
     };
 
 
     const validateForm = () => {
         let check = true;
-        const valueArr = ['nameStore', 'address', 'cityId', 'description']         // loi validate image
-        const valueLabel = ['Store Name', 'Address', 'City', 'Description']
+        const valueArr = ['nameStore', 'address', 'cityId', 'mapLink', 'description']         // loi validate image
+        const valueLabel = ['Store Name', 'Address', 'City', 'MapLink', 'Description']
         for (let i = 0; i < valueArr.length; i++) {
             if (!inputValues[valueArr[i]]) {
                 toast.error('Please type ' + valueLabel[i])
@@ -66,14 +72,26 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         return check
     }
 
+    const fixErrors = (s) => {
+        s = s.replace("allowfullscreen", "allowFullScreen");
+        s = s.replace("referrerpolicy", "referrerPolicy");
+        s = s.replace(`style="border:0;"`, "");
+        s = s.replace(`width="600"`, `width="300"`);
+        s = s.replace(`height="450`, `height="200"`);
+
+        return s;
+    }
+
+
     const handleAction = async () => {
         if (validateForm()) {
             const response = await createNewStore({
+                id: inputValues.storeId,
                 nameStore: inputValues.nameStore,
                 address: inputValues.address,
                 cityId: inputValues.cityId,
+                mapLink: fixErrors(inputValues.mapLink),
                 description: inputValues.description,
-                storeId: inputValues.storeId,
             })
             const res = await uploadMultiImageStore(inputValues.image)
 
@@ -88,10 +106,12 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                 cityId: '',
                 image: '',
                 description: '',
-                storeId: ''
+                storeId: '',
+                mapLink: ''
             })
             setImageURLs([])
             setImages('')
+            setMapURL('')
             setShowModalCreate(false)
             fetchRequest()
         }
@@ -151,16 +171,24 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                             ))}
                                         </div>
                                     </div>
-                                    <div className="w-full mt-5">
-                                        <label className="text-lg">Description</label><br />
-                                        <textarea className="border-2 outline-none bg-white p-2" rows="3" cols="100"
-                                            name="description"
-                                            value={inputValues.description}
-                                            onChange={handleOnChange}
+                                    <div className="w-full mt-5 flex gap-7">
+                                        <div className="w-1/2">
+                                            <label className="text-lg">Description</label><br />
+                                            <textarea className="border-2 outline-none bg-white p-2" rows="4" cols="50"
+                                                name="description"
+                                                value={inputValues.description}
+                                                onChange={handleOnChange}
+                                            >
+                                            </textarea>
+                                        </div>
+                                        <div className="w-1/2">
+                                            <label className="text-lg">Map link</label><br />
+                                            <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map link" onChange={handleOnChange} name="mapLink" value={inputValues.mapLink} />
+                                            <br />
+                                            <div dangerouslySetInnerHTML={{ __html: mapURL }}></div>
 
-                                        >
+                                        </div>
 
-                                        </textarea>
                                     </div>
                                 </div>
                                 {/*footer*/}

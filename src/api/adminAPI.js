@@ -37,5 +37,17 @@ const uploadMultiImageStore = (body) => {
     return axios.post('/api/upload-multi-image-store', body)
 }
 
+const deleteStore = (id) => {
+    return axios.delete(`/api/delete-store?id=${id}`)
+}
 
-export { deleteAdmin, updateAdminData, getAdminById, getAdminByEmail, createNewProduct, deleteProduct, updateProductData, createNewStore, uploadMultiImageStore }
+const updateStoreData = (body) => {
+    return axios.put('/api/update-store-data', body)
+}
+
+
+
+export {
+    deleteAdmin, updateAdminData, getAdminById, getAdminByEmail, createNewProduct, deleteProduct, updateProductData, createNewStore,
+    uploadMultiImageStore, deleteStore, updateStoreData
+}
