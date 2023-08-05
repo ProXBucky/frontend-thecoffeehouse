@@ -7,6 +7,7 @@ import TeaSlider from "./Section/TeaCategory/TeaSlider"
 import FrostySlider from "./Section/FrostyCategory/FrostySlider"
 import CakeSnackSlider from "./Section/CakeSnackCategory/CakeSnackSlider"
 import Poster1 from "./Poster/Poster1"
+import StoreSlider from "./Section/StoreCategory/StoreSlider"
 
 function HomePage() {
 
@@ -55,6 +56,7 @@ function HomePage() {
                 <TeaSlider settings={settings} />
                 <CakeSnackSlider settings={settings} />
                 <FrostySlider settings={settings} />
+                <StoreSlider />
                 <Footer />
             </div>
         </>

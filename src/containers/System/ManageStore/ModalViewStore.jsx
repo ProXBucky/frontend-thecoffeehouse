@@ -47,7 +47,7 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[85%] my-8 h-[80%]">
+                        <div className="relative w-[85%] my-8 h-[90%]">
 
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
@@ -78,7 +78,18 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                         <label className="text-xl font-medium">Store's name: </label><br />{dataStore.nameStore}<br />
                                         <label className="text-xl font-medium">Address: </label><br />{dataStore.address}<br />
                                         <label className="text-xl font-medium">City: </label><br />{dataStore.cityData.valueEn}<br />
-                                        <label className="text-xl font-medium">Description: </label><br />{dataStore.description}<br />
+                                        <label className="text-xl font-medium">Short Description: </label><br />
+                                        <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={2}
+                                            value={dataStore.shortDescription}
+                                            disabled
+                                        >
+                                        </textarea>
+                                        <label className="text-xl font-medium">Description: </label><br />
+                                        <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={4}
+                                            value={dataStore.description}
+                                            disabled
+                                        >
+                                        </textarea>
                                     </div>
                                 </div>
 

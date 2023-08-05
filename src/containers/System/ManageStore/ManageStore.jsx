@@ -56,7 +56,7 @@ export default function ManageStore() {
 
     const [images, setImages] = useState([]);
     const [imageURLS, setImageURLs] = useState([]);
-    const [mapURL, setMapURL] = useState();
+    // const [mapURL, setMapURL] = useState();
 
     useEffect(() => {
         handleImageStore()
@@ -93,10 +93,10 @@ export default function ManageStore() {
 
     const handleOnChange = event => {
         const { name, value } = event.target;
-        if (name === 'mapLink') {
-            setMapURL(fixErrors(value))
-            setDataStore({ ...dataStore, [name]: value });
-        }
+        // if (name === 'mapLink') {
+        //     setMapURL(fixErrors(value))
+        //     setDataStore({ ...dataStore, [name]: value });
+        // }
         setDataStore({ ...dataStore, [name]: value });
     };
 
@@ -105,7 +105,7 @@ export default function ManageStore() {
     return (
         <>
             <ModalEditStore showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} dataStore={dataStore} fetchRequest={fetchRequest} handleOnChange={handleOnChange}
-                onImageChange={onImageChange} imageURLS={imageURLS} mapURL={mapURL} />
+                onImageChange={onImageChange} imageURLS={imageURLS} />
             <ModalDeleteStore showModalDelete={showModalDelete} setShowModalDelete={setShowModalDelete} dataStore={dataStore} fetchRequest={fetchRequest} />
             <ModalViewStore showModalView={showModalView} setShowModalView={setShowModalView} dataStore={dataStore} />
             <ModalCreateStore showModalCreate={showModalCreate} setShowModalCreate={setShowModalCreate} fetchRequest={fetchRequest} />
@@ -124,42 +124,45 @@ export default function ManageStore() {
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                allStoreArr && allStoreArr.length > 0 &&
-                                allStoreArr.map((item, index) => {
-                                    return (
-                                        <tr className="h-12 font-medium text-base even:bg-neutral-100 odd:bg-slate-300 border border-slate-300 overflow-hidden" key={index}>
-                                            <td className="p-4 flex justify-center">
-                                                {
-                                                    item && item.imageData && item.imageData.length > 0 &&
-                                                    <div className="rounded-xl overflow-hidden">
-                                                        <img src={decodeBase64Func(item.imageData[0].image)} className="w-[500px] h-[300px]" />
-                                                    </div>
-                                                }
-                                            </td>
-                                            <td>{item.nameStore}</td>
-                                            <td>{item.address}</td>
-                                            <td>{item.cityData.valueEn}</td>
-                                            <td className="p-4 w-[120px]">
-                                                <button className="mb-2 text-white w-28 bg-green-500 hover:bg-green-400 p-2 border-none outline-none" name="View" onClick={() => handleView(item)}>
-                                                    <i className="fa-regular fa-eye fa-md mr-1"></i>
-                                                    View
-                                                </button>
-                                                <br />
-                                                <button className="mb-2 text-white w-28 bg-yellow-400 hover:bg-yellow-300 p-2 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
-                                                    <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
-                                                    Edit
-                                                </button>
-                                                <br />
-                                                <button className="text-white w-28 bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
-                                                    <i className="fa-regular fa-trash-can fa-md mr-1"></i>
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    )
-                                })
-                            }
+                            <>
+                                {
+                                    allStoreArr && allStoreArr.length > 0 &&
+                                    allStoreArr.map((item, index) => {
+                                        return (
+                                            <tr className="h-12 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
+                                                <td className="p-4 flex justify-center">
+                                                    {
+                                                        item && item.imageData && item.imageData.length > 0 &&
+                                                        <div className="rounded-xl overflow-hidden">
+                                                            <img src={decodeBase64Func(item.imageData[0].image)} className="w-[500px] h-[300px]" />
+                                                        </div>
+                                                    }
+                                                </td>
+                                                <td>{item.nameStore}</td>
+                                                <td>{item.address}</td>
+                                                <td>{item.cityData.valueEn}</td>
+                                                <td className="p-4 w-[120px]">
+                                                    <button className="mb-2 text-white w-28 bg-green-500 hover:bg-green-400 p-2 border-none outline-none" name="View" onClick={() => handleView(item)}>
+                                                        <i className="fa-regular fa-eye fa-md mr-1"></i>
+                                                        View
+                                                    </button>
+                                                    <br />
+                                                    <button className="mb-2 text-white w-28 bg-yellow-400 hover:bg-yellow-300 p-2 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
+                                                        <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
+                                                        Edit
+                                                    </button>
+                                                    <br />
+                                                    <button className="text-white w-28 bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
+                                                        <i className="fa-regular fa-trash-can fa-md mr-1"></i>
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+
+                            </>
                         </tbody>
                     </table>
                 </div>

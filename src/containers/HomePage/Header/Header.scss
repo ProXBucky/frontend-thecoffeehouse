@@ -2,7 +2,7 @@
     color: black;
     height: 60px;
     width: 100%;
-    z-index: 100;
+    z-index: 45;
     padding: 0px 140px 0px 140px;
     position: fixed;
     background: rgba(255, 255, 255, 0.9);
@@ -14,7 +14,7 @@
         padding-left: 40px;
         width: 20%;
         // border: 1px solid red;
-        z-index: 100000;
+        z-index: 46;
 
         .logo-image {
             display: block;

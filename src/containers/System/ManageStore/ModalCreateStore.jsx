@@ -12,6 +12,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         nameStore: '',
         address: '',
         description: '',
+        shortDescription: '',
         image: [],
         cityId: '',
         mapLink: '',
@@ -21,7 +22,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
     const cityArr = useSelector(cityAllcodeSelector)
     const [images, setImages] = useState([]);
     const [imageURLS, setImageURLs] = useState([]);
-    const [mapURL, setMapURL] = useState();
+    // const [mapURL, setMapURL] = useState();
 
     useEffect(() => {
         handleImageStore()
@@ -49,19 +50,19 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
 
     const handleOnChange = event => {
         const { name, value } = event.target;
-        if (name === 'mapLink') {
-            setMapURL(fixErrors(value))
-            setInputValues({ ...inputValues, [name]: value });
+        // if (name === 'mapLink') {
+        //     setMapURL(fixErrors(value))
+        //     setInputValues({ ...inputValues, [name]: value });
 
-        }
+        // }
         setInputValues({ ...inputValues, [name]: value });
     };
 
 
     const validateForm = () => {
         let check = true;
-        const valueArr = ['nameStore', 'address', 'cityId', 'mapLink', 'description']         // loi validate image
-        const valueLabel = ['Store Name', 'Address', 'City', 'MapLink', 'Description']
+        const valueArr = ['nameStore', 'address', 'cityId', 'mapLink', 'description', 'shortDescription']         // loi validate image
+        const valueLabel = ['Store Name', 'Address', 'City', 'MapLink', 'Description', 'Short Description']
         for (let i = 0; i < valueArr.length; i++) {
             if (!inputValues[valueArr[i]]) {
                 toast.error('Please type ' + valueLabel[i])
@@ -72,15 +73,15 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         return check
     }
 
-    const fixErrors = (s) => {
-        s = s.replace("allowfullscreen", "allowFullScreen");
-        s = s.replace("referrerpolicy", "referrerPolicy");
-        s = s.replace(`style="border:0;"`, "");
-        s = s.replace(`width="600"`, `width="300"`);
-        s = s.replace(`height="450`, `height="200"`);
+    // const fixErrors = (s) => {
+    //     s = s.replace("allowfullscreen", "allowFullScreen");
+    //     s = s.replace("referrerpolicy", "referrerPolicy");
+    //     s = s.replace(`style="border:0;"`, "");
+    //     s = s.replace(`width="600"`, `width="300"`);
+    //     s = s.replace(`height="450`, `height="200"`);
 
-        return s;
-    }
+    //     return s;
+    // }
 
 
     const handleAction = async () => {
@@ -90,8 +91,9 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                 nameStore: inputValues.nameStore,
                 address: inputValues.address,
                 cityId: inputValues.cityId,
-                mapLink: fixErrors(inputValues.mapLink),
+                mapLink: (inputValues.mapLink),
                 description: inputValues.description,
+                shortDescription: inputValues.shortDescription,
             })
             const res = await uploadMultiImageStore(inputValues.image)
 
@@ -107,11 +109,12 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                 image: '',
                 description: '',
                 storeId: '',
-                mapLink: ''
+                mapLink: '',
+                shortDescription: '',
             })
             setImageURLs([])
             setImages('')
-            setMapURL('')
+            // setMapURL('')
             setShowModalCreate(false)
             fetchRequest()
         }
@@ -135,7 +138,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-6 flex-auto mx-10">
-                                    <div className="w-full flex justify-between">
+                                    <div className="w-full flex flex-wrap justify-between">
                                         <div>
                                             <label className="text-lg">Store Name</label>
                                             <br />
@@ -148,7 +151,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                         <div>
                                             <label className="text-lg mr-4">City</label><br />
                                             <select className="border-2 outline-none bg-white p-2 w-[170px] cursor-pointer" onChange={handleOnChange} name="cityId" value={inputValues.cityId} >
-                                                <option className="cursor-pointer" selected>None</option>
+                                                <option className="cursor-pointer" defaultChecked>None</option>
 
                                                 {
                                                     cityArr && cityArr.length > 0 &&
@@ -166,15 +169,15 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                             <input type="file" multiple accept="image/*" onChange={onImageChange} />
                                         </div>
                                         <div className="flex flex-wrap">
-                                            {imageURLS.map((imageSrc) => (
-                                                <img src={imageSrc} alt="not found" width={"100px"} className="border m-0.5" />
+                                            {imageURLS.map((imageSrc, index) => (
+                                                <img src={imageSrc} key={index} alt="not found" width={"100px"} className="border m-0.5" />
                                             ))}
                                         </div>
                                     </div>
                                     <div className="w-full mt-5 flex gap-7">
                                         <div className="w-1/2">
                                             <label className="text-lg">Description</label><br />
-                                            <textarea className="border-2 outline-none bg-white p-2" rows="4" cols="50"
+                                            <textarea className="border-2 outline-none bg-white p-2 w-full" rows="6"
                                                 name="description"
                                                 value={inputValues.description}
                                                 onChange={handleOnChange}
@@ -182,10 +185,19 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                             </textarea>
                                         </div>
                                         <div className="w-1/2">
-                                            <label className="text-lg">Map link</label><br />
-                                            <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map link" onChange={handleOnChange} name="mapLink" value={inputValues.mapLink} />
-                                            <br />
-                                            <div dangerouslySetInnerHTML={{ __html: mapURL }}></div>
+                                            <div>
+                                                <label className="text-lg">Map link</label><br />
+                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map link" onChange={handleOnChange} name="mapLink" value={inputValues.mapLink} />
+                                            </div>
+                                            <div className="">
+                                                <label className="text-lg">Short Description</label><br />
+                                                <textarea className="border-2 outline-none bg-white p-2 w-full" rows="3"
+                                                    name="shortDescription"
+                                                    value={inputValues.shortDescription}
+                                                    onChange={handleOnChange}
+                                                >
+                                                </textarea>
+                                            </div>
 
                                         </div>
 

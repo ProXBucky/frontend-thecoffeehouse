@@ -22,7 +22,7 @@ export default function SystemHeader({ adminFullName }) {
     }
 
     return (
-        <div className="w-full h-[60px] flex border fixed top-0 justify-between px-5 z-50 bg-white">
+        <div className="w-full h-[60px] flex border fixed top-0 justify-between px-5 z-45 bg-white">
             <div className="w-1/6 text-black flex items-center ">
                 <i className="fa-solid fa-arrow-rotate-left fa-xl cursor-pointer" onClick={backSystemRoute}></i>
             </div>

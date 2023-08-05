@@ -5,8 +5,8 @@ export default function Footer() {
         <div className="footer-container">
             <div className="content-up">
                 <div className="content">
-                    <p>Giới thiệu</p>
-                    <ul>
+                    <label>Giới thiệu</label>
+                    <ul className="mt-3">
                         <li>Về chúng tôi</li>
                         <li>Sản phẩm</li>
                         <li>Khuyến mãi</li>
@@ -16,17 +16,17 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className="content">
-                    <p>Điều khoản</p>
-                    <ul>
+                    <label>Điều khoản</label>
+                    <ul className="mt-3">
                         <li>Điều khoản sử dụng</li>
                         <li>Chính sách bảo mật thông tin</li>
                     </ul>
 
                 </div>
                 <div className="content">
-                    <p><i className="fa-solid fa-phone"></i> Đặt hàng: 1800 6936</p>
-                    <p><i className="fa-solid fa-location-dot"></i> Liên hệ</p>
-                    <p className="p-address">
+                    <label><i className="fa-solid fa-phone"></i> Đặt hàng: 1800 6936</label><br /><br />
+                    <label><i className="fa-solid fa-location-dot"></i> Liên hệ</label>
+                    <p className="p-address mt-3">
                         Tầng 3-4 Hub Building<br />
                         195/10E Điện Biên Phủ, P.15,<br />
                         Q.Bình Thạnh, TP.Hồ Chí Minh

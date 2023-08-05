@@ -10,7 +10,7 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[70%] my-8 h-[75%]">
+                        <div className="relative w-[70%] my-8 h-[85%]">
 
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
@@ -23,38 +23,40 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-6 flex-auto">
-                                    <div className="my-4 text-slate-500 text-lg leading-relaxed">
+                                    <div className="my-4 text-gray-700 text-lg leading-relaxed">
                                         <div className="overflow-x-auto">
                                             <table className=" w-full rounded-lg overflow-hidden">
                                                 <tbody>
-                                                    <tr>
-                                                        <th className="h-12 bg-[#f68122] text-white">ID:</th>
-                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.id}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th className="h-12 bg-[#f68122] text-white">Email:</th>
-                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.email}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th className="h-12 bg-[#f68122] text-white">Password:</th>
-                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.password}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th className="h-12 bg-[#f68122] text-white">First Name:</th>
-                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.firstName}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th className="h-12 bg-[#f68122] text-white">Last Name:</th>
-                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.lastName}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th className="h-12 bg-[#f68122] text-white">Address:</th>
-                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.address}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th className="h-12 bg-[#f68122] text-white">Phone:</th>
-                                                        <td className="px-6 bg-[#f4a86a]">{dataUser.phone}</td>
-                                                    </tr>
+                                                    <>
+                                                        <tr>
+                                                            <th className="h-12 bg-[#f68122] text-white">ID:</th>
+                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.id}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th className="h-12 bg-[#f68122] text-white">Email:</th>
+                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.email}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th className="h-12 bg-[#f68122] text-white">Password:</th>
+                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.password}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th className="h-12 bg-[#f68122] text-white">First Name:</th>
+                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.firstName}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th className="h-12 bg-[#f68122] text-white">Last Name:</th>
+                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.lastName}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th className="h-12 bg-[#f68122] text-white">Address:</th>
+                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.address}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th className="h-12 bg-[#f68122] text-white">Phone:</th>
+                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.phone}</td>
+                                                        </tr>
+                                                    </>
                                                 </tbody>
                                             </table>
                                         </div>

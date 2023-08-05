@@ -96,12 +96,11 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                     </div>
                                     <div className="w-full mt-5">
                                         <label className="text-lg">Description</label><br />
-                                        <textarea className="border-2 outline-none bg-white p-2" rows="3" cols="95"
+                                        <textarea className="border-2 outline-none bg-white p-2 w-full h-auto"
                                             name="description"
                                             value={dataProduct.description}
                                             onChange={handleOnChange}
                                         >
-
                                         </textarea>
                                     </div>
                                 </div>

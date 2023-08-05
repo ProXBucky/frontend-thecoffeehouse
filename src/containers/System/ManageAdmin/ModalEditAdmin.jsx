@@ -54,40 +54,57 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-4 flex-auto">
-                                    <div className="my-4 text-slate-500 text-base leading-relaxed">
+                                    <div className="my-4 text-gray-700 text-base leading-relaxed">
                                         {
                                             dataUser && dataUser.id &&
                                             <div className="overflow-x-auto">
                                                 <table className=" w-full rounded-lg overflow-hidden">
                                                     <tbody>
-                                                        <tr className="div">
-                                                            <th className="h-12 bg-[#f68122] text-white">ID:</th>
-                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3   disabled:bg-[#f77104]" disabled value={dataUser.id} name="id" onChange={handleOnChange} /></td>
-                                                        </tr>
-                                                        <tr className="div">
-                                                            <th className="h-12 bg-[#f68122] text-white">Email:</th>
-                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3   disabled:bg-[#f77104]" disabled value={dataUser.email} name="email" onChange={handleOnChange} /></td>
-                                                        </tr>
-                                                        <tr className="div">
-                                                            <th className="h-12 bg-[#f68122] text-white">Password:</th>
-                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3  " value={dataUser.password} name="password" onChange={handleOnChange} /></td>
-                                                        </tr>
-                                                        <tr className="div">
-                                                            <th className="h-12 bg-[#f68122] text-white">First Name:</th>
-                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3  " value={dataUser.firstName} name="firstName" onChange={handleOnChange} /></td>
-                                                        </tr>
-                                                        <tr className="div">
-                                                            <th className="h-12 bg-[#f68122] text-white">Last Name:</th>
-                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3  " value={dataUser.lastName} name="lastName" onChange={handleOnChange} /></td>
-                                                        </tr>
-                                                        <tr className="div">
-                                                            <th className="h-12 bg-[#f68122] text-white">Address:</th>
-                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3  " value={dataUser.address} name="address" onChange={handleOnChange} /></td>
-                                                        </tr>
-                                                        <tr className="div">
-                                                            <th className="h-12 bg-[#f68122] text-white">Phone:</th>
-                                                            <td><input className="px-6 bg-[#f4a86a] w-full outline-none py-3 " value={dataUser.phone} name="phone" onChange={handleOnChange} /></td>
-                                                        </tr>
+                                                        <>
+                                                            <tr className="div">
+                                                                <th className="h-12 bg-[#f68122] text-white">ID:</th>
+                                                                <td className="bg-[#f8a159]">
+                                                                    <input className="px-6 py-3 bg-transparent w-full outline-none" disabled value={dataUser.id} name="id" onChange={handleOnChange} />
+                                                                </td>
+                                                            </tr>
+                                                            <tr className="div">
+                                                                <th className="h-12 bg-[#f68122] text-white">Email:</th>
+                                                                <td className="bg-[#f8a159]">
+                                                                    <input className="px-6 py-3 bg-transparent w-full outline-none" disabled value={dataUser.email} name="email" onChange={handleOnChange} />
+                                                                </td>
+                                                            </tr>
+                                                            <tr className="div">
+                                                                <th className="h-12 bg-[#f68122] text-white">Password:</th>
+                                                                <td className="bg-[#f6c7a0]">
+                                                                    <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.password} name="password" onChange={handleOnChange} />
+                                                                </td>
+                                                            </tr>
+                                                            <tr className="div">
+                                                                <th className="h-12 bg-[#f68122] text-white">First Name:</th>
+                                                                <td className="bg-[#f6c7a0]">
+                                                                    <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.firstName} name="firstName" onChange={handleOnChange} />
+                                                                </td>
+                                                            </tr>
+                                                            <tr className="div">
+                                                                <th className="h-12 bg-[#f68122] text-white">Last Name:</th>
+                                                                <td className="bg-[#f6c7a0]">
+                                                                    <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.lastName} name="lastName" onChange={handleOnChange} />
+                                                                </td>
+                                                            </tr>
+                                                            <tr className="div">
+                                                                <th className="h-12 bg-[#f68122] text-white">Address:</th>
+                                                                <td className="bg-[#f6c7a0]">
+                                                                    <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.address} name="address" onChange={handleOnChange} />
+                                                                </td>
+                                                            </tr>
+                                                            <tr className="div">
+                                                                <th className="h-12 bg-[#f68122] text-white">Phone:</th>
+                                                                <td className="bg-[#f6c7a0]">
+                                                                    <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.phone} name="phone" onChange={handleOnChange} />
+                                                                </td>
+                                                            </tr>
+
+                                                        </>
                                                     </tbody>
                                                 </table>
                                             </div>

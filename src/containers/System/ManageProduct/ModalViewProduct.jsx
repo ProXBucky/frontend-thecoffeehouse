@@ -41,7 +41,7 @@ export default function ModalViewProduct({ showModalView, setShowModalView, data
                                     </div>
                                     <div className="w-full mt-5 ">
                                         <label className="text-xl font-medium">Description</label><br />
-                                        <textarea className=" border-2 outline-none bg-white p-2" rows="3" cols="100"
+                                        <textarea className=" border-2 outline-none bg-white p-2 w-full h-auto"
                                             name="description"
                                             value={dataProduct.description}
                                             disabled

@@ -116,40 +116,43 @@ export default function ManageProduct() {
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                allProductArr && allProductArr.length > 0 &&
-                                allProductArr.map((item, index) => {
-                                    return (
-                                        <tr className="h-12 font-medium text-base even:bg-neutral-100 odd:bg-slate-300 border border-slate-300 overflow-hidden" key={index}>
-                                            <td className="py-4 flex justify-center">
-                                                {
-                                                    item && item.image &&
-                                                    <div className="rounded-xl overflow-hidden">
-                                                        <img src={decodeBase64Func(item.image)} className="w-[150px] h-[150px]" />
-                                                    </div>
-                                                }
-                                            </td>
-                                            <td>{item.name}</td>
-                                            <td>{formatPrice(item.originalPrice)}</td>
-                                            <td>{item.categoryData && item.categoryData.valueEn}</td>
-                                            <td>
-                                                <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleView(item)}>
-                                                    <i className="fa-regular fa-eye fa-md mr-1"></i>
-                                                    View
-                                                </button>
-                                                <button className="text-black bg-yellow-400 hover:bg-yellow-300 p-2 mr-3 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
-                                                    <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
-                                                    Edit
-                                                </button>
-                                                <button className="text-white bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
-                                                    <i className="fa-regular fa-trash-can fa-md mr-1"></i>
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    )
-                                })
-                            }
+                            <>
+
+                                {
+                                    allProductArr && allProductArr.length > 0 &&
+                                    allProductArr.map((item, index) => {
+                                        return (
+                                            <tr className="h-12 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
+                                                <td className="py-4 flex justify-center">
+                                                    {
+                                                        item && item.image &&
+                                                        <div className="rounded-xl overflow-hidden">
+                                                            <img src={decodeBase64Func(item.image)} className="w-[150px] h-[150px]" />
+                                                        </div>
+                                                    }
+                                                </td>
+                                                <td>{item.name}</td>
+                                                <td>{formatPrice(item.originalPrice)}</td>
+                                                <td>{item.categoryData && item.categoryData.valueEn}</td>
+                                                <td>
+                                                    <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleView(item)}>
+                                                        <i className="fa-regular fa-eye fa-md mr-1"></i>
+                                                        View
+                                                    </button>
+                                                    <button className="text-white bg-yellow-400 hover:bg-yellow-300 p-2 mr-3 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
+                                                        <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
+                                                        Edit
+                                                    </button>
+                                                    <button className="text-white bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
+                                                        <i className="fa-regular fa-trash-can fa-md mr-1"></i>
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </>
                         </tbody>
                     </table>
                 </div>
