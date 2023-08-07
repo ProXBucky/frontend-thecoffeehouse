@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { UserSlice } from "../../redux/Slice/UserSlice";
 
 
-export default function SystemHeader({ adminFullName }) {
+export default function SystemHeader() {
     const history = useHistory()
     const dispatch = useDispatch()
 
@@ -22,9 +22,10 @@ export default function SystemHeader({ adminFullName }) {
     }
 
     return (
-        <div className="w-full h-[60px] flex border fixed top-0 justify-between px-5 z-45 bg-white">
+        <div className="w-full h-[60px] flex border fixed top-0 justify-between px-5 z-[47] bg-white">
             <div className="w-1/6 text-black flex items-center ">
                 <i className="fa-solid fa-arrow-rotate-left fa-xl cursor-pointer" onClick={backSystemRoute}></i>
+                <label className="ml-1">Back</label>
             </div>
             <div className='w-2/3 flex justify-center '>
                 <Link className='logo' to="/">
@@ -32,7 +33,7 @@ export default function SystemHeader({ adminFullName }) {
                 </Link>
             </div>
             <div className='flex h-full items-center justify-end text-black w-1/6'>
-                <label className="mr-3">Hello {adminFullName} </label>
+                <label className="mr-2">Log out</label>
                 <i className="fa-solid fa-right-from-bracket fa-lg text-black cursor-pointer" onClick={handleLogout}></i>
             </div>
         </div>

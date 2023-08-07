@@ -151,7 +151,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                             </div>
                         </div>
                     </div>
-                    <div className="opacity-30 fixed inset-0 z-40 bg-black"></div>
+                    <div className="opacity-30 fixed inset-0 z-[49] bg-black"></div>
                 </>
             ) : null}
         </>

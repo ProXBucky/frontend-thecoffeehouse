@@ -7,6 +7,8 @@ import { fetchAllcodeCity } from "../../../redux/Slice/AppSlice"
 import { useDispatch } from "react-redux"
 import { fetchAllStoreByCity } from "../../../api/appAPI"
 import { decodeBase64Func, encodeBase64Func } from "../../../utils/base64"
+import RiseLoader from "react-spinners/RiseLoader"
+
 
 
 export default function ManageStore() {
@@ -126,40 +128,43 @@ export default function ManageStore() {
                         <tbody>
                             <>
                                 {
-                                    allStoreArr && allStoreArr.length > 0 &&
-                                    allStoreArr.map((item, index) => {
-                                        return (
-                                            <tr className="h-12 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
-                                                <td className="p-4 flex justify-center">
-                                                    {
-                                                        item && item.imageData && item.imageData.length > 0 &&
-                                                        <div className="rounded-xl overflow-hidden">
-                                                            <img src={decodeBase64Func(item.imageData[0].image)} className="w-[500px] h-[300px]" />
-                                                        </div>
-                                                    }
-                                                </td>
-                                                <td>{item.nameStore}</td>
-                                                <td>{item.address}</td>
-                                                <td>{item.cityData.valueEn}</td>
-                                                <td className="p-4 w-[120px]">
-                                                    <button className="mb-2 text-white w-28 bg-green-500 hover:bg-green-400 p-2 border-none outline-none" name="View" onClick={() => handleView(item)}>
-                                                        <i className="fa-regular fa-eye fa-md mr-1"></i>
-                                                        View
-                                                    </button>
-                                                    <br />
-                                                    <button className="mb-2 text-white w-28 bg-yellow-400 hover:bg-yellow-300 p-2 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
-                                                        <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
-                                                        Edit
-                                                    </button>
-                                                    <br />
-                                                    <button className="text-white w-28 bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
-                                                        <i className="fa-regular fa-trash-can fa-md mr-1"></i>
-                                                        Delete
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })
+                                    allStoreArr && allStoreArr.length > 0 ?
+                                        allStoreArr.map((item, index) => {
+                                            return (
+                                                <tr className="h-12 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
+                                                    <td className="p-4 flex justify-center">
+                                                        {
+                                                            item && item.imageData && item.imageData.length > 0 &&
+                                                            <div className="rounded-xl overflow-hidden">
+                                                                <img src={decodeBase64Func(item.imageData[0].image)} className="w-[500px] h-[300px]" />
+                                                            </div>
+                                                        }
+                                                    </td>
+                                                    <td>{item.nameStore}</td>
+                                                    <td>{item.address}</td>
+                                                    <td>{item.cityData.valueEn}</td>
+                                                    <td className="p-4 w-[120px]">
+                                                        <button className="mb-2 text-white w-28 bg-green-500 hover:bg-green-400 p-2 border-none outline-none" name="View" onClick={() => handleView(item)}>
+                                                            <i className="fa-regular fa-eye fa-md mr-1"></i>
+                                                            View
+                                                        </button>
+                                                        <br />
+                                                        <button className="mb-2 text-white w-28 bg-yellow-400 hover:bg-yellow-300 p-2 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
+                                                            <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
+                                                            Edit
+                                                        </button>
+                                                        <br />
+                                                        <button className="text-white w-28 bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
+                                                            <i className="fa-regular fa-trash-can fa-md mr-1"></i>
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                        :
+                                        <RiseLoader color="#36d7b7" className="absolute top-[45%] left-[45%] " />
+
                                 }
 
                             </>

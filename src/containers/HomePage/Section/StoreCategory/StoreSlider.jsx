@@ -100,9 +100,9 @@ export default function StoreSlider() {
                     storeArr.map((item, index) => {
                         return (
                             <div className="slider relative" key={index}>
-                                <div className="w-2/5 px-10 pt-20  relative">
-                                    <label className="font-medium text-3xl mb-2">{item.nameStore}</label>
-                                    <p>{item.shortDescription}</p>
+                                <div className="w-2/5 px-32 pt-20 relative">
+                                    <label className="font-medium text-3xl">{item.nameStore}</label>
+                                    <p className="mt-3">{item.shortDescription}</p>
                                     <button className="mt-6 mx-auto bg-red-500 text-white flex self-center hover:bg-red-400 outline-none border-none" >
                                         Show more information
                                     </button>

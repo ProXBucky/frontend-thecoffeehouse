@@ -6,6 +6,8 @@ import ModalViewAdmin from "./ModalViewAdmin"
 import { fetchAllAdmins } from "../../../redux/Slice/AppSlice"
 import { adminArrSelector } from "../../../redux/selector"
 import { useDispatch, useSelector } from "react-redux"
+import RiseLoader from "react-spinners/RiseLoader"
+
 
 export default function ManageAdmin() {
     const [showModalCreate, setShowModalCreate] = useState(false)
@@ -73,32 +75,35 @@ export default function ManageAdmin() {
                         <tbody>
                             <>
                                 {
-                                    adminArr && adminArr.length > 0 &&
-                                    adminArr.map((item, index) => {
-                                        return (
-                                            <tr className="h-12 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
-                                                <td>{item.id}</td>
-                                                <td>{item.email}</td>
-                                                <td>{item.firstName}</td>
-                                                <td>{item.lastName}</td>
-                                                <td>{item.address}</td>
-                                                <td>
-                                                    <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleView(item)}>
-                                                        <i className="fa-regular fa-eye fa-md mr-1"></i>
-                                                        View
-                                                    </button>
-                                                    <button className="text-white bg-yellow-400 hover:bg-yellow-300 p-2 mr-3 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
-                                                        <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
-                                                        Edit
-                                                    </button>
-                                                    <button className="text-white bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
-                                                        <i className="fa-regular fa-trash-can fa-md mr-1"></i>
-                                                        Delete
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })
+                                    adminArr && adminArr.length > 0 ?
+                                        adminArr.map((item, index) => {
+                                            return (
+                                                <tr className="h-12 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
+                                                    <td>{item.id}</td>
+                                                    <td>{item.email}</td>
+                                                    <td>{item.firstName}</td>
+                                                    <td>{item.lastName}</td>
+                                                    <td>{item.address}</td>
+                                                    <td>
+                                                        <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleView(item)}>
+                                                            <i className="fa-regular fa-eye fa-md mr-1"></i>
+                                                            View
+                                                        </button>
+                                                        <button className="text-white bg-yellow-400 hover:bg-yellow-300 p-2 mr-3 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
+                                                            <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
+                                                            Edit
+                                                        </button>
+                                                        <button className="text-white bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
+                                                            <i className="fa-regular fa-trash-can fa-md mr-1"></i>
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                        :
+                                        <RiseLoader color="#36d7b7" className="absolute top-[45%] left-[45%] " />
+
                                 }
 
                             </>

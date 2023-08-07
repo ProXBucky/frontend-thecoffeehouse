@@ -132,7 +132,7 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
                             </div>
                         </div>
                     </div>
-                    <div className="opacity-30 fixed inset-0 z-40 bg-black"></div>
+                    <div className="opacity-30 fixed inset-0 z-[49] bg-black"></div>
                 </>
             ) : null}
         </>

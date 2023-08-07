@@ -12,12 +12,14 @@ export default function Header() {
             <Link className='logo' to="/">
                 <img className="logo-image" src="/src/assets/LogoImg/The-Coffee-House-Logo-PNG-2.png" alt="Logo" />
             </Link>
-            <div className='navbar'>
-                <div className='nav'><Link to="/coffee">Cà Phê</Link></div>
-                <div className='nav'><Link to="/tea">Trà</Link></div>
-                <div className='nav'><Link to="/froster">Đá xay</Link></div>
-                <div className='nav'><Link to="/store">Cửa hàng</Link></div>
-                <div className='nav'><Link to="/login">Dành cho quản trị viên</Link></div>
+            <div className='navbar '>
+                <div className='nav'><Link to="/collections/all">Menu</Link></div>
+                <div className='nav'><Link to="/collections/coffee">Cà Phê</Link></div>
+                <div className='nav'><Link to="/collections/tea">Trà</Link></div>
+                <div className='nav'><Link to="/collections/frosty">Đá xay</Link></div>
+                <div className='nav'><Link to="/collections/cakesnack">Bánh ngọt</Link></div>
+                <div className='nav'><Link to="/stores/HCM">Cửa hàng</Link></div>
+                <div className='nav'><Link to="/login">Quản trị viên</Link></div>
             </div>
             <div className='cart'>
                 <div className='nav'>

@@ -57,7 +57,7 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
             {showModalCreate ? (
                 <>
                     <div
-                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
+                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[50] outline-none focus:outline-none ease-linear scroll-smooth"
                     >
                         <div className="relative w-[70%] my-8">
 
@@ -129,7 +129,7 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
                             </div>
                         </div>
                     </div>
-                    <div className="opacity-30 fixed inset-0 z-40 bg-black"></div>
+                    <div className="opacity-30 fixed inset-0 z-[49] bg-black"></div>
                 </>
             ) : null}
         </>

@@ -16,7 +16,11 @@ const fetchAllStoreByCity = (city) => {
     return axios.get(`/api/get-all-store-by-city?city=${city}`)
 }
 
+const fetchDetailProductById = (id) => {
+    return axios.get(`/api/get-detail-product-by-id?id=${id}`)
+}
 
 
 
-export { fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin, fetchAllStoreByCity }
+
+export { fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin, fetchAllStoreByCity, fetchDetailProductById }
