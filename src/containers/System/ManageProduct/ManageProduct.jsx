@@ -32,6 +32,7 @@ export default function ManageProduct() {
         fetchDataProduct()
         dispatch(fetchAllcodeSize())
         dispatch(fetchAllcodeCategory())
+        window.scrollTo(0, 0)
     }, [])
 
 
@@ -54,7 +55,6 @@ export default function ManageProduct() {
     const handleEdit = (item) => {
         setDataProduct(item)
         setShowModalEdit(true)
-        setFile(decodeBase64Func(item.image))
     }
 
     const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
@@ -83,14 +83,14 @@ export default function ManageProduct() {
 
 
     const handlePreviewImage = async (event) => {
-        const { files } = event.target
+        const { files, name } = event.target
         let file = files[0]
         if (file) {
             setFile(URL.createObjectURL(file));
             const base64 = await encodeBase64Func(file)
             setDataProduct({
                 ...dataProduct,
-                [event.target.name]: base64
+                [name]: base64
             });
         }
     }
@@ -119,7 +119,6 @@ export default function ManageProduct() {
                         </thead>
                         <tbody>
                             <>
-
                                 {
                                     allProductArr && allProductArr.length > 0 ?
                                         allProductArr.map((item, index) => {

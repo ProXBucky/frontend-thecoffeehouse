@@ -21,6 +21,7 @@ export default function ManageAdmin() {
 
     useEffect(() => {
         dispatch(fetchAllAdmins())
+        window.scrollTo(0, 0)
     }, [])
 
 

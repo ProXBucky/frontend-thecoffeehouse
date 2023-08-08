@@ -22,7 +22,6 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
     const cityArr = useSelector(cityAllcodeSelector)
     const [images, setImages] = useState([]);
     const [imageURLS, setImageURLs] = useState([]);
-    // const [mapURL, setMapURL] = useState();
 
     useEffect(() => {
         handleImageStore()
@@ -50,11 +49,6 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
 
     const handleOnChange = event => {
         const { name, value } = event.target;
-        // if (name === 'mapLink') {
-        //     setMapURL(fixErrors(value))
-        //     setInputValues({ ...inputValues, [name]: value });
-
-        // }
         setInputValues({ ...inputValues, [name]: value });
     };
 
@@ -70,20 +64,15 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                 break
             }
         }
+        if (inputValues['image'].length <= 0) {
+            toast.error('Please choose image of store')
+            check = false;
+        }
         return check
     }
 
-    // const fixErrors = (s) => {
-    //     s = s.replace("allowfullscreen", "allowFullScreen");
-    //     s = s.replace("referrerpolicy", "referrerPolicy");
-    //     s = s.replace(`style="border:0;"`, "");
-    //     s = s.replace(`width="600"`, `width="300"`);
-    //     s = s.replace(`height="450`, `height="200"`);
 
-    //     return s;
-    // }
-
-
+    console.log(inputValues)
     const handleAction = async () => {
         if (validateForm()) {
             const response = await createNewStore({
@@ -114,7 +103,6 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
             })
             setImageURLs([])
             setImages('')
-            // setMapURL('')
             setShowModalCreate(false)
             fetchRequest()
         }

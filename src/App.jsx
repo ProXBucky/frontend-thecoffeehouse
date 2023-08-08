@@ -17,6 +17,7 @@ import ErrorPage from './containers/404Page';
 import Collection from "./containers/Collection/Collection"
 import DetailProduct from './containers/DetailPage/DetailProduct';
 import StoreList from './containers/StoreList/StoreList';
+import DetailStore from './containers/DetailPage/DetailStore';
 
 
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="/collections" component={withRouter(Collection)} />
             <Route path="/products/:category/:id" component={withRouter(DetailProduct)} />
             <Route path="/stores" component={withRouter(StoreList)} />
+            <Route path="/detail-store/:id" component={withRouter(DetailStore)} />
 
           </Switch>
         </Router>

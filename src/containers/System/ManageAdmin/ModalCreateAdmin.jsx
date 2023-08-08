@@ -76,31 +76,31 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
                                         <div className="flex flex-wrap gap-28 px-2 justify-center">
                                             <div>
                                                 <label className="block mb-3">
-                                                    <span className="block font-medium text-slate-700 text-left text-lg">Email</span>
+                                                    <p className="block font-medium text-slate-700 text-left text-lg">Email</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="example@gmail.com" name="email" onChange={handleOnChange} value={inputValues.email} />
                                                 </label>
                                                 <label className="block mb-3">
-                                                    <span className="block font-medium text-slate-700 text-left text-lg">Password</span>
+                                                    <p className="block font-medium text-slate-700 text-left text-lg">Password</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="**********" name="password" onChange={handleOnChange} value={inputValues.password} />
                                                 </label>
                                             </div>
                                             <div>
                                                 <label className="block mb-3">
-                                                    <span className="block font-medium text-slate-700 text-left text-lg">First Name</span>
+                                                    <p className="block font-medium text-slate-700 text-left text-lg">First Name</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="AAA" name="firstName" onChange={handleOnChange} value={inputValues.firstName} />
                                                 </label>
                                                 <label className="block">
-                                                    <span className="block font-medium text-slate-700 text-left text-lg">Last Name</span>
+                                                    <p className="block font-medium text-slate-700 text-left text-lg">Last Name</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="BBB" name="lastName" onChange={handleOnChange} value={inputValues.lastName} />
                                                 </label>
                                             </div>
                                             <div>
                                                 <label className="block mb-3">
-                                                    <span className="block font-medium text-slate-700 text-left text-lg">Address</span>
+                                                    <p className="block font-medium text-slate-700 text-left text-lg">Address</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="Ha Noi" name="address" onChange={handleOnChange} value={inputValues.address} />
                                                 </label>
                                                 <label className="block">
-                                                    <span className="block font-medium text-slate-700 text-left text-lg">Phone</span>
+                                                    <p className="block font-medium text-slate-700 text-left text-lg">Phone</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="+84xxxxxx" name="phone" onChange={handleOnChange} value={inputValues.phone} />
                                                 </label>
                                             </div>

@@ -118,7 +118,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                         </div>
                                         <div>
                                             <label className="text-lg">Original Price (VND)</label><br />
-                                            <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Type original price" onChange={handleOnChange} name="originalPrice" value={inputValues.originalPrice} />
+                                            <input type="number" className="border-2 outline-none bg-white p-2" placeholder="Type original price" onChange={handleOnChange} name="originalPrice" value={inputValues.originalPrice} />
                                         </div>
                                         <div>
                                             <label className="text-lg mr-4">Category</label><br />

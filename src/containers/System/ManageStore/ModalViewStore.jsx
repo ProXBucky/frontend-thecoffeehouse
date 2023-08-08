@@ -60,7 +60,7 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-6 mx-10 flex flex-auto">
-                                    <div className="w-[40%] h-[300px]">
+                                    <div className="w-[40%] h-auto">
                                         <Slider {...settings}>
                                             {
                                                 dataStore && dataStore.imageData && dataStore.imageData.length > 0 &&
@@ -73,19 +73,20 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                                 })
                                             }
                                         </Slider >
+                                        <label className="text-xl font-medium">Short Description: </label><br />
+                                        <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={3}
+                                            value={dataStore.shortDescription}
+                                            disabled
+                                        >
+                                        </textarea>
                                     </div>
                                     <div className="w-[60%] font-normal text-base pl-40">
                                         <label className="text-xl font-medium">Store's name: </label><br />{dataStore.nameStore}<br />
                                         <label className="text-xl font-medium">Address: </label><br />{dataStore.address}<br />
                                         <label className="text-xl font-medium">City: </label><br />{dataStore.cityData.valueEn}<br />
-                                        <label className="text-xl font-medium">Short Description: </label><br />
-                                        <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={2}
-                                            value={dataStore.shortDescription}
-                                            disabled
-                                        >
-                                        </textarea>
+
                                         <label className="text-xl font-medium">Description: </label><br />
-                                        <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={4}
+                                        <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={6}
                                             value={dataStore.description}
                                             disabled
                                         >

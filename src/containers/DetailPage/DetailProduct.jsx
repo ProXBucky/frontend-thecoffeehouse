@@ -54,7 +54,7 @@ export default function DetailProduct() {
                         </div>
                         <div className="w-1/2 pl-10">
                             <h1 className="text-[26px] font-medium mb-2">{detailData.name}</h1>
-                            <span className="text-[25px] font-medium text-[#e57905]">{formatPrice(detailData.originalPrice)}đ</span><br />
+                            <p className="text-[25px] font-medium text-[#e57905]">{formatPrice(detailData.originalPrice)}đ</p><br />
                             <p className="text-base mt-6">Chọn size (bắt buộc)</p>
                             <p>{detailData.size}</p>
                             <button className="text-white bg-[#e57905] w-full mt-10">Đặt giao tận nơi</button>

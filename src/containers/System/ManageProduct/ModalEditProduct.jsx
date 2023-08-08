@@ -8,22 +8,43 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
     const cateArr = useSelector(categoryAllcodeSelector)
     const sizeArr = useSelector(sizeAllcodeSelector)
 
+    const validateForm = () => {
+        let check = true;
+        const valueArr = ['name', 'originalPrice', 'category', 'description']
+        const valueLabel = ['Product Name', 'Original Price', 'Category', 'Description']
+        for (let i = 0; i < valueArr.length; i++) {
+            if (!dataProduct[valueArr[i]]) {
+                toast.error('Please type ' + valueLabel[i])
+                check = false;
+                break
+            }
+        }
+        if ((typeof (dataProduct.image) === 'object') === true) {
+            toast.error('Please choose image')
+            check = false;
+        }
+        return check
+    }
+
+
     const handleAction = async () => {
-        let res = await updateProductData({
-            id: dataProduct.id,  //for findOne
-            name: dataProduct.name,
-            description: dataProduct.description,
-            category: dataProduct.category,
-            size: selectedCheckboxes.toString(),
-            image: dataProduct.image,
-            originalPrice: dataProduct.originalPrice,
-        })
-        if (res.errCode === 0) {
-            toast.success('Update information success')
-            fetchRequest()
-            setShowModalEdit(false)
-        } else {
-            toast.error(res.errMessage)
+        if (validateForm()) {
+            let res = await updateProductData({
+                id: dataProduct.id,  //for findOne
+                name: dataProduct.name,
+                description: dataProduct.description,
+                category: dataProduct.category,
+                size: selectedCheckboxes.toString(),
+                image: dataProduct.image,
+                originalPrice: dataProduct.originalPrice,
+            })
+            if (res.errCode === 0) {
+                toast.success('Update information success')
+                fetchRequest()
+                setShowModalEdit(false)
+            } else {
+                toast.error(res.errMessage)
+            }
         }
     }
 
@@ -53,7 +74,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                         </div>
                                         <div>
                                             <label className="text-lg">Original Price (VND)</label><br />
-                                            <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Type original price" onChange={handleOnChange} name="originalPrice" value={dataProduct.originalPrice} />
+                                            <input type="number" className="border-2 outline-none bg-white p-2" placeholder="Type original price" onChange={handleOnChange} name="originalPrice" value={dataProduct.originalPrice} />
                                         </div>
                                         <div>
                                             <label className="text-lg mr-4">Category</label><br />
@@ -70,7 +91,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                         </div>
                                     </div>
                                     <div className="w-full flex justify-between mt-5">
-                                        <div className="w-1/3 text-red-600 bg-red-300">
+                                        <div className="w-1/2 text-red-600 bg-red-300">
                                             <label className="text-lg">Size (optional) MAINTAIN</label><br />
                                             {
                                                 sizeArr && sizeArr.length > 0 &&
@@ -84,7 +105,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                                 })
                                             }
                                         </div>
-                                        <div className="pl-[120px] w-2/3 items-center">
+                                        <div className="pl-[120px] w-1/2 items-center">
                                             <label className="text-lg pr-2">Image</label>
                                             <input id='upload-Img' type='file' hidden name="image" onChange={handlePreviewImage} />
                                             <label className='upload text-lg mr-2 cursor-pointer' htmlFor='upload-Img'><i className="fa-solid fa-arrow-up-from-bracket fa-lg"></i></label>

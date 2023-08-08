@@ -3,9 +3,11 @@ import "./StoreSlider.scss"
 import { fetchAllStoreByCity } from "../../../../api/appAPI"
 import { useState, useEffect } from "react";
 import { decodeBase64Func } from "../../../../utils/base64";
+import { useHistory } from "react-router-dom";
 
 export default function StoreSlider() {
     const [storeArr, setStoreArr] = useState([])
+    const history = useHistory()
 
     useEffect(() => {
         fetchStore()
@@ -91,6 +93,11 @@ export default function StoreSlider() {
         prevArrow: <PrevArrow />
     }
 
+    const handleDetail = (item) => {
+        history.push(`/detail-store/${item.id}`)
+    }
+
+    console.log(storeArr)
 
     return (
         <div className="mt-10 h-[650px] text-black border-2" >
@@ -103,7 +110,8 @@ export default function StoreSlider() {
                                 <div className="w-2/5 px-32 pt-20 relative">
                                     <label className="font-medium text-3xl">{item.nameStore}</label>
                                     <p className="mt-3">{item.shortDescription}</p>
-                                    <button className="mt-6 mx-auto bg-red-500 text-white flex self-center hover:bg-red-400 outline-none border-none" >
+                                    <button className="mt-6 mx-auto bg-red-500 text-white flex self-center hover:bg-red-400 outline-none border-none"
+                                        onClick={() => handleDetail(item)} >
                                         Show more information
                                     </button>
                                 </div>

@@ -9,25 +9,43 @@ import { decodeBase64Func } from "../../../utils/base64"
 export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataStore, fetchRequest, handleOnChange, onImageChange, imageURLS }) {
     const cityArr = useSelector(cityAllcodeSelector)
 
+    const validateForm = () => {
+        let check = true;
+        const valueArr = ['nameStore', 'address', 'cityId', 'mapLink', 'description', 'shortDescription', 'image']         // loi validate image
+        const valueLabel = ['Store Name', 'Address', 'City', 'MapLink', 'Description', 'Short Description', 'Image']
+        for (let i = 0; i < valueArr.length; i++) {
+            if (!dataStore[valueArr[i]]) {
+                toast.error('Please type ' + valueLabel[i])
+                check = false;
+                break
+            }
+        }
+        return check
+    }
+
     const handleAction = async () => {
-        let res = await updateStoreData({
-            id: dataStore.id,  //for findOne
-            nameStore: dataStore.nameStore,
-            address: dataStore.address,
-            cityId: dataStore.cityId,
-            description: dataStore.description,
-            shortDescription: dataStore.shortDescription,
-            mapLink: dataStore.mapLink,
-            image: dataStore.image
-        })
-        if (res.errCode === 0) {
-            toast.success('Update information success')
-            fetchRequest()
-            setShowModalEdit(false)
-        } else {
-            toast.error(res.errMessage)
+        if (validateForm()) {
+            let res = await updateStoreData({
+                id: dataStore.id,  //for findOne
+                nameStore: dataStore.nameStore,
+                address: dataStore.address,
+                cityId: dataStore.cityId,
+                description: dataStore.description,
+                shortDescription: dataStore.shortDescription,
+                mapLink: dataStore.mapLink,
+                image: dataStore.image
+            })
+            if (res.errCode === 0) {
+                toast.success('Update information success')
+                fetchRequest()
+                setShowModalEdit(false)
+            } else {
+                toast.error(res.errMessage)
+            }
         }
     }
+
+
 
     return (
         <>
@@ -75,18 +93,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                             <label className="text-lg pr-2">Image</label><br />
                                             <input type="file" multiple accept="image/*" onChange={onImageChange} />
                                         </div>
-                                        <div className="border-2 w-[71%] flex flex-col">
-                                            <label>Before:</label>
-                                            <div className="flex flex-wrap">
-                                                {dataStore && dataStore.imageData && dataStore.imageData.length > 0 ?
-                                                    dataStore.imageData.map((imageSrc, index) => (
-                                                        <img src={decodeBase64Func(imageSrc.image)} key={index} alt="not found" width={"120px"} className="border m-0.5" />
-                                                    ))
-                                                    :
-                                                    "None"
-                                                }
-                                            </div>
-                                            <label>After:</label>
+                                        <div className="border-2 w-[71%] flex">
                                             <div className="flex flex-wrap">
                                                 {
                                                     imageURLS && imageURLS.length > 0 ?
@@ -94,7 +101,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                                             <img src={imageSrc} key={index} alt="not found" width={"120px"} className="border m-0.5" />
                                                         ))
                                                         :
-                                                        "None"
+                                                        <div className="flex self-center">Hãy nhập hình ảnh cho cửa hàng</div>
                                                 }
                                             </div>
                                         </div>

@@ -31,6 +31,7 @@ export default function ManageStore() {
     useEffect(() => {
         dispatch(fetchAllcodeCity())
         fetchDataStore()
+        window.scrollTo(0, 0)
     }, [])
 
     const fetchRequest = useCallback(() => {
@@ -58,7 +59,6 @@ export default function ManageStore() {
 
     const [images, setImages] = useState([]);
     const [imageURLS, setImageURLs] = useState([]);
-    // const [mapURL, setMapURL] = useState();
 
     useEffect(() => {
         handleImageStore()
@@ -84,21 +84,8 @@ export default function ManageStore() {
         setImages([...e.target.files]);
     }
 
-    const fixErrors = (s) => {
-        s = s.replace("allowfullscreen", "allowFullScreen");
-        s = s.replace("referrerpolicy", "referrerPolicy");
-        s = s.replace(`style="border:0;"`, "");
-        s = s.replace(`width="600"`, `width="300"`);
-        s = s.replace(`height="450`, `height="200"`);
-        return s;
-    }
-
     const handleOnChange = event => {
         const { name, value } = event.target;
-        // if (name === 'mapLink') {
-        //     setMapURL(fixErrors(value))
-        //     setDataStore({ ...dataStore, [name]: value });
-        // }
         setDataStore({ ...dataStore, [name]: value });
     };
 
@@ -164,9 +151,7 @@ export default function ManageStore() {
                                         })
                                         :
                                         <RiseLoader color="#36d7b7" className="absolute top-[45%] left-[45%] " />
-
                                 }
-
                             </>
                         </tbody>
                     </table>

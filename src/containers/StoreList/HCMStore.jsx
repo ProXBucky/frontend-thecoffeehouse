@@ -3,12 +3,17 @@ import { useState, useEffect } from "react"
 import { decodeBase64Func } from "../../utils/base64"
 import Slider from "react-slick"
 import RiseLoader from "react-spinners/RiseLoader"
+import { useHistory } from "react-router-dom"
+
 
 export default function HCMStore() {
     const [storeArr, setStoreArr] = useState([])
+    const history = useHistory()
+
 
     useEffect(() => {
         fetchStore()
+        window.scrollTo(0, 0)
     }, [])
 
     const fetchStore = async () => {
@@ -55,6 +60,10 @@ export default function HCMStore() {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
+
+    const handleDetail = (item) => {
+        history.push(`/detail-store/${item.storeId}`)
+    }
 
     return (
         <div className="ml-20 mr-3">
