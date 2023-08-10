@@ -5,6 +5,7 @@ import { decodeBase64Func } from "../../../../utils/base64";
 import { formatPrice } from "../../../../utils/formatPrice";
 import { useHistory } from "react-router-dom";
 
+
 export default function BestSeller() {
     const [productArr, setProductArr] = useState([])
     const history = useHistory()

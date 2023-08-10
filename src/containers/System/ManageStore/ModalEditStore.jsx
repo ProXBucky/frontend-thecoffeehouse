@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
 import { cityAllcodeSelector } from "../../../redux/selector"
 import { updateStoreData } from "../../../api/adminAPI"
 import { toast } from "react-toastify"
-import { decodeBase64Func } from "../../../utils/base64"
+
 
 
 export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataStore, fetchRequest, handleOnChange, onImageChange, imageURLS }) {
@@ -11,8 +10,8 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
 
     const validateForm = () => {
         let check = true;
-        const valueArr = ['nameStore', 'address', 'cityId', 'mapLink', 'description', 'shortDescription', 'image']         // loi validate image
-        const valueLabel = ['Store Name', 'Address', 'City', 'MapLink', 'Description', 'Short Description', 'Image']
+        const valueArr = ['nameStore', 'address', 'cityId', 'mapLink', 'mapHTML', 'description', 'shortDescription', 'image']         // loi validate image
+        const valueLabel = ['Store Name', 'Address', 'City', 'MapLink', 'MapHTML', 'Description', 'Short Description', 'Image']
         for (let i = 0; i < valueArr.length; i++) {
             if (!dataStore[valueArr[i]]) {
                 toast.error('Please type ' + valueLabel[i])
@@ -33,6 +32,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                 description: dataStore.description,
                 shortDescription: dataStore.shortDescription,
                 mapLink: dataStore.mapLink,
+                mapHTML: dataStore.mapHTML,
                 image: dataStore.image
             })
             if (res.errCode === 0) {
@@ -120,6 +120,10 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                             <div>
                                                 <label className="text-lg">Map link</label><br />
                                                 <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map link" onChange={handleOnChange} name="mapLink" value={dataStore.mapLink} />
+                                            </div>
+                                            <div>
+                                                <label className="text-lg">Map HTML</label><br />
+                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map html" onChange={handleOnChange} name="mapHTML" value={dataStore.mapHTML} />
                                             </div>
                                             <div>
                                                 <label className="text-lg">Short Description</label><br />

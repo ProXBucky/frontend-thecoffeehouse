@@ -73,10 +73,11 @@ export default function ManageAdmin() {
                                 <th>Action</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <>
-                                {
-                                    adminArr && adminArr.length > 0 ?
+                            {
+                                adminArr && adminArr.length > 0 ?
+                                    (
                                         adminArr.map((item, index) => {
                                             return (
                                                 <tr className="h-12 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
@@ -102,13 +103,14 @@ export default function ManageAdmin() {
                                                 </tr>
                                             )
                                         })
-                                        :
+                                    )
+                                    :
+                                    (
                                         <RiseLoader color="#36d7b7" className="absolute top-[45%] left-[45%] " />
-
-                                }
-
-                            </>
+                                    )
+                            }
                         </tbody>
+
                     </table>
 
                 </div>

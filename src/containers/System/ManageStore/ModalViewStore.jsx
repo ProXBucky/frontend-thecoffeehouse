@@ -84,7 +84,6 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                         <label className="text-xl font-medium">Store's name: </label><br />{dataStore.nameStore}<br />
                                         <label className="text-xl font-medium">Address: </label><br />{dataStore.address}<br />
                                         <label className="text-xl font-medium">City: </label><br />{dataStore.cityData.valueEn}<br />
-
                                         <label className="text-xl font-medium">Description: </label><br />
                                         <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={6}
                                             value={dataStore.description}
@@ -93,8 +92,6 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                         </textarea>
                                     </div>
                                 </div>
-
-
                                 {/* Footer */}
                                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                                     <div>

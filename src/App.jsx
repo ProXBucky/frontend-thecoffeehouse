@@ -18,6 +18,7 @@ import Collection from "./containers/Collection/Collection"
 import DetailProduct from './containers/DetailPage/DetailProduct';
 import StoreList from './containers/StoreList/StoreList';
 import DetailStore from './containers/DetailPage/DetailStore';
+import ShoppingCart from './containers/DetailPage/ShoppingCart';
 
 
 
@@ -40,6 +41,8 @@ function App() {
             <Route path="/products/:category/:id" component={withRouter(DetailProduct)} />
             <Route path="/stores" component={withRouter(StoreList)} />
             <Route path="/detail-store/:id" component={withRouter(DetailStore)} />
+            <Route path="/shopping-cart" component={withRouter(ShoppingCart)} />
+
 
           </Switch>
         </Router>

@@ -25,7 +25,6 @@
 
     .navbar {
         width: 70%;
-        // border: 1px solid blue;
         display: flex;
         justify-content: flex-start;
         gap: 20px;
@@ -50,13 +49,9 @@
         padding: 15px;
         margin-right: 10px;
 
-        :hover {
-            color: #ec944a;
-        }
-
-        a {
-            color: black;
-        }
+        // :hover {
+        //     color: #ec944a;
+        // }
 
     }
 }

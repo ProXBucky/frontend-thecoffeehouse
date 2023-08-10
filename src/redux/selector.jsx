@@ -6,3 +6,5 @@ export const productArrSelector = (state) => state.app.allProductArr
 export const categoryAllcodeSelector = (state) => state.app.category
 export const sizeAllcodeSelector = (state) => state.app.size
 export const cityAllcodeSelector = (state) => state.app.city
+
+export const cartSelector = (state) => state.cart

@@ -3,7 +3,7 @@ import { fetchAllProductByCategory } from "../../../../api/appAPI"
 import { useState, useEffect } from "react";
 import { decodeBase64Func } from "../../../../utils/base64"
 import { formatPrice } from "../../../../utils/formatPrice";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function CoffeeSlider({ settings }) {
     const [productArr, setProductArr] = useState([])
@@ -22,7 +22,10 @@ export default function CoffeeSlider({ settings }) {
 
     const handleDetail = (item) => {
         history.push(`/products/${item.category}/${item.id}`)
+    }
 
+    const handleNavigation = () => {
+        history.push(`/collections/coffee`)
     }
 
 
@@ -30,7 +33,9 @@ export default function CoffeeSlider({ settings }) {
         <div className="relative mt-9 h-[450px] px-[140px] mx-auto">
             <div className="header-section text-black flex justify-between h-20 py-5 px-10">
                 <p className="font-semibold text-2xl">Cà Phê</p>
-                <button className="text-white text-sm outline-none border-none hover:bg-[#ec944a] hover:scale-95">Xem tất cả</button>
+                <button className="text-white text-sm outline-none border-none bg-[#ec944a] hover:scale-95" onClick={handleNavigation}>
+                    Xem tất cả
+                </button>
             </div>
             <Slider {...settings} className="w-full">
                 {

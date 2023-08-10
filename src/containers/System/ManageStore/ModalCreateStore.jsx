@@ -16,6 +16,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         image: [],
         cityId: '',
         mapLink: '',
+        mapHTML: '',
         storeId: uuidv4()
     });
 
@@ -55,8 +56,8 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
 
     const validateForm = () => {
         let check = true;
-        const valueArr = ['nameStore', 'address', 'cityId', 'mapLink', 'description', 'shortDescription']         // loi validate image
-        const valueLabel = ['Store Name', 'Address', 'City', 'MapLink', 'Description', 'Short Description']
+        const valueArr = ['nameStore', 'address', 'cityId', 'mapLink', 'mapHTML', 'description', 'shortDescription']         // loi validate image
+        const valueLabel = ['Store Name', 'Address', 'City', 'MapLink', 'MapHTML', 'Description', 'Short Description']
         for (let i = 0; i < valueArr.length; i++) {
             if (!inputValues[valueArr[i]]) {
                 toast.error('Please type ' + valueLabel[i])
@@ -71,8 +72,6 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         return check
     }
 
-
-    console.log(inputValues)
     const handleAction = async () => {
         if (validateForm()) {
             const response = await createNewStore({
@@ -80,7 +79,8 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                 nameStore: inputValues.nameStore,
                 address: inputValues.address,
                 cityId: inputValues.cityId,
-                mapLink: (inputValues.mapLink),
+                mapLink: inputValues.mapLink,
+                mapHTML: inputValues.mapHTML,
                 description: inputValues.description,
                 shortDescription: inputValues.shortDescription,
             })
@@ -99,6 +99,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                 description: '',
                 storeId: '',
                 mapLink: '',
+                mapHTML: '',
                 shortDescription: '',
             })
             setImageURLs([])
@@ -176,6 +177,10 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                             <div>
                                                 <label className="text-lg">Map link</label><br />
                                                 <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map link" onChange={handleOnChange} name="mapLink" value={inputValues.mapLink} />
+                                            </div>
+                                            <div>
+                                                <label className="text-lg">Map HTML</label><br />
+                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map HTML" onChange={handleOnChange} name="mapHTML" value={inputValues.mapHTML} />
                                             </div>
                                             <div className="">
                                                 <label className="text-lg">Short Description</label><br />

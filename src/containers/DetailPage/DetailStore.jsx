@@ -30,7 +30,6 @@ export default function DetailStore() {
         }
     }
 
-    console.log(detailData)
 
 
     return (
@@ -67,7 +66,7 @@ export default function DetailStore() {
                         <p className="mb-1"><i className="fa-solid fa-bag-shopping"></i> Mua mang đi</p>
                         <div className="border-t-2 border-b-2 py-5 mt-5">
                             <p className="font-medium">Món ngon tại {detailData.nameStore}</p>
-                            <button className="w-full mt-2 text-white">Xem menu quán</button>
+                            <button className="w-full mt-2 text-[#f68122] bg-[#FFF7E6]">Xem menu quán</button>
                         </div>
                     </div>
 

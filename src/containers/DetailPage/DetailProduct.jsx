@@ -8,19 +8,29 @@ import { toast } from "react-toastify";
 import { decodeBase64Func } from "../../utils/base64";
 import { formatPrice } from "../../utils/formatPrice";
 import Footer from "../HomePage/Footer/Footer";
-
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { CartSlice } from "../../redux/Slice/CartSlice";
 
 
 export default function DetailProduct() {
     const { category, id } = useParams();
     const [detailData, setDetailData] = useState({})
     const [diffProduct, setDiffProduct] = useState([])
+    const history = useHistory()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         window.scrollTo(0, 0)
         fetchDataProduct()
         fetchDataDiffientProduct()
     }, [])
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        fetchDataProduct()
+        fetchDataDiffientProduct()
+    }, [id, category])
 
     const fetchDataProduct = async () => {
         const respone = await fetchDetailProductById(id)
@@ -40,7 +50,14 @@ export default function DetailProduct() {
         }
     }
 
-    console.log(detailData)
+    const handleDetail = (item) => {
+        history.push(`/products/${item.category}/${item.id}`)
+    }
+
+
+    const handleAddItem = () => {
+        dispatch(CartSlice.actions.addToCart(detailData))
+    }
 
     return (
         <div>
@@ -57,7 +74,7 @@ export default function DetailProduct() {
                             <p className="text-[25px] font-medium text-[#e57905]">{formatPrice(detailData.originalPrice)}đ</p><br />
                             <p className="text-base mt-6">Chọn size (bắt buộc)</p>
                             <p>{detailData.size}</p>
-                            <button className="text-white bg-[#e57905] w-full mt-10">Đặt giao tận nơi</button>
+                            <button className="text-white bg-[#e57905] w-full mt-10 hover:scale-[0.98] border-none" onClick={handleAddItem}>Đặt giao tận nơi</button>
                         </div>
                     </div>
                     <div className="w-full py-8 border-b">

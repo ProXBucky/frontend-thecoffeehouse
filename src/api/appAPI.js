@@ -24,7 +24,10 @@ const fetchDetailStoreById = (id) => {
     return axios.get(`/api/get-detail-store-by-id?id=${id}`)
 }
 
+const orderProduct = (body) => {
+    return axios.post('/api/order-product', body)
+}
 
 
 
-export { fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin, fetchAllStoreByCity, fetchDetailProductById, fetchDetailStoreById }
+export { fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin, fetchAllStoreByCity, fetchDetailProductById, fetchDetailStoreById, orderProduct }

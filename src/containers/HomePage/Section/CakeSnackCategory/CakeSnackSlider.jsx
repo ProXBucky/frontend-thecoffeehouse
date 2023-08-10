@@ -28,12 +28,16 @@ export default function CakeSnackSlider({ settings }) {
 
     }
 
+    const handleNavigation = () => {
+        history.push(`/collections/cakesnack`)
+    }
+
 
     return (
         <div className="relative mt-9 h-[450px] px-[140px] mx-auto">
             <div className="header-section text-black flex justify-between h-20 py-5 px-10">
                 <p className="font-semibold text-2xl">Bánh ngọt và Snack</p>
-                <button className="text-white text-sm outline-none border-none hover:bg-[#ec944a] hover:scale-95">Xem tất cả</button>
+                <button className="text-white text-sm outline-none border-none bg-[#ec944a] hover:scale-95" onClick={handleNavigation}>Xem tất cả</button>
             </div>
             <Slider {...settings} className="w-full">
                 {

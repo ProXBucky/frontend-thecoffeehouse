@@ -90,7 +90,9 @@ export default function HCMStore() {
                                             </Slider>
                                         </div>
                                         <p className="text-lg font-medium py-2">{item.nameStore}</p>
-                                        <button className="w-full text-red-500 bg-[#fff7e6] border-none outline-none">Xem bản đồ</button>
+                                        <a className="w-full text-red-500 hover:text-red-300 bg-[#fff7e6] border-none outline-none p-2 rounded-lg mt-2 flex justify-items-center justify-center" target="_blank" href={item.mapLink}>
+                                            <span>Xem bản đồ</span>
+                                        </a>
                                     </div >
                                     <div className="py-3">
                                         <p>{item.address}</p>
