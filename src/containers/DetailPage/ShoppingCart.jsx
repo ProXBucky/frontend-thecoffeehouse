@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { decodeBase64Func } from "../../utils/base64";
 import { formatPrice } from "../../utils/formatPrice";
 import { toast } from "react-toastify";
-import { orderProduct } from "../../api/appAPI"
+import { orderProduct } from "../../api/orderAPI"
 import dateFormat from "dateformat";
 
 
@@ -82,11 +82,10 @@ export default function ShoppingCart() {
     return (
         <>
             <div className="text-black mt-16 px-[160px]">
-                <h2 className="font-medium text-3xl text-[#f68122] mb-10">Giỏ hàng</h2>
                 {
                     cart.cartItems.length === 0 ?
                         <div className="text-center">
-                            <p className="text-2xl font-medium mt-20 mb-10">Giỏ hàng trống</p>
+                            <p className="text-3xl font-medium mt-20 mb-10 text-[#f68122]">Giỏ hàng trống</p>
                             <Link to="/collections/all">
                                 <span className="text-xl font-normal"><i className="fa-solid fa-arrow-left fa-lg"></i> Tìm sản phẩm</span>
                             </Link>
@@ -94,6 +93,7 @@ export default function ShoppingCart() {
                         </div>
                         :
                         <div className="flex flex-col gap-10">
+                            <h2 className="font-medium text-3xl text-[#f68122] mb-10">Giỏ hàng</h2>
                             <div className="w-full">
                                 <table className="w-full px-3 overflow-hidden border-2">
                                     <thead className="h-14 bg-[#f68122] text-white">

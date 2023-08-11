@@ -18,7 +18,7 @@ const SampleNextArrow = (props) => {
     return (
         <div
             className="absolute"
-            style={{ ...style, zIndex: "100", right: "40px", top: "45%", cursor: "pointer" }}
+            style={{ ...style, zIndex: "1", right: "40px", top: "45%", cursor: "pointer" }}
             onClick={onClick}
         >
             <i className="fa-solid fa-chevron-right fa-2xl text-black"></i>

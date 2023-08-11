@@ -6,7 +6,7 @@ export default function Poster1() {
     const history = useHistory()
 
     const handleClick = () => {
-        history.push('/collections/tea')
+        history.push('/collections/frosty')
     }
 
     return (

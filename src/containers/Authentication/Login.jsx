@@ -72,14 +72,14 @@ export default function Login() {
           <div className="text-left">
             <div className="w-full px-3">
               <label className="label mb-2 text-black">
-                Email
+                <i class="fa-solid fa-envelope"></i> Email
               </label>
               <input className="w-full bg-gray-100 border rounded py-3 px-4 mb-3  focus:outline-none text-black"
                 type="email" placeholder="example@email.com" onChange={handleOnChange} name="emailLogin" value={inputValues.emailLogin} />
             </div>
             <div className="password w-full px-3">
               <label className="label mb-2 text-black" >
-                Password
+                <i class="fa-solid fa-key"></i> Password
               </label>
               <div className="input-password ">
                 <input className="w-full bg-gray-100 border border-gray-200 rounded py-3 px-4 mb-3  focus:outline-none text-black"

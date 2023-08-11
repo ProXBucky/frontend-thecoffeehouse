@@ -111,7 +111,7 @@ export default function StoreSlider() {
                                     <p className="mt-3">{item.shortDescription}</p>
                                     <button className="mt-6 mx-auto bg-red-500 text-white flex self-center hover:scale-[0.98] outline-none border-none"
                                         onClick={() => handleDetail(item)} >
-                                        Show more information
+                                        Xem thông tin chi tiết
                                     </button>
                                 </div>
                                 <div className="w-3/5">

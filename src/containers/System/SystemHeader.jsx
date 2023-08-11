@@ -24,8 +24,9 @@ export default function SystemHeader() {
     return (
         <div className="w-full h-[60px] flex border fixed top-0 justify-between px-5 z-[47] bg-white">
             <div className="w-1/6 text-black flex items-center ">
-                <i className="fa-solid fa-arrow-rotate-left fa-xl cursor-pointer" onClick={backSystemRoute}></i>
-                <label className="ml-1">Back</label>
+                {/* <i className="fa-solid fa-arrow-rotate-left fa-xl cursor-pointer" ></i> */}
+                <i class="fa-solid fa-house-lock fa-xl cursor-pointer" onClick={backSystemRoute}></i>
+                <label className="ml-1">Home</label>
             </div>
             <div className='w-2/3 flex justify-center '>
                 <Link className='logo' to="/">

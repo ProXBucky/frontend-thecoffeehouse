@@ -72,9 +72,9 @@ export default function DetailProduct() {
                         <div className="w-1/2 pl-10">
                             <h1 className="text-[26px] font-medium mb-2">{detailData.name}</h1>
                             <p className="text-[25px] font-medium text-[#e57905]">{formatPrice(detailData.originalPrice)}đ</p><br />
-                            <p className="text-base mt-6">Chọn size (bắt buộc)</p>
-                            <p>{detailData.size}</p>
-                            <button className="text-white bg-[#e57905] w-full mt-10 hover:scale-[0.98] border-none" onClick={handleAddItem}>Đặt giao tận nơi</button>
+                            {/* <p className="text-base mt-6">Chọn size (bắt buộc)</p>
+                            <p>{detailData.size}</p> */}
+                            <button className="text-white bg-[#e57905] w-full mt-10 hover:scale-[0.98] border-none" onClick={handleAddItem}><i className="fa-solid fa-cart-plus fa-lg mr-3"></i>Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                     <div className="w-full py-8 border-b">
@@ -82,7 +82,7 @@ export default function DetailProduct() {
                         {detailData.description}
                     </div>
                     <div className="w-full pt-8 pb-12">
-                        <p className="text-lg font-medium mb-2">Sản phẩm liên quan</p>
+                        <p className="text-lg font-medium mb-4">Sản phẩm liên quan</p>
                         <div className="flex flex-row gap-[35px]">
                             {
                                 diffProduct && diffProduct.length > 0 &&
@@ -99,9 +99,7 @@ export default function DetailProduct() {
                                         </div>
                                     )
                                 })
-
                             }
-
                         </div>
                     </div>
                 </div >

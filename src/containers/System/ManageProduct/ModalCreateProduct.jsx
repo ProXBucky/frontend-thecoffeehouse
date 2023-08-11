@@ -110,7 +110,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-6 flex-auto mx-10">
-                                    <div className="w-full flex justify-between">
+                                    <div className="w-full flex justify-between flex-row">
                                         <div>
                                             <label className="text-lg">Product Name</label>
                                             <br />
@@ -153,14 +153,14 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                             <input id='upload-Img' type='file' hidden name="image" onChange={handlePreviewImage} />
                                             <label className='upload text-lg mr-2 cursor-pointer' htmlFor='upload-Img'><i className="fa-solid fa-arrow-up-from-bracket fa-lg"></i></label>
                                             <br />
-                                            <div className="border-2 w-[300px] h-[100px] mt-3 flex justify-center">
+                                            <div className="border-2 w-full h-[100px] mt-3 flex justify-center">
                                                 <img src={file} className="cover h-[100px]  cursor-pointer scale-100 hover:scale-[3] ease-in duration-100" />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="w-full mt-5">
                                         <label className="text-lg">Description</label><br />
-                                        <textarea className="border-2 outline-none bg-white p-2" rows="3" cols="100"
+                                        <textarea className="border-2 outline-none bg-white p-2 w-full" rows="3"
                                             name="description"
                                             value={inputValues.description}
                                             onChange={handleOnChange}
