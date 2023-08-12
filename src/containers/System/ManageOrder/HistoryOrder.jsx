@@ -61,7 +61,7 @@ export default function HistoryOrder() {
     //                             {
     //                                 allStoreArr === 'None' ?
     //                                     (
-    //                                         <td colspan="5" className="border py-4 text-lg">No data</td>
+    //                                         <td colspan="5" className="border py-4 text-lg">Không có dữ liệu</td>
     //                                     )
     //                                     :
     //                                     (

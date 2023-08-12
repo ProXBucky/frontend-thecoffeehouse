@@ -1,5 +1,7 @@
 import { decodeBase64Func } from "../../../utils/base64";
 import { formatPrice } from "../../../utils/formatPrice"
+import CustomerInfo from "../../DetailPage/ShoppingCart/CustomerInfo";
+import OrderList from "../../DetailPage/ShoppingCart/OrderList";
 
 export default function ModalViewOrder({ showModalView, setShowModalView, orderDetail }) {
 
@@ -18,30 +20,25 @@ export default function ModalViewOrder({ showModalView, setShowModalView, orderD
 
                                     <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                         <h3 className="text-3xl font-semibold">
-                                            Detail Order with orderCode: {orderDetail.id}
+                                            Chi tiết đơn hàng với mã đơn hàng: {orderDetail.id}
                                         </h3>
 
                                         <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalView(false)}></i>
                                     </div>
                                     {/* //body */}
-                                    <div className="p-6 flex flex-row mx-10 gap-10">
-                                        <div className="w-1/3 text-lg flex justify-center">
-                                            <div className="w-fit">
-                                                <h2 className="font-medium text-2xl mb-4 text-[#f68122]">Customer information</h2>
-                                                <p>Email: {orderDetail.UserData.email}</p>
-                                                <p>Name: {orderDetail.UserData.firstName} {orderDetail.UserData.lastName}</p>
-                                                <p>Phone: {orderDetail.UserData.phone}</p>
-                                                <p>Address: {orderDetail.UserData.address}</p>
-                                            </div>
+                                    <div className="p-6 flex flex-col mx-10 gap-10">
+                                        <div className="w-full text-lg flex justify-center">
+                                            <CustomerInfo cart={orderDetail} isViewFunction={'true'} />
                                         </div>
-                                        <div className="w-2/3">
-                                            <table className="w-full px-3 overflow-hidden border-2">
+                                        <div className="w-full">
+                                            <OrderList cart={orderDetail} isViewFunction={'true'} />
+                                            {/* <table className="w-full px-3 overflow-hidden border-2">
                                                 <thead className="h-14 bg-[#f68122] text-white">
                                                     <tr>
-                                                        <th>Product</th>
-                                                        <th>Original Price</th>
-                                                        <th>Quantity</th>
-                                                        <th>Total Price</th>
+                                                        <th>Sản phẩm</th>
+                                                        <th>Giá gốc</th>
+                                                        <th>Số lượng</th>
+                                                        <th>Tổng</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody className="text-center">
@@ -63,18 +60,7 @@ export default function ModalViewOrder({ showModalView, setShowModalView, orderD
                                                         ))
                                                     }
                                                 </tbody>
-                                            </table >
-                                            <div className="w-full flex justify-around text-xl font-medium h-12 mt-10">
-                                                <p>Order time: {orderDetail.timeOrder}</p>
-                                                <p>Total: {formatPrice(orderDetail.totalPrice)} VND ( {orderDetail.StatusData && orderDetail.StatusData.valueEn && orderDetail.StatusData.valueEn === 'Paid' ?
-                                                    <span className="text-green-500">{orderDetail.StatusData.valueEn}</span>
-                                                    :
-                                                    <span className="text-red-500">{orderDetail.StatusData.valueEn}</span>
-                                                } )
-                                                </p>
-
-
-                                            </div>
+                                            </table > */}
                                         </div>
 
                                     </div>
@@ -87,7 +73,7 @@ export default function ModalViewOrder({ showModalView, setShowModalView, orderD
                                                 className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg border-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
                                                 onClick={() => setShowModalView(false)}
                                             >
-                                                Cancel
+                                                Hủy
                                             </button>
                                         </div>
 

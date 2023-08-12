@@ -104,17 +104,17 @@ export default function ManageProduct() {
             <ModalViewProduct showModalView={showModalView} setShowModalView={setShowModalView} dataProduct={dataProduct} />
             <ModalCreateProduct showModalCreate={showModalCreate} setShowModalCreate={setShowModalCreate} fetchRequest={fetchRequest} />
             <div className="p-10">
-                <p className="text-3xl font-medium  inline-block">Manage Product</p>
-                <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={handleCreate}>Add new product</button>
+                <p className="text-3xl font-medium  inline-block">Quản lý sản phẩm</p>
+                <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={handleCreate}>Tạo sản phẩm mới</button>
                 <div className="w-ful mt-10 text-center text-sm">
                     <table className="w-full px-3 rounded-lg overflow-hidden">
                         <thead className="h-14 bg-[#f68122] text-white border border-slate-300 text-center overflow-hidden">
                             <tr>
-                                <th className="px-5">Image</th>
-                                <th>Name</th>
-                                <th>Original Price (VND)</th>
-                                <th>Category</th>
-                                <th>Action</th>
+                                <th className="px-5">Hình ảnh</th>
+                                <th>Tên SP</th>
+                                <th>Giá tiền (VND)</th>
+                                <th>Thể loại</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -123,7 +123,7 @@ export default function ManageProduct() {
 
                                     allProductArr === 'None' ?
                                         (
-                                            <td colspan="5" className="border py-4 text-lg">No data</td>
+                                            <td colspan="5" className="border py-4 text-lg">Không có dữ liệu</td>
                                         )
                                         :
                                         (
@@ -145,15 +145,15 @@ export default function ManageProduct() {
                                                             <td>
                                                                 <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleView(item)}>
                                                                     <i className="fa-regular fa-eye fa-md mr-1"></i>
-                                                                    View
+                                                                    Chi tiết
                                                                 </button>
                                                                 <button className="text-white bg-yellow-400 hover:bg-yellow-300 p-2 mr-3 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
                                                                     <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
-                                                                    Edit
+                                                                    Sửa
                                                                 </button>
                                                                 <button className="text-white bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
                                                                     <i className="fa-regular fa-trash-can fa-md mr-1"></i>
-                                                                    Delete
+                                                                    Xóa
                                                                 </button>
                                                             </td>
                                                         </tr>

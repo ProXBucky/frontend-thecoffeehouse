@@ -53,7 +53,7 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
-                                        View store: {dataStore.nameStore}
+                                        Thông tin cửa hàng: {dataStore.nameStore}
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalView(false)}></i>
@@ -73,7 +73,7 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                                 })
                                             }
                                         </Slider >
-                                        <label className="text-xl font-medium">Short Description: </label><br />
+                                        <label className="text-xl font-medium">Mô tả cửa hàng rút gọn: </label><br />
                                         <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={3}
                                             value={dataStore.shortDescription}
                                             disabled
@@ -81,10 +81,10 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                         </textarea>
                                     </div>
                                     <div className="w-[60%] font-normal text-base pl-40">
-                                        <label className="text-xl font-medium">Store's name: </label><br />{dataStore.nameStore}<br />
-                                        <label className="text-xl font-medium">Address: </label><br />{dataStore.address}<br />
-                                        <label className="text-xl font-medium">City: </label><br />{dataStore.cityData.valueEn}<br />
-                                        <label className="text-xl font-medium">Description: </label><br />
+                                        <label className="text-xl font-medium">Tên cửa hàng: </label><br />{dataStore.nameStore}<br />
+                                        <label className="text-xl font-medium">Địa chỉ: </label><br />{dataStore.address}<br />
+                                        <label className="text-xl font-medium">Thành phố: </label><br />{dataStore.cityData.valueEn}<br />
+                                        <label className="text-xl font-medium">Mô tả cửa hàng: </label><br />
                                         <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={6}
                                             value={dataStore.description}
                                             disabled
@@ -99,7 +99,7 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                             className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
                                             onClick={() => setShowModalView(false)}
                                         >
-                                            Cancel
+                                            Hủy
                                         </button>
                                     </div>
 

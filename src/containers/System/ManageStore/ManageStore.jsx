@@ -99,17 +99,17 @@ export default function ManageStore() {
             <ModalViewStore showModalView={showModalView} setShowModalView={setShowModalView} dataStore={dataStore} />
             <ModalCreateStore showModalCreate={showModalCreate} setShowModalCreate={setShowModalCreate} fetchRequest={fetchRequest} />
             <div className="p-10">
-                <p className="text-3xl font-medium  inline-block">Manage Stores</p>
-                <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={handleCreate}>Add new store</button>
+                <p className="text-3xl font-medium  inline-block">Quản lý cửa hàng</p>
+                <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={handleCreate}>Thêm cửa hàng mới</button>
                 <div className="w-ful mt-10 text-center text-sm">
                     <table className="w-full px-3 rounded-lg overflow-hidden">
                         <thead className="h-14 bg-[#f68122] text-white border border-slate-300 text-center overflow-hidden">
                             <tr>
-                                <th className="px-5">Image</th>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>City</th>
-                                <th>Action</th>
+                                <th className="px-5">Hình ảnh</th>
+                                <th>Tên cửa hàng</th>
+                                <th>Địa chỉ</th>
+                                <th>Thành phố</th>
+                                <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -117,7 +117,7 @@ export default function ManageStore() {
                                 {
                                     allStoreArr === 'None' ?
                                         (
-                                            <td colspan="5" className="border py-4 text-lg">No data</td>
+                                            <td colspan="5" className="border py-4 text-lg">Không có dữ liệu</td>
                                         )
                                         :
                                         (
@@ -135,21 +135,21 @@ export default function ManageStore() {
                                                             </td>
                                                             <td>{item.nameStore}</td>
                                                             <td>{item.address}</td>
-                                                            <td>{item.cityData.valueEn}</td>
+                                                            <td>{item.cityData.valueVn}</td>
                                                             <td className="p-4 w-[120px]">
                                                                 <button className="mb-2 text-white w-28 bg-green-500 hover:bg-green-400 p-2 border-none outline-none" name="View" onClick={() => handleView(item)}>
                                                                     <i className="fa-regular fa-eye fa-md mr-1"></i>
-                                                                    View
+                                                                    Chi tiết
                                                                 </button>
                                                                 <br />
                                                                 <button className="mb-2 text-white w-28 bg-yellow-400 hover:bg-yellow-300 p-2 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
                                                                     <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
-                                                                    Edit
+                                                                    Sửa
                                                                 </button>
                                                                 <br />
                                                                 <button className="text-white w-28 bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
                                                                     <i className="fa-regular fa-trash-can fa-md mr-1"></i>
-                                                                    Delete
+                                                                    Xóa
                                                                 </button>
                                                             </td>
                                                         </tr>

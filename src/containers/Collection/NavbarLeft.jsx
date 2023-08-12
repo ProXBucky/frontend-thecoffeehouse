@@ -10,19 +10,19 @@ export default function NavbarLeft() {
         <div className="relative h-full bg-white p-5">
             <ul className="text-black">
                 <NavLink className="flex mb-2 font-normal text-[#00000099] hover:text-[#00000099] before:" activeStyle={{ color: "#f68122", fontWeight: '500', fontSize: "18px" }} to="/collections/all">
-                    <label className="cursor-pointer">Tất cả</label>
+                    <label className="cursor-pointer">Tất cả <i className="fa-solid fa-layer-group"></i></label>
                 </NavLink>
                 <NavLink className="flex mb-2 font-normal text-[#00000099] hover:text-[#00000099] before:" activeStyle={{ color: "#f68122", fontWeight: '500', fontSize: "18px" }} to="/collections/coffee">
-                    <label className="cursor-pointer">Cà phê</label>
+                    <label className="cursor-pointer">Cà phê <i className="fa-solid fa-mug-hot"></i></label>
                 </NavLink>
                 <NavLink className="flex mb-2 font-normal text-[#00000099] hover:text-[#00000099] before:" activeStyle={{ color: "#f68122", fontWeight: '500', fontSize: "18px" }} to="/collections/tea">
-                    <label className="cursor-pointer">Trà xanh</label>
+                    <label className="cursor-pointer">Trà xanh <i className="fa-brands fa-envira"></i></label>
                 </NavLink>
                 <NavLink className="flex mb-2 font-normal text-[#00000099] hover:text-[#00000099] before:" activeStyle={{ color: "#f68122", fontWeight: '500', fontSize: "18px" }} to="/collections/frosty">
-                    <label className="cursor-pointer">Đá xay</label>
+                    <label className="cursor-pointer">Đá xay <i className="fa-regular fa-snowflake"></i></label>
                 </NavLink>
                 <NavLink className="flex mb-2 font-normal text-[#00000099] hover:text-[#00000099] before:" activeStyle={{ color: "#f68122", fontWeight: '500', fontSize: "18px" }} to="/collections/cakesnack">
-                    <label className="cursor-pointer">Bánh ngọt và snack</label>
+                    <label className="cursor-pointer">Bánh ngọt và snack <i className="fa-solid fa-cookie-bite"></i></label>
                 </NavLink>
             </ul>
         </div>

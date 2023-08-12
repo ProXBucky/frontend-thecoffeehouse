@@ -16,7 +16,7 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
-                                        View admin  {`id: ${dataUser.id}`}
+                                        Thông tin quản trị viên với {`id: ${dataUser.id}`}
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalView(false)}></i>
@@ -68,7 +68,7 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
                                             className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
                                             onClick={() => setShowModalView(false)}
                                         >
-                                            Cancel
+                                            Hủy
                                         </button>
                                     </div>
 

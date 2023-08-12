@@ -60,7 +60,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
-                                        Edit product: {dataProduct.name}
+                                        Sửa sản phẩm: {dataProduct.name}
                                     </h3>
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalEdit(false)}></i>
                                 </div>
@@ -68,18 +68,18 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                 <div className="relative p-6 flex-auto mx-10">
                                     <div className="w-full flex justify-between flex-row">
                                         <div>
-                                            <label className="text-lg">Product Name</label>
+                                            <label className="text-lg">Tên sản phẩm</label>
                                             <br />
                                             <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Type new product" onChange={handleOnChange} name="name" value={dataProduct.name} />
                                         </div>
                                         <div>
-                                            <label className="text-lg">Original Price (VND)</label><br />
+                                            <label className="text-lg">Giá tiền (VND)</label><br />
                                             <input type="number" className="border-2 outline-none bg-white p-2" placeholder="Type original price" onChange={handleOnChange} name="originalPrice" value={dataProduct.originalPrice} />
                                         </div>
                                         <div>
-                                            <label className="text-lg mr-4">Category</label><br />
+                                            <label className="text-lg mr-4">Thể loại</label><br />
                                             <select className="border-2 outline-none bg-white p-2 w-[170px] cursor-pointer" onChange={handleOnChange} name="category" value={dataProduct.category} >
-                                                <option className="cursor-pointer" selected>None</option>
+                                                <option className="cursor-pointer" selected>Không có</option>
 
                                                 {
                                                     cateArr && cateArr.length > 0 &&
@@ -92,7 +92,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                     </div>
                                     <div className="w-full flex justify-between mt-5">
                                         <div className="w-1/2 text-red-600 bg-red-300">
-                                            <label className="text-lg">Size (optional) MAINTAIN</label><br />
+                                            <label className="text-lg">Kích thước (optional) MAINTAIN</label><br />
                                             {
                                                 sizeArr && sizeArr.length > 0 &&
                                                 sizeArr.map((item, index) => {
@@ -106,7 +106,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                             }
                                         </div>
                                         <div className="pl-[120px] w-1/2 items-center">
-                                            <label className="text-lg pr-2">Image</label>
+                                            <label className="text-lg pr-2">Hình ảnh</label>
                                             <input id='upload-Img' type='file' hidden name="image" onChange={handlePreviewImage} />
                                             <label className='upload text-lg mr-2 cursor-pointer' htmlFor='upload-Img'><i className="fa-solid fa-arrow-up-from-bracket fa-lg"></i></label>
                                             <br />
@@ -116,7 +116,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                         </div>
                                     </div>
                                     <div className="w-full mt-5">
-                                        <label className="text-lg">Description</label><br />
+                                        <label className="text-lg">Mô tả sản phẩm</label><br />
                                         <textarea className="border-2 outline-none bg-white p-2 w-full h-auto"
                                             name="description"
                                             value={dataProduct.description}
@@ -132,14 +132,14 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                             className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
                                             onClick={() => setShowModalEdit(false)}
                                         >
-                                            Cancel
+                                            Hủy
                                         </button>
                                         <button
                                             className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                             type="button"
                                             onClick={handleAction}
                                         >
-                                            Save
+                                            Lưu
                                         </button>
                                     </div>
                                 </div>

@@ -1,42 +1,13 @@
 import Slider from "react-slick";
-import { fetchAllProductByCategory } from "../../../../api/appAPI"
-import { useState, useEffect } from "react";
-import { decodeBase64Func } from "../../../../utils/base64"
-import { formatPrice } from "../../../../utils/formatPrice";
-import { useHistory } from "react-router-dom";
+import { decodeBase64Func } from "../../../utils/base64"
+import { formatPrice } from "../../../utils/formatPrice";
 
 
-export default function CakeSnackSlider({ settings }) {
-
-    const [productArr, setProductArr] = useState([])
-    const history = useHistory()
-
-    useEffect(() => {
-        fetchProduct()
-    }, [])
-
-    const fetchProduct = async () => {
-        const res = await fetchAllProductByCategory('CA3')
-        if (res && res.errCode === 0) {
-            setProductArr(res.data)
-        }
-    }
-
-
-    const handleDetail = (item) => {
-        history.push(`/products/${item.category}/${item.id}`)
-
-    }
-
-    const handleNavigation = () => {
-        history.push(`/collections/cakesnack`)
-    }
-
-
+export default function SliderSection({ productArr, handleNavigation, handleDetail, settings }) {
     return (
         <div className="relative mt-9 h-[450px] px-[140px] mx-auto">
             <div className="header-section text-black flex justify-between h-20 py-5 px-10">
-                <p className="font-semibold text-2xl">Bánh ngọt và Snack</p>
+                <p className="font-semibold text-2xl">{productArr && productArr[0] && productArr[0].categoryData && productArr[0].categoryData.valueVn}</p>
                 <button className="text-white text-sm outline-none border-none bg-[#ec944a] hover:scale-95" onClick={handleNavigation}>Xem tất cả</button>
             </div>
             <Slider {...settings} className="w-full">

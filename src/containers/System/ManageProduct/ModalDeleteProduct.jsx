@@ -28,7 +28,7 @@ export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
 
-                                        Delete product: {dataProduct.name}
+                                        Xóa sản phẩm: {dataProduct.name}
 
                                     </h3>
 
@@ -40,7 +40,7 @@ export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete
                                         <div>
                                             <i className="fa-solid fa-circle-exclamation fa-2xl text-red-600"></i>
                                             <p className="text-3xl font-bold text-red-500 mt-4">
-                                                Are you sure ?
+                                                Bạn chắc chắn rồi đúng không?
                                             </p>
                                         </div>
                                         <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
@@ -49,14 +49,14 @@ export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete
                                                     className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
                                                     onClick={() => setShowModalDelete(false)}
                                                 >
-                                                    Cancel
+                                                    Hủy
                                                 </button>
                                                 <button
                                                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                                     type="button"
                                                     onClick={handleAction}
                                                 >
-                                                    Yes
+                                                    Đúng
                                                 </button>
                                             </div>
 

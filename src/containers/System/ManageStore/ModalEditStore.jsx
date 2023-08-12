@@ -58,7 +58,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
-                                        Edit store: {dataStore.nameStore}
+                                        Sửa thông tin cửa hàng: {dataStore.nameStore}
                                     </h3>
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalEdit(false)}></i>
                                 </div>
@@ -67,16 +67,16 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                 <div className="relative p-6 flex-auto mx-10">
                                     <div className="w-full flex justify-between">
                                         <div>
-                                            <label className="text-lg">Store Name</label>
+                                            <label className="text-lg">Tên cửa hàng</label>
                                             <br />
                                             <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Type store's name" onChange={handleOnChange} name="nameStore" value={dataStore.nameStore} />
                                         </div>
                                         <div>
-                                            <label className="text-lg">Address</label><br />
+                                            <label className="text-lg">Địa chỉ</label><br />
                                             <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Type store's address" onChange={handleOnChange} name="address" value={dataStore.address} />
                                         </div>
                                         <div>
-                                            <label className="text-lg mr-4">City</label><br />
+                                            <label className="text-lg mr-4">Thành phố</label><br />
                                             <select className="border-2 outline-none bg-white p-2 w-[170px] cursor-pointer" onChange={handleOnChange} name="cityId" value={dataStore.cityId} >
                                                 {
                                                     cityArr && cityArr.length > 0 &&
@@ -90,7 +90,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                     </div>
                                     <div className="w-full mt-5 flex gap-7">
                                         <div className="w-[29%]">
-                                            <label className="text-lg pr-2">Image</label><br />
+                                            <label className="text-lg pr-2">Hình ảnh</label><br />
                                             <input type="file" multiple accept="image/*" onChange={onImageChange} />
                                         </div>
                                         <div className="border-2 w-[71%] flex">
@@ -108,7 +108,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                     </div>
                                     <div className="w-full mt-5 flex gap-7">
                                         <div className="w-1/2">
-                                            <label className="text-lg">Description</label><br />
+                                            <label className="text-lg">Mô tả cửa hàng</label><br />
                                             <textarea className="border-2 outline-none bg-white p-2 w-full" rows="6"
                                                 name="description"
                                                 value={dataStore.description}
@@ -126,7 +126,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                                 <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map html" onChange={handleOnChange} name="mapHTML" value={dataStore.mapHTML} />
                                             </div>
                                             <div>
-                                                <label className="text-lg">Short Description</label><br />
+                                                <label className="text-lg">Mô tả cửa hàng rút gọn</label><br />
                                                 <textarea className="border-2 outline-none bg-white p-2 w-full" rows="3"
                                                     name="shortDescription"
                                                     value={dataStore.shortDescription}
@@ -148,14 +148,14 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                             className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
                                             onClick={() => setShowModalEdit(false)}
                                         >
-                                            Cancel
+                                            Hủy
                                         </button>
                                         <button
                                             className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                             type="button"
                                             onClick={handleAction}
                                         >
-                                            Save
+                                            Lưu
                                         </button>
                                     </div>
                                 </div>

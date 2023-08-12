@@ -43,17 +43,17 @@ export default function ManageOrder() {
         <>
             <ModalViewOrder showModalView={showModalView} setShowModalView={setShowModalView} orderDetail={orderDetail} />
             <div className="p-10">
-                <p className="text-3xl font-medium inline-block pb-10">Orders</p>
+                <p className="text-3xl font-medium inline-block pb-10">Đơn hàng</p>
                 <table className="w-full px-3 rounded-lg overflow-hidden">
                     <thead className="h-14 bg-[#f68122] text-white border border-slate-300 text-center overflow-hidden">
                         <tr>
-                            <th className="px-5">Name</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>Total Price</th>
-                            <th>Order Time</th>
-                            <th>Status Payment</th>
-                            <th>Action</th>
+                            <th className="px-5">Tên người đặt</th>
+                            <th>Địa chỉ</th>
+                            <th>SĐT</th>
+                            <th>Tổng tiền</th>
+                            <th>Thời gian đặt</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody className="text-center">
@@ -61,7 +61,7 @@ export default function ManageOrder() {
                             {
                                 orderList === 'None' ?
                                     (
-                                        <td colspan="7" className="border py-4 text-lg">No data</td>
+                                        <td colspan="7" className="border py-4 text-lg">Không có dữ liệu</td>
                                     )
                                     :
                                     (
@@ -75,23 +75,24 @@ export default function ManageOrder() {
                                                         <td>{formatPrice(item.totalPrice)}(VND)</td>
                                                         <td>{item.timeOrder}</td>
                                                         <td className="text-lg">
-                                                            {item.StatusData && item.StatusData.valueEn && item.StatusData.valueEn === 'Paid' ?
-                                                                <span className="text-green-500">{item.StatusData.valueEn}</span>
+                                                            {item.StatusData && item.StatusData.valueVn && item.statusPayment === 'SP2' ?
+                                                                <span className="text-green-500">{item.StatusData.valueVn}</span>
                                                                 :
-                                                                <span className="text-red-500">{item.StatusData.valueEn}</span>
+                                                                <span className="text-red-500">{item.StatusData.valueVn}</span>
                                                             }
                                                         </td>
                                                         <td className="p-4 w-[120px]">
                                                             <button className="text-white w-14 bg-green-500 hover:bg-green-400  p-2 border-none outline-none mb-2" name="Delete" onClick={() => handleView(item)}>
                                                                 <i className="fa-regular fa-eye fa-md mr-1"></i>
-                                                                View
+                                                                Chi tiết
                                                             </button>
                                                             {
                                                                 item.statusPayment === 'SP1' &&
                                                                 (
                                                                     <button className="mb-2 text-white w-14 bg-yellow-400 hover:bg-yellow-300 p-2 border-none outline-none" name="View" onClick={() => handleCash(item)}>
-                                                                        <i className="fa-solid fa-dollar-sign fa-md mr-1"></i>
-                                                                        Paid
+                                                                        <i className="fa-solid fa-dollar-sign fa-md"></i>
+                                                                        <br />
+                                                                        Đã trả
                                                                     </button>
                                                                 )
                                                             }
