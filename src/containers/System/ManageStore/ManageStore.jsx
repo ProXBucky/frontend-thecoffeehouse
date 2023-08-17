@@ -23,7 +23,7 @@ export default function ManageStore() {
 
     const fetchDataStore = async () => {
         const res = await fetchAllStoreByCity('ALL')
-        if (res && res.errCode === 0) {
+        if (res && (res.errCode === 0 || res.errCode === 1)) {
             setAllStoreArr(res.data)
         }
     }

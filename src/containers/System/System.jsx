@@ -1,7 +1,6 @@
-
 import SystemRoute from "../../routes/SystemRoute";
 import NavbarLeft from "./NavbarLeft";
-import { useEffect, useState } from "react";
+
 
 export default function System() {
 

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import { cartSelector } from "../../redux/selector"
-import OrderList from "./ShoppingCart/OrderList";
-import CustomerInfo from "./ShoppingCart/CustomerInfo";
+import { cartSelector } from "../../../redux/selector"
+import OrderList from "./OrderList";
+import CustomerInfo from "./CustomerInfo";
 import { useEffect } from "react";
 import { useSelector } from "react-redux"
 

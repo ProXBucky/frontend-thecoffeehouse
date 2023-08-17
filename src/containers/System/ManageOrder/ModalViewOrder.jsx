@@ -32,40 +32,9 @@ export default function ModalViewOrder({ showModalView, setShowModalView, orderD
                                         </div>
                                         <div className="w-full">
                                             <OrderList cart={orderDetail} isViewFunction={'true'} />
-                                            {/* <table className="w-full px-3 overflow-hidden border-2">
-                                                <thead className="h-14 bg-[#f68122] text-white">
-                                                    <tr>
-                                                        <th>Sản phẩm</th>
-                                                        <th>Giá gốc</th>
-                                                        <th>Số lượng</th>
-                                                        <th>Tổng</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody className="text-center">
-                                                    {orderDetail.OrderData &&
-                                                        orderDetail.OrderData.map((product) => (
-                                                            <tr key={product.id} className="border-b-2">
-                                                                <td className="w-[200px] px-10 py-5">
-                                                                    <img src={decodeBase64Func(product.ProductData.image)} alt={product.ProductData.name} />
-                                                                    <p>{product.ProductData.name}</p>
-                                                                </td>
-                                                                <td>{formatPrice(product.price)} VND</td>
-                                                                <td>
-                                                                    <span className="text-lg">{product.quantity}</span>
-                                                                </td>
-                                                                <td>
-                                                                    {formatPrice(product.price * product.quantity)} VND
-                                                                </td>
-                                                            </tr>
-                                                        ))
-                                                    }
-                                                </tbody>
-                                            </table > */}
                                         </div>
 
                                     </div>
-
-
                                     {/* Footer */}
                                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                                         <div>

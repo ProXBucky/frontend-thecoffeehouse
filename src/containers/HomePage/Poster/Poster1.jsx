@@ -11,7 +11,7 @@ export default function Poster1() {
 
     return (
         <div className="mx-[140px]">
-            <div className="my-10 w-full h-[690px] relative flex items-center justify-stretch" style={{ background: `url(${backGround}) top center/contain no-repeat` }} >
+            <div className="my-10 w-full h-[690px] relative flex items-center justify-stretch border rounded-lg overflow-hidden" style={{ background: `url(${backGround}) top center/contain no-repeat` }} >
                 <div className="w-1/2 px-20 scale-105">
                     <img src="/src/assets/SliderImg/FrostyProduct.webp" ></img>
                 </div>

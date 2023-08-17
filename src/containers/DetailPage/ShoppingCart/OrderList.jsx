@@ -78,12 +78,12 @@ export default function OrderList({ cart, isViewFunction }) {
                                             <img src={decodeBase64Func(product.ProductData.image)} alt={product.ProductData.name} />
                                             <p>{product.ProductData.name}</p>
                                         </td>
-                                        <td>{formatPrice(product.price)} VND</td>
+                                        <td>{formatPrice(product.ProductData.originalPrice)} VND</td>
                                         <td>
                                             <span className="text-lg">{product.quantity}</span>
                                         </td>
                                         <td>
-                                            {formatPrice(product.price * product.quantity)} VND
+                                            {formatPrice(product.ProductData.originalPrice * product.quantity)} VND
                                         </td>
                                     </tr>
                                 ))

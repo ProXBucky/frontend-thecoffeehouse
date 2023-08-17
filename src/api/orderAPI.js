@@ -8,8 +8,16 @@ const getAllOrder = () => {
     return axios.get('/api/get-all-order')
 }
 
-const updateStatusPayment = (id) => {
+const getAllOrderDelivered = () => {
+    return axios.get('/api/get-all-order-delivered')
+}
+
+const payOrder = (id) => {
     return axios.put('/api/pay-order', id)
 }
 
-export { orderProduct, getAllOrder, updateStatusPayment }
+const deliverProduct = (id) => {
+    return axios.put('/api/deliver-product', id)
+}
+
+export { orderProduct, getAllOrder, payOrder, deliverProduct, getAllOrderDelivered }

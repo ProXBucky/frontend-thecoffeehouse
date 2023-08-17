@@ -48,7 +48,7 @@ export default function Login() {
       })
       if (res && res.errCode === 0) {
         dispatch(UserSlice.actions.loginUserSucces(res.email))
-        toast.success('Login success')
+        toast.success('Đăng nhập thành công')
         setInputValues(initStateInput)
         history.push('/system')
       } else {
@@ -68,7 +68,8 @@ export default function Login() {
     <>
       <div className="container py-20 flex justify-center">
         <div className="content-left w-full max-w-lg px-5">
-          <h2 className="text-black text-2xl pb-2 pt-6">Login my account</h2>
+          <h2 className=" text-2xl font-medium pt-6">Đăng nhập</h2>
+          <p className="pb-2 text-red-500">( Chỉ dành cho quản trị viên )</p>
           <div className="text-left">
             <div className="w-full px-3">
               <label className="label mb-2 text-black">
@@ -79,7 +80,7 @@ export default function Login() {
             </div>
             <div className="password w-full px-3">
               <label className="label mb-2 text-black" >
-                <i className="fa-solid fa-key"></i> Password
+                <i className="fa-solid fa-key"></i> Mật khẩu
               </label>
               <div className="input-password ">
                 <input className="w-full bg-gray-100 border border-gray-200 rounded py-3 px-4 mb-3  focus:outline-none text-black"
@@ -90,7 +91,7 @@ export default function Login() {
               </div>
             </div>
           </div>
-          <p className="py-3">If you don't have account, please register in <Link to="/register">here</Link></p>
+          <p className="py-3">Nếu bạn chưa có tài khoản, hãy đăng ký <Link to="/register">tại đây</Link></p>
           <button className="rounded-full mx-28 px-16 mt-3 text-white" onClick={handleLogin}>Login</button>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function SliderSection({ productArr, handleNavigation, handleDeta
                         return (
                             <div key={index} className="h-[325px] flex flex-wrap px-[30px]">
                                 <div className="rounded-2xl overflow-hidden cursor-pointer" style={{ boxShadow: '1px 1px 13px 0px #00000040' }} onClick={() => handleDetail(item)}>
-                                    <img src={decodeBase64Func(item.image)} className="h-auto max-w-full" />
+                                    <img src={decodeBase64Func(item.image)} className="h-auto max-w-full hover:scale-105" />
                                 </div>
                                 <div className="h-[60px] text-black mt-2">
                                     <label className="font-semibold text-base cursor-pointer hover:text-[#ec944a]" onClick={() => handleDetail(item)}>{item.name}</label><br></br>

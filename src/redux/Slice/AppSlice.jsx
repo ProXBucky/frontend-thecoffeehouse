@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin } from "../../api/appAPI"
+import { fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin, fetchAllAdminNotApproved } from "../../api/appAPI"
 
 export const fetchAllcodeCategory = createAsyncThunk(
     `app/fetchAllcodeCategory`,
@@ -33,6 +33,14 @@ export const fetchAllAdmins = createAsyncThunk(
     }
 );
 
+export const fetchAllAdminsNotApproved = createAsyncThunk(
+    `app/fetchAllAdminsNotApproved`,
+    async () => {
+        const response = await fetchAllAdminNotApproved()
+        return response.data
+    }
+);
+
 export const fetchAllProduct = createAsyncThunk(
     `app/fetchAllProduct`,
     async () => {
@@ -52,6 +60,7 @@ export const AppSlice = createSlice({
         statusFetch: '',
         error: '',
         adminArr: [],
+        adminNotApproved: [],
         allProductArr: [],
     },
     reducers: {
@@ -95,6 +104,20 @@ export const AppSlice = createSlice({
                 state.adminArr = action.payload
             })
             .addCase(fetchAllAdmins.rejected, (state, action) => {
+                state.statusFetch = 'failed'
+                state.error = action.error.message
+            })
+
+            /////////////////////////////
+
+            .addCase(fetchAllAdminsNotApproved.pending, (state) => {
+                state.statusFetch = 'loading'
+            })
+            .addCase(fetchAllAdminsNotApproved.fulfilled, (state, action) => {
+                state.statusFetch = 'succeeded'
+                state.adminNotApproved = action.payload
+            })
+            .addCase(fetchAllAdminsNotApproved.rejected, (state, action) => {
                 state.statusFetch = 'failed'
                 state.error = action.error.message
             })

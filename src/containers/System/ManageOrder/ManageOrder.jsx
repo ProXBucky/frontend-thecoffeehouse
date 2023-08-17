@@ -1,6 +1,5 @@
-// import { useEffect, useState, useCallback } from "react"
 import { useState, useEffect, useCallback } from "react"
-import { getAllOrder, updateStatusPayment } from "../../../api/orderAPI"
+import { getAllOrder, payOrder, deliverProduct } from "../../../api/orderAPI"
 import { formatPrice } from "../../../utils/formatPrice"
 import RiseLoader from "react-spinners/RiseLoader"
 import ModalViewOrder from "./ModalViewOrder"
@@ -31,9 +30,17 @@ export default function ManageOrder() {
     }
 
     const handleCash = async (item) => {
-        const res = await updateStatusPayment({ id: item.id })
+        const res = await payOrder({ id: item.id })
         if (res && res.errCode === 0) {
             toast.success(`Order of ${item.UserData.firstName} ${item.UserData.lastName} was paid`)
+            fetchAllOrder()
+        }
+    }
+
+    const handleDeliver = async (item) => {
+        const res = await deliverProduct({ id: item.id })
+        if (res && res.errCode === 0) {
+            toast.success(`Order of ${item.UserData.firstName} ${item.UserData.lastName} was delivered`)
             fetchAllOrder()
         }
     }
@@ -87,14 +94,22 @@ export default function ManageOrder() {
                                                                 Chi tiết
                                                             </button>
                                                             {
-                                                                item.statusPayment === 'SP1' &&
-                                                                (
-                                                                    <button className="mb-2 text-white w-14 bg-yellow-400 hover:bg-yellow-300 p-2 border-none outline-none" name="View" onClick={() => handleCash(item)}>
-                                                                        <i className="fa-solid fa-dollar-sign fa-md"></i>
-                                                                        <br />
-                                                                        Đã trả
-                                                                    </button>
-                                                                )
+                                                                item.statusPayment === 'SP1' ?
+                                                                    (
+                                                                        <button className="mb-2 text-white w-14 bg-yellow-400 hover:bg-yellow-300 p-2 border-none outline-none" name="View" onClick={() => handleCash(item)}>
+                                                                            <i className="fa-solid fa-dollar-sign fa-md"></i>
+                                                                            <br />
+                                                                            Đã trả
+                                                                        </button>
+                                                                    )
+                                                                    :
+                                                                    (
+                                                                        <button className="mb-2 text-white w-14 bg-blue-600 hover:bg-blue-500 p-2 border-none outline-none" name="Deliver" onClick={() => handleDeliver(item)}>
+                                                                            <i className="fa-solid fa-dollar-sign fa-md"></i>
+                                                                            <br />
+                                                                            Đã ship
+                                                                        </button>
+                                                                    )
                                                             }
                                                         </td>
                                                     </tr>

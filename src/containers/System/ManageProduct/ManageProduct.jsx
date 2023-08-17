@@ -23,14 +23,14 @@ export default function ManageProduct() {
 
     const fetchDataProduct = async () => {
         const res = await fetchAllProductByCategory('ALL')
-        if (res && res.errCode === 0) {
+        if (res && (res.errCode === 0 || res.errCode === 1)) {
             setAllProductArr(res.data)
         }
     }
 
     useEffect(() => {
+        // dispatch(fetchAllcodeSize())
         fetchDataProduct()
-        dispatch(fetchAllcodeSize())
         dispatch(fetchAllcodeCategory())
         window.scrollTo(0, 0)
     }, [])
@@ -57,22 +57,22 @@ export default function ManageProduct() {
         setShowModalEdit(true)
     }
 
-    const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
-    const handleChangeChecked = (e) => {
-        const { id, value } = e.target
-        const updatedCheckboxes = [...selectedCheckboxes];
-        // Find index
-        const findIdx = updatedCheckboxes.indexOf(id);
-        // Index > -1 means that the item exists and that the checkbox is checked
-        // and in that case we want to remove it from the array and uncheck it
-        if (findIdx > -1) {
-            updatedCheckboxes.splice(findIdx, 1);
-        } else {
-            // updatedCheckboxes.push(id);
-            updatedCheckboxes.push(value);
-        }
-        setSelectedCheckboxes(updatedCheckboxes);
-    };
+    // const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+    // const handleChangeChecked = (e) => {
+    //     const { id, value } = e.target
+    //     const updatedCheckboxes = [...selectedCheckboxes];
+    //     // Find index
+    //     const findIdx = updatedCheckboxes.indexOf(id);
+    //     // Index > -1 means that the item exists and that the checkbox is checked
+    //     // and in that case we want to remove it from the array and uncheck it
+    //     if (findIdx > -1) {
+    //         updatedCheckboxes.splice(findIdx, 1);
+    //     } else {
+    //         // updatedCheckboxes.push(id);
+    //         updatedCheckboxes.push(value);
+    //     }
+    //     setSelectedCheckboxes(updatedCheckboxes);
+    // };
 
     const handleOnChange = event => {
         setDataProduct({
@@ -98,8 +98,10 @@ export default function ManageProduct() {
 
     return (
         <>
-            <ModalEditProduct showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} dataProduct={dataProduct} selectedCheckboxes={selectedCheckboxes}
-                handleOnChange={handleOnChange} fetchRequest={fetchRequest} handleChangeChecked={handleChangeChecked} file={file} handlePreviewImage={handlePreviewImage} />
+            {/* selectedCheckboxes={selectedCheckboxes}
+            handleChangeChecked={handleChangeChecked} */}
+            <ModalEditProduct showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} dataProduct={dataProduct} file={file} handlePreviewImage={handlePreviewImage}
+                handleOnChange={handleOnChange} fetchRequest={fetchRequest} />
             <ModalDeleteProduct showModalDelete={showModalDelete} setShowModalDelete={setShowModalDelete} dataProduct={dataProduct} fetchRequest={fetchRequest} />
             <ModalViewProduct showModalView={showModalView} setShowModalView={setShowModalView} dataProduct={dataProduct} />
             <ModalCreateProduct showModalCreate={showModalCreate} setShowModalCreate={setShowModalCreate} fetchRequest={fetchRequest} />
@@ -141,7 +143,7 @@ export default function ManageProduct() {
                                                             </td>
                                                             <td>{item.name}</td>
                                                             <td>{formatPrice(item.originalPrice)}</td>
-                                                            <td>{item.categoryData && item.categoryData.valueEn}</td>
+                                                            <td>{item.categoryData && item.categoryData.valueVn}</td>
                                                             <td>
                                                                 <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleView(item)}>
                                                                     <i className="fa-regular fa-eye fa-md mr-1"></i>

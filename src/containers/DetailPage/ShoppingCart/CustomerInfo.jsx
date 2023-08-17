@@ -80,7 +80,7 @@ export default function CustomerInfo({ cart, isViewFunction }) {
                         }
                     </div>
                     <div className="w-1/2">
-                        <p className="font-normal text-lg">Họ</p>
+                        <p className="font-normal text-lg">Tên</p>
                         {
                             isViewFunction === 'false' ?
                                 <input type="text" className="bg-white border-2 py-1 px-2 w-full" name="lastName" value={inputValues.lastName} onChange={handleOnChange} />

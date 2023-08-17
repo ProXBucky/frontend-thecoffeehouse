@@ -1,6 +1,4 @@
-import { useSelector } from "react-redux";
 import NavbarLeft from "./NavbarLeft";
-import { useEffect, useState } from "react";
 import StoreRoute from "../../routes/StoreRoute";
 
 export default function StoreList() {

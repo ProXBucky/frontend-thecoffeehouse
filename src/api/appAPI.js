@@ -1,15 +1,23 @@
 import axios from "../../axios";
 
-const fetchAllAdmin = (body) => {
-    return axios.get('/api/get-all-admin', body)
+const fetchAllAdmin = () => {
+    return axios.get('/api/get-all-admin')
+}
+
+const fetchAllAdminNotApproved = () => {
+    return axios.get('/api/get-all-admin-not-approved')
+}
+
+const approveAdminById = (id) => {
+    return axios.put(`/api/approve-admin-by-id?id=${id}`)
 }
 
 const fetchDataAllcodes = (type) => {
     return axios.get(`/api/get-allcode-by-type?type=${type}`)
 }
 
-const fetchAllProductByCategory = (category) => {
-    return axios.get(`/api/get-all-product-by-category?category=${category}`)
+const fetchAllProductByCategory = (category, limit) => {
+    return axios.get(`/api/get-all-product-by-category?category=${category}&limit=${limit}`)
 }
 
 const fetchAllStoreByCity = (city) => {
@@ -24,4 +32,11 @@ const fetchDetailStoreById = (id) => {
     return axios.get(`/api/get-detail-store-by-id?id=${id}`)
 }
 
-export { fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin, fetchAllStoreByCity, fetchDetailProductById, fetchDetailStoreById }
+const fetchBestSeller = (limit) => {
+    return axios.get(`/api/get-best-seller?limit=${limit}`,)
+}
+
+export {
+    fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin, fetchAllStoreByCity, fetchDetailProductById, fetchDetailStoreById,
+    fetchAllAdminNotApproved, approveAdminById, fetchBestSeller
+}

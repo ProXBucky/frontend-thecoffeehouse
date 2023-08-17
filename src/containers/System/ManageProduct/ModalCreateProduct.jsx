@@ -15,24 +15,24 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
     });
     const [file, setFile] = useState();
     const cateArr = useSelector(categoryAllcodeSelector)
-    const sizeArr = useSelector(sizeAllcodeSelector)
-    const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+    // const sizeArr = useSelector(sizeAllcodeSelector)
+    // const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
 
-    const handleChangeChecked = (e) => {
-        const { id, value } = e.target
-        const updatedCheckboxes = [...selectedCheckboxes];
-        // Find index
-        const findIdx = updatedCheckboxes.indexOf(id);
-        // Index > -1 means that the item exists and that the checkbox is checked
-        // and in that case we want to remove it from the array and uncheck it
-        if (findIdx > -1) {
-            updatedCheckboxes.splice(findIdx, 1);
-        } else {
-            // updatedCheckboxes.push(id);
-            updatedCheckboxes.push(value);
-        }
-        setSelectedCheckboxes(updatedCheckboxes);
-    };
+    // const handleChangeChecked = (e) => {
+    //     const { id, value } = e.target
+    //     const updatedCheckboxes = [...selectedCheckboxes];
+    //     // Find index
+    //     const findIdx = updatedCheckboxes.indexOf(id);
+    //     // Index > -1 means that the item exists and that the checkbox is checked
+    //     // and in that case we want to remove it from the array and uncheck it
+    //     if (findIdx > -1) {
+    //         updatedCheckboxes.splice(findIdx, 1);
+    //     } else {
+    //         // updatedCheckboxes.push(id);
+    //         updatedCheckboxes.push(value);
+    //     }
+    //     setSelectedCheckboxes(updatedCheckboxes);
+    // };
 
     const handleOnChange = event => {
         const { name, value } = event.target;
@@ -70,7 +70,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                 name: inputValues.name,
                 originalPrice: inputValues.originalPrice,
                 category: inputValues.category,
-                size: selectedCheckboxes.toString(),
+                // size: selectedCheckboxes.toString(),
                 image: inputValues.image,
                 description: inputValues.description
             })
@@ -87,7 +87,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                 description: ''
             })
             setFile('')
-            setSelectedCheckboxes([])
+            // setSelectedCheckboxes([])
             setShowModalCreate(false)
             fetchRequest()
         }
@@ -127,14 +127,14 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                                 {
                                                     cateArr && cateArr.length > 0 &&
                                                     cateArr.map((item, index) => {
-                                                        return <option className="cursor-pointer" key={index} value={item.keyMap}>{item.valueEn}</option>
+                                                        return <option className="cursor-pointer" key={index} value={item.keyMap}>{item.valueVn}</option>
                                                     })
                                                 }
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="w-full flex justify-between mt-5">
-                                        <div className="w-1/3">
+                                    <div className="w-full mt-5">
+                                        {/* <div className="w-1/3">
                                             <label className="text-lg">Kích cỡ (optional)</label><br />
                                             {
                                                 sizeArr && sizeArr.length > 0 &&
@@ -147,14 +147,14 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                                     )
                                                 })
                                             }
-                                        </div>
-                                        <div className="pl-[120px] w-2/3 items-center">
+                                        </div> */}
+                                        <div className="w-full items-center">
                                             <label className="text-lg pr-2">Hình ảnh</label>
                                             <input id='upload-Img' type='file' hidden name="image" onChange={handlePreviewImage} />
                                             <label className='upload text-lg mr-2 cursor-pointer' htmlFor='upload-Img'><i className="fa-solid fa-arrow-up-from-bracket fa-lg"></i></label>
                                             <br />
                                             <div className="border-2 w-full h-[100px] mt-3 flex justify-center">
-                                                <img src={file} className="cover h-[100px]  cursor-pointer scale-100 hover:scale-[3] ease-in duration-100" />
+                                                <img src={file} className="cover h-auto  cursor-pointer scale-100 hover:scale-[3] ease-in duration-100" />
                                             </div>
                                         </div>
                                     </div>

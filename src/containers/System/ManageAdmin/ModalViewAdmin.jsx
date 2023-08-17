@@ -37,23 +37,23 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.email}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">Password:</th>
+                                                            <th className="h-12 bg-[#f68122] text-white">Mật khẩu:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.password}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">First Name:</th>
+                                                            <th className="h-12 bg-[#f68122] text-white">Họ:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.firstName}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">Last Name:</th>
+                                                            <th className="h-12 bg-[#f68122] text-white">Tên:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.lastName}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">Address:</th>
+                                                            <th className="h-12 bg-[#f68122] text-white">Địa chỉ:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.address}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">Phone:</th>
+                                                            <th className="h-12 bg-[#f68122] text-white">SĐT:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.phone}</td>
                                                         </tr>
                                                     </>

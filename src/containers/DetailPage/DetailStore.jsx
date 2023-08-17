@@ -48,7 +48,7 @@ export default function DetailStore() {
                                 )
                             })
                         }
-                        <div dangerouslySetInnerHTML={{ __html: detailData.mapLink }}></div>
+                        <div dangerouslySetInnerHTML={{ __html: detailData.mapHTML }}></div>
                     </div>
                     <div className="w-1/2 px-10">
                         <p className="font-medium text-2xl">{detailData.nameStore}</p>

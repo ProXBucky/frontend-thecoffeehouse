@@ -6,9 +6,9 @@ export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete
     const handleAction = async () => {
         let res = await deleteProduct(dataProduct.id)
         if (res.errCode === 0) {
-            toast.success('Delete admin success')
-            fetchRequest()
+            toast.success('Delete product success')
             setShowModalDelete(false)
+            fetchRequest()
         } else {
             toast.error(res.errMessage)
         }

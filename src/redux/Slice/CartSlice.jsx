@@ -45,6 +45,9 @@ export const CartSlice = createSlice({
                     (item) => item.id !== action.payload.id
                 );
                 state.cartItems = nextCartItems;
+                if (state.cartTotalQuantity === 1) {
+                    state.cartTotalQuantity = 0
+                }
                 toast.error(`${action.payload.name} đã xóa khỏi giỏ hàng`);
             }
             localStorage.setItem("shopping-cart", JSON.stringify(state.cartItems));
@@ -58,6 +61,9 @@ export const CartSlice = createSlice({
                         (item) => item.id !== cartItem.id
                     );
                     state.cartItems = nextCartItems;
+                    if (nextCartItems.length === 0) {
+                        state.cartTotalQuantity = 0
+                    }
                     toast.error(`${action.payload.name} đã xóa khỏi giỏ hàng`);
                 }
                 localStorage.setItem("shopping-cart", JSON.stringify(state.cartItems));
@@ -80,21 +86,22 @@ export const CartSlice = createSlice({
                     quantity: 0,
                 }
             );
-            // total = parseFloat(total.toFixed(2));
             state.cartTotalQuantity = quantity;
             state.cartTotalAmount = total;
         },
 
         clearCart(state, action) {
             state.cartItems = [];
+            state.cartTotalQuantity = 0
             localStorage.setItem("shopping-cart", JSON.stringify(state.cartItems));
             toast.error(`Giỏ hàng đã xóa`);
         },
 
         orderSuccess(state, action) {
             state.cartItems = [];
+            state.cartTotalQuantity = 0
             localStorage.setItem("shopping-cart", JSON.stringify(state.cartItems));
-            toast.success('Đặt hàng thành công, hãy nhớ để ý số điện thoại của bạn nhé <3')
+            toast.success('Đặt hàng thành công, hãy nhớ để ý số điện thoại của bạn nhé')
         },
     },
 });

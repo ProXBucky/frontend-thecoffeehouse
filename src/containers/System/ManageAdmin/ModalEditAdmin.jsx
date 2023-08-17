@@ -74,31 +74,31 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
                                                                 </td>
                                                             </tr>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">Password:</th>
+                                                                <th className="h-12 bg-[#f68122] text-white">Mật khẩu:</th>
                                                                 <td className="bg-[#f6c7a0]">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.password} name="password" onChange={handleOnChange} />
                                                                 </td>
                                                             </tr>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">First Name:</th>
+                                                                <th className="h-12 bg-[#f68122] text-white">Họ:</th>
                                                                 <td className="bg-[#f6c7a0]">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.firstName} name="firstName" onChange={handleOnChange} />
                                                                 </td>
                                                             </tr>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">Last Name:</th>
+                                                                <th className="h-12 bg-[#f68122] text-white">Tên:</th>
                                                                 <td className="bg-[#f6c7a0]">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.lastName} name="lastName" onChange={handleOnChange} />
                                                                 </td>
                                                             </tr>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">Address:</th>
+                                                                <th className="h-12 bg-[#f68122] text-white">Địa chỉ:</th>
                                                                 <td className="bg-[#f6c7a0]">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.address} name="address" onChange={handleOnChange} />
                                                                 </td>
                                                             </tr>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">Phone:</th>
+                                                                <th className="h-12 bg-[#f68122] text-white">SĐT:</th>
                                                                 <td className="bg-[#f6c7a0]">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.phone} name="phone" onChange={handleOnChange} />
                                                                 </td>

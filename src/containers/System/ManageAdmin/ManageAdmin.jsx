@@ -3,8 +3,9 @@ import ModalEditAdmin from "./ModalEditAdmin"
 import ModalCreateAdmin from "./ModalCreateAdmin"
 import ModalDeleteAdmin from "./ModalDeleteAdmin"
 import ModalViewAdmin from "./ModalViewAdmin"
-import { fetchAllAdmins } from "../../../redux/Slice/AppSlice"
-import { adminArrSelector } from "../../../redux/selector"
+import ModalApproveAdmin from "./ModalApproveAdmin"
+import { fetchAllAdmins, fetchAllAdminsNotApproved } from "../../../redux/Slice/AppSlice"
+import { adminArrSelector, adminNotApprovedArrSelector } from "../../../redux/selector"
 import { useDispatch, useSelector } from "react-redux"
 import RiseLoader from "react-spinners/RiseLoader"
 
@@ -14,23 +15,29 @@ export default function ManageAdmin() {
     const [showModalView, setShowModalView] = useState(false)
     const [showModalEdit, setShowModalEdit] = useState(false)
     const [showModalDelete, setShowModalDelete] = useState(false)
+    const [showModal, setShowModal] = useState(false)
     const [dataUser, setDataUser] = useState({})
     const dispatch = useDispatch()
     const adminArr = useSelector(adminArrSelector)
-
+    const adminNotApprovedArr = useSelector(adminNotApprovedArrSelector)
 
     useEffect(() => {
         dispatch(fetchAllAdmins())
+        dispatch(fetchAllAdminsNotApproved())
         window.scrollTo(0, 0)
     }, [])
 
 
     const fetchRequest = useCallback(() => {
         dispatch(fetchAllAdmins())
+        dispatch(fetchAllAdminsNotApproved())
     }, [adminArr]);
 
     const handleCreate = () => {
         setShowModalCreate(true)
+    }
+    const handleApprove = () => {
+        setShowModal(true)
     }
     const handleView = (item) => {
         setDataUser(item)
@@ -54,6 +61,7 @@ export default function ManageAdmin() {
 
     return (
         <>
+            <ModalApproveAdmin showModal={showModal} setShowModal={setShowModal} adminNotApprovedArr={adminNotApprovedArr} fetchRequest={fetchRequest} />
             <ModalEditAdmin showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} dataUser={dataUser} handleOnChange={handleOnChange} fetchRequest={fetchRequest} />
             <ModalDeleteAdmin showModalDelete={showModalDelete} setShowModalDelete={setShowModalDelete} dataUser={dataUser} fetchRequest={fetchRequest} />
             <ModalViewAdmin showModalView={showModalView} setShowModalView={setShowModalView} dataUser={dataUser} />
@@ -61,6 +69,10 @@ export default function ManageAdmin() {
             <div className="p-10">
                 <p className="text-3xl font-medium inline-block">Quản lý quản trị viên</p>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreate()}>Tạo mới quản trị viên</button>
+                <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white relative" name="Approved" onClick={() => handleApprove()}>
+                    Đang chờ
+                    <span className="bg-red-500 border text-white px-2 rounded-full absolute top-[-10px] right-[-10px]">{adminNotApprovedArr === 'None' ? '0' : adminNotApprovedArr.length}</span>
+                </button>
                 <div className="w-ful mt-10 text-center text-sm">
                     <table className="w-full px-3 rounded-lg overflow-hidden">
                         <thead className="h-14 bg-[#f68122] text-white border border-slate-300 overflow-hidden">
@@ -86,7 +98,7 @@ export default function ManageAdmin() {
                                             (
                                                 adminArr.map((item, index) => {
                                                     return (
-                                                        <tr className="h-12 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
+                                                        <tr className="h-14 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
                                                             <td>{item.id}</td>
                                                             <td>{item.email}</td>
                                                             <td>{item.firstName}</td>

@@ -145,7 +145,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                                 {
                                                     cityArr && cityArr.length > 0 &&
                                                     cityArr.map((item, index) => {
-                                                        return <option className="cursor-pointer" key={index} value={item.keyMap}>{item.valueEn}</option>
+                                                        return <option className="cursor-pointer" key={index} value={item.keyMap}>{item.valueVn}</option>
                                                     })
                                                 }
                                             </select>

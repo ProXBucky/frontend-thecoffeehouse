@@ -25,23 +25,18 @@ export default function ModalViewProduct({ showModalView, setShowModalView, data
                                 {/*body*/}
                                 <div className="relative p-6 flex-auto mx-10">
                                     <div className="w-full flex justify-between">
-                                        <div className="w-1/3 mt-20 ">
+                                        <div className="w-1/2 mt-20">
                                             <label className="text-xl font-medium">Tên sản phẩm: </label>{dataProduct.name}<br />
                                             <label className="text-xl font-medium">Giá tiền: </label>{formatPrice(dataProduct.originalPrice)}(VND)<br />
-                                        </div>
-                                        <div className="w-1/3 flex justify-center h-[255px] ">
-                                            <img src={decodeBase64Func(dataProduct.image)} className="cover h-[255px] w-[255px] overflow-hidden cursor-pointer rounded-xl" style={{ boxShadow: '0px 0px 13px 0px #00000040' }} />
-                                        </div>
-
-                                        <div className="w-1/3 mt-20 text-center">
                                             <label className="text-xl font-medium">Thể loại:</label> {dataProduct.categoryData.valueEn}<br />
-                                            {/* <label className="text-xl font-medium">Size:  </label>{dataProduct.sizeData ? dataProduct.sizeData.valueEn : 'None'}<br /> */}
-                                            <label className="text-xl font-medium">Kích thước:  </label>{dataProduct.size ? dataProduct.size : 'None'}<br />
+                                        </div>
+                                        <div className="w-1/2 flex justify-center h-[255px] ">
+                                            <img src={decodeBase64Func(dataProduct.image)} className="cover h-[255px] w-[255px] overflow-hidden cursor-pointer rounded-xl" style={{ boxShadow: '0px 0px 13px 0px #00000040' }} />
                                         </div>
                                     </div>
                                     <div className="w-full mt-5 ">
                                         <label className="text-xl font-medium">Mô tả sản phẩm</label><br />
-                                        <textarea className=" border-2 outline-none bg-white p-2 w-full h-auto"
+                                        <textarea className=" border-2 outline-none bg-white p-2 w-full h-fit"
                                             name="description"
                                             value={dataProduct.description}
                                             disabled

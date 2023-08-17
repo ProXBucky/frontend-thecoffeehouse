@@ -4,9 +4,10 @@ import { categoryAllcodeSelector, sizeAllcodeSelector } from "../../../redux/sel
 import { updateProductData } from "../../../api/adminAPI"
 import { toast } from "react-toastify"
 
-export default function ModalEditProduct({ showModalEdit, setShowModalEdit, dataProduct, handleOnChange, fetchRequest, handleChangeChecked, selectedCheckboxes, file, handlePreviewImage }) {
+// handleChangeChecked, selectedCheckboxes,
+export default function ModalEditProduct({ showModalEdit, setShowModalEdit, dataProduct, handleOnChange, fetchRequest, file, handlePreviewImage }) {
     const cateArr = useSelector(categoryAllcodeSelector)
-    const sizeArr = useSelector(sizeAllcodeSelector)
+    // const sizeArr = useSelector(sizeAllcodeSelector)
 
     const validateForm = () => {
         let check = true;
@@ -34,7 +35,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                 name: dataProduct.name,
                 description: dataProduct.description,
                 category: dataProduct.category,
-                size: selectedCheckboxes.toString(),
+                // size: selectedCheckboxes.toString(),
                 image: dataProduct.image,
                 originalPrice: dataProduct.originalPrice,
             })
@@ -80,18 +81,17 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                             <label className="text-lg mr-4">Thể loại</label><br />
                                             <select className="border-2 outline-none bg-white p-2 w-[170px] cursor-pointer" onChange={handleOnChange} name="category" value={dataProduct.category} >
                                                 <option className="cursor-pointer" selected>Không có</option>
-
                                                 {
                                                     cateArr && cateArr.length > 0 &&
                                                     cateArr.map((item, index) => {
-                                                        return <option className="cursor-pointer" key={index} value={item.keyMap}>{item.valueEn}</option>
+                                                        return <option className="cursor-pointer" key={index} value={item.keyMap}>{item.valueVn}</option>
                                                     })
                                                 }
                                             </select>
                                         </div>
                                     </div>
                                     <div className="w-full flex justify-between mt-5">
-                                        <div className="w-1/2 text-red-600 bg-red-300">
+                                        {/* <div className="w-1/2 text-red-600 bg-red-300">
                                             <label className="text-lg">Kích thước (optional) MAINTAIN</label><br />
                                             {
                                                 sizeArr && sizeArr.length > 0 &&
@@ -104,8 +104,8 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                                     )
                                                 })
                                             }
-                                        </div>
-                                        <div className="pl-[120px] w-1/2 items-center">
+                                        </div> */}
+                                        <div className="w-full items-center">
                                             <label className="text-lg pr-2">Hình ảnh</label>
                                             <input id='upload-Img' type='file' hidden name="image" onChange={handlePreviewImage} />
                                             <label className='upload text-lg mr-2 cursor-pointer' htmlFor='upload-Img'><i className="fa-solid fa-arrow-up-from-bracket fa-lg"></i></label>
@@ -117,7 +117,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                     </div>
                                     <div className="w-full mt-5">
                                         <label className="text-lg">Mô tả sản phẩm</label><br />
-                                        <textarea className="border-2 outline-none bg-white p-2 w-full h-auto"
+                                        <textarea className="border-2 outline-none bg-white p-2 w-full h-fit"
                                             name="description"
                                             value={dataProduct.description}
                                             onChange={handleOnChange}
