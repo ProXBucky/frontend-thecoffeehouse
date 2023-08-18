@@ -10,24 +10,28 @@ export default function NavbarLeft() {
 
         <div className="relative h-full">
             <div className="pt-12">
-                <ul className="text-black bg-[#f5f2f0] cursor-pointer hover:text-white">
-                    <NavLink className="border-b-[#dcdcdc] border hover:bg-[#ec944a] overflow-hidden px-3 py-4 flex items-center text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-admin">
+                <ul className="text-black cursor-pointer hover:text-white">
+                    <NavLink className="border-b-2 mt-1 hover:bg-[#ec944a] overflow-hidden px-3 py-4 flex items-center text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/dashboard">
+                        <i className="fa-solid fa-chart-line fa-xl mr-4"></i>
+                        <label className="font-medium cursor-pointer text-base">Trang_chủ</label>
+                    </NavLink>
+                    <NavLink className="border-b-2 mt-1 hover:bg-[#ec944a] overflow-hidden px-3 py-4 flex items-center text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-admin">
                         <i className="fa-solid fa-user-tie fa-xl mr-4"></i>
                         <label className="font-medium cursor-pointer text-base">Quản_trị_viên</label>
                     </NavLink>
-                    <NavLink className="border-b-[#dcdcdc] border hover:bg-[#ec944a] overflow-hidden px-3 py-4 flex items-center text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-product">
+                    <NavLink className="border-b-2 mt-1 hover:bg-[#ec944a] overflow-hidden px-3 py-4 flex items-center text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-product">
                         <i className="fa-solid fa-blender fa-xl mr-4 ml-[-3px]"></i>
                         <label className="font-medium cursor-pointer text-base">Sản_phẩm</label>
                     </NavLink>
-                    <NavLink className="border-b-[#dcdcdc] border hover:bg-[#ec944a] overflow-hidden px-3 py-4 flex items-center text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-store">
+                    <NavLink className="border-b-2 mt-1 hover:bg-[#ec944a] overflow-hidden px-3 py-4 flex items-center text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-store">
                         <i className="fa-solid fa-shop fa-xl mr-4 ml-[-5px]"></i>
                         <label className="font-medium cursor-pointer text-base">Cửa_hàng</label>
                     </NavLink>
-                    <NavLink className="border-b-[#dcdcdc] border hover:bg-[#ec944a] overflow-hidden px-3 py-4 flex items-center text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-order">
+                    <NavLink className="border-b-2 mt-1 hover:bg-[#ec944a] overflow-hidden px-3 py-4 flex items-center text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-order">
                         <i className="fa-solid fa-truck-fast fa-xl mr-4 ml-[-4px]"></i>
                         <label className="font-medium cursor-pointer text-base">Đơn_hàng</label>
                     </NavLink>
-                    <NavLink className="border-b-[#dcdcdc] border hover:bg-[#ec944a] overflow-hidden px-3 py-4 flex items-center text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/history-order">
+                    <NavLink className="border-b-2 mt-1 hover:bg-[#ec944a] overflow-hidden px-3 py-4 flex items-center text-base rounded-md text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/history-order">
                         <i className="fa-solid fa-clock-rotate-left fa-xl mr-4 ml-[-2px]"></i>
                         <label className="font-medium cursor-pointer text-base">Lịch_sử</label>
                     </NavLink>

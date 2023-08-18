@@ -17,24 +17,24 @@ export default function SystemHeader({ userInfo }) {
         dispatch(UserSlice.actions.logOutUser())
         history.push('/')
     }
-    const backSystemRoute = () => {
-        history.push('/system')
-    }
+    // const backSystemRoute = () => {
+    //     history.push('/system/dashboard')
+    // }
 
 
     return (
         <div className="w-full h-[60px] flex border fixed top-0 justify-between px-5 z-[47] bg-white">
-            <div className="w-1/6 text-black flex items-center ">
-                <i className="fa-solid fa-house-lock fa-xl cursor-pointer" onClick={backSystemRoute}></i>
+            <div className="w-1/3 text-black flex items-center">
+                {/* <i className="fa-solid fa-house-lock fa-xl cursor-pointer" onClick={backSystemRoute}></i> */}
                 {/* <label className="ml-1">Trang chủ</label> */}
             </div>
-            <div className='w-2/3 flex justify-center '>
+            <div className='w-1/3 flex justify-center '>
                 {/* <Link className='logo' to="/"> */}
                 <img className="block w-[255px] h-[60px] object-cover" src="/src/assets/LogoImg/The-Coffee-House-Logo-PNG-2.png" alt="Logo" />
                 {/* </Link> */}
             </div>
-            <div className='flex h-full items-center justify-end text-black w-1/6'>
-                <span className="text-lg font-normal mr-2">Hello {userInfo}</span>
+            <div className='flex h-full items-center justify-end text-black w-1/3'>
+                <span className="text-md font-normal mr-2">Hello {userInfo}</span>
                 {/* <label className="mx-2">Đăng xuất</label> */}
                 <i className="fa-solid fa-right-from-bracket fa-lg text-black cursor-pointer" onClick={handleLogout}></i>
             </div>

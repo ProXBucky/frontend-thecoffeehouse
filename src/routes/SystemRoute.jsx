@@ -15,6 +15,7 @@ import ManageProduct from "../containers/System/ManageProduct/ManageProduct";
 import ManageStore from "../containers/System/ManageStore/ManageStore";
 import ManageOrder from "../containers/System/ManageOrder/ManageOrder";
 import HistoryOrder from "../containers/System/ManageOrder/HistoryOrder";
+import DashBoard from "../containers/System/Dashboard";
 import { Suspense, lazy } from "react";
 
 
@@ -28,11 +29,12 @@ import Loading from "../components/Loading";
 export default function SystemRoute() {
     const isLogin = useSelector(isLoginedSelector)
     return (
-        <div>
+        <div className="bg-[#f5f2f0]">
             {/* <Suspense fallback={<Loading />}> */}
             {
                 isLogin ?
                     <Switch>
+                        <Route path="/system/dashboard" component={withRouter(DashBoard)} />
                         <Route path="/system/manage-admin" component={withRouter(ManageAdmin)} />
                         <Route path="/system/manage-product" component={withRouter(ManageProduct)} />
                         <Route path="/system/manage-store" component={withRouter(ManageStore)} />

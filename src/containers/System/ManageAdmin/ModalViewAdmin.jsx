@@ -16,7 +16,7 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
-                                        Thông tin quản trị viên với {`id: ${dataUser.id}`}
+                                        Thông tin quản trị viên
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalView(false)}></i>
@@ -29,31 +29,31 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
                                                 <tbody>
                                                     <>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">ID:</th>
+                                                            <th className="h-12 bg-[#f68122] w-1/4 text-white">ID:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.id}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">Email:</th>
+                                                            <th className="h-12 bg-[#f68122] w-1/4 text-white">Email:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.email}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">Mật khẩu:</th>
+                                                            <th className="h-12 bg-[#f68122] w-1/4 text-white">Mật khẩu:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.password}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">Họ:</th>
+                                                            <th className="h-12 bg-[#f68122] w-1/4 text-white">Họ:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.firstName}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">Tên:</th>
+                                                            <th className="h-12 bg-[#f68122] w-1/4 text-white">Tên:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.lastName}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">Địa chỉ:</th>
+                                                            <th className="h-12 bg-[#f68122] w-1/4 text-white">Địa chỉ:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.address}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="h-12 bg-[#f68122] text-white">SĐT:</th>
+                                                            <th className="h-12 bg-[#f68122] w-1/4 text-white">SĐT:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.phone}</td>
                                                         </tr>
                                                     </>
@@ -62,7 +62,7 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                <div className="flex items-center justify-end p-6  border-solid border-slate-200 rounded-b">
                                     <div>
                                         <button
                                             className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"

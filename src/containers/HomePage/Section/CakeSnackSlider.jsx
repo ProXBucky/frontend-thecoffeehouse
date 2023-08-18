@@ -14,7 +14,7 @@ export default function CakeSnackSlider({ settings }) {
     }, [])
 
     const fetchProduct = async () => {
-        const res = await fetchAllProductByCategory('CA3')
+        const res = await fetchAllProductByCategory('CA3', 8) // get cake limit 8
         if (res && res.errCode === 0) {
             setProductArr(res.data)
         }

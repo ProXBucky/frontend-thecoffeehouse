@@ -36,7 +36,7 @@ export default function ModalViewOrder({ showModalView, setShowModalView, orderD
 
                                     </div>
                                     {/* Footer */}
-                                    <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                    <div className="flex items-center justify-end p-6  border-solid border-slate-200 rounded-b">
                                         <div>
                                             <button
                                                 className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg border-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"

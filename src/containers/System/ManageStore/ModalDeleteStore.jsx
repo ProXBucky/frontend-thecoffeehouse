@@ -43,7 +43,7 @@ export default function ModalDeleteStore({ showModalDelete, setShowModalDelete, 
                                                 Bạn chắc chắn rồi chứ ?
                                             </p>
                                         </div>
-                                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                        <div className="flex items-center justify-end p-6  border-solid border-slate-200 rounded-b">
                                             <div>
                                                 <button
                                                     className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"

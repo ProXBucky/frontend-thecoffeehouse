@@ -58,7 +58,7 @@ export default function HistoryOrder() {
                                         orderList && orderList.length > 0 ?
                                             orderList.map((item, index) => {
                                                 return (
-                                                    <tr className="h-12 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
+                                                    <tr className="h-12 font-medium text-base bg-white border border-slate-300 overflow-hidden" key={index}>
                                                         <td>{item.UserData && item.UserData.firstName && item.UserData.lastName && (`${item.UserData.firstName} ${item.UserData.lastName}`)}</td>
                                                         <td>{item.UserData && item.UserData.address}</td>
                                                         <td>{item.UserData && item.UserData.phone}</td>

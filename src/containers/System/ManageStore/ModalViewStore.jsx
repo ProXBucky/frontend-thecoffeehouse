@@ -73,18 +73,18 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                                 })
                                             }
                                         </Slider >
-                                        <label className="text-xl font-medium">Mô tả cửa hàng rút gọn: </label><br />
-                                        <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={3}
+                                        <p className="text-xl font-medium mt-2">Mô tả cửa hàng rút gọn: </p>
+                                        <textarea className="border-2 outline-none bg-white p-2 w-full" rows={3}
                                             value={dataStore.shortDescription}
                                             disabled
                                         >
                                         </textarea>
                                     </div>
                                     <div className="w-[60%] font-normal text-base pl-40">
-                                        <label className="text-xl font-medium">Tên cửa hàng: </label><br />{dataStore.nameStore}<br />
-                                        <label className="text-xl font-medium">Địa chỉ: </label><br />{dataStore.address}<br />
-                                        <label className="text-xl font-medium">Thành phố: </label><br />{dataStore.cityData.valueEn}<br />
-                                        <label className="text-xl font-medium">Mô tả cửa hàng: </label><br />
+                                        <p className="text-xl font-medium">Tên cửa hàng: </p>{dataStore.nameStore}
+                                        <p className="text-xl font-medium mt-7">Địa chỉ: </p>{dataStore.address}
+                                        <p className="text-xl font-medium mt-7">Thành phố: </p>{dataStore.cityData.valueVn}
+                                        <p className="text-xl font-medium mt-7">Mô tả cửa hàng: </p>
                                         <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={6}
                                             value={dataStore.description}
                                             disabled
@@ -93,7 +93,7 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                     </div>
                                 </div>
                                 {/* Footer */}
-                                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                <div className="flex items-center justify-end p-6  border-solid border-slate-200 rounded-b">
                                     <div>
                                         <button
                                             className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"

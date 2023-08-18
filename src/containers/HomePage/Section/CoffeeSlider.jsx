@@ -13,7 +13,7 @@ export default function CoffeeSlider({ settings }) {
     }, [])
 
     const fetchProduct = async () => {
-        const res = await fetchAllProductByCategory('CA1') // CA1, Coffee
+        const res = await fetchAllProductByCategory('CA1', 8) // CA1, Coffee limit 8
         if (res && res.errCode === 0) {
             setProductArr(res.data)
         }

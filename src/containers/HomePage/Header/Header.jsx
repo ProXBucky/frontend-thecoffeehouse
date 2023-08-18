@@ -19,7 +19,7 @@ export default function Header() {
                 <img className="logo-image" src="/src/assets/LogoImg/The-Coffee-House-Logo-PNG-2.png" alt="Logo" />
             </Link>
 
-            <div class="navbar text-sm">
+            <div className="navbar text-sm">
                 <div className="nav">
                     <div className="dropbtn"><Link to="/collections/all">Menu<i className="fa-solid fa-caret-down ml-1 fa-2xs"></i></Link></div>
                     <div className="dropdown-content">
@@ -35,7 +35,7 @@ export default function Header() {
             </div>
             <div className='cart'>
                 <div className='nav'>
-                    <Link to="/login"><i class="fa-solid fa-user fa-xl text-black hover:text-[#f68122]"></i></Link>
+                    <Link to="/login"><i className="fa-solid fa-user fa-xl text-black hover:text-[#f68122]"></i></Link>
                 </div>
                 <div className='nav relative'>
                     <Link to="/shopping-cart"><i className="fa-solid fa-cart-shopping fa-xl text-black hover:text-[#f68122]"></i></Link>

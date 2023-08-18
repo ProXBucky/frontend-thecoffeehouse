@@ -132,7 +132,7 @@ export default function ManageProduct() {
                                             allProductArr && allProductArr.length > 0 ?
                                                 allProductArr.map((item, index) => {
                                                     return (
-                                                        <tr className="h-12 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
+                                                        <tr className="h-12 font-medium text-base bg-white border border-slate-300 overflow-hidden" key={index}>
                                                             <td className="py-4 flex justify-center">
                                                                 {
                                                                     item && item.image &&

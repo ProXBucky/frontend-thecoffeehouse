@@ -14,7 +14,7 @@ export default function FrostySlider({ settings }) {
     }, [])
 
     const fetchProduct = async () => {
-        const res = await fetchAllProductByCategory('CA4')
+        const res = await fetchAllProductByCategory('CA4', 8)
         if (res && res.errCode === 0) {
             setProductArr(res.data)
         }

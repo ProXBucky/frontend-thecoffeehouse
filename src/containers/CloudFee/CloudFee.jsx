@@ -27,7 +27,7 @@ export default function CloudFee() {
                             <h2 className="text-[#FEBF3E] font-[Baron] font- font-semibold text-2xl">CLOuDFEE</h2>
                             <h1 className="text-[#FEBF3E] font-[Glad]">Creme Brulee</h1>
                             <p className="text-white py-3"><b>Thức uống "chiều chuộng bản thân" bậc nhất</b> cho những ai thích vị ngọt ngào hay muốn thưởng thức sự kết hợp độc đáo giữa món tráng miệng và thức uống.</p>
-                            <a className="text-[#FEBF3E] hover:text-[#FEBF3E] cursor-pointer" href="https://order.thecoffeehouse.com/cloud-fee" target="_blank">Êm mượt như mây, Chill là ghiền ngay! <i class="fa-solid fa-caret-right ml-2"></i></a>
+                            <a className="text-[#FEBF3E] hover:text-[#FEBF3E] cursor-pointer" href="https://order.thecoffeehouse.com/cloud-fee" target="_blank">Êm mượt như mây, Chill là ghiền ngay! <i className="fa-solid fa-caret-right ml-2"></i></a>
                         </div>
                         <div className="w-1/2">
                             <img src="/src/assets/CloudFee/_creme-brulee.webp" />
@@ -42,7 +42,7 @@ export default function CloudFee() {
                             <h2 className="text-[#FEBF3E]">CLOuDFEE</h2>
                             <h1 className="text-[#FEBF3E]">Creamy</h1>
                             <p className="text-white py-3"><b>Thức uống "đánh thức" năng lượng ngày mới</b> hợp cho những ai mới bước vào thế giới cà phê hoặc ghiền cà phê nhưng muốn khám phá thêm nhiều hương vị mới.</p>
-                            <a className="text-[#FEBF3E] hover:text-[#FEBF3E] cursor-pointer" href="https://order.thecoffeehouse.com/cloud-fee" target="_blank">Êm mượt như mây, Chill là ghiền ngay! <i class="fa-solid fa-caret-right ml-2"></i></a>
+                            <a className="text-[#FEBF3E] hover:text-[#FEBF3E] cursor-pointer" href="https://order.thecoffeehouse.com/cloud-fee" target="_blank">Êm mượt như mây, Chill là ghiền ngay! <i className="fa-solid fa-caret-right ml-2"></i></a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ export default function CloudFee() {
                             Và giờ đây, bất kỳ ai ghé Nhà cũng có thể tìm thấy hương vị cà phê cho riêng mình.
                             <br />
                             <br />
-                            <a className="text-[#FEBF3E] hover:text-[#FEBF3E] cursor-pointer text-lg"> Đọc trọn câu chuyện <i class="fa-solid fa-caret-right ml-2"></i></a>
+                            <a className="text-[#FEBF3E] hover:text-[#FEBF3E] cursor-pointer text-lg"> Đọc trọn câu chuyện <i className="fa-solid fa-caret-right ml-2"></i></a>
                         </p>
                     </div>
                 </div>

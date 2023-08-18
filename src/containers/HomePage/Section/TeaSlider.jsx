@@ -13,7 +13,7 @@ export default function TeaSlider({ settings }) {
     }, [])
 
     const fetchProduct = async () => {
-        const res = await fetchAllProductByCategory('CA2')
+        const res = await fetchAllProductByCategory('CA2', 8)   // get Tea limit 8
         if (res && res.errCode === 0) {
             setProductArr(res.data)
         }

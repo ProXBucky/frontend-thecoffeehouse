@@ -59,7 +59,7 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[50] outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[70%] my-8">
+                        <div className="relative w-[50%] my-5">
 
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
@@ -71,45 +71,45 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalCreate(false)}></i>
                                 </div>
                                 {/*body*/}
-                                <div className="relative p-6 flex-auto">
+                                <div className="relative px-6 flex-auto">
                                     <div className="my-4 text-slate-500 text-lg leading-relaxed">
-                                        <div className="flex flex-wrap gap-28 px-2 justify-center">
-                                            <div>
-                                                <label className="block mb-3">
+                                        <div className="flex flex-wrap px-2 justify-center">
+                                            <div className="w-full">
+                                                <div className="block mb-3">
                                                     <p className="block font-medium text-slate-700 text-left text-lg">Email</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="example@gmail.com" name="email" onChange={handleOnChange} value={inputValues.email} />
-                                                </label>
-                                                <label className="block mb-3">
+                                                </div>
+                                                <div className="block mb-3">
                                                     <p className="block font-medium text-slate-700 text-left text-lg">Mật khẩu</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="**********" name="password" onChange={handleOnChange} value={inputValues.password} />
-                                                </label>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <label className="block mb-3">
+                                            <div className="w-full">
+                                                <div className="block mb-3">
                                                     <p className="block font-medium text-slate-700 text-left text-lg">Họ</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="AAA" name="firstName" onChange={handleOnChange} value={inputValues.firstName} />
-                                                </label>
-                                                <label className="block">
+                                                </div>
+                                                <div className="block">
                                                     <p className="block font-medium text-slate-700 text-left text-lg">Tên</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="BBB" name="lastName" onChange={handleOnChange} value={inputValues.lastName} />
-                                                </label>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <label className="block mb-3">
+                                            <div className="w-full">
+                                                <div className="block mb-3">
                                                     <p className="block font-medium text-slate-700 text-left text-lg">Địa chỉ</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="Ha Noi" name="address" onChange={handleOnChange} value={inputValues.address} />
-                                                </label>
-                                                <label className="block">
+                                                </div>
+                                                <div className="block">
                                                     <p className="block font-medium text-slate-700 text-left text-lg">Số điện thoại</p>
                                                     <input className="border-slate-200 placeholder-slate-400 bg-gray-100 text-black text-sm p-3 w-full" placeholder="+84xxxxxx" name="phone" onChange={handleOnChange} value={inputValues.phone} />
-                                                </label>
+                                                </div>
                                             </div>
 
                                         </div>
                                     </div>
                                 </div>
                                 {/*footer*/}
-                                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                <div className="flex items-center justify-end p-3  border-solid border-slate-200 rounded-b">
                                     <div>
                                         <button
                                             className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"

@@ -3,20 +3,6 @@ import { updateAdminData } from "../../../api/adminAPI"
 
 export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUser, handleOnChange, fetchRequest }) {
 
-    // const validateForm = () => {
-    //     let check = true;
-    //     const valueArr = ['email', 'password', 'firstName', 'lastName', 'address', 'phone']
-    //     const valueLabel = ['Email', 'Password', 'First Name', 'Last Name', 'Address', 'Phone']
-    //     for (let i = 0; i < valueArr.length; i++) {
-    //         if (!dataUser[valueArr[i]]) {
-    //             alert('Please type ' + valueLabel[i])
-    //             check = false;
-    //             break
-    //         }
-    //     }
-    //     return check
-    // }
-
     const handleAction = async () => {
         let res = await updateAdminData({
             id: dataUser.id,  //for findOne
@@ -48,12 +34,12 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
-                                        Sửa thông tin quản trị viên với {`id: ${dataUser.id}`}
+                                        Sửa thông tin quản trị viên
                                     </h3>
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalEdit(false)}></i>
                                 </div>
                                 {/*body*/}
-                                <div className="relative p-4 flex-auto">
+                                <div className="relative p-6 flex-auto">
                                     <div className="my-4 text-gray-700 text-base leading-relaxed">
                                         {
                                             dataUser && dataUser.id &&
@@ -112,7 +98,7 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
                                     </div>
                                 </div>
                                 {/*footer*/}
-                                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                <div className="flex items-center justify-end p-6  border-solid border-slate-200 rounded-b">
                                     <div>
                                         <button
                                             className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
@@ -125,7 +111,7 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
                                             type="button"
                                             onClick={handleAction}
                                         >
-                                            Save
+                                            Lưu
                                         </button>
                                     </div>
                                 </div>

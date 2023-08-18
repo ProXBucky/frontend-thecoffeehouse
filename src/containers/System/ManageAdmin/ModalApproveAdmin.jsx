@@ -1,15 +1,26 @@
 import { toast } from "react-toastify"
 import { approveAdminById } from "../../../api/appAPI"
+import { deleteAdmin } from "../../../api/adminAPI"
 import RiseLoader from "react-spinners/RiseLoader"
 
 
 export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApprovedArr, fetchRequest }) {
 
     const handleApprove = async (item) => {
-        // console.log(item)
         let res = await approveAdminById(item.id)
         if (res.errCode === 0) {
             toast.success('Duyệt thành công')
+            fetchRequest()
+            setShowModal(false)
+        } else {
+            toast.error(res.errMessage)
+        }
+    }
+
+    const handleReject = async (item) => {
+        let res = await deleteAdmin(item.id)
+        if (res.errCode === 0) {
+            toast.success('Từ chối thành công')
             fetchRequest()
             setShowModal(false)
         } else {
@@ -69,8 +80,12 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
                                                                             <td>{item.address}</td>
                                                                             <td>
                                                                                 <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleApprove(item)}>
-                                                                                    <i class="fa-solid fa-check fa-md mr-1"></i>
+                                                                                    <i className="fa-solid fa-check fa-md mr-1"></i>
                                                                                     Duyệt
+                                                                                </button>
+                                                                                <button className="text-white bg-red-600 hover:bg-red-500 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleReject(item)}>
+                                                                                    <i class="fa-solid fa-x fa-md mr-1"></i>
+                                                                                    Từ chối
                                                                                 </button>
                                                                             </td>
                                                                         </tr>

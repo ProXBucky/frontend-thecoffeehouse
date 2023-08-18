@@ -124,12 +124,12 @@ export default function ManageStore() {
                                             allStoreArr && allStoreArr.length > 0 ?
                                                 allStoreArr.map((item, index) => {
                                                     return (
-                                                        <tr className="h-12 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
-                                                            <td className="p-4 flex justify-center">
+                                                        <tr className="h-12 font-medium text-base bg-white border border-slate-300 overflow-hidden" key={index}>
+                                                            <td className="p-6 flex justify-center">
                                                                 {
                                                                     item && item.imageData && item.imageData.length > 0 &&
                                                                     <div className="rounded-xl overflow-hidden">
-                                                                        <img src={decodeBase64Func(item.imageData[0].image)} className="w-[600px] h-[300px]" />
+                                                                        <img src={decodeBase64Func(item.imageData[0].image)} className="w-[500px] h-[250px]" />
                                                                     </div>
                                                                 }
                                                             </td>

@@ -7,13 +7,14 @@ import { fetchDetailStoreById } from "../../api/appAPI"
 import { toast } from "react-toastify";
 import { decodeBase64Func } from "../../utils/base64";
 import Footer from "../HomePage/Footer/Footer";
-
+import { useHistory } from "react-router-dom";
 
 
 export default function DetailStore() {
     const { id } = useParams();
     const [detailData, setDetailData] = useState({})
     const [imgData, setImgData] = useState([])
+    const history = useHistory()
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -28,6 +29,10 @@ export default function DetailStore() {
         } else {
             toast.error(respone.errMessage)
         }
+    }
+
+    const viewMenu = () => {
+        history.push('/collections/all')
     }
 
 
@@ -64,9 +69,9 @@ export default function DetailStore() {
                         <p className="mb-1"><i className="fa-solid fa-car"></i> Có chỗ đỗ xe hơi</p>
                         <p className="mb-1"><i className="fa-solid fa-face-smile-beam"></i> Phục vụ tại chỗ</p>
                         <p className="mb-1"><i className="fa-solid fa-bag-shopping"></i> Mua mang đi</p>
-                        <div className="border-t-2 border-b-2 py-5 mt-5">
+                        <div className="-2 border-b-2 py-5 mt-5">
                             <p className="font-medium">Món ngon tại {detailData.nameStore}</p>
-                            <button className="w-full mt-2 text-[#f68122] bg-[#FFF7E6]">Xem menu quán</button>
+                            <button className="w-full mt-2 text-[#f68122] bg-[#FFF7E6]" onClick={viewMenu}>Xem menu quán</button>
                         </div>
                     </div>
 

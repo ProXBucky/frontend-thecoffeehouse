@@ -28,14 +28,14 @@ export default function ModalDeleteAdmin({ showModalDelete, setShowModalDelete, 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
 
-                                        Xóa quản trị viên với {`id: ${dataUser.id}`}
+                                        Xóa quản trị viên
 
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalDelete(false)}></i>
                                 </div>
                                 {/*body*/}
-                                <div className="relative p-4 flex-auto text-center">
+                                <div className="relative p-6 flex-auto text-center">
                                     <div className="my-4 text-slate-500 text-lg leading-relaxed">
                                         <div>
                                             <i className="fa-solid fa-circle-exclamation fa-2xl text-red-600"></i>
@@ -43,8 +43,8 @@ export default function ModalDeleteAdmin({ showModalDelete, setShowModalDelete, 
                                                 Bạn chắc chắn rồi đúng không?
                                             </p>
                                         </div>
-                                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                                            <div>
+                                        <div className="flex justify-end  border-solid border-slate-200 rounded-b">
+                                            <div className="py-3">
                                                 <button
                                                     className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
                                                     onClick={() => setShowModalDelete(false)}

@@ -98,7 +98,7 @@ export default function ManageAdmin() {
                                             (
                                                 adminArr.map((item, index) => {
                                                     return (
-                                                        <tr className="h-14 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
+                                                        <tr className="h-14 font-medium text-base bg-white border border-slate-300 overflow-hidden" key={index}>
                                                             <td>{item.id}</td>
                                                             <td>{item.email}</td>
                                                             <td>{item.firstName}</td>
