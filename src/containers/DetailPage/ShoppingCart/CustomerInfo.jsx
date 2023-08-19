@@ -32,7 +32,8 @@ export default function CustomerInfo({ cart, isViewFunction }) {
         if (res && res.errCode === 0) {
             handleOrderSuccess()
         } else {
-            toast.error(res.errMessage)
+            toast.error('Lỗi hệ thống')
+
         }
         reset({
             email: '',
@@ -163,11 +164,11 @@ export default function CustomerInfo({ cart, isViewFunction }) {
                         :
                         <p>
                             <span className="font-medium text-2xl">Tổng hóa đơn: {formatPrice(cart.totalPrice)} VND </span>
-                            (
-                            {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP1' && <span className="text-green-500 font-semibold">{cart.StatusData.valueVn}</span>}
-                            {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP2' && <span className="text-red-500 font-semibold">{cart.StatusData.valueVn}</span>}
-                            {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP3' && <span className="text-blue-600 font-semibold">{cart.StatusData.valueVn}</span>}
-                            )
+
+                            {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP1' && <span className="text-white bg-red-500 p-3 rounded-2xl">{cart.StatusData.valueVn}</span>}
+                            {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP2' && <span className="text-white bg-green-500 p-3 rounded-2xl">{cart.StatusData.valueVn}</span>}
+                            {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP3' && <span className="text-white bg-blue-600 p-3 rounded-2xl">{cart.StatusData.valueVn}</span>}
+
                         </p>
                 }
                 {

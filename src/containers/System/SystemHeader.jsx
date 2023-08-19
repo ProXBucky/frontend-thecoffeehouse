@@ -34,7 +34,7 @@ export default function SystemHeader({ userInfo }) {
                 {/* </Link> */}
             </div>
             <div className='flex h-full items-center justify-end text-black w-1/3'>
-                <span className="text-md font-normal mr-2">Hello {userInfo}</span>
+                <span className="text-md font-normal mr-2">Xin chào {userInfo}</span>
                 {/* <label className="mx-2">Đăng xuất</label> */}
                 <i className="fa-solid fa-right-from-bracket fa-lg text-black cursor-pointer" onClick={handleLogout}></i>
             </div>

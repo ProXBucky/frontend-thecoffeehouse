@@ -52,10 +52,10 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
     const validateForm = () => {
         let check = true;
         const valueArr = ['name', 'originalPrice', 'category', 'image', 'description']
-        const valueLabel = ['Product Name', 'Original Price', 'Category', 'Image', 'Description']
+        const valueLabel = ['tên sản phẩm', 'giá tiền', 'thể loại', 'hình ảnh', 'mô tả sản phẩm']
         for (let i = 0; i < valueArr.length; i++) {
             if (!inputValues[valueArr[i]]) {
-                toast.error('Please type ' + valueLabel[i])
+                toast.error('Vui lòng nhập ' + valueLabel[i])
                 check = false;
                 break
             }
@@ -75,9 +75,10 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                 description: inputValues.description
             })
             if (response.errCode === 0) {
-                toast.success('Create new product succcess')
+                toast.success('Thêm sản phẩm mới thành công')
             } else {
-                toast.error(response.errMessage)
+                toast.error('Lỗi hệ thống')
+
             }
             setInputValues({
                 name: '',

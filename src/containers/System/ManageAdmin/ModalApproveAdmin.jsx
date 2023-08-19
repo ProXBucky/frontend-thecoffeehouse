@@ -13,7 +13,8 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
             fetchRequest()
             setShowModal(false)
         } else {
-            toast.error(res.errMessage)
+            toast.error('Lỗi hệ thống')
+
         }
     }
 
@@ -24,7 +25,8 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
             fetchRequest()
             setShowModal(false)
         } else {
-            toast.error(res.errMessage)
+            toast.error('Lỗi hệ thống')
+
         }
     }
 
@@ -84,7 +86,7 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
                                                                                     Duyệt
                                                                                 </button>
                                                                                 <button className="text-white bg-red-600 hover:bg-red-500 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleReject(item)}>
-                                                                                    <i class="fa-solid fa-x fa-md mr-1"></i>
+                                                                                    <i className="fa-solid fa-x fa-md mr-1"></i>
                                                                                     Từ chối
                                                                                 </button>
                                                                             </td>

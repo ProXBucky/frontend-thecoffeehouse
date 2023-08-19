@@ -33,7 +33,7 @@ export default function Login() {
       toast.success('Đăng nhập thành công')
       history.push('/system/dashboard')
     } else {
-      toast.error(res.errMessage)
+      toast.error(res.errMessage1)
     }
     reset({
       email: '',
@@ -46,8 +46,8 @@ export default function Login() {
     <>
       <div className="container py-20 flex justify-center">
         <div className="content-left w-full max-w-lg px-5">
-          <h2 className=" text-2xl font-medium pt-6">Đăng nhập</h2>
-          <p className="pb-2 text-red-500 text-center">( Chỉ dành cho quản trị viên )</p>
+          <h2 className=" text-2xl font-medium pt-4">Đăng nhập</h2>
+          <p className=" text-red-500 text-center">( Chỉ dành cho quản trị viên )</p>
 
           <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
             <div className="w-full px-3">
@@ -97,6 +97,11 @@ export default function Login() {
             </div>
             <p className="py-3 text-center">Nếu bạn chưa có tài khoản, hãy đăng ký <Link to="/register">tại đây</Link></p>
             <button className="rounded-full mx-24 px-16 mt-3 text-white bg-black text-center" type="submit">Đăng nhập</button>
+            <p className="text-center mt-2">Tài khoản test: <br />
+              Email: admin1@gmail.com <br />
+              MK: admin1@
+
+            </p>
           </form>
         </div>
 

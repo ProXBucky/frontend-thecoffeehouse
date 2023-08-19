@@ -25,7 +25,7 @@ export default function StoreSlider() {
         return (
             <div
                 className="absolute"
-                style={{ ...style, zIndex: "1", left: "250px", top: "70%", cursor: "pointer" }}
+                style={{ ...style, zIndex: "1", left: "260px", bottom: "150px", cursor: "pointer" }}
                 onClick={onClick}
             >
                 <i className="fa-solid fa-circle-arrow-left fa-xl text-black"></i>
@@ -38,7 +38,7 @@ export default function StoreSlider() {
         return (
             <div
                 className="absolute"
-                style={{ ...style, zIndex: "1", left: "300px", top: "70%", cursor: "pointer" }}
+                style={{ ...style, zIndex: "1", left: "300px", bottom: "150px", cursor: "pointer" }}
                 onClick={onClick}
             >
                 <i className="fa-solid fa-circle-arrow-right fa-xl text-black"></i>
@@ -99,13 +99,13 @@ export default function StoreSlider() {
 
 
     return (
-        <div className="mt-10 h-[650px] text-black border-2" >
+        <div className="mt-10 h-[650px] text-black border-2 " >
             <Slider {...settingStore} className="w-full h-full py-20">
                 {
                     storeArr && storeArr.length > 0 &&
                     storeArr.map((item, index) => {
                         return (
-                            <div className="slider relative" key={index}>
+                            <div className="slider" key={index}>
                                 <div className="w-2/5 px-32 pt-20 relative">
                                     <label className="font-medium text-3xl">{item.nameStore}</label>
                                     <p className="mt-3">{item.shortDescription}</p>

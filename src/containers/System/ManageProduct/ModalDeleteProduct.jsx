@@ -6,11 +6,12 @@ export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete
     const handleAction = async () => {
         let res = await deleteProduct(dataProduct.id)
         if (res.errCode === 0) {
-            toast.success('Delete product success')
+            toast.success('Xóa sản phẩm thành công')
             setShowModalDelete(false)
             fetchRequest()
         } else {
-            toast.error(res.errMessage)
+            toast.error('Lỗi hệ thống')
+
         }
     }
 

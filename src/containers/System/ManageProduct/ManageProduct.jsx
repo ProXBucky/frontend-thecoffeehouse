@@ -105,12 +105,12 @@ export default function ManageProduct() {
             <ModalDeleteProduct showModalDelete={showModalDelete} setShowModalDelete={setShowModalDelete} dataProduct={dataProduct} fetchRequest={fetchRequest} />
             <ModalViewProduct showModalView={showModalView} setShowModalView={setShowModalView} dataProduct={dataProduct} />
             <ModalCreateProduct showModalCreate={showModalCreate} setShowModalCreate={setShowModalCreate} fetchRequest={fetchRequest} />
-            <div className="p-10">
-                <p className="text-3xl font-medium  inline-block">Quản lý sản phẩm</p>
+            <div className="p-10 text-sm">
+                <p className="text-2xl font-medium  inline-block">Quản lý sản phẩm</p>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={handleCreate}>Tạo sản phẩm mới</button>
-                <div className="w-ful mt-10 text-center text-sm">
+                <div className="w-ful mt-10 text-center">
                     <table className="w-full px-3 rounded-lg overflow-hidden">
-                        <thead className="h-14 bg-[#f68122] text-white border border-slate-300 text-center overflow-hidden">
+                        <thead className="h-14 bg-[#f68122] text-white border-slate-300 text-center overflow-hidden">
                             <tr>
                                 <th className="px-5">Hình ảnh</th>
                                 <th>Tên SP</th>
@@ -132,7 +132,7 @@ export default function ManageProduct() {
                                             allProductArr && allProductArr.length > 0 ?
                                                 allProductArr.map((item, index) => {
                                                     return (
-                                                        <tr className="h-12 font-medium text-base bg-white border border-slate-300 overflow-hidden" key={index}>
+                                                        <tr className="h-12 font-medium bg-white border-slate-300 overflow-hidden border-b" key={index}>
                                                             <td className="py-4 flex justify-center">
                                                                 {
                                                                     item && item.image &&
@@ -145,17 +145,17 @@ export default function ManageProduct() {
                                                             <td>{formatPrice(item.originalPrice)}</td>
                                                             <td>{item.categoryData && item.categoryData.valueVn}</td>
                                                             <td>
-                                                                <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleView(item)}>
-                                                                    <i className="fa-regular fa-eye fa-md mr-1"></i>
-                                                                    Chi tiết
+                                                                <button className="text-white bg-green-500 hover:bg-green-400 p-3 mr-2 border-none outline-none" name="View" onClick={() => handleView(item)}>
+                                                                    <i className="fa-regular fa-eye fa-md"></i>
+                                                                    {/* Chi tiết */}
                                                                 </button>
-                                                                <button className="text-white bg-yellow-400 hover:bg-yellow-300 p-2 mr-3 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
-                                                                    <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
-                                                                    Sửa
+                                                                <button className="text-white bg-yellow-400 hover:bg-yellow-300 p-3 mr-2 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
+                                                                    <i className="fa-regular fa-pen-to-square fa-md"></i>
+                                                                    {/* Sửa */}
                                                                 </button>
-                                                                <button className="text-white bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
-                                                                    <i className="fa-regular fa-trash-can fa-md mr-1"></i>
-                                                                    Xóa
+                                                                <button className="text-white bg-red-600 hover:bg-red-500 p-3 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
+                                                                    <i className="fa-regular fa-trash-can fa-md"></i>
+                                                                    {/* Xóa */}
                                                                 </button>
                                                             </td>
                                                         </tr>

@@ -36,7 +36,13 @@ const fetchBestSeller = (limit) => {
     return axios.get(`/api/get-best-seller?limit=${limit}`,)
 }
 
+const fetchStatisticsApp = () => {
+    return axios.get(`/api/get-statistics-app`)
+}
+
+
+
 export {
     fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin, fetchAllStoreByCity, fetchDetailProductById, fetchDetailStoreById,
-    fetchAllAdminNotApproved, approveAdminById, fetchBestSeller
+    fetchAllAdminNotApproved, approveAdminById, fetchBestSeller, fetchStatisticsApp
 }

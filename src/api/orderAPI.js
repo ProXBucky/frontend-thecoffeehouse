@@ -20,4 +20,10 @@ const deliverProduct = (id) => {
     return axios.put('/api/deliver-product', id)
 }
 
-export { orderProduct, getAllOrder, payOrder, deliverProduct, getAllOrderDelivered }
+const getLastestOrder = (limit) => {
+    return axios.get(`/api/get-lastest-order?limit=${limit}`)
+}
+
+
+
+export { orderProduct, getAllOrder, payOrder, deliverProduct, getAllOrderDelivered, getLastestOrder }

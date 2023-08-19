@@ -8,7 +8,7 @@ export default function SliderSection({ productArr, handleNavigation, handleDeta
         <div className="relative mt-9 h-[450px] px-[140px] mx-auto">
             <div className="header-section text-black flex justify-between h-20 py-5 px-10">
                 <p className="font-semibold text-2xl">{productArr && productArr[0] && productArr[0].categoryData && productArr[0].categoryData.valueVn}</p>
-                <button className="text-white text-sm outline-none border-none bg-[#ec944a] hover:scale-95" onClick={handleNavigation}>Xem tất cả</button>
+                <button className="text-white text-sm outline-none border-none bg-[#f68122] hover:scale-95" onClick={handleNavigation}>Xem tất cả</button>
             </div>
             <Slider {...settings} className="w-full">
                 {
@@ -20,7 +20,7 @@ export default function SliderSection({ productArr, handleNavigation, handleDeta
                                     <img src={decodeBase64Func(item.image)} className="h-auto max-w-full hover:scale-105" />
                                 </div>
                                 <div className="h-[60px] text-black mt-2">
-                                    <label className="font-semibold text-base cursor-pointer hover:text-[#ec944a]" onClick={() => handleDetail(item)}>{item.name}</label><br></br>
+                                    <label className="font-semibold text-base cursor-pointer hover:text-[#f68122]" onClick={() => handleDetail(item)}>{item.name}</label><br></br>
                                     <label className="font-normal text-sm text-[#666]">{formatPrice(item.originalPrice)} đ</label>
                                 </div>
                             </div>

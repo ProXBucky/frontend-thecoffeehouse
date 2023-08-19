@@ -22,7 +22,7 @@ export const CartSlice = createSlice({
                     ...state.cartItems[existingIndex],
                     cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
                 };
-                toast.success(`${action.payload.name} đã được thêm vào giỏ hàng`);
+                // toast.success(`${action.payload.name} đã được thêm vào giỏ hàng`);
             } else {
                 let tempProductItem = { ...action.payload, cartQuantity: 1 };
                 state.cartItems.push(tempProductItem);
@@ -38,7 +38,7 @@ export const CartSlice = createSlice({
             );
             if (state.cartItems[itemIndex].cartQuantity > 1) {
                 state.cartItems[itemIndex].cartQuantity -= 1;
-                toast.info(`${action.payload.name} đã giảm số lượng`);
+                // toast.info(`${action.payload.name} đã giảm số lượng`);
             }
             else if (state.cartItems[itemIndex].cartQuantity === 1) {
                 const nextCartItems = state.cartItems.filter(

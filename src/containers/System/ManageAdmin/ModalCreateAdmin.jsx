@@ -20,10 +20,10 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
     const validateForm = () => {
         let check = true;
         const valueArr = ['email', 'password', 'firstName', 'lastName', 'address', 'phone']
-        const valueLabel = ['Email', 'Password', 'First Name', 'Last Name', 'Address', 'Phone']
+        const valueLabel = ['email', 'mật khẩu', 'họ đệm', 'tên', 'địa chỉ', 'số điện thoại']
         for (let i = 0; i < valueArr.length; i++) {
             if (!inputValues[valueArr[i]]) {
-                toast.error('Please type ' + valueLabel[i])
+                toast.error('Vui lòng nhập ' + valueLabel[i])
                 check = false;
                 break
             }
@@ -42,9 +42,10 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
                 phone: inputValues.phone
             })
             if (res.errCode === 0) {
-                toast.success('Add new admin success')
+                toast.success('Thêm quản trị viên thành công')
             } else {
-                toast.error(res.errMessage)
+                toast.error('Lỗi hệ thống')
+
             }
             setInputValues(initStateInput)
             fetchRequest()

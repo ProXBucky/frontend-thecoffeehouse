@@ -39,7 +39,7 @@ export default function BestSeller() {
             </div>
             <div className="w-full flex flex-wrap gap-[20px] pl-[30px]">
                 <div className="rounded-2xl overflow-hidden cursor-pointer w-[calc(50%_-_20px)]" onClick={navigatorPage}>
-                    <img src="/src/assets/SliderImg/MatchaPoster.webp" className=" hover:scale-105"></img>
+                    <img src="/src/assets/SliderImg/MatchaPoster.webp"></img>
                 </div>
                 {
                     productArr && productArr.length > 0 &&
@@ -50,7 +50,7 @@ export default function BestSeller() {
                                     <img className="hover:scale-105" src={decodeBase64Func(item.image.data)}></img>
                                 </div>
                                 <div className="w-full h-[60px] text-black font-semibold mt-2">
-                                    <label className="font-semibold text-base hover:text-[#ec944a] cursor-pointer" onClick={() => handleDetail(item)}>{item.name}</label><br></br>
+                                    <label className="font-semibold text-base hover:text-[#f68122] cursor-pointer" onClick={() => handleDetail(item)}>{item.name}</label><br></br>
                                     <div className="flex justify-between">
                                         <label className="font-normal text-sm text-[#666]">{formatPrice(item.originalPrice)} đ</label>
                                         <label className="font-normal text-sm text-[#666]">Đã bán: {item.quantitySold}</label>

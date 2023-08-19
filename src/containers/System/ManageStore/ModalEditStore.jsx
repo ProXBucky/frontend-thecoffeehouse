@@ -11,10 +11,10 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
     const validateForm = () => {
         let check = true;
         const valueArr = ['nameStore', 'address', 'cityId', 'mapLink', 'mapHTML', 'description', 'shortDescription', 'image']         // loi validate image
-        const valueLabel = ['Store Name', 'Address', 'City', 'MapLink', 'MapHTML', 'Description', 'Short Description', 'Image']
+        const valueLabel = ['tên cửa hàng', 'địa chỉ', 'thành phố', 'link bản đồ', 'html bản đồ', 'mô tả', 'mô tả rút gọn', 'ảnh']
         for (let i = 0; i < valueArr.length; i++) {
             if (!dataStore[valueArr[i]]) {
-                toast.error('Please type ' + valueLabel[i])
+                toast.error('Vui lòng nhập ' + valueLabel[i])
                 check = false;
                 break
             }
@@ -36,11 +36,12 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                 image: dataStore.image
             })
             if (res.errCode === 0) {
-                toast.success('Update information success')
+                toast.success('Cập nhật thông tin thành công')
                 fetchRequest()
                 setShowModalEdit(false)
             } else {
-                toast.error(res.errMessage)
+                toast.error('Lỗi hệ thống')
+
             }
         }
     }

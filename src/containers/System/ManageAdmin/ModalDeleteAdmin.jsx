@@ -6,11 +6,12 @@ export default function ModalDeleteAdmin({ showModalDelete, setShowModalDelete, 
     const handleAction = async () => {
         let res = await deleteAdmin(dataUser.id)
         if (res.errCode === 0) {
-            toast.success('Delete admin success')
+            toast.success('Xóa quản trị viên thành công')
             fetchRequest()
             setShowModalDelete(false)
         } else {
-            toast.error(res.errMessage)
+            toast.error('Lỗi hệ thống')
+
         }
     }
 

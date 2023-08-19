@@ -37,7 +37,7 @@ export default function DetailProduct() {
         if (respone && respone.errCode === 0) {
             setDetailData(respone.data)
         } else {
-            toast.error(respone.errMessage)
+            toast.error('Lỗi hệ thống')
         }
     }
 
@@ -46,7 +46,7 @@ export default function DetailProduct() {
         if (respone && respone.errCode === 0) {
             setDiffProduct(respone.data)
         } else {
-            toast.error(respone.errMessage)
+            toast.error('Lỗi hệ thống')
         }
     }
 
@@ -94,7 +94,7 @@ export default function DetailProduct() {
                                                 <img src={decodeBase64Func(item.image.data)}></img>
                                             </div>
                                             <div className="w-full">
-                                                <label className="font-semibold text-base hover:text-[#ec944a] cursor-pointer" onClick={() => handleDetail(item)}>{item.name}</label><br></br>
+                                                <label className="font-semibold text-base hover:text-[#f68122] cursor-pointer" onClick={() => handleDetail(item)}>{item.name}</label><br></br>
                                                 <label className="font-normal text-sm text-[#666]">{formatPrice(item.originalPrice)} đ</label>
                                             </div>
                                         </div>

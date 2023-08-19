@@ -12,16 +12,16 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
     const validateForm = () => {
         let check = true;
         const valueArr = ['name', 'originalPrice', 'category', 'description']
-        const valueLabel = ['Product Name', 'Original Price', 'Category', 'Description']
+        const valueLabel = ['tên sản phẩm', 'giá tiền', 'thể loại', 'mô tả']
         for (let i = 0; i < valueArr.length; i++) {
             if (!dataProduct[valueArr[i]]) {
-                toast.error('Please type ' + valueLabel[i])
+                toast.error('Vui lòng nhập ' + valueLabel[i])
                 check = false;
                 break
             }
         }
         if ((typeof (dataProduct.image) === 'object') === true) {
-            toast.error('Please choose image')
+            toast.error('Vui lòng chọn hình ảnh sản phẩm')
             check = false;
         }
         return check
@@ -40,11 +40,12 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                 originalPrice: dataProduct.originalPrice,
             })
             if (res.errCode === 0) {
-                toast.success('Update information success')
+                toast.success('Cập nhật thông tin thành công')
                 fetchRequest()
                 setShowModalEdit(false)
             } else {
-                toast.error(res.errMessage)
+                toast.error('Lỗi hệ thống')
+
             }
         }
     }

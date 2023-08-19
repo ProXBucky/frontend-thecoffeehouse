@@ -6,11 +6,12 @@ export default function ModalDeleteStore({ showModalDelete, setShowModalDelete, 
     const handleAction = async () => {
         let res = await deleteStore(dataStore.id)
         if (res.errCode === 0) {
-            toast.success('Delete store success')
+            toast.success('Xóa cửa hàng thành công')
             fetchRequest()
             setShowModalDelete(false)
         } else {
-            toast.error(res.errMessage)
+            toast.error('Lỗi hệ thống')
+
         }
     }
 

@@ -66,8 +66,8 @@ export default function ManageAdmin() {
             <ModalDeleteAdmin showModalDelete={showModalDelete} setShowModalDelete={setShowModalDelete} dataUser={dataUser} fetchRequest={fetchRequest} />
             <ModalViewAdmin showModalView={showModalView} setShowModalView={setShowModalView} dataUser={dataUser} />
             <ModalCreateAdmin showModalCreate={showModalCreate} setShowModalCreate={setShowModalCreate} fetchRequest={fetchRequest} />
-            <div className="p-10">
-                <p className="text-3xl font-medium inline-block">Quản lý quản trị viên</p>
+            <div className="p-10 text-sm">
+                <p className="text-2xl font-medium inline-block">Quản lý quản trị viên</p>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreate()}>Tạo mới quản trị viên</button>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white relative" name="Approved" onClick={() => handleApprove()}>
                     Đang chờ
@@ -75,7 +75,7 @@ export default function ManageAdmin() {
                 </button>
                 <div className="w-ful mt-10 text-center text-sm">
                     <table className="w-full px-3 rounded-lg overflow-hidden">
-                        <thead className="h-14 bg-[#f68122] text-white border border-slate-300 overflow-hidden">
+                        <thead className="h-14 bg-[#f68122] text-white border-slate-300 overflow-hidden" style={{ boxShadow: '1px 1px 13px 0px #00000040' }}>
                             <tr>
                                 <th className="px-5">ID</th>
                                 <th>Email</th>
@@ -98,24 +98,24 @@ export default function ManageAdmin() {
                                             (
                                                 adminArr.map((item, index) => {
                                                     return (
-                                                        <tr className="h-14 font-medium text-base bg-white border border-slate-300 overflow-hidden" key={index}>
+                                                        <tr className="h-14 font-medium bg-white border-slate-300 overflow-hidden border-b" key={index}>
                                                             <td>{item.id}</td>
                                                             <td>{item.email}</td>
                                                             <td>{item.firstName}</td>
                                                             <td>{item.lastName}</td>
                                                             <td>{item.address}</td>
                                                             <td>
-                                                                <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleView(item)}>
-                                                                    <i className="fa-regular fa-eye fa-md mr-1"></i>
-                                                                    Chi tiết
+                                                                <button className="text-white bg-green-500 hover:bg-green-400 p-3 mr-2 border-none outline-none" name="View" onClick={() => handleView(item)}>
+                                                                    <i className="fa-regular fa-eye fa-md"></i>
+                                                                    {/* Chi tiết */}
                                                                 </button>
-                                                                <button className="text-white bg-yellow-400 hover:bg-yellow-300 p-2 mr-3 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
-                                                                    <i className="fa-regular fa-pen-to-square fa-md mr-1"></i>
-                                                                    Sửa
+                                                                <button className="text-white bg-yellow-400 hover:bg-yellow-300 p-3 mr-2 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
+                                                                    <i className="fa-regular fa-pen-to-square fa-md"></i>
+                                                                    {/* Sửa */}
                                                                 </button>
-                                                                <button className="text-white bg-red-600 hover:bg-red-500 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
-                                                                    <i className="fa-regular fa-trash-can fa-md mr-1"></i>
-                                                                    Xóa
+                                                                <button className="text-white bg-red-600 hover:bg-red-500 p-3 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
+                                                                    <i className="fa-regular fa-trash-can fa-md"></i>
+                                                                    {/* Xóa */}
                                                                 </button>
                                                             </td>
                                                         </tr>

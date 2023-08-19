@@ -27,7 +27,7 @@ export default function DetailStore() {
             setDetailData(respone.data)
             setImgData(respone.imgData)
         } else {
-            toast.error(respone.errMessage)
+            toast.error('Lỗi hệ thống')
         }
     }
 
@@ -41,8 +41,8 @@ export default function DetailStore() {
         <div>
             {
                 detailData &&
-                <div className="my-20 text-black px-[140px] flex flex-row">
-                    <div className="w-1/2 px-10 pb-5 flex flex-wrap">
+                <div className="my-20 text-black px-[160px] flex flex-row">
+                    <div className="w-[600px] pb-5 flex flex-col">
                         {
                             imgData && imgData.length > 0 &&
                             imgData.map((item, index) => {
@@ -55,7 +55,7 @@ export default function DetailStore() {
                         }
                         <div dangerouslySetInnerHTML={{ __html: detailData.mapHTML }}></div>
                     </div>
-                    <div className="w-1/2 px-10">
+                    <div className="w-auto pl-10">
                         <p className="font-medium text-2xl">{detailData.nameStore}</p>
                         <p className="text-gray-500 py-2 text-md">
                             {detailData.description}

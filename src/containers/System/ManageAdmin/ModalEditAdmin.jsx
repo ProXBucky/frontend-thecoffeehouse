@@ -13,11 +13,12 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
             phone: dataUser.phone
         })
         if (res.errCode === 0) {
-            toast.success('Update information success')
+            toast.success('Cập nhật thông tin thành công')
             fetchRequest()
             setShowModalEdit(false)
         } else {
-            toast.error(res.errMessage)
+            toast.error('Lỗi hệ thống')
+
         }
 
     }

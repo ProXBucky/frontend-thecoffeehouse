@@ -57,16 +57,16 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
     const validateForm = () => {
         let check = true;
         const valueArr = ['nameStore', 'address', 'cityId', 'mapLink', 'mapHTML', 'description', 'shortDescription']         // loi validate image
-        const valueLabel = ['Store Name', 'Address', 'City', 'MapLink', 'MapHTML', 'Description', 'Short Description']
+        const valueLabel = ['tên cửa hàng', 'địa chỉ', 'thành phố', 'link bản đồ', 'html bản đồ', 'mô tả', 'mô tả rút gọn']
         for (let i = 0; i < valueArr.length; i++) {
             if (!inputValues[valueArr[i]]) {
-                toast.error('Please type ' + valueLabel[i])
+                toast.error('Vui lòng nhập ' + valueLabel[i])
                 check = false;
                 break
             }
         }
         if (inputValues['image'].length <= 0) {
-            toast.error('Please choose image of store')
+            toast.error('Vui lòng chọn ảnh cho cửa hàng')
             check = false;
         }
         return check
@@ -87,9 +87,10 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
             const res = await uploadMultiImageStore(inputValues.image)
 
             if (response.errCode === 0 && res.errCode === 0) {
-                toast.success('Create new store succcess')
+                toast.success('Tạo cửa hàng thành công')
             } else {
-                toast.error(response.errMessage)
+                toast.error('Lỗi hệ thống')
+
             }
             setInputValues({
                 nameStore: '',
