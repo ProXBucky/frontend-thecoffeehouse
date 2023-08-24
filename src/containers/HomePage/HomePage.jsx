@@ -1,15 +1,9 @@
 import "./HomePage.scss"
-import { lazy, Suspense } from "react"
-import Loading from "../../components/Loading.jsx"
-
 import Sliders from "./Slider/Sliders"
 import Footer from "./Footer/Footer"
 import BestSeller from "./Section/BestSellerCategory/BestSeller"
 import CoffeeSlider from "./Section/CoffeeSlider"
-import TeaSlider from "./Section/TeaSlider"
-import FrostySlider from "./Section/FrostySlider"
-import CakeSnackSlider from "./Section/CakeSnackSlider"
-import Poster1 from "./Poster/Poster1"
+// import Poster1 from "./Poster/Poster1"
 import StoreSlider from "./Section/StoreCategory/StoreSlider"
 import Poster2 from "./Poster/Poster2"
 
@@ -54,30 +48,29 @@ export default function HomePage() {
         );
     }
 
+
     const settings = {
-        dots: false,
+        className: "center",
+        // centerMode: true,
         infinite: true,
+        centerPadding: "60px",
+        slidesToShow: 2,
         speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
+        rows: 2,
+        slidesPerRow: 2,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
     return (
         <>
             <div className="homepage-container">
-                {/* <Suspense fallback={<Loading />}> */}
                 <Sliders />
                 <BestSeller />
-                <Poster1 />
-                <CoffeeSlider settings={settings} />
-                <TeaSlider settings={settings} />
                 <Poster2 />
-                <CakeSnackSlider settings={settings} />
-                <FrostySlider settings={settings} />
+                {/* <Poster1 /> */}
+                <CoffeeSlider settings={settings} />
                 <StoreSlider />
                 <Footer />
-                {/* </Suspense> */}
             </div>
         </>
     )

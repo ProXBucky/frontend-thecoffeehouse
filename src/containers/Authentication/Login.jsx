@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom"
 import { UserSlice } from "../../redux/Slice/UserSlice";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form"
+import Cookies from 'js-cookie';
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm()
@@ -29,11 +30,12 @@ export default function Login() {
       password: data.password
     })
     if (res && res.errCode === 0) {
+      Cookies.set('accessToken', res.accessToken, { expires: 1 })
       dispatch(UserSlice.actions.loginUserSucces(res.email))
       toast.success('Đăng nhập thành công')
-      history.push('/system/dashboard')
+      history.push('/system')
     } else {
-      toast.error(res.errMessage1)
+      toast.error(res.errMessage)
     }
     reset({
       email: '',

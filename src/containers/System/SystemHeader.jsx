@@ -7,20 +7,23 @@ import {
 } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { UserSlice } from "../../redux/Slice/UserSlice";
-
+import { logoutUser } from "../../api/Auth"
+import Cookies from 'js-cookie';
+import { toast } from "react-toastify";
 
 export default function SystemHeader({ userInfo }) {
     const history = useHistory()
     const dispatch = useDispatch()
 
-    const handleLogout = () => {
-        dispatch(UserSlice.actions.logOutUser())
-        history.push('/')
+    const handleLogout = async () => {
+        let tmp = await logoutUser()
+        if (tmp && tmp.errCode === 0) {
+            Cookies.remove('accessToken')
+            dispatch(UserSlice.actions.logOutUser())
+            history.push('/')
+            toast.success('Đã đăng xuất')
+        }
     }
-    // const backSystemRoute = () => {
-    //     history.push('/system/dashboard')
-    // }
-
 
     return (
         <div className="w-full h-[60px] flex border fixed top-0 justify-between px-5 z-[47] bg-white">

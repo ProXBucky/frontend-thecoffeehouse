@@ -1,6 +1,6 @@
 import { fetchAllProductByCategory } from "../../../api/appAPI"
 import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import SliderSection from "./SliderSection";
 
 
@@ -13,7 +13,8 @@ export default function CoffeeSlider({ settings }) {
     }, [])
 
     const fetchProduct = async () => {
-        const res = await fetchAllProductByCategory('CA1', 8) // CA1, Coffee limit 8
+        const res = await fetchAllProductByCategory('ALL', 21) // CA1, Coffee limit 8
+        // console.log(res.data)
         if (res && res.errCode === 0) {
             setProductArr(res.data)
         }
@@ -24,7 +25,7 @@ export default function CoffeeSlider({ settings }) {
     }
 
     const handleNavigation = () => {
-        history.push(`/collections/coffee`)
+        history.push(`/collections/all`)
     }
 
 

@@ -16,8 +16,6 @@ import ManageStore from "../containers/System/ManageStore/ManageStore";
 import ManageOrder from "../containers/System/ManageOrder/ManageOrder";
 import HistoryOrder from "../containers/System/ManageOrder/HistoryOrder";
 import DashBoard from "../containers/System/Dashboard";
-import { Suspense, lazy } from "react";
-
 
 // const ManageAdmin = lazy(() => import("../containers/System/ManageAdmin/ManageAdmin"));
 // const ManageProduct = lazy(() => import("../containers/System/ManageProduct/ManageProduct"));
@@ -30,7 +28,6 @@ export default function SystemRoute() {
     const isLogin = useSelector(isLoginedSelector)
     return (
         <div className="bg-[#f5f2f0]">
-            {/* <Suspense fallback={<Loading />}> */}
             {
                 isLogin ?
                     <Switch>
@@ -44,7 +41,6 @@ export default function SystemRoute() {
                     :
                     <Redirect to="/404-error"></Redirect>
             }
-            {/* </Suspense> */}
         </div>
     )
 }

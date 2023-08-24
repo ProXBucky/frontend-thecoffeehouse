@@ -8,10 +8,6 @@ const fetchAllAdminNotApproved = () => {
     return axios.get('/api/get-all-admin-not-approved')
 }
 
-const approveAdminById = (id) => {
-    return axios.put(`/api/approve-admin-by-id?id=${id}`)
-}
-
 const fetchDataAllcodes = (type) => {
     return axios.get(`/api/get-allcode-by-type?type=${type}`)
 }
@@ -44,5 +40,5 @@ const fetchStatisticsApp = () => {
 
 export {
     fetchDataAllcodes, fetchAllProductByCategory, fetchAllAdmin, fetchAllStoreByCity, fetchDetailProductById, fetchDetailStoreById,
-    fetchAllAdminNotApproved, approveAdminById, fetchBestSeller, fetchStatisticsApp
+    fetchAllAdminNotApproved, fetchBestSeller, fetchStatisticsApp
 }

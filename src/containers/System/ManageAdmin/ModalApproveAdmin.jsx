@@ -1,6 +1,5 @@
 import { toast } from "react-toastify"
-import { approveAdminById } from "../../../api/appAPI"
-import { deleteAdmin } from "../../../api/adminAPI"
+import { deleteAdmin, approveAdminById } from "../../../api/adminAPI"
 import RiseLoader from "react-spinners/RiseLoader"
 
 

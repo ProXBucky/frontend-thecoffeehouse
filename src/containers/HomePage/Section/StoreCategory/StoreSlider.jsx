@@ -4,6 +4,8 @@ import { fetchAllStoreByCity } from "../../../../api/appAPI"
 import { useState, useEffect } from "react";
 import { decodeBase64Func } from "../../../../utils/base64";
 import { useHistory } from "react-router-dom";
+import RiseLoader from "react-spinners/RiseLoader"
+
 
 export default function StoreSlider() {
     const [storeArr, setStoreArr] = useState([])
@@ -99,41 +101,47 @@ export default function StoreSlider() {
 
 
     return (
-        <div className="mt-10 h-[650px] text-black border-2 " >
-            <Slider {...settingStore} className="w-full h-full py-20">
-                {
-                    storeArr && storeArr.length > 0 &&
-                    storeArr.map((item, index) => {
-                        return (
-                            <div className="slider" key={index}>
-                                <div className="w-2/5 px-32 pt-20 relative">
-                                    <label className="font-medium text-3xl">{item.nameStore}</label>
-                                    <p className="mt-3">{item.shortDescription}</p>
-                                    <button className="mt-6 mx-auto bg-red-500 text-white flex self-center hover:scale-[0.98] outline-none border-none"
-                                        onClick={() => handleDetail(item)} >
-                                        Xem thông tin chi tiết
-                                    </button>
-                                </div>
-                                <div className="w-3/5">
-                                    <Slider {...settingImage} className="w-full">
-                                        {
-                                            item && item.imageData && item.imageData.length > 0 &&
-                                            item.imageData.map((item, index) => {
-                                                return (
-                                                    <div className="relative flex justify-center" key={index}>
-                                                        <img src={decodeBase64Func(item.image)} className="h-[500px] mx-auto rounded-xl" />
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </Slider>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-            </Slider >
-
+        <div className="mt-10 h-[650px] text-black border-2 relative" >
+            {
+                !storeArr || storeArr.length === 0 ?
+                    (
+                        <RiseLoader color="#36d7b7" className="absolute top-[45%] left-[45%]" />
+                    )
+                    :
+                    < Slider {...settingStore} className="w-full h-full py-20">
+                        {
+                            storeArr && storeArr.length > 0 &&
+                            storeArr.map((item, index) => {
+                                return (
+                                    <div className="slider" key={index}>
+                                        <div className="w-2/5 px-32 pt-20 relative">
+                                            <label className="font-medium text-3xl">{item.nameStore}</label>
+                                            <p className="mt-3">{item.shortDescription}</p>
+                                            <button className="mt-6 mx-auto bg-red-500 text-white flex self-center hover:scale-[0.98] outline-none border-none"
+                                                onClick={() => handleDetail(item)} >
+                                                Xem thông tin chi tiết
+                                            </button>
+                                        </div>
+                                        <div className="w-3/5">
+                                            <Slider {...settingImage} className="w-full">
+                                                {
+                                                    item && item.imageData && item.imageData.length > 0 &&
+                                                    item.imageData.map((item, index) => {
+                                                        return (
+                                                            <div className="relative flex justify-center" key={index}>
+                                                                <img src={decodeBase64Func(item.image)} className="h-[500px] mx-auto rounded-xl" />
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </Slider>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </ Slider>
+            }
         </div >
     )
 }

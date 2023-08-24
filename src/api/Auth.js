@@ -5,7 +5,11 @@ const registerUser = (body) => {
 }
 
 const loginUser = (body) => {
-    return axios.post('/api/login-admin', body)
+    return axios.post('/api/login', body)
 }
 
-export { registerUser, loginUser }
+const logoutUser = () => {
+    return axios.get('/api/logout')
+}
+
+export { registerUser, loginUser, logoutUser }
