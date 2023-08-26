@@ -1,9 +1,4 @@
 import axios from "../../axios";
-import Cookies from "js-cookie";
-const token = Cookies.get('accessToken'); // Get the token from your cookie
-const headers = {
-    Authorization: `Bearer ${token}`,
-};
 
 const orderProduct = (body) => {
     return axios.post('/api/order-product', body)
@@ -21,15 +16,20 @@ const getAllOrderDelivered = () => {
     return axios.get('/api/get-all-order-delivered')
 }
 
-const payOrder = (id) => {
-    return axios.put('/api/pay-order', id, { headers })
+const deleteOrder = (id) => {
+    return axios.put(`/api/delete-order?id=${id}`)
 }
+
+const payOrder = (id) => {
+    return axios.put('/api/pay-order', id)
+}
+
 
 const deliverProduct = (id) => {
-    return axios.put('/api/deliver-product', id, { headers })
+    return axios.put('/api/deliver-product', id)
 }
 
 
 
 
-export { orderProduct, getAllOrder, payOrder, deliverProduct, getAllOrderDelivered, getLastestOrder }
+export { orderProduct, getAllOrder, payOrder, deliverProduct, getAllOrderDelivered, getLastestOrder, deleteOrder }

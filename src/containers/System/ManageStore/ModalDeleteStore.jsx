@@ -1,18 +1,31 @@
 import { toast } from "react-toastify"
 import { deleteStore } from "../../../api/adminAPI"
+import { useSelector } from "react-redux";
+import { cookieSelector } from "../../../redux/selector"
+import axios from "axios";
 
 export default function ModalDeleteStore({ showModalDelete, setShowModalDelete, dataStore, fetchRequest }) {
+    let cookieValue = useSelector(cookieSelector)
+    let headers = { Authorization: `Bearer ${cookieValue}` }
+
+    const deleteStore = (id) => {
+        return axios.delete(`${import.meta.env.VITE_BACKEND_PORT}/api/delete-store?id=${id}`, { headers })
+    }
 
     const handleAction = async () => {
         let res = await deleteStore(dataStore.id)
-        if (res.errCode === 0) {
+        if (res.data.errCode === 0) {
             toast.success('Xóa cửa hàng thành công')
             fetchRequest()
             setShowModalDelete(false)
-        } else {
-            toast.error('Lỗi hệ thống')
-
         }
+        else if (res.data.errCode === 'C') {
+            toast.error('Chỉ quản lý có quyền xóa')
+        }
+        else {
+            toast.error('Lỗi hệ thống')
+        }
+        setShowModalDelete(false)
     }
 
     return (

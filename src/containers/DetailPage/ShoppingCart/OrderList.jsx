@@ -75,15 +75,15 @@ export default function OrderList({ cart, isViewFunction }) {
                                 cart.OrderData && cart.OrderData.map((product) => (
                                     <tr key={product.id} className="border-b-2">
                                         <td className="w-[200px] px-10 py-5">
-                                            <img src={decodeBase64Func(product.ProductData.image)} alt={product.ProductData.name} />
-                                            <p>{product.ProductData.name}</p>
+                                            <img src={product.ProductData ? decodeBase64Func(product.ProductData.image) : "Dữ liệu đã bị xóa"} alt={product.ProductData ? product.ProductData.name : "Dữ liệu đã bị xóa"} />
+                                            <p>{product.ProductData ? product.ProductData.name : "Dữ liệu đã bị xóa"}</p>
                                         </td>
-                                        <td>{formatPrice(product.ProductData.originalPrice)} VND</td>
+                                        <td>{product.ProductData ? formatPrice(product.ProductData.originalPrice) : "Dữ liệu đã bị xóa"} VND</td>
                                         <td>
                                             <span className="text-lg">{product.quantity}</span>
                                         </td>
                                         <td>
-                                            {formatPrice(product.ProductData.originalPrice * product.quantity)} VND
+                                            {product.ProductData ? formatPrice(product.ProductData.originalPrice * product.quantity) : "Dữ liệu đã bị xóa"} VND
                                         </td>
                                     </tr>
                                 ))

@@ -1,12 +1,13 @@
 import { useState, useEffect, useCallback } from "react"
-import { getAllOrder, payOrder, deliverProduct } from "../../../api/orderAPI"
+import { getAllOrder, payOrder, deliverProduct, deleteOrder } from "../../../api/orderAPI"
 import { formatPrice } from "../../../utils/formatPrice"
 import RiseLoader from "react-spinners/RiseLoader"
 import ModalViewOrder from "./ModalViewOrder"
 import { toast } from "react-toastify"
+import { withRouter } from "react-router-dom"
 
 
-export default function ManageOrder() {
+function ManageOrder() {
     const [showModalView, setShowModalView] = useState(false)
     const [orderList, setOrderList] = useState([])
     const [orderDetail, setOrderDetail] = useState({})
@@ -27,6 +28,14 @@ export default function ManageOrder() {
     const handleView = (item) => {
         setOrderDetail(item)
         setShowModalView(true)
+    }
+
+    const handleDelete = async (item) => {
+        const res = await deleteOrder({ id: item.id })
+        if (res && res.errCode === 0) {
+            toast.success(`Đơn hàng của khách hàng ${item.UserData.firstName} ${item.UserData.lastName} đã bị hủy`)
+            fetchAllOrder()
+        }
     }
 
     const handleCash = async (item) => {
@@ -111,6 +120,12 @@ export default function ManageOrder() {
                                                                         </button>
                                                                     )
                                                             }
+
+                                                            <button className="mb-2 text-white w-14 bg-red-500 hover:bg-red-400 p-2 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
+                                                                <i className="fa-regular fa-trash-can fa-md"></i>
+                                                                <br />
+                                                                {/* Xoas */}
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 )
@@ -126,3 +141,5 @@ export default function ManageOrder() {
         </>
     )
 }
+
+export default withRouter(ManageOrder)

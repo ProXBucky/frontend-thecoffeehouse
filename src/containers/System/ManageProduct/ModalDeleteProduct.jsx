@@ -1,18 +1,31 @@
 import { toast } from "react-toastify"
-import { deleteProduct } from "../../../api/adminAPI"
+import { useSelector } from "react-redux";
+import { cookieSelector } from "../../../redux/selector"
+import axios from "axios";
 
 export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete, dataProduct, fetchRequest }) {
+    let cookieValue = useSelector(cookieSelector)
+    let headers = { Authorization: `Bearer ${cookieValue}` }
+
+    const deleteProduct = (id) => {
+        return axios.delete(`${import.meta.env.VITE_BACKEND_PORT}/api/delete-product?id=${id}`, { headers })
+    }
 
     const handleAction = async () => {
         let res = await deleteProduct(dataProduct.id)
-        if (res.errCode === 0) {
+        console.log(res)
+        if (res.data.errCode === 0) {
             toast.success('Xóa sản phẩm thành công')
             setShowModalDelete(false)
             fetchRequest()
-        } else {
-            toast.error('Lỗi hệ thống')
-
         }
+        else if (res.data.errCode === 'C') {
+            toast.error('Chỉ quản lý có quyền xóa')
+        }
+        else {
+            toast.error('Lỗi hệ thống')
+        }
+        setShowModalDelete(false)
     }
 
     return (

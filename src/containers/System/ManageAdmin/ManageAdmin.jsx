@@ -8,9 +8,10 @@ import { fetchAllAdmins, fetchAllAdminsNotApproved } from "../../../redux/Slice/
 import { adminArrSelector, adminNotApprovedArrSelector } from "../../../redux/selector"
 import { useDispatch, useSelector } from "react-redux"
 import RiseLoader from "react-spinners/RiseLoader"
+import { withRouter } from "react-router-dom"
 
 
-export default function ManageAdmin() {
+function ManageAdmin() {
     const [showModalCreate, setShowModalCreate] = useState(false)
     const [showModalView, setShowModalView] = useState(false)
     const [showModalEdit, setShowModalEdit] = useState(false)
@@ -137,3 +138,5 @@ export default function ManageAdmin() {
         </>
     )
 }
+
+export default withRouter(ManageAdmin)

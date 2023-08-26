@@ -5,7 +5,7 @@ import { updateProductData } from "../../../api/adminAPI"
 import { toast } from "react-toastify"
 
 // handleChangeChecked, selectedCheckboxes,
-export default function ModalEditProduct({ showModalEdit, setShowModalEdit, dataProduct, handleOnChange, fetchRequest, file, handlePreviewImage }) {
+export default function ModalEditProduct({ showModalEdit, setShowModalEdit, dataProduct, handleOnChange, fetchRequest, file, setFile, handlePreviewImage }) {
     const cateArr = useSelector(categoryAllcodeSelector)
     // const sizeArr = useSelector(sizeAllcodeSelector)
 
@@ -47,6 +47,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                 toast.error('Lỗi hệ thống')
 
             }
+            setFile('')
         }
     }
 
@@ -81,7 +82,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                                         <div>
                                             <label className="text-lg mr-4">Thể loại</label><br />
                                             <select className="border-2 outline-none bg-white p-2 w-[170px] cursor-pointer" onChange={handleOnChange} name="category" value={dataProduct.category} >
-                                                <option className="cursor-pointer" selected>Không có</option>
+                                                <option className="cursor-pointer" defaultChecked>Không có</option>
                                                 {
                                                     cateArr && cateArr.length > 0 &&
                                                     cateArr.map((item, index) => {

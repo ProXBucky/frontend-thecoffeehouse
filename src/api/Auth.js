@@ -8,8 +8,7 @@ const loginUser = (body) => {
     return axios.post('/api/login', body)
 }
 
-const logoutUser = () => {
-    return axios.get('/api/logout')
-}
+// author System ở file System (authorSystem)
 
-export { registerUser, loginUser, logoutUser }
+
+export { registerUser, loginUser }

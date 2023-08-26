@@ -184,7 +184,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                                 <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map HTML" onChange={handleOnChange} name="mapHTML" value={inputValues.mapHTML} />
                                             </div>
                                             <div className="">
-                                                <label className="text-lg">Mô tả cừa hàng rút gọn</label><br />
+                                                <label className="text-lg">Mô tả cửa hàng rút gọn</label><br />
                                                 <textarea className="border-2 outline-none bg-white p-2 w-full" rows="3"
                                                     name="shortDescription"
                                                     value={inputValues.shortDescription}

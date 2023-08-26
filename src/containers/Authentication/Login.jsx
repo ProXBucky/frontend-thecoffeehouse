@@ -7,6 +7,7 @@ import { UserSlice } from "../../redux/Slice/UserSlice";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form"
 import Cookies from 'js-cookie';
+import { setToken } from "../../redux/Slice/CookieSlice";
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm()
@@ -24,16 +25,17 @@ export default function Login() {
     }
   }
 
+
   const onSubmit = async (data) => {
     let res = await loginUser({
       email: data.email,
       password: data.password
     })
     if (res && res.errCode === 0) {
-      Cookies.set('accessToken', res.accessToken, { expires: 1 })
+      Cookies.set('accessToken', res.accessToken, { expires: 1 }); // Set the cookie named 'myCookie' with a value 'cookieValue' that expires in 1 days
+      dispatch(setToken(res.accessToken))
+      history.push('/system') //
       dispatch(UserSlice.actions.loginUserSucces(res.email))
-      toast.success('Đăng nhập thành công')
-      history.push('/system')
     } else {
       toast.error(res.errMessage)
     }
@@ -49,7 +51,7 @@ export default function Login() {
       <div className="container py-20 flex justify-center">
         <div className="content-left w-full max-w-lg px-5">
           <h2 className=" text-2xl font-medium pt-4">Đăng nhập</h2>
-          <p className=" text-red-500 text-center">( Chỉ dành cho quản trị viên )</p>
+          <p className=" text-red-500 text-center">( Chỉ dành cho quản lý và quản trị viên )</p>
 
           <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
             <div className="w-full px-3">
@@ -66,6 +68,7 @@ export default function Login() {
                   },
                 })}
                 type="email"
+                autoComplete="current-password"
                 placeholder="example@email.com"
                 className="w-full bg-gray-100 border rounded py-3 px-4 mb-3  focus:outline-none text-black"
               />
@@ -89,7 +92,8 @@ export default function Login() {
                     })}
                     type={typePassword ? 'password' : 'text'}
                     className="w-full bg-gray-100 border rounded py-3 px-4 mb-3  focus:outline-none text-black"
-                    placeholder="************"
+                    placeholder="********"
+                    autoComplete="current-password"
                     onKeyPress={handleKeyPress}
                   />
                   {typePassword ? <i className="absolute top-[25%] right-3 cursor-pointer fa-regular fa-eye" onClick={handleHideShowPassword}></i> : <i className="absolute top-[25%] right-3 cursor-pointer fa-regular fa-eye-slash" onClick={handleHideShowPassword}></i>}
@@ -99,11 +103,17 @@ export default function Login() {
             </div>
             <p className="py-3 text-center">Nếu bạn chưa có tài khoản, hãy đăng ký <Link to="/register">tại đây</Link></p>
             <button className="rounded-full mx-24 px-16 mt-3 text-white bg-black text-center" type="submit">Đăng nhập</button>
-            <p className="text-center mt-2">Tài khoản test: <br />
-              Email: admin1@gmail.com <br />
-              MK: admin1@
+            <div className="flex justify-between mt-5">
+              <p className="text-center mt-2">Tài khoản quản lý: <br />
+                admin1@gmail.com <br />
+                admin1@
+              </p>
+              <p className="text-center mt-2">Tài khoản quản trị viên: <br />
+                admin2@gmail.com <br />
+                admin2@
+              </p>
 
-            </p>
+            </div>
           </form>
         </div>
 

@@ -9,9 +9,10 @@ import { decodeBase64Func, encodeBase64Func } from "../../../utils/base64"
 import { fetchAllProductByCategory } from "../../../api/appAPI"
 import { formatPrice } from "../../../utils/formatPrice"
 import RiseLoader from "react-spinners/RiseLoader"
+import { withRouter } from "react-router-dom"
 
 
-export default function ManageProduct() {
+function ManageProduct() {
     const [showModalCreate, setShowModalCreate] = useState(false)
     const [showModalView, setShowModalView] = useState(false)
     const [showModalEdit, setShowModalEdit] = useState(false)
@@ -100,7 +101,7 @@ export default function ManageProduct() {
         <>
             {/* selectedCheckboxes={selectedCheckboxes}
             handleChangeChecked={handleChangeChecked} */}
-            <ModalEditProduct showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} dataProduct={dataProduct} file={file} handlePreviewImage={handlePreviewImage}
+            <ModalEditProduct showModalEdit={showModalEdit} setShowModalEdit={setShowModalEdit} dataProduct={dataProduct} file={file} setFile={setFile} handlePreviewImage={handlePreviewImage}
                 handleOnChange={handleOnChange} fetchRequest={fetchRequest} />
             <ModalDeleteProduct showModalDelete={showModalDelete} setShowModalDelete={setShowModalDelete} dataProduct={dataProduct} fetchRequest={fetchRequest} />
             <ModalViewProduct showModalView={showModalView} setShowModalView={setShowModalView} dataProduct={dataProduct} />
@@ -173,3 +174,5 @@ export default function ManageProduct() {
         </>
     )
 }
+
+export default withRouter(ManageProduct)

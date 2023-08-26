@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import './App.css'
 import {
   BrowserRouter as Router, Switch, Route, withRouter
@@ -7,9 +7,8 @@ import Loading from './components/Loading';
 import { lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from 'react-redux';
 import { isLoginedSelector, userInfoSelector } from './redux/selector';
-
 import Login from './containers/Authentication/Login'
 import HomePage from './containers/HomePage/HomePage';
 import Header from './containers/HomePage/Header/Header';
@@ -19,31 +18,28 @@ import Collection from "./containers/Collection/Collection"
 import StoreList from './containers/StoreList/StoreList';
 import ShoppingCart from './containers/DetailPage/ShoppingCart/ShoppingCart';
 import CloudFee from './containers/CloudFee/CloudFee';
-
-
-// import System from './containers/System/System';
 import SystemHeader from "./containers/System/SystemHeader"
 import DetailProduct from './containers/DetailPage/DetailProduct';
 import DetailStore from './containers/DetailPage/DetailStore';
 import Recruit from './containers/Recruit/Recruit';
-
-// const Login = lazy(() => import('./containers/Authentication/Login'));
-// const HomePage = lazy(() => import('./containers/HomePage/HomePage'));
-// const Header = lazy(() => import('./containers/HomePage/Header/Header'));
-// const Register = lazy(() => import('./containers/Authentication/Register'));
-// const ErrorPage = lazy(() => import('./containers/404Page'));
-// const Collection = lazy(() => import('./containers/Collection/Collection'));
-// const StoreList = lazy(() => import('./containers/StoreList/StoreList'));
-// const ShoppingCart = lazy(() => import('./containers/DetailPage/ShoppingCart/ShoppingCart'));
-
-
-// const SystemHeader = lazy(() => import('./containers/System/SystemHeader'));
+import Cookies from 'js-cookie';
 const System = lazy(() => import('./containers/System/System'));
-// const DetailProduct = lazy(() => import('./containers/DetailPage/DetailProduct'));
-// const DetailStore = lazy(() => import('./containers/DetailPage/DetailStore'));
-
+import { setToken } from "./redux/Slice/CookieSlice"
 
 function App() {
+  const dispatch = useDispatch();
+  const cookieValue = Cookies.get('accessToken');
+
+  useEffect(() => {
+    Cookies.set('accessToken', '');
+    dispatch(setToken(''));
+  }, [])
+
+  useEffect(() => {
+    dispatch(setToken(cookieValue));
+  }, [cookieValue])
+
+
   const isLogin = useSelector(isLoginedSelector)
   const userInfo = useSelector(userInfoSelector)
   return (

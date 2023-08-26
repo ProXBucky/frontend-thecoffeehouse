@@ -5,8 +5,9 @@ import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import RiseLoader from "react-spinners/RiseLoader"
 import { formatPrice } from "../../utils/formatPrice"
+import { withRouter } from "react-router-dom"
 
-export default function DashBoard() {
+function DashBoard() {
     const [statistic, setStatistic] = useState({})
     const [bestSeller, setBestSeller] = useState([])
     const [lastestOrder, setLastestOrder] = useState([])
@@ -54,12 +55,13 @@ export default function DashBoard() {
         return <animated.div>{number.to((n) => n.toFixed(0))}</animated.div>
     }
 
+
     return (
         <>
             <div className="mx-10 mt-1 ">
                 <h1 className="text-4xl font-medium text-center">Trang chủ</h1>
                 <div className="flex flex-wrap justify-center mt-5 gap-5">
-                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 5px 0px #00000040' }}>
+                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
                         <div className="w-2/5 font-medium text-md  flex justify-center items-center">
                             <i className="fa-solid fa-user-tie fa-2xl"></i>
                         </div>
@@ -69,7 +71,7 @@ export default function DashBoard() {
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 5px 0px #00000040' }}>
+                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
                         <div className="w-2/5 font-medium text-md  flex justify-center items-center">
                             <i className="fa-solid fa-mug-saucer fa-2xl"></i>
                         </div>
@@ -79,7 +81,7 @@ export default function DashBoard() {
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 5px 0px #00000040' }}>
+                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
                         <div className="w-2/5 font-medium text-md  flex justify-center items-center">
                             <i className="fa-solid fa-shop fa-2xl"></i>
                         </div>
@@ -89,7 +91,7 @@ export default function DashBoard() {
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 5px 0px #00000040' }}>
+                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
                         <div className="w-2/5 font-medium text-md  flex justify-center items-center">
                             <i className="fa-solid fa-truck fa-2xl"></i>
                         </div>
@@ -99,7 +101,7 @@ export default function DashBoard() {
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-lg w-1/3 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 5px 0px #00000040' }}>
+                    <div className="bg-white rounded-lg w-1/3 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
                         <div className="w-1/4 font-medium text-md  flex justify-center items-center">
                             <i className="fa-solid fa-landmark fa-2xl"></i>
                         </div>
@@ -111,7 +113,7 @@ export default function DashBoard() {
                 </div>
 
                 <div className="flex justify-center mt-8 text-gray-500">
-                    <div className="bg-white rounded-lg w-1/2 mx-5 px-4 pb-4" style={{ boxShadow: '1px 1px 5px 0px #00000040' }}>
+                    <div className="bg-white rounded-lg w-1/2 mx-5 px-4 pb-4" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
                         <p className="font-medium my-4 text-lg">Đơn hàng gần nhất</p>
                         <table className="w-full px-3 overflow-hidden border">
                             <thead className="h-14 bg-[#f5f2f0] text-black">
@@ -134,7 +136,7 @@ export default function DashBoard() {
                                                 return (
                                                     <tr className="border-b-2 h-12" key={index}>
                                                         <td>
-                                                            {`${item.UserData.firstName} ${item.UserData.lastName}`}
+                                                            {`${item.UserData && item.UserData.firstName} ${item.UserData && item.UserData.lastName}`}
                                                         </td>
                                                         <td>
                                                             {formatPrice(item.totalPrice)} VNĐ
@@ -159,7 +161,7 @@ export default function DashBoard() {
                         </table >
                     </div>
 
-                    <div className="bg-white rounded-lg w-1/2 mx-5 px-4 pb-4" style={{ boxShadow: '1px 1px 5px 0px #00000040' }}>
+                    <div className="bg-white rounded-lg w-1/2 mx-5 px-4 pb-4" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
                         <p className="font-medium my-4 text-lg">Sản phẩm bán nhiều nhất</p>
                         <table className="w-full px-3 overflow-hidden border">
                             <thead className="h-14 bg-[#f5f2f0] text-black">
@@ -200,3 +202,5 @@ export default function DashBoard() {
         </>
     )
 }
+
+export default withRouter(DashBoard)

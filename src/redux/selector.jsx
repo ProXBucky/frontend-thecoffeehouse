@@ -9,3 +9,6 @@ export const sizeAllcodeSelector = (state) => state.app.size
 export const cityAllcodeSelector = (state) => state.app.city
 
 export const cartSelector = (state) => state.cart
+
+export const cookieSelector = (state) => state.cookie.tokenRedux
+

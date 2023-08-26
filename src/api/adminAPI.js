@@ -1,13 +1,5 @@
 import axios from "../../axios";
-import Cookies from "js-cookie";
-const token = Cookies.get('accessToken'); // Get the token from your cookie
-const headers = {
-    Authorization: `Bearer ${token}`,
-};
 
-const getAdminByEmail = (email) => {
-    return axios.get(`/api/get-admin-by-email?email=${email}`)
-}
 
 const getAdminById = (id) => {
     return axios.get(`/api/get-admin-by-id?id=${id}`)
@@ -18,11 +10,11 @@ const deleteAdmin = (id) => {
 }
 
 const updateAdminData = (body) => {
-    return axios.put('/api/update-admin-data', body, { headers })
+    return axios.put('/api/update-admin-data', body)
 }
 
 const createNewProduct = (body) => {
-    return axios.post('/api/create-new-product', body, { headers })
+    return axios.post('/api/create-new-product', body)
 }
 
 const deleteProduct = (id) => {
@@ -30,15 +22,15 @@ const deleteProduct = (id) => {
 }
 
 const updateProductData = (body) => {
-    return axios.put('/api/update-product-data', body, { headers })
+    return axios.put('/api/update-product-data', body)
 }
 
 const createNewStore = (body) => {
-    return axios.post('/api/create-new-store', body, { headers })
+    return axios.post('/api/create-new-store', body)
 }
 
 const uploadMultiImageStore = (body) => {
-    return axios.post('/api/upload-multi-image-store', body, { headers })
+    return axios.post('/api/upload-multi-image-store', body)
 }
 
 const deleteStore = (id) => {
@@ -46,16 +38,18 @@ const deleteStore = (id) => {
 }
 
 const updateStoreData = (body) => {
-    return axios.put('/api/update-store-data', body, { headers })
+    return axios.put('/api/update-store-data', body)
 }
 
 const approveAdminById = (id) => {
-    return axios.put(`/api/approve-admin-by-id?id=${id}`, { headers })
+    return axios.put(`/api/approve-admin-by-id?id=${id}`)
 }
 
 
 
 export {
-    deleteAdmin, updateAdminData, getAdminById, getAdminByEmail, createNewProduct, deleteProduct, updateProductData, createNewStore,
+    deleteAdmin, updateAdminData, getAdminById, createNewProduct, deleteProduct, updateProductData, createNewStore,
     uploadMultiImageStore, deleteStore, updateStoreData, approveAdminById
 }
+
+// getAdminByEmail
