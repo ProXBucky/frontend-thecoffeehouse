@@ -47,7 +47,7 @@ export default function OrderList({ cart, isViewFunction }) {
                                 cart.cartItems.map((cartItem) => (
                                     <tr key={cartItem.id} className="border-b-2">
                                         <td className="w-[200px] px-10 py-5">
-                                            <img src={decodeBase64Func(cartItem.image)} alt={cartItem.name} />
+                                            <img src={(cartItem.image)} alt={cartItem.name} />
                                             <p>{cartItem.name}</p>
                                         </td>
                                         <td>{formatPrice(cartItem.originalPrice)} VND</td>

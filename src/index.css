@@ -77,3 +77,24 @@ button:focus-visible {
     border: none;
   }
 }
+
+@font-face {
+  font-family: 'Baron';
+  src: url('../src/assets/font/Baron\ Neue\ Bold\ Italic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'BaronU';
+  src: url('../src/assets/font/Baron\ Neue\ Bold.otf') format('opentype');
+}
+
+
+@font-face {
+  font-family: 'Hara';
+  src: url('../src/assets/font/Harabara.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../src/assets/font/Montserrat-VariableFont_wght.ttf') format('opentype');
+}

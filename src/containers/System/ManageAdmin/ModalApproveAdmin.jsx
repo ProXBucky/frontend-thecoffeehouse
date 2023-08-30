@@ -57,7 +57,7 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
                                                 <th>Họ</th>
                                                 <th>Tên</th>
                                                 <th>Địa chỉ</th>
-                                                <th>Hành động</th>
+                                                <th>Tác vụ</th>
                                             </tr>
                                         </thead>
 

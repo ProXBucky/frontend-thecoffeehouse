@@ -45,11 +45,15 @@ const approveAdminById = (id) => {
     return axios.put(`/api/approve-admin-by-id?id=${id}`)
 }
 
+const createNewManager = (body) => {
+    return axios.post('/api/create-new-manager', body)
+}
+
 
 
 export {
     deleteAdmin, updateAdminData, getAdminById, createNewProduct, deleteProduct, updateProductData, createNewStore,
-    uploadMultiImageStore, deleteStore, updateStoreData, approveAdminById
+    uploadMultiImageStore, deleteStore, updateStoreData, approveAdminById, createNewManager
 }
 
 // getAdminByEmail

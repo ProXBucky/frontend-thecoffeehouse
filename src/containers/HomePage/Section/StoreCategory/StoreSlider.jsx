@@ -129,7 +129,7 @@ export default function StoreSlider() {
                                                     item.imageData.map((item, index) => {
                                                         return (
                                                             <div className="relative flex justify-center" key={index}>
-                                                                <img src={decodeBase64Func(item.image)} className="h-[500px] mx-auto rounded-xl" />
+                                                                <img src={(item.image)} className="h-[500px] mx-auto rounded-xl" />
                                                             </div>
                                                         )
                                                     })

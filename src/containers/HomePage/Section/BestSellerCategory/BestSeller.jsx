@@ -47,7 +47,7 @@ export default function BestSeller() {
                         return (
                             <div className="w-[calc(25%_-_20px)]" key={index} >
                                 <div className="overflow-hidden rounded-2xl w-full h-[265px] cursor-pointer" style={{ 'boxShadow': '0px 0px 13px 0px #00000040' }} onClick={() => handleDetail(item)}>
-                                    <img className="hover:scale-105" src={decodeBase64Func(item.image.data)}></img>
+                                    <img className="hover:scale-105" src={(item.image)}></img>
                                 </div>
                                 <div className="w-full h-[60px] text-black font-semibold mt-2">
                                     <label className="font-semibold text-base hover:text-[#f68122] cursor-pointer" onClick={() => handleDetail(item)}>{item.name}</label><br></br>

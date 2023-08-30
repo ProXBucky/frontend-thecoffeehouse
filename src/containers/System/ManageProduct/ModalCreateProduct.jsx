@@ -4,6 +4,8 @@ import { useSelector } from "react-redux"
 import { categoryAllcodeSelector, sizeAllcodeSelector } from "../../../redux/selector"
 import { encodeBase64Func } from "../../../utils/base64";
 import { createNewProduct } from "../../../api/adminAPI"
+import RiseLoader from "react-spinners/RiseLoader"
+
 export default function ModalCreateProduct({ showModalCreate, setShowModalCreate, fetchRequest }) {
 
     const [inputValues, setInputValues] = useState({
@@ -15,6 +17,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
     });
     const [file, setFile] = useState();
     const cateArr = useSelector(categoryAllcodeSelector)
+    const [loading, setLoading] = useState(false)
     // const sizeArr = useSelector(sizeAllcodeSelector)
     // const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
 
@@ -66,6 +69,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
 
     const handleAction = async () => {
         if (validateForm()) {
+            setLoading(true)
             const response = await createNewProduct({
                 name: inputValues.name,
                 originalPrice: inputValues.originalPrice,
@@ -74,8 +78,10 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                 description: inputValues.description
             })
             if (response.errCode === 0) {
+                setLoading(false)
                 toast.success('Thêm sản phẩm mới thành công')
             } else {
+                setLoading(false)
                 toast.error('Lỗi hệ thống')
 
             }
@@ -109,6 +115,12 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
         <>
             {showModalCreate ? (
                 <>
+                    {loading && (
+                        <div className="opacity-60 fixed inset-0 bg-black z-[100] h-screen w-full flex justify-center items-center flex-col">
+                            <RiseLoader color="#36d7b7" />
+                            <p className="text-white font-medium text-2xl mt-7">Đang tải...</p>
+                        </div>
+                    )}
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >

@@ -52,7 +52,7 @@ function HistoryOrder() {
                             <th>Tổng tiền</th>
                             <th>Thời gian đặt</th>
                             <th>Trạng thái</th>
-                            <th>Hành động</th>
+                            <th>Tác vụ</th>
                         </tr>
                     </thead>
                     <tbody className="text-center">

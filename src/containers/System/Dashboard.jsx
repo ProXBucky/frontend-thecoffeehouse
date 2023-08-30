@@ -128,7 +128,7 @@ function DashBoard() {
                                 {
                                     lastestOrder === 'None' ?
                                         (
-                                            <tr colspan="4" className="text-2xl" >Không có dữ liệu</tr>
+                                            <tr colspan="4" className="text-lg" >Không có dữ liệu</tr>
                                         )
                                         :
                                         lastestOrder && lastestOrder.length > 0 ?
@@ -174,7 +174,7 @@ function DashBoard() {
                                 {
                                     bestSeller === 'None' ?
                                         (
-                                            <tr colspan="2" className="text-2xl" >Không có dữ liệu</tr>
+                                            <tr colspan="2" className="text-lg" >Không có dữ liệu</tr>
                                         )
                                         :
                                         bestSeller && bestSeller.length > 0 ?

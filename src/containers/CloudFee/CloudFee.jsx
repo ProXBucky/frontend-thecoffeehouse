@@ -24,8 +24,8 @@ export default function CloudFee() {
                 <div className="flex flex-col mx-[150px]">
                     <div className="flex flex-row items-center">
                         <div className="w-1/2">
-                            <h2 className="text-[#FEBF3E] font-[Baron] font- font-semibold text-2xl">CLOuDFEE</h2>
-                            <h1 className="text-[#FEBF3E] font-[Glad]">Creme Brulee</h1>
+                            <h2 className="text-[#FEBF3E] font-semibold text-2xl font-[BaronU]">CLOuDFEE</h2>
+                            <h1 className="text-[#FEBF3E] font-[Hara] text-7xl">Creme Brulee</h1>
                             <p className="text-white py-3"><b>Thức uống "chiều chuộng bản thân" bậc nhất</b> cho những ai thích vị ngọt ngào hay muốn thưởng thức sự kết hợp độc đáo giữa món tráng miệng và thức uống.</p>
                             <a className="text-[#FEBF3E] hover:text-[#FEBF3E] cursor-pointer" href="https://order.thecoffeehouse.com/cloud-fee" target="_blank">Êm mượt như mây, Chill là ghiền ngay! <i className="fa-solid fa-caret-right ml-2"></i></a>
                         </div>
@@ -39,8 +39,8 @@ export default function CloudFee() {
                             <img src="/src/assets/CloudFee/_creamy.webp" />
                         </div>
                         <div className="w-1/2">
-                            <h2 className="text-[#FEBF3E]">CLOuDFEE</h2>
-                            <h1 className="text-[#FEBF3E]">Creamy</h1>
+                            <h2 className="text-[#FEBF3E] font-semibold text-2xl font-[BaronU]">CLOuDFEE</h2>
+                            <h1 className="text-[#FEBF3E] font-[Hara] text-7xl">Creamy</h1>
                             <p className="text-white py-3"><b>Thức uống "đánh thức" năng lượng ngày mới</b> hợp cho những ai mới bước vào thế giới cà phê hoặc ghiền cà phê nhưng muốn khám phá thêm nhiều hương vị mới.</p>
                             <a className="text-[#FEBF3E] hover:text-[#FEBF3E] cursor-pointer" href="https://order.thecoffeehouse.com/cloud-fee" target="_blank">Êm mượt như mây, Chill là ghiền ngay! <i className="fa-solid fa-caret-right ml-2"></i></a>
                         </div>
@@ -48,7 +48,7 @@ export default function CloudFee() {
                 </div>
 
                 <div className="mx-[150px] mt-[50px]">
-                    <h1 className="mx-[100px] text-[64px] my-[40px] text-center text-[#FEBF3E]">CÀ PHÊ CÓ DÀNH CHO TẤT CẢ MỌI NGƯỜI?</h1>
+                    <h1 className="mx-[100px] text-[64px] my-[40px] text-center text-[#FEBF3E] font-[Montserrat] font-extrabold">CÀ PHÊ CÓ DÀNH CHO TẤT CẢ MỌI NGƯỜI?</h1>
                     <div className="mx-[80px]">
                         <iframe className="w-full h-[560px]" src="https://www.youtube.com/embed/t5I96ycncPA"
                             title="CloudFee: Cà phê có dành cho tất cả mọi người?" frameborder="0"
@@ -72,14 +72,14 @@ export default function CloudFee() {
                             <img src="/src/assets/CloudFee/thinh_93cf92a5395043a2b634af4de08c0163.webp" />
                         </div>
                         <div className="w-1/2">
-                            <h1 className="text-[#FEBF3E]">CÀ PHÊ NGON CHỈ CÓ VỊ ĐẮNG?</h1>
+                            <h1 className="text-[#FEBF3E] font-bold text-5xl">CÀ PHÊ NGON CHỈ CÓ VỊ ĐẮNG?</h1>
                             <p className="my-[10px] text-white">Từ ý tưởng về CloudFee của Edward, anh Phạm Phúc Thịnh - barista của The Coffee House nhận ra: Cà phê không nhất thiết phải đắng, phải chua thì mới ngon. Đôi khi một chút biến tấu, một chút ngọt ngào để yêu chiều bản thân mới thật sự quan trọng. Và đó là cách CloudFee Creme Brulee ra đời.</p>
                             <button className="bg-[#FEBF3E]" name="https://www.youtube.com/watch?v=o9G8v4j-P3w&ab_channel=THECOFFEEHOUSE" onClick={openModal}>Xem video nghe Thịnh kể chuyện</button>
                         </div>
                     </div>
                     <div className="flex flex-row items-center">
                         <div className="w-1/2">
-                            <h1 className="text-[#FEBF3E]">CÀ PHÊ ĐÂU CHỈ LÀ THỨC UỐNG</h1>
+                            <h1 className="text-[#FEBF3E] font-bold text-5xl">CÀ PHÊ ĐÂU CHỈ LÀ THỨC UỐNG</h1>
                             <p className="my-[10px] text-white">Trong ly cà phê dành cho người mình thương có gì? Khi nghe Edward chia sẻ về thế hệ cà phê mới CloudFee, anh Nguyễn Hoàng Hiếu - barista của The Coffee House chợt nhớ tới vợ mình. Cô ngại vị đắng của cà phê, nhưng cần một thức uống tỉnh táo mỗi sáng. Và CloudFee Creamy là món quà anh tặng cho người phụ nữ anh yêu.</p>
                             <button className="bg-[#FEBF3E]" name="https://www.youtube.com/watch?v=LdmG0hSq_Ig&ab_channel=THECOFFEEHOUSE" onClick={openModal}>Hiếu bật mí trong video này</button>
                         </div>
@@ -91,7 +91,7 @@ export default function CloudFee() {
                 </div>
 
                 <div className="mx-[150px] mt-[50px] pb-40">
-                    <h1 className="mx-[100px] text-[64px] my-[40px] text-center text-[#FEBF3E]">CHUYỆN CÀ PHÊ</h1>
+                    <h1 className="mx-[100px] text-[64px] my-[40px] text-center text-[#FEBF3E] font-extrabold text-5xl">CHUYỆN CÀ PHÊ</h1>
                     <div className="mx-[200px] flex h-[500px]">
                         <div className="rounded-lg overflow-hidden relative">
                             <div className="w-1/2 z-40">

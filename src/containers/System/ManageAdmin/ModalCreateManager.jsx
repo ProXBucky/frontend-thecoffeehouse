@@ -1,9 +1,9 @@
 import { toast } from "react-toastify";
-import { registerUser } from "../../../api/Auth"
+import { createNewManager } from "../../../api/adminAPI"
 import { useState } from "react";
 import RiseLoader from "react-spinners/RiseLoader"
 
-export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, fetchRequest }) {
+export default function ModalCreateManager({ showModalCreateManager, setShowModalCreateManager, fetchRequest }) {
 
     const initStateInput = {
         email: '', password: '',
@@ -37,7 +37,7 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
     const handleAction = async () => {
         if (validateForm()) {
             setLoading(true)
-            let res = await registerUser({
+            let res = await createNewManager({
                 email: inputValues.email,
                 password: inputValues.password,
                 firstName: inputValues.firstName,
@@ -47,7 +47,7 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
             })
             if (res.errCode === 0) {
                 setLoading(false)
-                toast.success('Quản trị viên đang chờ được duyệt')
+                toast.success('Thêm quản lý thành công')
             } else {
                 setLoading(false)
                 toast.error('Lỗi hệ thống')
@@ -55,18 +55,18 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
             }
             setInputValues(initStateInput)
             fetchRequest()
-            setShowModalCreate(false)
+            setShowModalCreateManager(false)
         }
     }
 
     const handleClose = () => {
         setInputValues(initStateInput)
-        setShowModalCreate(false)
+        setShowModalCreateManager(false)
     }
 
     return (
         <>
-            {showModalCreate ? (
+            {showModalCreateManager ? (
                 <>
                     {loading && (
                         <div className="opacity-60 fixed inset-0 bg-black z-[100] h-screen w-full flex justify-center items-center flex-col">
@@ -83,7 +83,7 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
-                                        Tạo mới quản trị viên
+                                        Tạo mới quản lý
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={handleClose}></i>

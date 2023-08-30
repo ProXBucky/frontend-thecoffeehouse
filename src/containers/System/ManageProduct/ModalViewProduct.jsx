@@ -28,7 +28,7 @@ export default function ModalViewProduct({ showModalView, setShowModalView, data
                                         <div className="w-1/2 mt-20">
                                             <label className="text-xl font-medium">Tên sản phẩm: </label>{dataProduct.name}<br />
                                             <label className="text-xl font-medium">Giá tiền: </label>{formatPrice(dataProduct.originalPrice)}(VND)<br />
-                                            <label className="text-xl font-medium">Thể loại:</label> {dataProduct.categoryData.valueEn}<br />
+                                            <label className="text-xl font-medium">Thể loại:</label> {dataProduct.categoryData.valueVn}<br />
                                         </div>
                                         <div className="w-1/2 flex justify-center h-[255px] ">
                                             <img src={(dataProduct.image)} className="cover h-[255px] w-[255px] overflow-hidden cursor-pointer rounded-xl" style={{ boxShadow: '0px 0px 13px 0px #00000040' }} />

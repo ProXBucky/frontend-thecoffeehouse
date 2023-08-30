@@ -9,10 +9,12 @@ import { adminArrSelector, adminNotApprovedArrSelector } from "../../../redux/se
 import { useDispatch, useSelector } from "react-redux"
 import RiseLoader from "react-spinners/RiseLoader"
 import { withRouter } from "react-router-dom"
+import ModalCreateManager from "./ModalCreateManager"
 
 
 function ManageAdmin() {
     const [showModalCreate, setShowModalCreate] = useState(false)
+    const [showModalCreateManager, setShowModalCreateManager] = useState(false)
     const [showModalView, setShowModalView] = useState(false)
     const [showModalEdit, setShowModalEdit] = useState(false)
     const [showModalDelete, setShowModalDelete] = useState(false)
@@ -36,6 +38,10 @@ function ManageAdmin() {
 
     const handleCreate = () => {
         setShowModalCreate(true)
+    }
+
+    const handleCreateManager = () => {
+        setShowModalCreateManager(true)
     }
     const handleApprove = () => {
         setShowModal(true)
@@ -67,8 +73,10 @@ function ManageAdmin() {
             <ModalDeleteAdmin showModalDelete={showModalDelete} setShowModalDelete={setShowModalDelete} dataUser={dataUser} fetchRequest={fetchRequest} />
             <ModalViewAdmin showModalView={showModalView} setShowModalView={setShowModalView} dataUser={dataUser} />
             <ModalCreateAdmin showModalCreate={showModalCreate} setShowModalCreate={setShowModalCreate} fetchRequest={fetchRequest} />
+            <ModalCreateManager showModalCreateManager={showModalCreateManager} setShowModalCreateManager={setShowModalCreateManager} fetchRequest={fetchRequest} />
             <div className="p-10 text-sm">
-                <p className="text-2xl font-medium inline-block">Quản lý quản trị viên</p>
+                <p className="text-2xl font-medium inline-block">Quản lý nhân viên</p>
+                <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreateManager()}>Tạo mới quản lý</button>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreate()}>Tạo mới quản trị viên</button>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white relative" name="Approved" onClick={() => handleApprove()}>
                     Đang chờ
@@ -83,7 +91,7 @@ function ManageAdmin() {
                                 <th>Họ</th>
                                 <th>Tên</th>
                                 <th>Địa chỉ</th>
-                                <th>Hành động</th>
+                                <th>Tác vụ</th>
                             </tr>
                         </thead>
 
@@ -100,7 +108,7 @@ function ManageAdmin() {
                                                 adminArr.map((item, index) => {
                                                     return (
                                                         <tr className="h-14 font-medium bg-white border-slate-300 overflow-hidden border-b" key={index}>
-                                                            <td>{item.id}</td>
+                                                            <td>{item.id} {item.roleId === 'R1' ? <i class="fa-solid fa-key text-red-400"></i> : ' '}</td>
                                                             <td>{item.email}</td>
                                                             <td>{item.firstName}</td>
                                                             <td>{item.lastName}</td>

@@ -17,7 +17,7 @@ export default function ProductList({ allProductArr, handleDetail }) {
                             return (
                                 <div className="w-[270px] cursor-pointer" key={index} onClick={() => handleDetail(item)}>
                                     <div className="rounded-lg overflow-hidden" style={{ boxShadow: '1px 1px 13px 0px #00000040' }}>
-                                        <img src={decodeBase64Func(item.image.data)} ></img>
+                                        <img src={(item.image)} ></img>
                                     </div>
                                     <div className="mt-2">
                                         <label className="font-semibold text-base">{item.name}</label><br></br>

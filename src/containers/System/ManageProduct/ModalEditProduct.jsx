@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
 import { categoryAllcodeSelector, sizeAllcodeSelector } from "../../../redux/selector"
 import { updateProductData } from "../../../api/adminAPI"
 import { toast } from "react-toastify"
+import RiseLoader from "react-spinners/RiseLoader"
+import { useState } from "react";
 
 // handleChangeChecked, selectedCheckboxes,
 export default function ModalEditProduct({ showModalEdit, setShowModalEdit, dataProduct, handleOnChange, fetchRequest, file, setFile, handlePreviewImage }) {
     const cateArr = useSelector(categoryAllcodeSelector)
     // const sizeArr = useSelector(sizeAllcodeSelector)
+
+    const [loading, setLoading] = useState(false)
+
 
     const validateForm = () => {
         let check = true;
@@ -30,6 +34,7 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
 
     const handleAction = async () => {
         if (validateForm()) {
+            setLoading(true)
             let res = await updateProductData({
                 id: dataProduct.id,  //for findOne
                 name: dataProduct.name,
@@ -40,12 +45,13 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
                 originalPrice: dataProduct.originalPrice,
             })
             if (res.errCode === 0) {
+                setLoading(false)
                 toast.success('Cập nhật thông tin thành công')
                 fetchRequest()
                 setShowModalEdit(false)
             } else {
+                setLoading(false)
                 toast.error('Lỗi hệ thống')
-
             }
             setFile('')
         }
@@ -56,6 +62,12 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
         <>
             {showModalEdit ? (
                 <>
+                    {loading && (
+                        <div className="opacity-60 fixed inset-0 bg-black z-[100] h-screen w-full flex justify-center items-center flex-col">
+                            <RiseLoader color="#36d7b7" />
+                            <p className="text-white font-medium text-2xl mt-7">Đang tải...</p>
+                        </div>
+                    )}
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >

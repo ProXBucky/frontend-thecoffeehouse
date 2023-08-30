@@ -2,8 +2,12 @@ import { toast } from "react-toastify"
 import { useSelector } from "react-redux";
 import { cookieSelector } from "../../../redux/selector"
 import axios from "axios";
+import RiseLoader from "react-spinners/RiseLoader"
+import { useState } from "react";
+
 
 export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete, dataProduct, fetchRequest }) {
+    const [loading, setLoading] = useState(false)
     let cookieValue = useSelector(cookieSelector)
     let headers = { Authorization: `Bearer ${cookieValue}` }
 
@@ -12,17 +16,20 @@ export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete
     }
 
     const handleAction = async () => {
+        setLoading(true)
         let res = await deleteProduct(dataProduct.id)
-        console.log(res)
         if (res.data.errCode === 0) {
+            setLoading(false)
             toast.success('Xóa sản phẩm thành công')
             setShowModalDelete(false)
             fetchRequest()
         }
         else if (res.data.errCode === 'C') {
+            setLoading(false)
             toast.error('Chỉ quản lý có quyền xóa')
         }
         else {
+            setLoading(false)
             toast.error('Lỗi hệ thống')
         }
         setShowModalDelete(false)
@@ -32,6 +39,12 @@ export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete
         <>
             {showModalDelete ? (
                 <>
+                    {loading && (
+                        <div className="opacity-60 fixed inset-0 bg-black z-[100] h-screen w-full flex justify-center items-center flex-col">
+                            <RiseLoader color="#36d7b7" />
+                            <p className="text-white font-medium text-2xl mt-7">Đang tải...</p>
+                        </div>
+                    )}
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >

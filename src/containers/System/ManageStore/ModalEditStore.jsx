@@ -2,11 +2,13 @@ import { useSelector } from "react-redux"
 import { cityAllcodeSelector } from "../../../redux/selector"
 import { updateStoreData } from "../../../api/adminAPI"
 import { toast } from "react-toastify"
-
+import RiseLoader from "react-spinners/RiseLoader"
+import { useState } from "react";
 
 
 export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataStore, fetchRequest, handleOnChange, onImageChange, imageURLS }) {
     const cityArr = useSelector(cityAllcodeSelector)
+    const [loading, setLoading] = useState(false)
 
     const validateForm = () => {
         let check = true;
@@ -24,6 +26,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
 
     const handleAction = async () => {
         if (validateForm()) {
+            setLoading(true)
             let res = await updateStoreData({
                 id: dataStore.id,  //for findOne
                 nameStore: dataStore.nameStore,
@@ -36,12 +39,13 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                 image: dataStore.image
             })
             if (res.errCode === 0) {
+                setLoading(false)
                 toast.success('Cập nhật thông tin thành công')
                 fetchRequest()
                 setShowModalEdit(false)
             } else {
+                setLoading(false)
                 toast.error('Lỗi hệ thống')
-
             }
         }
     }
@@ -52,6 +56,12 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
         <>
             {showModalEdit ? (
                 <>
+                    {loading && (
+                        <div className="opacity-60 fixed inset-0 bg-black z-[100] h-screen w-full flex justify-center items-center flex-col">
+                            <RiseLoader color="#36d7b7" />
+                            <p className="text-white font-medium text-2xl mt-7">Đang tải...</p>
+                        </div>
+                    )}
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >

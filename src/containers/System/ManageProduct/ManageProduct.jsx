@@ -117,7 +117,7 @@ function ManageProduct() {
                                 <th>Tên SP</th>
                                 <th>Giá tiền (VND)</th>
                                 <th>Thể loại</th>
-                                <th>Hành động</th>
+                                <th>Tác vụ</th>
                             </tr>
                         </thead>
                         <tbody>

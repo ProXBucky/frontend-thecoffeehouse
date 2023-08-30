@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { cityAllcodeSelector } from "../../../redux/selector"
 import { encodeBase64Func } from "../../../utils/base64";
 import { createNewStore, uploadMultiImageStore } from "../../../api/adminAPI"
-import { v4 as uuidv4 } from 'uuid';
+import RiseLoader from "react-spinners/RiseLoader"
 
 export default function ModalCreateStore({ showModalCreate, setShowModalCreate, fetchRequest }) {
 
@@ -17,12 +17,12 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         cityId: '',
         mapLink: '',
         mapHTML: '',
-        // storeId: uuidv4()
     });
 
     const cityArr = useSelector(cityAllcodeSelector)
     const [images, setImages] = useState([]);
     const [imageURLS, setImageURLs] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         handleImageStore()
@@ -73,6 +73,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
 
     const handleAction = async () => {
         if (validateForm()) {
+            setLoading(true)
             const response = await createNewStore({
                 nameStore: inputValues.nameStore,
                 address: inputValues.address,
@@ -83,11 +84,12 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                 shortDescription: inputValues.shortDescription,
                 image: inputValues.image
             })
-            // const res = await uploadMultiImageStore(inputValues.image)
 
             if (response.errCode === 0) {
+                setLoading(false)
                 toast.success('Tạo cửa hàng thành công')
             } else {
+                setLoading(false)
                 toast.error('Lỗi hệ thống')
 
             }
@@ -114,6 +116,13 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         <>
             {showModalCreate ? (
                 <>
+
+                    {loading && (
+                        <div className="opacity-60 fixed inset-0 bg-black z-[100] h-screen w-full flex justify-center items-center flex-col">
+                            <RiseLoader color="#36d7b7" />
+                            <p className="text-white font-medium text-2xl mt-7">Đang tải...</p>
+                        </div>
+                    )}
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >
@@ -219,8 +228,12 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                     </div>
                     <div className="opacity-30 fixed inset-0 z-[49] bg-black"></div>
                 </>
-            ) : null
+            )
+                :
+                null
             }
+
+
         </>
     )
 }

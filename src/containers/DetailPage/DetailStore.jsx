@@ -48,7 +48,7 @@ export default function DetailStore() {
                             imgData.map((item, index) => {
                                 return (
                                     <div className="w-full mb-2" key={index}>
-                                        <img src={decodeBase64Func(item.image)} />
+                                        <img src={(item.image)} />
                                     </div>
                                 )
                             })

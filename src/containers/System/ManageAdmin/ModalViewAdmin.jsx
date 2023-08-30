@@ -56,6 +56,10 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
                                                             <th className="h-12 bg-[#f68122] w-1/4 text-white">SĐT:</th>
                                                             <td className="px-6 bg-[#f6c7a0]">{dataUser.phone}</td>
                                                         </tr>
+                                                        <tr>
+                                                            <th className="h-12 bg-[#f68122] w-1/4 text-white">Vai trò:</th>
+                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.roleData && dataUser.roleData.valueVn}</td>
+                                                        </tr>
                                                     </>
                                                 </tbody>
                                             </table>
