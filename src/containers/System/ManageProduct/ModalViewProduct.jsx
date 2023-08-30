@@ -31,7 +31,7 @@ export default function ModalViewProduct({ showModalView, setShowModalView, data
                                             <label className="text-xl font-medium">Thể loại:</label> {dataProduct.categoryData.valueEn}<br />
                                         </div>
                                         <div className="w-1/2 flex justify-center h-[255px] ">
-                                            <img src={decodeBase64Func(dataProduct.image)} className="cover h-[255px] w-[255px] overflow-hidden cursor-pointer rounded-xl" style={{ boxShadow: '0px 0px 13px 0px #00000040' }} />
+                                            <img src={(dataProduct.image)} className="cover h-[255px] w-[255px] overflow-hidden cursor-pointer rounded-xl" style={{ boxShadow: '0px 0px 13px 0px #00000040' }} />
                                         </div>
                                     </div>
                                     <div className="w-full mt-5 ">

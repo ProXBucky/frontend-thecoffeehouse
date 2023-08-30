@@ -17,7 +17,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         cityId: '',
         mapLink: '',
         mapHTML: '',
-        storeId: uuidv4()
+        // storeId: uuidv4()
     });
 
     const cityArr = useSelector(cityAllcodeSelector)
@@ -36,8 +36,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
             newImageUrls.push(URL.createObjectURL(image))
             let base64Img = await encodeBase64Func(image)
             base64Arr.push({
-                storeId: inputValues.storeId,
-                image: base64Img
+                base64Image: base64Img
             })
         });
         setImageURLs(newImageUrls);
@@ -75,7 +74,6 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
     const handleAction = async () => {
         if (validateForm()) {
             const response = await createNewStore({
-                id: inputValues.storeId,
                 nameStore: inputValues.nameStore,
                 address: inputValues.address,
                 cityId: inputValues.cityId,
@@ -83,10 +81,11 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                 mapHTML: inputValues.mapHTML,
                 description: inputValues.description,
                 shortDescription: inputValues.shortDescription,
+                image: inputValues.image
             })
-            const res = await uploadMultiImageStore(inputValues.image)
+            // const res = await uploadMultiImageStore(inputValues.image)
 
-            if (response.errCode === 0 && res.errCode === 0) {
+            if (response.errCode === 0) {
                 toast.success('Tạo cửa hàng thành công')
             } else {
                 toast.error('Lỗi hệ thống')

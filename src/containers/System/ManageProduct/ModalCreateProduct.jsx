@@ -70,7 +70,6 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                 name: inputValues.name,
                 originalPrice: inputValues.originalPrice,
                 category: inputValues.category,
-                // size: selectedCheckboxes.toString(),
                 image: inputValues.image,
                 description: inputValues.description
             })
@@ -94,6 +93,18 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
         }
     }
 
+    const closeModal = () => {
+        setInputValues({
+            name: '',
+            originalPrice: '',
+            category: '',
+            image: '',
+            description: ''
+        })
+        setFile('')
+        setShowModalCreate(false)
+    }
+
     return (
         <>
             {showModalCreate ? (
@@ -107,7 +118,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                     <h3 className="text-3xl font-semibold ml-10">
                                         Tạo sản phẩm mới
                                     </h3>
-                                    <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalCreate(false)}></i>
+                                    <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={closeModal}></i>
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-6 flex-auto mx-10">
@@ -174,7 +185,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                     <div>
                                         <button
                                             className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
-                                            onClick={() => setShowModalCreate(false)}
+                                            onClick={closeModal}
                                         >
                                             Hủy
                                         </button>

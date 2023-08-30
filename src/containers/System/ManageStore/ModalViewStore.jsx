@@ -67,7 +67,7 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                                 dataStore.imageData.map((item, index) => {
                                                     return (
                                                         <div key={index} className="h-[300px] w-full">
-                                                            <img src={decodeBase64Func(item.image)} className="h-[300px] mx-auto" />
+                                                            <img src={(item.image)} className="h-[300px] mx-auto" />
                                                         </div>
                                                     )
                                                 })

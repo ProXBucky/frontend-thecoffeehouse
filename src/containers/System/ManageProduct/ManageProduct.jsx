@@ -138,7 +138,7 @@ function ManageProduct() {
                                                                 {
                                                                     item && item.image &&
                                                                     <div className="rounded-xl overflow-hidden">
-                                                                        <img src={decodeBase64Func(item.image)} className="w-[150px] h-[150px]" />
+                                                                        <img src={(item.image)} className="w-[150px] h-[150px]" />
                                                                     </div>
                                                                 }
                                                             </td>

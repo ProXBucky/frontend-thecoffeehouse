@@ -130,7 +130,7 @@ function ManageStore() {
                                                                 {
                                                                     item && item.imageData && item.imageData.length > 0 &&
                                                                     <div className="rounded-xl overflow-hidden">
-                                                                        <img src={decodeBase64Func(item.imageData[0].image)} className="w-[400px] h-[250px]" />
+                                                                        <img src={(item.imageData[0].image)} className="w-[400px] h-[250px]" />
                                                                     </div>
                                                                 }
                                                             </td>

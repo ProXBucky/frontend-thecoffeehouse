@@ -6,6 +6,7 @@ import CoffeeSlider from "./Section/CoffeeSlider"
 // import Poster1 from "./Poster/Poster1"
 import StoreSlider from "./Section/StoreCategory/StoreSlider"
 import Poster2 from "./Poster/Poster2"
+// import ImageUpload from "../../utils/Test"
 
 
 // const Sliders = lazy(() => import('./Slider/Sliders'));
@@ -67,6 +68,7 @@ export default function HomePage() {
                 <Sliders />
                 <BestSeller />
                 <Poster2 />
+                {/* <ImageUpload /> */}
                 {/* <Poster1 /> */}
                 <CoffeeSlider settings={settings} />
                 <StoreSlider />
