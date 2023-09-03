@@ -5,6 +5,7 @@ import { cityAllcodeSelector } from "../../../redux/selector"
 import { encodeBase64Func } from "../../../utils/base64";
 import { createNewStore, uploadMultiImageStore } from "../../../api/adminAPI"
 import RiseLoader from "react-spinners/RiseLoader"
+import Loading from "../../../components/Loading";
 
 export default function ModalCreateStore({ showModalCreate, setShowModalCreate, fetchRequest }) {
 
@@ -118,10 +119,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                 <>
 
                     {loading && (
-                        <div className="opacity-60 fixed inset-0 bg-black z-[100] h-screen w-full flex justify-center items-center flex-col">
-                            <RiseLoader color="#36d7b7" />
-                            <p className="text-white font-medium text-2xl mt-7">Đang tải...</p>
-                        </div>
+                        <Loading />
                     )}
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
@@ -140,11 +138,11 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                         <div>
                                             <label className="text-lg">Tên cửa hàng</label>
                                             <br />
-                                            <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Type store's name" onChange={handleOnChange} name="nameStore" value={inputValues.nameStore} />
+                                            <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Hãy nhập tên cửa hàng" onChange={handleOnChange} name="nameStore" value={inputValues.nameStore} />
                                         </div>
                                         <div>
                                             <label className="text-lg">Địa chỉ</label><br />
-                                            <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Type store's address" onChange={handleOnChange} name="address" value={inputValues.address} />
+                                            <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Hãy nhập địa chỉ cửa hàng" onChange={handleOnChange} name="address" value={inputValues.address} />
                                         </div>
                                         <div>
                                             <label className="text-lg mr-4">Thành phố</label><br />
@@ -161,7 +159,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                         </div>
 
                                     </div>
-                                    <div className="w-full mt-5 flex gap-7">
+                                    <div className="w-full mt-5 flex gap-20">
                                         <div>
                                             <label className="text-lg pr-2">Hình ảnh</label><br />
                                             <input type="file" multiple accept="image/*" onChange={onImageChange} />
@@ -185,11 +183,11 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                         <div className="w-1/2">
                                             <div>
                                                 <label className="text-lg">Map link</label><br />
-                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map link" onChange={handleOnChange} name="mapLink" value={inputValues.mapLink} />
+                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Nhập link bản đồ" onChange={handleOnChange} name="mapLink" value={inputValues.mapLink} />
                                             </div>
                                             <div>
                                                 <label className="text-lg">Map HTML</label><br />
-                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map HTML" onChange={handleOnChange} name="mapHTML" value={inputValues.mapHTML} />
+                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Nhập HTML bản đồ" onChange={handleOnChange} name="mapHTML" value={inputValues.mapHTML} />
                                             </div>
                                             <div className="">
                                                 <label className="text-lg">Mô tả cửa hàng rút gọn</label><br />

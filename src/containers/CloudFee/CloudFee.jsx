@@ -17,7 +17,7 @@ export default function CloudFee() {
             <div className="text-center">
                 <img src="/src/assets/CloudFee/_KV-marvel-2.webp" />
             </div>
-            <div className="text-black h-fit" style={{ background: "url(/src/assets/CloudFee/Background.jpg) top center/100% no-repeat" }}>
+            <div className="text-black" style={{ background: "url(/src/assets/CloudFee/Background.jpg) top center/100%" }}>
                 <p className="text-center text-white text-lg py-[60px] px-[250px] mx-[200px]">Được kết hợp từ <b>Cloud</b> (đám mây) và cof<b>Fee</b> (cà phê), <b>CloudFee</b> gợi mở
                     về một thế hệ cà phê mới, êm mượt như mây.
                 </p>
@@ -51,7 +51,7 @@ export default function CloudFee() {
                     <h1 className="mx-[100px] text-[64px] my-[40px] text-center text-[#FEBF3E] font-[Montserrat] font-extrabold">CÀ PHÊ CÓ DÀNH CHO TẤT CẢ MỌI NGƯỜI?</h1>
                     <div className="mx-[80px]">
                         <iframe className="w-full h-[560px]" src="https://www.youtube.com/embed/t5I96ycncPA"
-                            title="CloudFee: Cà phê có dành cho tất cả mọi người?" frameborder="0"
+                            title="CloudFee: Cà phê có dành cho tất cả mọi người?" frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen></iframe>
                         <p className="mx-[100px] mt-[20px] text-center text-white">Bạn có biết, mỗi ngày có hơn 2 tỷ cốc cà phê được uống trên toàn thế giới?

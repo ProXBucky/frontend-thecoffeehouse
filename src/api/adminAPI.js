@@ -6,8 +6,12 @@ const getAdminById = (id) => {
 }
 
 const deleteAdmin = (id) => {
-    return axios.delete(`/api/delete-admin?id=${id}`, { headers })
+    return axios.delete(`/api/delete-admin?id=${id}`,)
 }
+
+// const deleteAdmin = (id) => {
+//     return axios.delete(`/api/delete-admin?id=${id}`, { headers })
+// }
 
 const updateAdminData = (body) => {
     return axios.put('/api/update-admin-data', body)
@@ -17,9 +21,9 @@ const createNewProduct = (body) => {
     return axios.post('/api/create-new-product', body)
 }
 
-const deleteProduct = (id) => {
-    return axios.delete(`/api/delete-product?id=${id}`, { headers })
-}
+// const deleteProduct = (id) => {
+//     return axios.delete(`/api/delete-product?id=${id}`, { headers })
+// }
 
 const updateProductData = (body) => {
     return axios.put('/api/update-product-data', body)
@@ -33,9 +37,9 @@ const uploadMultiImageStore = (body) => {
     return axios.post('/api/upload-multi-image-store', body)
 }
 
-const deleteStore = (id) => {
-    return axios.delete(`/api/delete-store?id=${id}`, { headers })
-}
+// const deleteStore = (id) => {
+//     return axios.delete(`/api/delete-store?id=${id}`, { headers })
+// }
 
 const updateStoreData = (body) => {
     return axios.put('/api/update-store-data', body)
@@ -52,8 +56,8 @@ const createNewManager = (body) => {
 
 
 export {
-    deleteAdmin, updateAdminData, getAdminById, createNewProduct, deleteProduct, updateProductData, createNewStore,
-    uploadMultiImageStore, deleteStore, updateStoreData, approveAdminById, createNewManager
+    deleteAdmin, updateAdminData, getAdminById, createNewProduct, updateProductData, createNewStore,
+    uploadMultiImageStore, updateStoreData, approveAdminById, createNewManager
 }
 
-// getAdminByEmail
+// getAdminByEmail deleteProduct deleteStore

@@ -65,7 +65,7 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
                                             {
                                                 adminNotApprovedArr === 'None' ?
                                                     (
-                                                        <td colspan="6" className="border py-4 text-lg">Không có dữ liệu</td>
+                                                        <td colSpan="6" className="border py-4 text-lg">Không có dữ liệu</td>
                                                     )
                                                     :
                                                     (

@@ -10,6 +10,7 @@ import { fetchAllProductByCategory } from "../../../api/appAPI"
 import { formatPrice } from "../../../utils/formatPrice"
 import RiseLoader from "react-spinners/RiseLoader"
 import { withRouter } from "react-router-dom"
+import Pagination from "../../../components/Pagination/Pagination"
 
 
 function ManageProduct() {
@@ -23,11 +24,18 @@ function ManageProduct() {
     const dispatch = useDispatch()
 
     const fetchDataProduct = async () => {
-        const res = await fetchAllProductByCategory('ALL')
+        const res = await fetchAllProductByCategory('ALL', currentPage, 6, 0)
         if (res && (res.errCode === 0 || res.errCode === 1)) {
             setAllProductArr(res.data)
+            setTotalPages(res.totalPages)
         }
     }
+
+    const [totalPages, setTotalPages] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageClick = (selectedPage) => {
+        setCurrentPage(selectedPage.selected + 1);
+    };
 
     useEffect(() => {
         // dispatch(fetchAllcodeSize())
@@ -35,6 +43,10 @@ function ManageProduct() {
         dispatch(fetchAllcodeCategory())
         window.scrollTo(0, 0)
     }, [])
+
+    useEffect(() => {
+        fetchDataProduct();
+    }, [currentPage]);
 
 
     const fetchRequest = useCallback(() => {
@@ -114,7 +126,7 @@ function ManageProduct() {
                         <thead className="h-14 bg-[#f68122] text-white border-slate-300 text-center overflow-hidden">
                             <tr>
                                 <th className="px-5">Hình ảnh</th>
-                                <th>Tên SP</th>
+                                <th>Tên sản phẩm</th>
                                 <th>Giá tiền (VND)</th>
                                 <th>Thể loại</th>
                                 <th>Tác vụ</th>
@@ -126,7 +138,7 @@ function ManageProduct() {
 
                                     allProductArr === 'None' ?
                                         (
-                                            <td colspan="5" className="border py-4 text-lg">Không có dữ liệu</td>
+                                            <td colSpan="5" className="border py-4 text-lg">Không có dữ liệu</td>
                                         )
                                         :
                                         (
@@ -169,6 +181,7 @@ function ManageProduct() {
                             </>
                         </tbody>
                     </table>
+                    <Pagination totalPages={totalPages} handlePageClick={handlePageClick} />
                 </div>
             </div >
         </>

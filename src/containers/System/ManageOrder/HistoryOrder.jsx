@@ -60,7 +60,7 @@ function HistoryOrder() {
                             {
                                 orderList === 'None' ?
                                     (
-                                        <td colspan="7" className="border py-4 text-lg">Không có dữ liệu</td>
+                                        <td colSpan="7" className="border py-4 text-lg">Không có dữ liệu</td>
                                     )
                                     :
                                     (

@@ -32,7 +32,6 @@ export default function ShoppingCart() {
                             <div className="w-full flex flex-row pt-10 pb-28" >
                                 <CustomerInfo cart={cart} isViewFunction={'false'} />
                             </div >
-
                         </div >
                 }
             </div >

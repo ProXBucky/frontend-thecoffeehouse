@@ -49,7 +49,7 @@ export default function Sliders() {
     const settingSlider = {
         dots: false,
         infinite: true,
-        speed: 300,
+        speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -59,7 +59,7 @@ export default function Sliders() {
 
 
     return (
-        <div className="relative mt-9 w-full h-[460px] ">
+        <div className="relative mt-9 w-full h-[460px] ease-liner ">
             <Slider {...settingSlider}>
                 {
                     slidersArr.map((item) => {

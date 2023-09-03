@@ -16,7 +16,7 @@ export default function StoreSlider() {
     }, [])
 
     const fetchStore = async () => {
-        const res = await fetchAllStoreByCity('ALL')
+        const res = await fetchAllStoreByCity('ALL', 0, 0, 3)
         if (res && res.errCode === 0) {
             setStoreArr(res.data)
         }

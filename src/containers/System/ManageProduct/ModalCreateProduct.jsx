@@ -5,6 +5,7 @@ import { categoryAllcodeSelector, sizeAllcodeSelector } from "../../../redux/sel
 import { encodeBase64Func } from "../../../utils/base64";
 import { createNewProduct } from "../../../api/adminAPI"
 import RiseLoader from "react-spinners/RiseLoader"
+import Loading from "../../../components/Loading";
 
 export default function ModalCreateProduct({ showModalCreate, setShowModalCreate, fetchRequest }) {
 
@@ -116,10 +117,7 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
             {showModalCreate ? (
                 <>
                     {loading && (
-                        <div className="opacity-60 fixed inset-0 bg-black z-[100] h-screen w-full flex justify-center items-center flex-col">
-                            <RiseLoader color="#36d7b7" />
-                            <p className="text-white font-medium text-2xl mt-7">Đang tải...</p>
-                        </div>
+                        <Loading />
                     )}
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
@@ -138,11 +136,11 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                         <div>
                                             <label className="text-lg">Tên sản phẩm</label>
                                             <br />
-                                            <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Type new product" onChange={handleOnChange} name="name" value={inputValues.name} />
+                                            <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Nhập tên sản phẩm" onChange={handleOnChange} name="name" value={inputValues.name} />
                                         </div>
                                         <div>
                                             <label className="text-lg">Giá tiền (VND)</label><br />
-                                            <input type="number" className="border-2 outline-none bg-white p-2" placeholder="Type original price" onChange={handleOnChange} name="originalPrice" value={inputValues.originalPrice} />
+                                            <input type="number" className="border-2 outline-none bg-white p-2" placeholder="Nhập giá sản phẩm" onChange={handleOnChange} name="originalPrice" value={inputValues.originalPrice} />
                                         </div>
                                         <div>
                                             <label className="text-lg mr-4">Thể loại</label><br />

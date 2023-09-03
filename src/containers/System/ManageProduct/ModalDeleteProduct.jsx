@@ -4,6 +4,7 @@ import { cookieSelector } from "../../../redux/selector"
 import axios from "axios";
 import RiseLoader from "react-spinners/RiseLoader"
 import { useState } from "react";
+import Loading from "../../../components/Loading";
 
 
 export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete, dataProduct, fetchRequest }) {
@@ -40,10 +41,7 @@ export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete
             {showModalDelete ? (
                 <>
                     {loading && (
-                        <div className="opacity-60 fixed inset-0 bg-black z-[100] h-screen w-full flex justify-center items-center flex-col">
-                            <RiseLoader color="#36d7b7" />
-                            <p className="text-white font-medium text-2xl mt-7">Đang tải...</p>
-                        </div>
+                        <Loading />
                     )}
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"

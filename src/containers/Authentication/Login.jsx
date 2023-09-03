@@ -106,11 +106,12 @@ export default function Login() {
             <div className="flex justify-between mt-5">
               <p className="text-center mt-2">Tài khoản quản lý: <br />
                 admin1@gmail.com <br />
-                admin1@
+                admin1@gmail.com
               </p>
               <p className="text-center mt-2">Tài khoản quản trị viên: <br />
                 admin2@gmail.com <br />
-                admin2@
+                admin2@gmail.com
+
               </p>
 
             </div>

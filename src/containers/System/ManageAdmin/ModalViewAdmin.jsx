@@ -16,7 +16,7 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
-                                        Thông tin quản trị viên
+                                        Thông tin nhân viên
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalView(false)}></i>

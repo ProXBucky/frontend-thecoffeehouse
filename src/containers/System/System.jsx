@@ -21,11 +21,11 @@ export default function System() {
         if (res && res.data && res.data.errCode === 0) {
             if (res.data.roleId === 'R1') {
                 setRoleUser('R1')
-                toast.success("Xin chào quản lý")
+                toast.success("The Coffee House xin chào quản lý")
             }
             else if (res.data.roleId === 'R2') {
                 setRoleUser('R2')
-                toast.success("Xin chào quản trị viên")
+                toast.success("The Coffee House xin chào quản trị viên")
             }
         } else {
             toast.error('Lỗi server')

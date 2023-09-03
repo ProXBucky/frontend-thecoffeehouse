@@ -1,6 +1,7 @@
 import { fetchAllStoreByCity } from "../../api/appAPI"
 import { useState, useEffect } from "react"
 import StoreListComponent from "./StoreListComponent"
+import Pagination from "../../components/Pagination/Pagination"
 
 
 export default function DNStore() {
@@ -10,10 +11,21 @@ export default function DNStore() {
         fetchStore()
     }, [])
 
+    const [totalPages, setTotalPages] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageClick = (selectedPage) => {
+        setCurrentPage(selectedPage.selected + 1);
+    };
+
+    useEffect(() => {
+        fetchStore();
+    }, [currentPage]);
+
     const fetchStore = async () => {
-        const res = await fetchAllStoreByCity('C3')
+        const res = await fetchAllStoreByCity('C3', currentPage, 4, 0)
         if (res && (res.errCode === 0 || res.errCode === 1)) {
             setStoreArr(res.data)
+            setTotalPages(res.totalPages)
         } else {
             console.log(res.errMessage)
         }
@@ -24,6 +36,8 @@ export default function DNStore() {
         <div className="ml-20 mr-3">
             <p className="font-medium text-xl mb-4">Khám phá cửa hàng của chúng tôi ở Tp Đà Nẵng</p>
             <StoreListComponent storeArr={storeArr} />
+            {storeArr != 'None' && <Pagination totalPages={totalPages} handlePageClick={handlePageClick} />}
+
         </div >
     )
 }

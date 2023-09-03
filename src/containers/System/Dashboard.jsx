@@ -3,7 +3,7 @@ import { fetchStatisticsApp, fetchBestSeller } from "../../api/appAPI"
 import { getLastestOrder } from "../../api/orderAPI"
 import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
-import RiseLoader from "react-spinners/RiseLoader"
+// import RiseLoader from "react-spinners/RiseLoader"
 import { formatPrice } from "../../utils/formatPrice"
 import { withRouter } from "react-router-dom"
 
@@ -67,7 +67,7 @@ function DashBoard() {
                         </div>
                         <div className="w-3/5 text-center">
                             <span className="font-medium text-3xl">{increaseNumberEffect(statistic.totalAdmins)}</span>
-                            <p className="font-medium text-sm text-gray-500">Quản trị viên</p>
+                            <p className="font-medium text-sm text-gray-500">Nhân viên</p>
                         </div>
                     </div>
 
@@ -128,34 +128,34 @@ function DashBoard() {
                                 {
                                     lastestOrder === 'None' ?
                                         (
-                                            <tr colspan="4" className="text-lg" >Không có dữ liệu</tr>
+                                            <tr colSpan="4" className="text-lg" >Không có dữ liệu</tr>
                                         )
                                         :
-                                        lastestOrder && lastestOrder.length > 0 ?
-                                            lastestOrder.map((item, index) => {
-                                                return (
-                                                    <tr className="border-b-2 h-12" key={index}>
-                                                        <td>
-                                                            {`${item.UserData && item.UserData.firstName} ${item.UserData && item.UserData.lastName}`}
-                                                        </td>
-                                                        <td>
-                                                            {formatPrice(item.totalPrice)} VNĐ
-                                                        </td>
-                                                        <td>
-                                                            {item.timeOrder}
-                                                        </td>
-                                                        <td>
+                                        lastestOrder && lastestOrder.length > 0 &&
+                                        lastestOrder.map((item, index) => {
+                                            return (
+                                                <tr className="border-b-2 h-12" key={index}>
+                                                    <td>
+                                                        {`${item.UserData && item.UserData.firstName} ${item.UserData && item.UserData.lastName}`}
+                                                    </td>
+                                                    <td>
+                                                        {formatPrice(item.totalPrice)} VNĐ
+                                                    </td>
+                                                    <td>
+                                                        {item.timeOrder}
+                                                    </td>
+                                                    <td>
 
-                                                            {item.statusPayment === 'SP1' && <span className="text-white bg-red-500 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
-                                                            {item.statusPayment === 'SP2' && <span className="text-white bg-green-500 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
-                                                            {item.statusPayment === 'SP3' && <span className="text-white bg-blue-600 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
+                                                        {item.statusPayment === 'SP1' && <span className="text-white bg-red-500 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
+                                                        {item.statusPayment === 'SP2' && <span className="text-white bg-green-500 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
+                                                        {item.statusPayment === 'SP3' && <span className="text-white bg-blue-600 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
 
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })
-                                            :
-                                            <RiseLoader color="#36d7b7" className="absolute top-[45%] left-[45%] " />
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    // :
+                                    // <RiseLoader color="#36d7b7" className="absolute top-[45%] left-[45%] " />
                                 }
                             </tbody>
                         </table >
@@ -174,24 +174,22 @@ function DashBoard() {
                                 {
                                     bestSeller === 'None' ?
                                         (
-                                            <tr colspan="2" className="text-lg" >Không có dữ liệu</tr>
+                                            <tr colSpan="2" className="text-lg" >Không có dữ liệu</tr>
                                         )
                                         :
-                                        bestSeller && bestSeller.length > 0 ?
-                                            bestSeller.map((item, index) => {
-                                                return (
-                                                    <tr className="border-b-2 h-12" key={index}>
-                                                        <td>
-                                                            {item.name}
-                                                        </td>
-                                                        <td>
-                                                            {item.quantitySold}
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })
-                                            :
-                                            <RiseLoader color="#36d7b7" className="absolute top-[45%] left-[45%] " />
+                                        bestSeller && bestSeller.length > 0 &&
+                                        bestSeller.map((item, index) => {
+                                            return (
+                                                <tr className="border-b-2 h-12" key={index}>
+                                                    <td>
+                                                        {item.name}
+                                                    </td>
+                                                    <td>
+                                                        {item.quantitySold}
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
                                 }
                             </tbody>
                         </table >

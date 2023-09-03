@@ -12,12 +12,12 @@ const fetchDataAllcodes = (type) => {
     return axios.get(`/api/get-allcode-by-type?type=${type}`)
 }
 
-const fetchAllProductByCategory = (category, limit) => {
-    return axios.get(`/api/get-all-product-by-category?category=${category}&limit=${limit}`)
+const fetchAllProductByCategory = (category, page, itemsPerPage, limit) => {
+    return axios.get(`/api/get-all-product-by-category?category=${category}&page=${page}&itemsPerPage=${itemsPerPage}&limit=${limit}`)
 }
 
-const fetchAllStoreByCity = (city) => {
-    return axios.get(`/api/get-all-store-by-city?city=${city}`)
+const fetchAllStoreByCity = (city, page, itemsPerPage, limit) => {
+    return axios.get(`/api/get-all-store-by-city?city=${city}&page=${page}&itemsPerPage=${itemsPerPage}&limit=${limit}`)
 }
 
 const fetchDetailProductById = (id) => {

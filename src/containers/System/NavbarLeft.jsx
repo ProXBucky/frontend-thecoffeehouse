@@ -19,7 +19,7 @@ export default function NavbarLeft({ roleUser }) {
                             </NavLink>
                             <NavLink className="border-b-2 mt-1 hover:bg-[#f68122] overflow-hidden px-3 py-4 flex items-center text-base rounded-2xl text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-admin">
                                 <i className="fa-solid fa-user-tie fa-xl mr-4"></i>
-                                <label className="font-medium cursor-pointer text-base">Quản_trị_viên</label>
+                                <label className="font-medium cursor-pointer text-base">Nhân_viên</label>
                             </NavLink>
                             <NavLink className="border-b-2 mt-1 hover:bg-[#f68122] overflow-hidden px-3 py-4 flex items-center text-base rounded-2xl text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-product">
                                 <i className="fa-solid fa-mug-saucer fa-xl mr-4 ml-[-4px]"></i>

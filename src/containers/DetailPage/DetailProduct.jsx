@@ -42,7 +42,7 @@ export default function DetailProduct() {
     }
 
     const fetchDataDiffientProduct = async () => {
-        const respone = await fetchAllProductByCategory(category, 5)
+        const respone = await fetchAllProductByCategory(category, 0, 0, 5)
         if (respone && respone.errCode === 0) {
             setDiffProduct(respone.data)
         } else {

@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import { createNewManager } from "../../../api/adminAPI"
 import { useState } from "react";
 import RiseLoader from "react-spinners/RiseLoader"
+import Loading from "../../../components/Loading";
 
 export default function ModalCreateManager({ showModalCreateManager, setShowModalCreateManager, fetchRequest }) {
 
@@ -69,10 +70,7 @@ export default function ModalCreateManager({ showModalCreateManager, setShowModa
             {showModalCreateManager ? (
                 <>
                     {loading && (
-                        <div className="opacity-60 fixed inset-0 bg-black z-[100] h-screen w-full flex justify-center items-center flex-col">
-                            <RiseLoader color="#36d7b7" />
-                            <p className="text-white font-medium text-2xl mt-7">Đang tải...</p>
-                        </div>
+                        <Loading />
                     )}
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[50] outline-none focus:outline-none ease-linear scroll-smooth"
@@ -83,7 +81,7 @@ export default function ModalCreateManager({ showModalCreateManager, setShowModa
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
-                                        Tạo mới quản lý
+                                        Tạo mới nhân viên quản lý
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={handleClose}></i>

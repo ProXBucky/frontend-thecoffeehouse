@@ -9,6 +9,7 @@ import { fetchAllStoreByCity } from "../../../api/appAPI"
 import { decodeBase64Func, encodeBase64Func } from "../../../utils/base64"
 import RiseLoader from "react-spinners/RiseLoader"
 import { withRouter } from "react-router-dom"
+import Pagination from "../../../components/Pagination/Pagination"
 
 function ManageStore() {
     const [showModalCreate, setShowModalCreate] = useState(false)
@@ -26,11 +27,23 @@ function ManageStore() {
 
 
     const fetchDataStore = async () => {
-        const res = await fetchAllStoreByCity('ALL')
+        const res = await fetchAllStoreByCity('ALL', currentPage, 4, 0)
         if (res && (res.errCode === 0 || res.errCode === 1)) {
             setAllStoreArr(res.data)
+            setTotalPages(res.totalPages)
         }
     }
+
+    const [totalPages, setTotalPages] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageClick = (selectedPage) => {
+        setCurrentPage(selectedPage.selected + 1);
+    };
+
+    useEffect(() => {
+        fetchDataStore();
+    }, [currentPage]);
+
 
     useEffect(() => {
         dispatch(fetchAllcodeCity())
@@ -128,7 +141,7 @@ function ManageStore() {
                                         {
                                             allStoreArr === 'None' ?
                                                 (
-                                                    <td colspan="5" className="border py-4 text-lg">Không có dữ liệu</td>
+                                                    <td colSpan="5" className="border py-4 text-lg">Không có dữ liệu</td>
                                                 )
                                                 :
                                                 (
@@ -173,6 +186,7 @@ function ManageStore() {
                                     </>
                                 </tbody>
                             </table>
+                            <Pagination totalPages={totalPages} handlePageClick={handlePageClick} />
                         </div>
                     </div >
                 )

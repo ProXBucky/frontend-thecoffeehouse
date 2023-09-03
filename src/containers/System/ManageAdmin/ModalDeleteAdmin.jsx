@@ -6,7 +6,7 @@ export default function ModalDeleteAdmin({ showModalDelete, setShowModalDelete, 
     const handleAction = async () => {
         let res = await deleteAdmin(dataUser.id)
         if (res.errCode === 0) {
-            toast.success('Xóa quản trị viên thành công')
+            toast.success('Xóa nhân viên thành công')
             fetchRequest()
             setShowModalDelete(false)
         } else {
@@ -29,7 +29,7 @@ export default function ModalDeleteAdmin({ showModalDelete, setShowModalDelete, 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
 
-                                        Xóa quản trị viên
+                                        Xóa nhân viên
 
                                     </h3>
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { fetchAllProductByCategory } from "../../api/appAPI"
 import { useHistory } from "react-router-dom"
 import ProductList from "./ProductList"
+import Pagination from "../../components/Pagination/Pagination"
 
 
 export default function FrostyCollection() {
@@ -9,16 +10,26 @@ export default function FrostyCollection() {
     const history = useHistory()
 
     const fetchDataProduct = async () => {
-        const res = await fetchAllProductByCategory('CA4')
+        const res = await fetchAllProductByCategory('CA4', currentPage, 6, 0)
         if (res && (res.errCode === 0 || res.errCode === 1)) {
             setAllProductArr(res.data)
         }
     }
 
+    const [totalPages, setTotalPages] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const handlePageClick = (selectedPage) => {
+        setCurrentPage(selectedPage.selected + 1);
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0)
         fetchDataProduct()
     }, [])
+
+    useEffect(() => {
+        fetchDataProduct();
+    }, [currentPage]);
 
 
     const handleDetail = (item) => {
@@ -28,7 +39,10 @@ export default function FrostyCollection() {
 
 
     return (
-        <ProductList allProductArr={allProductArr} handleDetail={handleDetail} />
+        <>
+            <ProductList allProductArr={allProductArr} handleDetail={handleDetail} />
+            <Pagination totalPages={totalPages} handlePageClick={handlePageClick} />
+        </>
 
     )
 }

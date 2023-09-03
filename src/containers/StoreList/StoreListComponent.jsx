@@ -67,7 +67,7 @@ export default function StoreListComponent({ storeArr }) {
                                                         item.imageData.map((item, index) => {
                                                             return (
                                                                 <div className="rounded-2xl overflow-hidden cursor-pointer bg-contain bg-center" key={index} style={{ boxShadow: '1px 1px 13px 0px #00000040' }} onClick={() => handleDetail(item)}>
-                                                                    <img src={(item.image)} className="h-[260px]" />
+                                                                    <img src={(item.image)} className="h-[260px]  hover:scale-105 duration-150" />
                                                                 </div>
                                                             )
                                                         })

@@ -76,7 +76,7 @@ function ManageAdmin() {
             <ModalCreateManager showModalCreateManager={showModalCreateManager} setShowModalCreateManager={setShowModalCreateManager} fetchRequest={fetchRequest} />
             <div className="p-10 text-sm">
                 <p className="text-2xl font-medium inline-block">Quản lý nhân viên</p>
-                <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreateManager()}>Tạo mới quản lý</button>
+                <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreateManager()}>Tạo mới nhân viên quản lý</button>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreate()}>Tạo mới quản trị viên</button>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white relative" name="Approved" onClick={() => handleApprove()}>
                     Đang chờ
@@ -99,7 +99,7 @@ function ManageAdmin() {
                             {
                                 adminArr === 'None' ?
                                     (
-                                        <td colspan="6" className="border py-4 text-lg">Không có dữ liệu</td>
+                                        <td colSpan="6" className="border py-4 text-lg">Không có dữ liệu</td>
                                     )
                                     :
                                     (
@@ -108,7 +108,7 @@ function ManageAdmin() {
                                                 adminArr.map((item, index) => {
                                                     return (
                                                         <tr className="h-14 font-medium bg-white border-slate-300 overflow-hidden border-b" key={index}>
-                                                            <td>{item.id} {item.roleId === 'R1' ? <i class="fa-solid fa-key text-red-400"></i> : ' '}</td>
+                                                            <td>{item.id} {item.roleId === 'R1' ? <i className="fa-solid fa-key text-red-400"></i> : ' '}</td>
                                                             <td>{item.email}</td>
                                                             <td>{item.firstName}</td>
                                                             <td>{item.lastName}</td>

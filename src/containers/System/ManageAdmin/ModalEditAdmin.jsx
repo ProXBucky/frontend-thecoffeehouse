@@ -35,7 +35,7 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-3xl font-semibold">
-                                        Sửa thông tin quản trị viên
+                                        Sửa thông tin nhân viên
                                     </h3>
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalEdit(false)}></i>
                                 </div>
