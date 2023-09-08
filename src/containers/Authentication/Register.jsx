@@ -4,6 +4,7 @@ import "./Register.scss"
 import { registerUser } from "../../api/Auth"
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form"
+import NavbarMobile from "../HomePage/NavbarMobile";
 
 export default function Register() {
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
@@ -41,6 +42,7 @@ export default function Register() {
 
     return (
         <>
+            <NavbarMobile />
             <div className="container py-8 flex justify-center mt-10">
                 <div className="content-right w-full max-w-lg h-fit px-5 text-center">
                     <h2 className="font-medium ">Đăng ký tài khoản</h2>

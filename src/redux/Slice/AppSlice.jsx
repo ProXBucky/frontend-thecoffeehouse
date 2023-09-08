@@ -52,6 +52,7 @@ export const fetchAllProduct = createAsyncThunk(
 export const AppSlice = createSlice({
     name: 'app',
     initialState: {
+        isHiddenNavbar: false,
         role: [],
         status: [],
         size: [],
@@ -64,6 +65,9 @@ export const AppSlice = createSlice({
         allProductArr: [],
     },
     reducers: {
+        toggleNavbar: (state) => {
+            state.isHiddenNavbar = !state.isHiddenNavbar
+        },
 
     },
     extraReducers(builder) {

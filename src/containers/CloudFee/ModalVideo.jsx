@@ -13,8 +13,7 @@ export default function ModalVideo({ showModal, setShowModal, urlVideo }) {
                             <div className="shadow-lg relative w-full bg-[rgba(30,30,30,.7)] outline-none focus:outline-none">
                                 <i className="fa-solid fa-x fa-lg cursor-pointer text-white p-5 absolute top-0 right-0 z-[51] bg-[rgba(30,30,30,.7)]" onClick={() => setShowModal(false)}></i>
                                 <div className="relative flex justify-center py-14">
-                                    <ReactPlayer url={urlVideo} width='75%'
-                                        height='75vh' />
+                                    <ReactPlayer url={urlVideo} width='75%' height='75vh' />
                                 </div>
                             </div>
                         </div>

@@ -44,7 +44,7 @@ function App() {
   const userInfo = useSelector(userInfoSelector)
   return (
     <Fragment>
-      <div className='app-container w-full h-screen'>
+      <div className='max-w-full h-full w-full'>
         <Router>
           <div className='mb-[35px]'>
             {!isLogin ? <Header /> : <SystemHeader userInfo={userInfo} />}

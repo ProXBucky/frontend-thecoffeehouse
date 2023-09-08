@@ -2,14 +2,20 @@ import {
     BrowserRouter as Router,
     useHistory
 } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UserSlice } from "../../redux/Slice/UserSlice";
 import Cookies from 'js-cookie';
 import { clearToken } from "../../redux/Slice/CookieSlice";
+import { AppSlice } from '../../redux/Slice/AppSlice';
 
 export default function SystemHeader({ userInfo }) {
     const history = useHistory()
     const dispatch = useDispatch()
+    const isHidden = useSelector((state) => state.app.isHiddenNavbar)
+
+    const toggleNavbarMobile = () => {
+        dispatch(AppSlice.actions.toggleNavbar())
+    }
 
     const handleLogout = async () => {
         Cookies.set('accessToken', '');
@@ -21,14 +27,19 @@ export default function SystemHeader({ userInfo }) {
 
     return (
         <div className="w-full h-[60px] flex border fixed top-0 justify-between px-5 z-[47] bg-white">
-            <div className="w-1/3 text-black flex items-center">
+            <div className="md:w-1/3 sm:w-1/6 md:invisible sm:visible text-black flex items-center">
+                {
+                    isHidden ?
+                        <i class="fa-solid fa-xmark fa-xl cursor-pointer" onClick={toggleNavbarMobile}></i>
+                        :
+                        <i className="fa-solid fa-bars fa-xl cursor-pointer" onClick={toggleNavbarMobile} ></i>
+                }
             </div>
-            <div className='w-1/3 flex justify-center '>
-                <img className="block w-[255px] h-[60px] object-cover" src="/src/assets/LogoImg/The-Coffee-House-Logo-PNG-2.png" alt="Logo" />
-                {/* </Link> */}
+            <div className='md:w-1/3 sm:w-2/3 flex justify-center'>
+                <img className="block md:w-[255px] sm:w-full h-[60px] object-cover" src="/src/assets/LogoImg/The-Coffee-House-Logo-PNG-2.png" alt="Logo" />
             </div>
-            <div className='flex h-full items-center justify-end text-black w-1/3'>
-                <span className="text-md font-normal mr-2">Xin chào {userInfo}</span>
+            <div className='flex h-full items-center justify-end text-black md:w-1/3 sm:w-1/6'>
+                <span className="font-normal mr-2 lg:text-base md:text-sm lg:block md:block sm:hidden">Xin chào {userInfo}</span>
                 <i className="fa-solid fa-right-from-bracket fa-lg text-black cursor-pointer hover:text-[#f68122]" onClick={handleLogout}></i>
             </div>
         </div>

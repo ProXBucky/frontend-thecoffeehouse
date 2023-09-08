@@ -33,21 +33,21 @@ export default function BestSeller() {
 
 
     return (
-        <div className="w-full px-[150px] py-[50px]">
-            <div className="h-[80px] px-[40px] py-[20px] text-2xl font-medium text-black flex justify-between">
+        <div className="w-full lg:px-[150px] md:px-[20px] sm:px-[10px] xl:py-[50px] lg:py-[30px]">
+            <div className="h-[80px] lg:px-[40px] md:px-0 py-[20px] md:text-2xl sm:text-xl font-medium text-black flex justify-between">
                 <p>Sản phẩm phổ biến</p>
             </div>
-            <div className="w-full flex flex-wrap gap-[20px] pl-[30px]">
-                <div className="rounded-2xl overflow-hidden cursor-pointer w-[calc(50%_-_20px)]" onClick={navigatorPage}>
+            <div className="w-full flex flex-wrap gap-[20px] lg:pl-[30px] md:pl-0">
+                <div className="rounded-2xl overflow-hidden cursor-pointer xl:w-[calc(50%_-_20px)] lg:w-[calc(100%)]" onClick={navigatorPage}>
                     <img src="/src/assets/SliderImg/MatchaPoster.webp"></img>
                 </div>
                 {
                     productArr && productArr.length > 0 &&
                     productArr.map((item, index) => {
                         return (
-                            <div className="w-[calc(25%_-_20px)]" key={index} >
-                                <div className="overflow-hidden rounded-2xl w-full h-[265px] cursor-pointer" style={{ 'boxShadow': '0px 0px 13px 0px #00000040' }} onClick={() => handleDetail(item)}>
-                                    <img className="hover:scale-105" src={(item.image)}></img>
+                            <div className="xl:w-[calc(25%_-_20px)] lg:w-[calc(31.33%)] md:w-[48.5%] sm:w-[46.5%]" key={index} >
+                                <div className="overflow-hidden rounded-2xl w-full h-auto cursor-pointer" style={{ 'boxShadow': '0px 0px 13px 0px #00000040' }} onClick={() => handleDetail(item)}>
+                                    <img className="lg:hover:scale-105 sm:hover:scale-100" src={(item.image)}></img>
                                 </div>
                                 <div className="w-full h-[60px] text-black font-semibold mt-2">
                                     <label className="font-semibold text-base hover:text-[#f68122] cursor-pointer" onClick={() => handleDetail(item)}>{item.name}</label><br></br>

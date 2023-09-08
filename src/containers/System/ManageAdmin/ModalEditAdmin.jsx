@@ -31,13 +31,13 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[70%] my-8 h-[80%]">
+                        <div className="relative md:w-[70%] md:h-[80%] md:pl-10 sm:w-[100%] sm:h-[82%] my-8">
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
-                                    <h3 className="text-3xl font-semibold">
+                                    <h3 className="lg:text-3xl md:text-2xl sm:text-xl font-semibold">
                                         Sửa thông tin nhân viên
                                     </h3>
-                                    <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalEdit(false)}></i>
+                                    <i className="fa-solid fa-x fa-lg cursor-pointer md:mt-5 sm:mt-3 mr-4" onClick={() => setShowModalEdit(false)}></i>
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-6 flex-auto">
@@ -99,7 +99,7 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
                                     </div>
                                 </div>
                                 {/*footer*/}
-                                <div className="flex items-center justify-end p-6  border-solid border-slate-200 rounded-b">
+                                <div className="flex items-center md:justify-end sm:justify-center p-6  border-solid border-slate-200 rounded-b">
                                     <div>
                                         <button
                                             className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"

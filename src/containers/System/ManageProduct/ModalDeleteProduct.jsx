@@ -46,15 +46,13 @@ export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[70%] my-8">
+                        <div className="relative lg:w-[70%] md:w-[80%] md:ml-10 sm:w-[90%] sm:h-[70%] my-8">
 
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
-                                    <h3 className="text-3xl font-semibold">
-
+                                    <h3 className="lg:text-3xl md:text-2xl sm:text-xl font-semibold">
                                         Xóa sản phẩm: {dataProduct.name}
-
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalDelete(false)}></i>
@@ -64,11 +62,11 @@ export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete
                                     <div className="my-4 text-slate-500 text-lg leading-relaxed">
                                         <div>
                                             <i className="fa-solid fa-circle-exclamation fa-2xl text-red-600"></i>
-                                            <p className="text-3xl font-bold text-red-500 mt-4">
+                                            <p className="md:text-3xl sm:text-2xl font-bold text-red-500 mt-4">
                                                 Bạn chắc chắn rồi đúng không?
                                             </p>
                                         </div>
-                                        <div className="flex items-center justify-end p-6  border-solid border-slate-200 rounded-b">
+                                        <div className="flex items-center md:justify-end sm:justify-around p-6 border-solid border-slate-200 rounded-b">
                                             <div>
                                                 <button
                                                     className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"

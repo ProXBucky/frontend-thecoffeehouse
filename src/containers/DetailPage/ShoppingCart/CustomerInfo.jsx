@@ -46,142 +46,141 @@ export default function CustomerInfo({ cart, isViewFunction }) {
 
     return (
         <>
-            <div className="w-1/2 border-2 bg-[#fff3d9] py-10 px-10">
-                <h2 className="font-medium text-xl pb-5 text-center">Thông tin khách hàng</h2>
-
-                <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" id="order">
-                    <p className="font-normal text-lg">Email</p>
-                    {
-                        isViewFunction === 'false' ?
-                            (
-                                <>
-                                    <input className="w-full bg-white border rounded py-3 px-4 mb-3  focus:outline-none text-black"
-                                        type="email" placeholder="example@email.com"
-                                        {...register("email", {
-                                            required: "Email là trường bắt buộc",
-                                            pattern: {
-                                                value:
-                                                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                                                message: "Vui lòng nhập email hợp lệ",
-                                            },
-                                        })}
-                                    />
-                                    <p className="text-red-500 mb-2">{errors.email?.message}</p>
-                                </>
-                            )
-                            :
-                            <input type="text" className="bg-white border-2 py-1 px-2 w-full" name="email" value={cart.UserData.email} disabled />
-                    }
-                    <div className="flex flex-row gap-[10%]">
-                        <div className="w-1/2">
-                            <p className="font-normal text-lg">Họ đệm</p>
-                            {
-                                isViewFunction === 'false' ?
-                                    (
-                                        <>
-                                            <input className="w-full bg-white border border-gray-200 rounded py-3 px-4 mb-3  focus:outline-none text-black "
-                                                type="text" placeholder="Nguyễn Văn"
-                                                {...register("firstName", {
-                                                    required: "Đây là trường bắt buộc",
-                                                })}
-                                            />
-                                            <p className="text-red-500 mb-2">{errors.firstName?.message}</p>
-                                        </>
-                                    )
-                                    :
-                                    <input type="text" className="bg-white border-2 py-1 px-2 w-full" name="firstName" value={cart.UserData.firstName} disabled />
-                            }
+            <div className="flex lg:flex-row md:flex-col sm:flex-col">
+                <div className="lg:w-1/2 md:w-full border-2 bg-[#fff3d9] lg:py-10 md:py-5 sm:py-2 lg:px-10 md:px-5 sm:px-2">
+                    <h2 className="font-medium md:text-xl sm:text-base pb-5 text-center">Thông tin khách hàng</h2>
+                    <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" id="order">
+                        <p className="font-normal lg:text-lg md:text-base sm:text-sm">Email</p>
+                        {
+                            isViewFunction === 'false' ?
+                                (
+                                    <>
+                                        <input className="w-full bg-white border rounded lg:py-3 md:py-2 sm:py-1 px-4 mb-3  focus:outline-none text-black"
+                                            type="email" placeholder="example@email.com"
+                                            {...register("email", {
+                                                required: "Email là trường bắt buộc",
+                                                pattern: {
+                                                    value:
+                                                        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                                    message: "Vui lòng nhập email hợp lệ",
+                                                },
+                                            })}
+                                        />
+                                        <p className="text-red-500 mb-2">{errors.email?.message}</p>
+                                    </>
+                                )
+                                :
+                                <input type="text" className="bg-white border-2 py-1 px-2 w-full lg:text-lg md:text-base sm:text-sm" name="email" value={cart.UserData.email} disabled />
+                        }
+                        <div className="flex flex-row gap-[10%]">
+                            <div className="w-1/2">
+                                <p className="font-normal lg:text-lg md:text-base sm:text-sm">Họ đệm</p>
+                                {
+                                    isViewFunction === 'false' ?
+                                        (
+                                            <>
+                                                <input className="w-full bg-white border border-gray-200 rounded lg:py-3 md:py-2 sm:py-1 px-4 mb-3  focus:outline-none text-black "
+                                                    type="text" placeholder="Nguyễn Văn"
+                                                    {...register("firstName", {
+                                                        required: "Đây là trường bắt buộc",
+                                                    })}
+                                                />
+                                                <p className="text-red-500 mb-2">{errors.firstName?.message}</p>
+                                            </>
+                                        )
+                                        :
+                                        <input type="text" className="bg-white border-2 py-1 px-2 w-full lg:text-lg md:text-base sm:text-sm" name="firstName" value={cart.UserData.firstName} disabled />
+                                }
+                            </div>
+                            <div className="w-1/2">
+                                <p className="font-normal lg:text-lg md:text-base sm:text-sm">Tên</p>
+                                {
+                                    isViewFunction === 'false' ?
+                                        (
+                                            <>
+                                                <input className="w-full bg-white border border-gray-200 rounded lg:py-3 md:py-2 sm:py-1 px-4  focus:outline-none text-black "
+                                                    type="text" placeholder="A"
+                                                    {...register("lastName", {
+                                                        required: "Đây là trường bắt buộc",
+                                                    })}
+                                                />
+                                                <p className="text-red-500 mb-2">{errors.lastName?.message}</p>
+                                            </>
+                                        )
+                                        :
+                                        <input type="text" className="bg-white border-2 py-1 px-2 w-full lg:text-lg md:text-base sm:text-sm" name="lastName" value={cart.UserData.lastName} disabled />
+                                }
+                            </div>
                         </div>
-                        <div className="w-1/2">
-                            <p className="font-normal text-lg">Tên</p>
-                            {
-                                isViewFunction === 'false' ?
-                                    (
-                                        <>
-                                            <input className="w-full bg-white border border-gray-200 rounded py-3 px-4  focus:outline-none text-black "
-                                                type="text" placeholder="A"
-                                                {...register("lastName", {
-                                                    required: "Đây là trường bắt buộc",
-                                                })}
-                                            />
-                                            <p className="text-red-500 mb-2">{errors.lastName?.message}</p>
-                                        </>
-                                    )
-                                    :
-                                    <input type="text" className="bg-white border-2 py-1 px-2 w-full" name="lastName" value={cart.UserData.lastName} disabled />
-                            }
-                        </div>
-                    </div>
-                    <p className="font-normal text-lg">Số điện thoại</p>
+                        <p className="font-normal lg:text-lg md:text-base sm:text-sm">Số điện thoại</p>
+                        {
+                            isViewFunction === 'false' ?
+                                (
+                                    <>
+                                        <input className="  w-full bg-white border border-gray-200 rounded lg:py-3 md:py-2 sm:py-1 px-4  focus:outline-none text-black"
+                                            placeholder="+84xxxxxxxxx"
+                                            {...register("phone", {
+                                                required: "Đây là trường bắt buộc",
+                                                pattern: {
+                                                    value:
+                                                        /^[0-9]{1,11}$/,
+                                                    message:
+                                                        "Số điện thoại sẽ ít hơn 11 kí tự và tất cả kí tự là chữ số",
+                                                },
+                                            })}
+                                        />
+                                        <p className="text-red-500 mb-2">{errors.phone?.message}</p>
+                                    </>
+                                )
+                                :
+                                <input type="text" className="bg-white border-2 py-1 px-2 w-full lg:text-lg md:text-base sm:text-sm" name="phone" value={cart.UserData.phone} disabled />
+                        }
+                        <p className="font-normal lg:text-lg md:text-base sm:text-sm">Địa chỉ</p>
+                        {
+                            isViewFunction === 'false' ?
+                                (
+                                    <>
+                                        <input className="  w-full bg-white border border-gray-200 rounded lg:py-3 md:py-2 sm:py-1 px-4  focus:outline-none text-black "
+                                            type="text" placeholder="Ha Noi"
+                                            {...register("address", {
+                                                required: "Đây là trường bắt buộc",
+                                            })}
+                                        />
+                                        <p className="text-red-500 mb-2">{errors.address?.message}</p>
+                                    </>
+                                )
+                                :
+                                <input type="text" className="bg-white border-2 py-1 px-2 w-full lg:text-lg md:text-base sm:text-sm" name="address" value={cart.UserData.address} disabled />
+                        }
+                    </form>
+                </div >
+                <div className="lg:w-1/2 lg:pl-20 sm:w-full md:mt-10">
                     {
                         isViewFunction === 'false' ?
-                            (
-                                <>
-                                    <input className="  w-full bg-white border border-gray-200 rounded py-3 px-4  focus:outline-none text-black"
-                                        placeholder="+84xxxxxxxxx"
-                                        {...register("phone", {
-                                            required: "Đây là trường bắt buộc",
-                                            pattern: {
-                                                value:
-                                                    /^[0-9]{1,11}$/,
-                                                message:
-                                                    "Số điện thoại sẽ ít hơn 11 kí tự và tất cả kí tự là chữ số",
-                                            },
-                                        })}
-                                    />
-                                    <p className="text-red-500 mb-2">{errors.phone?.message}</p>
-                                </>
-                            )
+                            <div className="md:mt-0 sm:mt-5">
+                                <span className="font-medium lg:text-2xl md:text-xl sm:text-lg">Tổng hóa đơn:</span>
+                                <span className="font-medium lg:text-2xl md:text-xl sm:text-lg ml-4">{formatPrice(cart.cartTotalAmount)} VND</span>
+                            </div>
                             :
-                            <input type="text" className="bg-white border-2 py-1 px-2 w-full" name="phone" value={cart.UserData.phone} disabled />
+                            <p>
+                                <span className="font-medium lg:text-lg md:text-base sm:text-sm sm:mt-5">Tổng hóa đơn: {formatPrice(cart.totalPrice)} VND </span>
+                            </p>
                     }
-                    <p className="font-normal text-lg">Địa chỉ</p>
                     {
                         isViewFunction === 'false' ?
-                            (
-                                <>
-                                    <input className="  w-full bg-white border border-gray-200 rounded py-3 px-4  focus:outline-none text-black "
-                                        type="text" placeholder="Ha Noi"
-                                        {...register("address", {
-                                            required: "Đây là trường bắt buộc",
-                                        })}
-                                    />
-                                    <p className="text-red-500 mb-2">{errors.address?.message}</p>
-                                </>
-                            )
+                            <>
+                                <button className="text-white w-full md:mt-14 sm:mt-6 mb-8 border-none bg-[#f68122] hover:scale-[0.98]" form="order" type="submit">Đặt hàng</button>
+                                <Link to="/collections/all"><i className="fa-solid fa-arrow-left fa-lg"></i> Mua sản phẩm khác</Link>
+                            </>
                             :
-                            <input type="text" className="bg-white border-2 py-1 px-2 w-full" name="address" value={cart.UserData.address} disabled />
+                            <>
+                                <p className="mt-2 font-medium lg:text-lg md:text-base sm:text-sm mb-3">Thời gian đặt: {cart.timeOrder}</p>
+                                {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP1' && <p className="text-white text-center bg-red-500 lg:p-3 md:p-1 rounded-2xl">{cart.StatusData.valueVn}</p>}
+                                {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP2' && <p className="text-white text-center bg-green-500 lg:p-3 md:p-1 rounded-2xl">{cart.StatusData.valueVn}</p>}
+                                {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP3' && <p className="text-white text-center bg-blue-600 lg:p-3 md:p-1 rounded-2xl">{cart.StatusData.valueVn}</p>}
+                            </>
                     }
-                </form>
-            </div >
-            <div className="w-1/2 pl-20">
-                {
-                    isViewFunction === 'false' ?
-                        <>
-                            <span className="font-medium text-2xl">Tổng hóa đơn:</span>
-                            <span className="font-medium text-2xl ml-4">{formatPrice(cart.cartTotalAmount)} VND</span>
-                        </>
-                        :
-                        <p>
-                            <span className="font-medium text-2xl">Tổng hóa đơn: {formatPrice(cart.totalPrice)} VND </span>
-
-                            {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP1' && <span className="text-white bg-red-500 p-3 rounded-2xl">{cart.StatusData.valueVn}</span>}
-                            {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP2' && <span className="text-white bg-green-500 p-3 rounded-2xl">{cart.StatusData.valueVn}</span>}
-                            {cart.StatusData && cart.StatusData.valueVn && cart.statusPayment === 'SP3' && <span className="text-white bg-blue-600 p-3 rounded-2xl">{cart.StatusData.valueVn}</span>}
-
-                        </p>
-                }
-                {
-                    isViewFunction === 'false' ?
-                        <>
-                            <button className="text-white w-full mt-14 mb-8 border-none bg-[#f68122] hover:scale-[0.98]" form="order" type="submit">Đặt hàng</button>
-                            <Link to="/collections/all"><i className="fa-solid fa-arrow-left fa-lg"></i> Mua sản phẩm khác</Link>
-                        </>
-                        :
-                        <>
-                            <p className="mt-2 font-medium text-2xl">Thời gian đặt: {cart.timeOrder}</p>
-                        </>
-                }
+                </div>
             </div>
 
         </>

@@ -2,3 +2,20 @@
     display: flex !important;
     flex-direction: row !important;
 }
+
+@media (min-width: 769px) and (max-width: 1023px) {
+    .slider {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        gap: 0px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .slider {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        gap: 0px;
+    }
+}

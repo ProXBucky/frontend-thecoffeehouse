@@ -45,6 +45,25 @@ const slidersArr = [
     },
 ]
 
+const sliderArrMobile = [
+    {
+        id: 1,
+        urlSlider: "/src/assets/SliderImg/SliderMobile1.webp"
+    },
+    {
+        id: 2,
+        urlSlider: "/src/assets/SliderImg/SliderMobile2.webp"
+    },
+    {
+        id: 3,
+        urlSlider: "/src/assets/SliderImg/SliderMobile3.webp"
+    },
+    {
+        id: 4,
+        urlSlider: "/src/assets/SliderImg/SliderMobile4.webp"
+    },
+]
+
 export default function Sliders() {
     const settingSlider = {
         dots: false,
@@ -54,24 +73,66 @@ export default function Sliders() {
         slidesToScroll: 1,
         autoplay: true,
         nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
+        prevArrow: <SamplePrevArrow />,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    dots: false,
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    nextArrow: <SampleNextArrow />,
+                    prevArrow: <SamplePrevArrow />,
+                }
+            },
+            {
+                breakpoint: 769,
+                settings: {
+                    dots: false,
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    nextArrow: false,
+                    prevArrow: false,
+                }
+            }
+        ]
     };
 
 
     return (
-        <div className="relative mt-9 w-full h-[460px] ease-liner ">
-            <Slider {...settingSlider}>
-                {
-                    slidersArr.map((item) => {
-                        return (
-                            <div key={item.id}>
-                                <img src={item.urlSlider} />
-                            </div>
-                        )
-                    })
-                }
-            </Slider>
-
-        </div>
+        <>
+            <div className="relative w-full xl:h-[460px] lg:h-[350px] md:h-[250px] md:block sm:hidden">
+                <Slider {...settingSlider}>
+                    {
+                        slidersArr.map((item) => {
+                            return (
+                                <div key={item.id}>
+                                    <img src={item.urlSlider} className="bg-cover bg-center bg-no-repeat" />
+                                </div>
+                            )
+                        })
+                    }
+                </Slider>
+            </div>
+            <div className="relative w-full md:hidden sm:block sm:h-[350px]">
+                <Slider {...settingSlider}>
+                    {
+                        sliderArrMobile.map((item) => {
+                            return (
+                                <div key={item.id}>
+                                    <img src={item.urlSlider} className="bg-cover bg-center bg-no-repeat" />
+                                </div>
+                            )
+                        })
+                    }
+                </Slider>
+            </div>
+        </>
     )
 }

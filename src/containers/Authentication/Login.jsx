@@ -8,6 +8,9 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form"
 import Cookies from 'js-cookie';
 import { setToken } from "../../redux/Slice/CookieSlice";
+import NavbarMobile from "../../containers/HomePage/NavbarMobile"
+
+
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm()
@@ -48,8 +51,9 @@ export default function Login() {
 
   return (
     <>
-      <div className="container py-20 flex justify-center">
-        <div className="content-left w-full max-w-lg px-5">
+      <NavbarMobile />
+      <div className="container">
+        <div className="content-left md:pt-14 sm:pt-5">
           <h2 className=" text-2xl font-medium pt-4">Đăng nhập</h2>
           <p className=" text-red-500 text-center">( Chỉ dành cho quản lý và quản trị viên )</p>
 
@@ -102,8 +106,10 @@ export default function Login() {
               </div>
             </div>
             <p className="py-3 text-center">Nếu bạn chưa có tài khoản, hãy đăng ký <Link to="/register">tại đây</Link></p>
-            <button className="rounded-full mx-24 px-16 mt-3 text-white bg-black text-center" type="submit">Đăng nhập</button>
-            <div className="flex justify-between mt-5">
+            <div className="flex justify-center">
+              <button className="rounded-full md:px-16 sm:px-4 md:mt-3 sm:mt-1 text-white bg-black" type="submit">Đăng nhập</button>
+            </div>
+            <div className="flex md:justify-between md:flex-row sm:flex-col sm:gap-5 mt-5">
               <p className="text-center mt-2">Tài khoản quản lý: <br />
                 admin1@gmail.com <br />
                 admin1@gmail.com

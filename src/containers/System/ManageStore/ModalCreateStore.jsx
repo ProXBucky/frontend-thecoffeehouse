@@ -124,17 +124,17 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[70%] my-8 h-[80%]">
+                        <div className="relative lg:w-[70%] md:w-[80%] sm:w-full md:ml-10 my-8 h-[80%]">
                             <div className="border-2-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 <div className="flex items-start justify-between py-5 px-5 border-2-b border-2-solid border-2-slate-200 rounded-t">
-                                    <h3 className="text-3xl font-semibold ml-10">
+                                    <h3 className="lg:text-3xl md:text-2xl sm:text-xl font-semibold ml-10">
                                         Thêm cửa hàng mới
                                     </h3>
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalCreate(false)}></i>
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-6 flex-auto mx-10">
-                                    <div className="w-full flex flex-wrap justify-between">
+                                    <div className="w-full flex flex-wrap justify-between lg:gap-0 md:gap-5">
                                         <div>
                                             <label className="text-lg">Tên cửa hàng</label>
                                             <br />
@@ -170,25 +170,17 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                             ))}
                                         </div>
                                     </div>
-                                    <div className="w-full mt-5 flex gap-7">
-                                        <div className="w-1/2">
+                                    <div className="w-full mt-5 flex gap-7 lg:flex-row md:flex-col sm:flex-col">
+                                        <div className="lg:w-1/2 md:w-full">
                                             <label className="text-lg">Mô tả cửa hàng</label><br />
-                                            <textarea className="border-2 outline-none bg-white p-2 w-full" rows="6"
+                                            <textarea className="border-2 outline-none bg-white p-2 w-full" rows="3"
                                                 name="description"
                                                 value={inputValues.description}
                                                 onChange={handleOnChange}
                                             >
                                             </textarea>
                                         </div>
-                                        <div className="w-1/2">
-                                            <div>
-                                                <label className="text-lg">Map link</label><br />
-                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Nhập link bản đồ" onChange={handleOnChange} name="mapLink" value={inputValues.mapLink} />
-                                            </div>
-                                            <div>
-                                                <label className="text-lg">Map HTML</label><br />
-                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Nhập HTML bản đồ" onChange={handleOnChange} name="mapHTML" value={inputValues.mapHTML} />
-                                            </div>
+                                        <div className="lg:w-1/2 md:w-full">
                                             <div className="">
                                                 <label className="text-lg">Mô tả cửa hàng rút gọn</label><br />
                                                 <textarea className="border-2 outline-none bg-white p-2 w-full" rows="3"
@@ -197,6 +189,14 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
                                                     onChange={handleOnChange}
                                                 >
                                                 </textarea>
+                                            </div>
+                                            <div>
+                                                <label className="text-lg">Map link</label><br />
+                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Nhập link bản đồ" onChange={handleOnChange} name="mapLink" value={inputValues.mapLink} />
+                                            </div>
+                                            <div>
+                                                <label className="text-lg">Map HTML</label><br />
+                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Nhập HTML bản đồ" onChange={handleOnChange} name="mapHTML" value={inputValues.mapHTML} />
                                             </div>
 
                                         </div>

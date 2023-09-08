@@ -47,27 +47,28 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[85%] my-8 h-[90%]">
+                        <div className="relative lg:w-[85%] md:w-[80%] md:ml-10 sm:w-[95%] my-8 lg:h-[80%] md:h-[90%] sm:h-[80%]">
 
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
-                                    <h3 className="text-3xl font-semibold">
-                                        Thông tin cửa hàng: {dataStore.nameStore}
+                                    <h3 className="lg:text-3xl md:text-2xl sm:text-xl font-semibold">
+                                        Thông tin cửa hàng: <br />
+                                        {dataStore.nameStore}
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalView(false)}></i>
                                 </div>
                                 {/*body*/}
-                                <div className="relative p-6 mx-10 flex flex-auto">
-                                    <div className="w-[40%] h-auto">
+                                <div className="relative md:p-6 sm:p-3 mx-10 flex lg:flex-wrap lg:flex-row md:flex-col sm:flex-col">
+                                    <div className="xl:w-1/2 lg:w-full h-auto">
                                         <Slider {...settings}>
                                             {
                                                 dataStore && dataStore.imageData && dataStore.imageData.length > 0 &&
                                                 dataStore.imageData.map((item, index) => {
                                                     return (
-                                                        <div key={index} className="h-[300px] w-full">
-                                                            <img src={(item.image)} className="h-[300px] mx-auto" />
+                                                        <div key={index} className="md:h-[300px] sm:h-[200px] w-full">
+                                                            <img src={(item.image)} className="md:h-[300px] sm:h-[200px] mx-auto" />
                                                         </div>
                                                     )
                                                 })
@@ -80,7 +81,7 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                         >
                                         </textarea>
                                     </div>
-                                    <div className="w-[60%] font-normal text-base pl-40">
+                                    <div className="xl:w-1/2 lg:w-full font-normal text-base xl:pl-20">
                                         <p className="text-xl font-medium">Tên cửa hàng: </p>{dataStore.nameStore}
                                         <p className="text-xl font-medium mt-7">Địa chỉ: </p>{dataStore.address}
                                         <p className="text-xl font-medium mt-7">Thành phố: </p>{dataStore.cityData.valueVn}

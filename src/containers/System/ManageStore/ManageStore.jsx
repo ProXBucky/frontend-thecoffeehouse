@@ -33,7 +33,8 @@ function ManageStore() {
             setTotalPages(res.totalPages)
         }
     }
-
+    const [images, setImages] = useState([]);
+    const [imageURLS, setImageURLs] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const handlePageClick = (selectedPage) => {
@@ -71,10 +72,9 @@ function ManageStore() {
     const handleEdit = (item) => {
         setDataStore(item)
         setShowModalEdit(true)
+        setImageURLs([])
     }
 
-    const [images, setImages] = useState([]);
-    const [imageURLS, setImageURLs] = useState([]);
 
     useEffect(() => {
         handleImageStore()
@@ -122,18 +122,18 @@ function ManageStore() {
                 //     )
                 //     :
                 (
-                    <div className="p-10 text-sm">
-                        <p className="text-2xl font-medium  inline-block">Quản lý cửa hàng</p>
-                        <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={handleCreate}>Thêm cửa hàng mới</button>
+                    <div className="lg:p-10 md:p-3 sm:p-3 text-sm">
+                        <p className="md:text-2xl sm:text-xl font-medium md:inline-block sm:block">Quản lý cửa hàng</p>
+                        <button className="text-white bg-[#f68122] md:ml-6 sm:mt-2 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={handleCreate}>Thêm cửa hàng mới</button>
                         <div className="w-ful mt-10 text-center">
                             <table className="w-full px-3 rounded-lg overflow-hidden">
                                 <thead className="h-14 bg-[#f68122] text-sm text-white border-slate-300 text-center overflow-hidden">
                                     <tr>
-                                        <th className="px-5">Hình ảnh</th>
+                                        <th className="lg:p-5 lg:block md:hidden sm:hidden">Hình ảnh</th>
                                         <th>Tên cửa hàng</th>
                                         <th>Địa chỉ</th>
-                                        <th>Thành phố</th>
-                                        <th>Tác vụ</th>
+                                        <th className="px-4">Thành phố</th>
+                                        <th className="px-4">Tác vụ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -148,30 +148,30 @@ function ManageStore() {
                                                     allStoreArr && allStoreArr.length > 0 ?
                                                         allStoreArr.map((item, index) => {
                                                             return (
-                                                                <tr className="h-12 font-medium text-sm bg-white border-b border-slate-300 overflow-hidden" key={index}>
-                                                                    <td className="p-6 flex justify-center">
+                                                                <tr className="h-12 font-medium md:text-sm sm:text-xs bg-white border-b border-slate-300 overflow-hidden" key={index}>
+                                                                    <td className="p-6 lg:block md:hidden sm:hidden flex justify-center">
                                                                         {
                                                                             item && item.imageData && item.imageData.length > 0 &&
                                                                             <div className="rounded-xl overflow-hidden">
-                                                                                <img src={(item.imageData[0].image)} className="w-[400px] h-[250px]" />
+                                                                                <img src={(item.imageData[0].image)} className="xl:w-[300px] xl:h-[180px] lg:w-[250px] lg:h-[120px] md:w-[250px] " />
                                                                             </div>
                                                                         }
                                                                     </td>
                                                                     <td className="border-x-2">{item.nameStore}</td>
                                                                     <td>{item.address}</td>
                                                                     <td className="border-x-2">{item.cityData.valueVn}</td>
-                                                                    <td className="w-20">
-                                                                        <button className="mb-2 text-white bg-green-500 hover:bg-green-400 p-2 w-2/3 border-none outline-none" name="View" onClick={() => handleView(item)}>
+                                                                    <td className="xl:w-20 lg:w-14 sm:w-12 py-2">
+                                                                        <button className="mb-2 text-white bg-green-500 hover:bg-green-400 lg:p-2 sm:p-1 w-2/3 border-none outline-none" name="View" onClick={() => handleView(item)}>
                                                                             <i className="fa-regular fa-eye fa-md"></i>
                                                                             {/* Chi tiết */}
                                                                         </button>
                                                                         <br />
-                                                                        <button className="mb-2 text-white bg-yellow-400 hover:bg-yellow-300 p-2 w-2/3 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
+                                                                        <button className="mb-2 text-white bg-yellow-400 hover:bg-yellow-300 lg:p-2 sm:p-1 w-2/3 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
                                                                             <i className="fa-regular fa-pen-to-square fa-md"></i>
                                                                             {/* Sửa */}
                                                                         </button>
                                                                         <br />
-                                                                        <button className="text-white bg-red-600 hover:bg-red-500 p-2 w-2/3 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
+                                                                        <button className="text-white bg-red-600 hover:bg-red-500 lg:p-2 sm:p-1 w-2/3 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
                                                                             <i className="fa-regular fa-trash-can fa-md"></i>
                                                                             {/* Xóa */}
                                                                         </button>

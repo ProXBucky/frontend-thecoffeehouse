@@ -122,29 +122,29 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[70%] my-8 h-[80%]">
+                        <div className="relative lg:w-[70%] md:w-[80%] md:ml-10 sm:w-full my-8 md:h-[80%] sm:h-[80%]">
                             <div className="border-2-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                <div className="flex items-start justify-between py-5 px-5 border-2-b border-2-solid border-2-slate-200 rounded-t">
-                                    <h3 className="text-3xl font-semibold ml-10">
+                                <div className="flex items-start justify-between py-5 md:px-5 sm:px-1 border-2-b border-2-solid border-2-slate-200 rounded-t">
+                                    <h3 className="lg:text-3xl md:text-2xl sm:text-xl font-semibold ml-10">
                                         Tạo sản phẩm mới
                                     </h3>
-                                    <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={closeModal}></i>
+                                    <i className="fa-solid fa-x fa-lg cursor-pointer md:mt-5 sm:mt-3 mr-4" onClick={closeModal}></i>
                                 </div>
                                 {/*body*/}
-                                <div className="relative p-6 flex-auto mx-10">
-                                    <div className="w-full flex justify-between flex-row">
-                                        <div>
+                                <div className="relative p-6 flex-auto md:mx-10 sm:mx-3">
+                                    <div className="w-full flex justify-between lg:flex-nowrap md:flex-wrap sm:flex-wrap lg:gap-0 md:gap-5 sm:gap-2 lg:flex-row">
+                                        <div className="">
                                             <label className="text-lg">Tên sản phẩm</label>
                                             <br />
                                             <input type="text" className="border-2 outline-none bg-white p-2" placeholder="Nhập tên sản phẩm" onChange={handleOnChange} name="name" value={inputValues.name} />
                                         </div>
-                                        <div>
+                                        <div className="">
                                             <label className="text-lg">Giá tiền (VND)</label><br />
                                             <input type="number" className="border-2 outline-none bg-white p-2" placeholder="Nhập giá sản phẩm" onChange={handleOnChange} name="originalPrice" value={inputValues.originalPrice} />
                                         </div>
-                                        <div>
-                                            <label className="text-lg mr-4">Thể loại</label><br />
-                                            <select className="border-2 outline-none bg-white p-2 w-[170px] cursor-pointer" onChange={handleOnChange} name="category" value={inputValues.category} >
+                                        <div className="">
+                                            <label className="text-lg">Thể loại</label><br />
+                                            <select className="border-2 outline-none bg-white p-2 cursor-pointer" onChange={handleOnChange} name="category" value={inputValues.category} >
                                                 <option className="cursor-pointer" selected>Không có</option>
                                                 {
                                                     cateArr && cateArr.length > 0 &&
@@ -176,13 +176,13 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                                             <label className='upload text-lg mr-2 cursor-pointer' htmlFor='upload-Img'><i className="fa-solid fa-arrow-up-from-bracket fa-lg"></i></label>
                                             <br />
                                             <div className="border-2 w-full h-[100px] mt-3 flex justify-center">
-                                                <img src={file} className="cover h-auto  cursor-pointer scale-100 hover:scale-[3] ease-in duration-100" />
+                                                <img src={file} className="cover h-auto  cursor-pointer scale-100 md:hover:scale-[3] ease-in duration-100" />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="w-full mt-5">
                                         <label className="text-lg">Mô tả sản phẩm</label><br />
-                                        <textarea className="border-2 outline-none bg-white p-2 w-full" rows="3"
+                                        <textarea className="border-2 outline-none bg-white p-2 w-full" rows="5"
                                             name="description"
                                             value={inputValues.description}
                                             onChange={handleOnChange}

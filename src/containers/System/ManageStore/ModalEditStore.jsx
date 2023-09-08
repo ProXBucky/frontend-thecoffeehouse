@@ -51,6 +51,10 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
         }
     }
 
+    const closeModal = () => {
+        setShowModalEdit(false)
+    }
+
 
 
     return (
@@ -63,18 +67,19 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[85%] my-8  h-[90%]">
+                        <div className="relative lg:w-[85%] md:w-[90%] md:ml-14 sm:w-[95%] my-8 lg:h-[80%] md:h-[90%] sm:h-[80%]">
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
-                                    <h3 className="text-3xl font-semibold">
-                                        Sửa thông tin cửa hàng: {dataStore.nameStore}
+                                    <h3 className="lg:text-3xl md:text-2xl sm:text-xl font-semibold">
+                                        Sửa thông tin cửa hàng: <br />
+                                        {dataStore.nameStore}
                                     </h3>
-                                    <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalEdit(false)}></i>
+                                    <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={closeModal}></i>
                                 </div>
                                 {/*body*/}
 
-                                <div className="relative p-6 flex-auto mx-10">
-                                    <div className="w-full flex justify-between">
+                                <div className="relative p-6 flex-auto md:mx-10 sm:mx-3">
+                                    <div className="w-full flex justify-between md:flex-row sm:flex-col">
                                         <div>
                                             <label className="text-lg">Tên cửa hàng</label>
                                             <br />
@@ -97,26 +102,26 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                         </div>
 
                                     </div>
-                                    <div className="w-full mt-5 flex gap-7">
-                                        <div className="w-[29%]">
+                                    <div className="w-full mt-5 flex md:flex-row sm:flex-col gap-7">
+                                        <div className="md:w-[30%] sm:w-full">
                                             <label className="text-lg pr-2">Hình ảnh</label><br />
                                             <input type="file" multiple accept="image/*" onChange={onImageChange} />
                                         </div>
-                                        <div className="border-2 w-[71%] flex">
-                                            <div className="flex flex-wrap">
+                                        <div className="md:w-[70%] sm:w-full flex">
+                                            <div className="flex flex-wrap gap-2">
                                                 {
-                                                    imageURLS && imageURLS.length > 0 ?
-                                                        imageURLS.map((imageSrc, index) => (
-                                                            <img src={imageSrc} key={index} alt="not found" width={"120px"} className="border m-0.5" />
-                                                        ))
-                                                        :
-                                                        <div className="flex self-center">Hãy nhập hình ảnh cho cửa hàng</div>
+                                                    imageURLS && imageURLS.length > 0 &&
+                                                    imageURLS.map((imageSrc, index) => (
+                                                        <img src={imageSrc} key={index} alt="not found" width={"120px"} />
+                                                    ))
+                                                    // :
+                                                    // <div className="flex self-center">Hãy nhập hình ảnh cho cửa hàng</div>
                                                 }
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="w-full mt-5 flex gap-7">
-                                        <div className="w-1/2">
+                                    <div className="w-full mt-5 flex gap-7 lg:flex-row md:flex-col sm:flex-col">
+                                        <div className="lg:w-1/2 md:w-full">
                                             <label className="text-lg">Mô tả cửa hàng</label><br />
                                             <textarea className="border-2 outline-none bg-white p-2 w-full" rows="6"
                                                 name="description"
@@ -125,15 +130,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                             >
                                             </textarea>
                                         </div>
-                                        <div className="w-1/2">
-                                            <div>
-                                                <label className="text-lg">Map link</label><br />
-                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map link" onChange={handleOnChange} name="mapLink" value={dataStore.mapLink} />
-                                            </div>
-                                            <div>
-                                                <label className="text-lg">Map HTML</label><br />
-                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map html" onChange={handleOnChange} name="mapHTML" value={dataStore.mapHTML} />
-                                            </div>
+                                        <div className="lg:w-1/2 md:w-full">
                                             <div>
                                                 <label className="text-lg">Mô tả cửa hàng rút gọn</label><br />
                                                 <textarea className="border-2 outline-none bg-white p-2 w-full" rows="3"
@@ -142,6 +139,14 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                                     onChange={handleOnChange}
                                                 >
                                                 </textarea>
+                                            </div>
+                                            <div>
+                                                <label className="text-lg">Map link</label><br />
+                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map link" onChange={handleOnChange} name="mapLink" value={dataStore.mapLink} />
+                                            </div>
+                                            <div>
+                                                <label className="text-lg">Map HTML</label><br />
+                                                <input type="text" className="border-2 outline-none bg-white p-2 w-full" placeholder="Type map html" onChange={handleOnChange} name="mapHTML" value={dataStore.mapHTML} />
                                             </div>
 
 
@@ -155,7 +160,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                                     <div>
                                         <button
                                             className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
-                                            onClick={() => setShowModalEdit(false)}
+                                            onClick={closeModal}
                                         >
                                             Hủy
                                         </button>

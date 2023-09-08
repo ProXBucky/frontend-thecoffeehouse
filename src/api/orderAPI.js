@@ -17,7 +17,7 @@ const getAllOrderDelivered = () => {
 }
 
 const deleteOrder = (id) => {
-    return axios.put(`/api/delete-order?id=${id}`)
+    return axios.delete(`/api/delete-order?id=${id}`)
 }
 
 const payOrder = (id) => {

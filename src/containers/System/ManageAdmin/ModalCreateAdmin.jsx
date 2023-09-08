@@ -75,12 +75,12 @@ export default function ModalCreateAdmin({ showModalCreate, setShowModalCreate, 
                     <div
                         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[50] outline-none focus:outline-none ease-linear scroll-smooth"
                     >
-                        <div className="relative w-[50%] my-5">
+                        <div className="relative xl:w-[50%] sm:w-[80%] md:ml-10 h-[80%] my-5">
 
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
-                                    <h3 className="text-3xl font-semibold">
+                                    <h3 className="lg:text-3xl md:text-2xl sm:text-xl font-semibold">
                                         Tạo mới quản trị viên
                                     </h3>
 

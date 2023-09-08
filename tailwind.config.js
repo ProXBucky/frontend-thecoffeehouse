@@ -3,7 +3,11 @@ export default {
   content: ["./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'sm': '320px',   // Small screens, e.g., mobile phones
+      },
+    },
   },
   plugins: [],
 }

@@ -58,65 +58,65 @@ function DashBoard() {
 
     return (
         <>
-            <div className="mx-10 mt-1 ">
-                <h1 className="text-4xl font-medium text-center">Trang chủ</h1>
-                <div className="flex flex-wrap justify-center mt-5 gap-5">
-                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
-                        <div className="w-2/5 font-medium text-md  flex justify-center items-center">
+            <div className="md:mx-10 sm:mx-[0px] mt-1">
+                <h1 className="md:text-4xl sm:text-3xl font-medium text-center">Trang chủ</h1>
+                <div className="flex flex-wrap justify-center mt-5 pb-5 md:gap-5 sm:gap-3">
+                    <div className="bg-white rounded-lg w-1/5 mx-5 md:p-2 sm:p-4 flex md:flex-row sm:flex-col sm:gap-2" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
+                        <div className="md:w-2/5 sm:w-full font-medium lg:text-lg md:text-xs sm:text-[10px] flex justify-center items-center">
                             <i className="fa-solid fa-user-tie fa-2xl"></i>
                         </div>
-                        <div className="w-3/5 text-center">
-                            <span className="font-medium text-3xl">{increaseNumberEffect(statistic.totalAdmins)}</span>
-                            <p className="font-medium text-sm text-gray-500">Nhân viên</p>
+                        <div className="md:w-3/5 sm:w-full text-center">
+                            <span className="font-medium lg:text-3xl md:text-2xl">{increaseNumberEffect(statistic.totalAdmins)}</span>
+                            <p className="font-medium lg:text-sm md:text-xs sm:text-[10px] text-gray-500">Nhân viên</p>
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
-                        <div className="w-2/5 font-medium text-md  flex justify-center items-center">
+                    <div className="bg-white rounded-lg w-1/5 mx-5 md:p-2 sm:p-4 flex md:flex-row sm:flex-col sm:gap-2" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
+                        <div className="md:w-2/5 sm:w-full font-medium lg:text-lg md:text-xs sm:text-[10px]  flex justify-center items-center">
                             <i className="fa-solid fa-mug-saucer fa-2xl"></i>
                         </div>
-                        <div className="w-3/5 text-center">
-                            <span className="font-medium text-3xl">{increaseNumberEffect(statistic.totalProducts)}</span>
-                            <p className="font-medium text-sm text-gray-500">Sản phẩm</p>
+                        <div className="md:w-3/5 sm:w-full text-center">
+                            <span className="font-medium lg:text-3xl md:text-2xl">{increaseNumberEffect(statistic.totalProducts)}</span>
+                            <p className="font-medium lg:text-sm md:text-xs sm:text-[10px] text-gray-500">Sản phẩm</p>
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
-                        <div className="w-2/5 font-medium text-md  flex justify-center items-center">
+                    <div className="bg-white rounded-lg w-1/5 mx-5 md:p-2 sm:p-4 flex md:flex-row sm:flex-col sm:gap-2" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
+                        <div className="md:w-2/5 sm:w-full font-medium lg:text-lg md:text-xs sm:text-[10px]  flex justify-center items-center">
                             <i className="fa-solid fa-shop fa-2xl"></i>
                         </div>
-                        <div className="w-3/5 text-center">
-                            <span className="font-medium text-3xl">{increaseNumberEffect(statistic.totalStores)}</span>
-                            <p className="font-medium text-sm text-gray-500">Cửa hàng</p>
+                        <div className="md:w-3/5 sm:w-full text-center">
+                            <span className="font-medium lg:text-3xl md:text-2xl">{increaseNumberEffect(statistic.totalStores)}</span>
+                            <p className="font-medium lg:text-sm md:text-xs sm:text-[10px] text-gray-500">Cửa hàng</p>
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-lg w-1/5 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
-                        <div className="w-2/5 font-medium text-md  flex justify-center items-center">
+                    <div className="bg-white rounded-lg w-1/5 mx-5 md:p-2 sm:p-4 flex md:flex-row sm:flex-col sm:gap-2" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
+                        <div className="md:w-2/5 sm:w-full font-medium lg:text-lg md:text-xs sm:text-[10px]  flex justify-center items-center">
                             <i className="fa-solid fa-truck fa-2xl"></i>
                         </div>
-                        <div className="w-3/5 text-center">
-                            <span className="font-medium text-3xl">{increaseNumberEffect(statistic.totalOrders)}</span>
-                            <p className="font-medium text-sm text-gray-500">Đơn hàng</p>
+                        <div className="md:w-3/5 sm:w-full text-center">
+                            <span className="font-medium lg:text-3xl md:text-2xl">{increaseNumberEffect(statistic.totalOrders)}</span>
+                            <p className="font-medium lg:text-sm md:text-xs sm:text-[10px] text-gray-500">Đơn hàng</p>
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-lg w-1/3 mx-5 p-2 flex flex-row" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
-                        <div className="w-1/4 font-medium text-md  flex justify-center items-center">
+                    <div className="bg-white rounded-lg w-1/3 mx-5 md:p-2 sm:p-4 flex md:flex-row sm:flex-col sm:gap-2" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
+                        <div className="md:w-1/4 sm:w-full font-medium lg:text-lg md:text-xs sm:text-[10px]  flex justify-center items-center">
                             <i className="fa-solid fa-landmark fa-2xl"></i>
                         </div>
-                        <div className="w-3/4 text-center">
-                            <span className="font-medium text-3xl">{increaseNumberEffect((statistic.totalIncome))}</span>
-                            <p className="font-medium text-sm text-gray-500">Tổng thu nhập (VNĐ)</p>
+                        <div className="md:w-3/4 sm:w-full text-center">
+                            <span className="font-medium lg:text-3xl md:text-2xl">{increaseNumberEffect((statistic.totalIncome))}</span>
+                            <p className="font-medium lg:text-sm md:text-xs sm:text-[10px] text-gray-500">Tổng thu nhập (VNĐ)</p>
                         </div>
                     </div>
                 </div>
 
-                <div className="flex justify-center mt-8 text-gray-500">
-                    <div className="bg-white rounded-lg w-1/2 mx-5 px-4 pb-4" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
-                        <p className="font-medium my-4 text-lg">Đơn hàng gần nhất</p>
+                <div className="flex justify-center lg:mt-8 md:mt-2 text-gray-500 xl:flex-nowrap py-5 md:flex-wrap sm:flex-wrap md:gap-5 sm:gap-3">
+                    <div className="bg-white rounded-lg xl:w-1/2 md:w-full mx-5 px-4 pb-4" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
+                        <p className="font-medium my-4 md:text-lg sm:text-base">Đơn hàng gần nhất</p>
                         <table className="w-full px-3 overflow-hidden border">
-                            <thead className="h-14 bg-[#f5f2f0] text-black">
+                            <thead className="h-14 bg-[#f5f2f0] text-black md:text-lg sm:text-[12px]">
                                 <tr>
                                     <th>Khách hàng</th>
                                     <th>Tổng số tiền</th>
@@ -124,7 +124,7 @@ function DashBoard() {
                                     <th>Trạng thái</th>
                                 </tr>
                             </thead>
-                            <tbody className="text-center">
+                            <tbody className="text-center md:text-lg sm:text-[12px]">
                                 {
                                     lastestOrder === 'None' ?
                                         (
@@ -146,9 +146,9 @@ function DashBoard() {
                                                     </td>
                                                     <td>
 
-                                                        {item.statusPayment === 'SP1' && <span className="text-white bg-red-500 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
-                                                        {item.statusPayment === 'SP2' && <span className="text-white bg-green-500 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
-                                                        {item.statusPayment === 'SP3' && <span className="text-white bg-blue-600 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
+                                                        {item.statusPayment === 'SP1' && <span className="text-white md:bg-red-500 md:text-white sm:text-red-500 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
+                                                        {item.statusPayment === 'SP2' && <span className="text-white md:bg-green-500 md:text-white sm:text-green-500 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
+                                                        {item.statusPayment === 'SP3' && <span className="text-white md:bg-blue-600 md:text-white sm:text-blue-600 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
 
                                                     </td>
                                                 </tr>
@@ -161,16 +161,16 @@ function DashBoard() {
                         </table >
                     </div>
 
-                    <div className="bg-white rounded-lg w-1/2 mx-5 px-4 pb-4" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
-                        <p className="font-medium my-4 text-lg">Sản phẩm bán nhiều nhất</p>
+                    <div className="bg-white rounded-lg xl:w-1/2 md:w-full mx-5 px-4 pb-4" style={{ boxShadow: '1px 1px 7px 1px #00000040' }}>
+                        <p className="font-medium my-4 md:text-lg sm:text-base">Sản phẩm bán nhiều nhất</p>
                         <table className="w-full px-3 overflow-hidden border">
-                            <thead className="h-14 bg-[#f5f2f0] text-black">
+                            <thead className="h-14 bg-[#f5f2f0] text-black md:text-lg sm:text-[12px]">
                                 <tr>
                                     <th>Sản phẩm</th>
                                     <th>Số lượng bán được</th>
                                 </tr>
                             </thead>
-                            <tbody className="text-center">
+                            <tbody className="text-center md:text-lg sm:text-[12px]">
                                 {
                                     bestSeller === 'None' ?
                                         (

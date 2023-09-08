@@ -68,6 +68,7 @@ function ManageProduct() {
     const handleEdit = (item) => {
         setDataProduct(item)
         setShowModalEdit(true)
+        setFile('')
     }
 
     // const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
@@ -118,14 +119,14 @@ function ManageProduct() {
             <ModalDeleteProduct showModalDelete={showModalDelete} setShowModalDelete={setShowModalDelete} dataProduct={dataProduct} fetchRequest={fetchRequest} />
             <ModalViewProduct showModalView={showModalView} setShowModalView={setShowModalView} dataProduct={dataProduct} />
             <ModalCreateProduct showModalCreate={showModalCreate} setShowModalCreate={setShowModalCreate} fetchRequest={fetchRequest} />
-            <div className="p-10 text-sm">
-                <p className="text-2xl font-medium  inline-block">Quản lý sản phẩm</p>
-                <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={handleCreate}>Tạo sản phẩm mới</button>
-                <div className="w-ful mt-10 text-center">
+            <div className="lg:p-10 md:p-3 sm:p-3 text-sm">
+                <p className="md:text-2xl sm:text-xl font-medium md:inline-block sm:block">Quản lý sản phẩm</p>
+                <button className="text-white bg-[#f68122] md:ml-6 sm:ml-0 sm:mt-2 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={handleCreate}>Tạo sản phẩm mới</button>
+                <div className="w-ful md:mt-10 sm:mt-5 text-center md:text-sm sm:text-xs">
                     <table className="w-full px-3 rounded-lg overflow-hidden">
                         <thead className="h-14 bg-[#f68122] text-white border-slate-300 text-center overflow-hidden">
                             <tr>
-                                <th className="px-5">Hình ảnh</th>
+                                <th className="md:px-5 sm:px-7">Hình ảnh</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Giá tiền (VND)</th>
                                 <th>Thể loại</th>
@@ -150,23 +151,23 @@ function ManageProduct() {
                                                                 {
                                                                     item && item.image &&
                                                                     <div className="rounded-xl overflow-hidden">
-                                                                        <img src={(item.image)} className="w-[150px] h-[150px]" />
+                                                                        <img src={(item.image)} className="lg:w-[150px] md:w-[100px] sm:w-[75px] lg:h-[150px] md:h-[100px] sm:h-[75px]" />
                                                                     </div>
                                                                 }
                                                             </td>
                                                             <td>{item.name}</td>
-                                                            <td>{formatPrice(item.originalPrice)}</td>
-                                                            <td>{item.categoryData && item.categoryData.valueVn}</td>
-                                                            <td>
-                                                                <button className="text-white bg-green-500 hover:bg-green-400 p-3 mr-2 border-none outline-none" name="View" onClick={() => handleView(item)}>
+                                                            <td className="px-2">{formatPrice(item.originalPrice)}</td>
+                                                            <td className="px-2">{item.categoryData && item.categoryData.valueVn}</td>
+                                                            <td className="md:px-5 sm:px-3 sm:py-2">
+                                                                <button className="text-white bg-green-500 hover:bg-green-400 xl:p-3 lg:p-2 md:py-1 md:mr-2 sm:mb-2 border-none outline-none" name="View" onClick={() => handleView(item)}>
                                                                     <i className="fa-regular fa-eye fa-md"></i>
                                                                     {/* Chi tiết */}
                                                                 </button>
-                                                                <button className="text-white bg-yellow-400 hover:bg-yellow-300 p-3 mr-2 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
+                                                                <button className="text-white bg-yellow-400 hover:bg-yellow-300 xl:p-3 lg:p-2 md:py-1 md:mr-2 sm:mb-2 border-none outline-none" name="Edit" onClick={() => handleEdit(item)}>
                                                                     <i className="fa-regular fa-pen-to-square fa-md"></i>
                                                                     {/* Sửa */}
                                                                 </button>
-                                                                <button className="text-white bg-red-600 hover:bg-red-500 p-3 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
+                                                                <button className="text-white bg-red-600 hover:bg-red-500 xl:p-3 lg:p-2 md:py-1 border-none outline-none" name="Delete" onClick={() => handleDelete(item)}>
                                                                     <i className="fa-regular fa-trash-can fa-md"></i>
                                                                     {/* Xóa */}
                                                                 </button>

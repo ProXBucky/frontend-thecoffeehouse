@@ -33,7 +33,7 @@ export default function HNStore() {
     }
 
     return (
-        <div className="ml-20 mr-3">
+        <div className="lg:ml-20 md:mx-6 mt-5">
             <p className="font-medium text-xl mb-4">Khám phá cửa hàng của chúng tôi ở Tp Hà Nội</p>
             <StoreListComponent storeArr={storeArr} />
             {storeArr != 'None' && <Pagination totalPages={totalPages} handlePageClick={handlePageClick} />}

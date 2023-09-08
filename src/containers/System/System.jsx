@@ -5,12 +5,16 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { cookieSelector } from "../../redux/selector"
 import axios from "axios";
-
+import NavbarLeftMobile from "./NavbarLeftMobile";
 
 export default function System() {
     const [roleUser, setRoleUser] = useState('')
     let cookieValue = useSelector(cookieSelector)
     let headers = { Authorization: `Bearer ${cookieValue}` }
+
+    const isHidden = useSelector((state) => state.app.isHiddenNavbar)
+    const zIndexValue = !isHidden ? "2" : "0"
+    const zIndexAtt = !isHidden ? "1" : "-1"
 
     const authorSystem = () => {
         return axios.get(`${import.meta.env.VITE_BACKEND_PORT}/api/author`, { headers })
@@ -34,11 +38,16 @@ export default function System() {
 
     return (
         <>
-            <div className="system-container flex text-black h-screen mt-9">
-                <div className="px-2 py-3 h-full fixed duration-200 ease-linear scroll-smooth bg-white w-[60px] hover:w-[200px] border-r">
-                    <NavbarLeft roleUser={roleUser} />
-                </div>
-                <div className="h-full duration-200 ease-linear scroll-smooth pb-10 w-full ml-[60px] bg-[#f5f2f0]" >
+            <div className="flex md:flex-row sm:flex-col text-black h-screen mt-9 overflow-x-hidden">
+                <>
+                    <div className="md:block sm:hidden px-2 md:py-3 md:h-full fixed duration-200 ease-linear scroll-smooth bg-white md:w-[60px] sm:w-full lg:hover:w-[200px] border-r" style={{ zIndex: zIndexValue }}>
+                        <NavbarLeft roleUser={roleUser} />
+                    </div>
+                    <div className="md:hidden sm:block px-2 fixed duration-200 ease-linear scroll-smooth bg-white">
+                        <NavbarLeftMobile roleUser={roleUser} />
+                    </div>
+                </>
+                <div className="h-full duration-200 ease-linear scroll-smooth pb-10 w-full md:ml-[60px] sm:ml-0 bg-[#f5f2f0]" style={{ zIndex: zIndexAtt }} >
                     <SystemRoute authorNavbar={authorNavbar} />
                 </div>
             </div >

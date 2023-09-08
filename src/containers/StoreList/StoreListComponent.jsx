@@ -47,7 +47,7 @@ export default function StoreListComponent({ storeArr }) {
 
 
     return (
-        <div className="flex flex-wrap gap-20 relative">
+        <div className="relative flex flex-wrap lg:gap-10 md:justify-between sm:gap-14">
             {
                 storeArr === 'None' ?
                     (
@@ -58,7 +58,7 @@ export default function StoreListComponent({ storeArr }) {
                         storeArr && storeArr.length > 0 ?
                             storeArr.map((item, index) => {
                                 return (
-                                    <div className="w-[40%]" key={index}>
+                                    <div className="lg:w-[40%] md:w-[45%] sm:w-full" key={index}>
                                         <div className="border-b-2 pb-8">
                                             <div className="rounded-lg overflow-hidden">
                                                 <Slider {...settings} className="w-full relative">
@@ -67,7 +67,7 @@ export default function StoreListComponent({ storeArr }) {
                                                         item.imageData.map((item, index) => {
                                                             return (
                                                                 <div className="rounded-2xl overflow-hidden cursor-pointer bg-contain bg-center" key={index} style={{ boxShadow: '1px 1px 13px 0px #00000040' }} onClick={() => handleDetail(item)}>
-                                                                    <img src={(item.image)} className="h-[260px]  hover:scale-105 duration-150" />
+                                                                    <img src={(item.image)} className="h-auto hover:scale-105 duration-150" />
                                                                 </div>
                                                             )
                                                         })
