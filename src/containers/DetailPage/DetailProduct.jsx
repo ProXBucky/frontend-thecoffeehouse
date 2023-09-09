@@ -88,7 +88,7 @@ export default function DetailProduct() {
                                 diffProduct && diffProduct.length > 0 &&
                                 diffProduct.map((item, index) => {
                                     return (
-                                        <div className="md:w-[20%] sm:w-[47%] px-5 flex sm:flex-col sm:text-center sm:items-center" key={index} >
+                                        <div className="md:w-[20%] sm:w-[47%] px-5 py-3 flex sm:flex-col sm:text-center sm:items-center gap-2" key={index} >
                                             <div className="md:w-full sm:w-[45%] rounded-2xl overflow-hidden cursor-pointer" style={{ boxShadow: '1px 1px 13px 0px #00000040' }} onClick={() => handleDetail(item)}>
                                                 <img src={(item.image)}></img>
                                             </div>
