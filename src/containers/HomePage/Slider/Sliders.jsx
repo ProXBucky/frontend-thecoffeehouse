@@ -29,38 +29,38 @@ const SampleNextArrow = (props) => {
 const slidersArr = [
     {
         id: 1,
-        urlSlider: "/src/assets/SliderImg/Slider1.webp"
+        urlSlider: "https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265833/image_app/Slider1_aur0ff.webp"
     },
     {
         id: 2,
-        urlSlider: "/src/assets/SliderImg/Slider2.webp"
+        urlSlider: "https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265835/image_app/Slider2_qjygcp.webp"
     },
     {
         id: 3,
-        urlSlider: "/src/assets/SliderImg/Slider3.webp"
+        urlSlider: "https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265834/image_app/Slider3_wsol2z.webp"
     },
     {
         id: 4,
-        urlSlider: "/src/assets/SliderImg/Slider4.webp"
+        urlSlider: "https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265835/image_app/Slider4_erfimr.webp"
     },
 ]
 
 const sliderArrMobile = [
     {
         id: 1,
-        urlSlider: "/src/assets/SliderImg/SliderMobile1.webp"
+        urlSlider: "https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265835/image_app/SliderMobile1_yd2sfs.webp"
     },
     {
         id: 2,
-        urlSlider: "/src/assets/SliderImg/SliderMobile2.webp"
+        urlSlider: "https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265836/image_app/SliderMobile2_zhbh1v.webp"
     },
     {
         id: 3,
-        urlSlider: "/src/assets/SliderImg/SliderMobile3.webp"
+        urlSlider: "https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265836/image_app/SliderMobile3_h8fedl.webp"
     },
     {
         id: 4,
-        urlSlider: "/src/assets/SliderImg/SliderMobile4.webp"
+        urlSlider: "https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265837/image_app/SliderMobile4_es0kc1.webp"
     },
 ]
 

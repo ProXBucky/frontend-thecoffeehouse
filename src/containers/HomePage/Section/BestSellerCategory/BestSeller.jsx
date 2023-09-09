@@ -39,7 +39,7 @@ export default function BestSeller() {
             </div>
             <div className="w-full flex flex-wrap gap-[20px] lg:pl-[30px] md:pl-0">
                 <div className="rounded-2xl overflow-hidden cursor-pointer xl:w-[calc(50%_-_20px)] lg:w-[calc(100%)]" onClick={navigatorPage}>
-                    <img src="/src/assets/SliderImg/MatchaPoster.webp"></img>
+                    <img src="https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265832/image_app/MatchaPoster_tvrwnv.webp"></img>
                 </div>
                 {
                     productArr && productArr.length > 0 &&

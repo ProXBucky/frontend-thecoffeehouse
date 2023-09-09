@@ -36,7 +36,7 @@ export default function SystemHeader({ userInfo }) {
                 }
             </div>
             <div className='md:w-1/3 sm:w-2/3 flex justify-center'>
-                <img className="block md:w-[255px] sm:w-full h-[60px] object-cover" src="/src/assets/LogoImg/The-Coffee-House-Logo-PNG-2.png" alt="Logo" />
+                <img className="block md:w-[255px] sm:w-full h-[60px] object-cover" src="https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265911/image_app/The-Coffee-House-Logo-PNG-2_kdod3z.png" alt="Logo" />
             </div>
             <div className='flex h-full items-center justify-end text-black md:w-1/3 sm:w-1/6'>
                 <span className="font-normal mr-2 lg:text-base md:text-sm lg:block md:block sm:hidden">Xin chào {userInfo}</span>

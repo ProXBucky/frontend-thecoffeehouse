@@ -7,7 +7,7 @@ export default function StoreList() {
     return (
         <>
             <NavbarMobile />
-            <div className="h-[150px] mt-9 mb-5 w-full bg-[url('/src/assets/StoreImg/Banner.webp')] bg-contain bg-center flex justify-center items-center">
+            <div className="h-[150px] mt-9 mb-5 w-full bg-[url('https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265860/image_app/banner_krnxd9.webp')] bg-contain bg-center flex justify-center items-center">
                 <p className="font-medium md:text-3xl sm:text-xl sm:text-center">Hệ thống 150 cửa hàng The Coffee House toàn quốc</p>
             </div>
             <div className="text-black lg:h-screen md:h-1/5 mt-10 w-full lg:px-[140px] md:px-[20px] sm:px-[10px] flex lg:flex-row sm:flex-col">

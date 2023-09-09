@@ -31,7 +31,7 @@ export default function Header() {
             </div>
 
             <Link className='logo' to="/">
-                <img className="logo-image" src="/src/assets/LogoImg/The-Coffee-House-Logo-PNG-2.png" alt="Logo" />
+                <img className="logo-image" src="https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265911/image_app/The-Coffee-House-Logo-PNG-2_kdod3z.png" alt="Logo" />
             </Link>
 
             <div className="navbar xl:text-sm lg:text-xs">

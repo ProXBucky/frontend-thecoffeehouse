@@ -17,9 +17,9 @@ export default function CloudFee() {
             <NavbarMobile />
             <ModalVideo showModal={showModal} setShowModal={setShowModal} urlVideo={urlVideo} />
             <div className="text-center">
-                <img src="/src/assets/CloudFee/_KV-marvel-2.webp" />
+                <img src="https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265810/image_app/_KV-marvel-2_hpnc0p.webp" />
             </div>
-            <div className="text-black" style={{ background: "url(/src/assets/CloudFee/Background.jpg) top center/100%" }}>
+            <div className="text-black" style={{ background: "url(https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265812/image_app/Background_tp8ccz.jpg) top center/100%" }}>
                 <p className="text-center text-white md:text-lg sm:text-sm md:py-[60px] sm:py-[20px] xl:px-[250px] lg:mx-[200px] md:mx-[100px] sm:mx-[10px]">Được kết hợp từ <b>Cloud</b> (đám mây) và cof<b>Fee</b> (cà phê), <b>CloudFee</b> gợi mở
                     về một thế hệ cà phê mới, êm mượt như mây.
                 </p>
@@ -32,13 +32,13 @@ export default function CloudFee() {
                             <a className="text-[#FEBF3E] hover:text-[#FEBF3E] cursor-pointer" href="https://order.thecoffeehouse.com/cloud-fee" target="_blank">Êm mượt như mây, Chill là ghiền ngay! <i className="fa-solid fa-caret-right ml-2"></i></a>
                         </div>
                         <div className="md:w-1/2 sm:w-full">
-                            <img src="/src/assets/CloudFee/_creme-brulee.webp" />
+                            <img src="https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265812/image_app/_creme-brulee_egops1.webp" />
                         </div>
                     </div>
 
                     <div className="flex md:flex-row sm:flex-col items-center">
                         <div className="md:w-1/2 sm:w-full">
-                            <img src="/src/assets/CloudFee/_creamy.webp" />
+                            <img src="https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265812/image_app/_creamy_ctiog6.webp" />
                         </div>
                         <div className="md:w-1/2 sm:w-full sm:text-center">
                             <h2 className="text-[#FEBF3E] font-semibold text-2xl font-[BaronU]">CLOuDFEE</h2>
@@ -71,7 +71,7 @@ export default function CloudFee() {
                 <div className="flex flex-col xl:mx-[240px] lg:mx-[120px] md:mx-[20px] sm:mx-[10px] mt-[50px] xl:gap-10 lg:gap-24 md:gap-32 sm:gap-10">
                     <div className="flex md:flex-row sm:flex-col items-center">
                         <div className="md:w-1/2 sm:w-full">
-                            <img src="/src/assets/CloudFee/thinh_93cf92a5395043a2b634af4de08c0163.webp" />
+                            <img src="https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265811/image_app/thinh_93cf92a5395043a2b634af4de08c0163_rvykhe.webp" />
                         </div>
                         <div className="md:w-1/2 sm:w-full">
                             <h1 className="text-[#FEBF3E] font-bold lg:text-5xl md:text-3xl sm:text-2xl">CÀ PHÊ NGON CHỈ CÓ VỊ ĐẮNG?</h1>
@@ -86,7 +86,7 @@ export default function CloudFee() {
                             <button className="bg-[#FEBF3E]" name="https://www.youtube.com/watch?v=LdmG0hSq_Ig&ab_channel=THECOFFEEHOUSE" onClick={openModal}>Hiếu bật mí trong video này</button>
                         </div>
                         <div className="md:w-1/2 sm:w-full">
-                            <img src="/src/assets/CloudFee/hieu_ed120096122f4c279ff41696f8b97eb3.webp" />
+                            <img src="https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265813/image_app/hieu_ed120096122f4c279ff41696f8b97eb3_vhcy04.webp" />
                         </div>
                     </div>
 
@@ -97,7 +97,7 @@ export default function CloudFee() {
                     <div className="lg:mx-[200px] md:mx-[20px] sm:mx-[10px] flex xl:h-[800px] lg:h-[500px] md:h-[480px] sm:h-[300px]">
                         <div className="rounded-lg overflow-hidden relative">
                             <div className="w-1/2 z-40">
-                                <img src="/src/assets/CloudFee/photo_2022-06-27_13-21-31_1f8c8a00f22e467c8d705e8a95331ae8.webp" />
+                                <img src="https://res.cloudinary.com/dqi9ub7dw/image/upload/v1694265811/image_app/photo_2022-06-27_13-21-31_1f8c8a00f22e467c8d705e8a95331ae8_fcdrbu.webp" />
                             </div>
                             <div className="bg-[#FEBF3E] xl:p-16 lg:p-6 md:p-3 sm:p-2 h-fit rounded-lg absolute left-[calc(50%_-_30px)] xl:top-[200px] lg:top-[250px] md:top-[300px] sm:top-[50px] z-10 w-1/2">
                                 <p className="z-10 md:text-lg sm:text-sm">Hơn cả một loại thức uống để ngày mới tươi ngay hay yêu chiều khẩu vị vào buổi chiều, mỗi ly CloudFee còn gắn liền với một câu chuyện thú vị.</p>
