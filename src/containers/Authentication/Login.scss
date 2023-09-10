@@ -1,15 +1,18 @@
 .container {
     // overflow-x: hidden;
+    // border: 1px solid green;
     width: 100%;
     height: 100%;
     color: black;
     display: flex;
     justify-content: center;
     padding-top: 50px;
-    padding-left: 200px;
+    padding-left: 0px;
 
     .content-left {
         // text-align: center;
+        // border: 1px solid green;
+
         width: 450px;
         background-color: white;
         border-radius: 10px;
@@ -41,7 +44,7 @@
         width: 100%;
         height: 100%;
         color: black;
-        padding: 300px;
+        padding: 400px;
         padding-top: 0;
 
         .content-left {
@@ -75,8 +78,8 @@
         width: 100%;
         height: 100%;
         color: black;
-        padding-left: 250px;
-        padding-top: 0;
+        padding-left: 60px;
+        padding-top: 50px;
 
         .content-left {
             width: 500px;
@@ -103,17 +106,18 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (min-width:320px) and (max-width: 430px) {
     .container {
         overflow-x: hidden;
         width: 100%;
         height: 100%;
         color: black;
-        padding: 10px;
-        padding-top: 0;
+        padding-top: 15px;
+        padding-left: 40px;
+        padding-right: 0;
 
         .content-left {
-            width: 100%;
+            width: 95%;
             background-color: white;
             border-radius: 10px;
             padding-top: 10px;

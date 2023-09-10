@@ -1,7 +1,7 @@
 import { Fragment, useEffect } from 'react';
 import './App.css'
 import {
-  BrowserRouter as Router, Switch, Route, withRouter
+  BrowserRouter as Router, Switch, Route, withRouter, Redirect
 } from "react-router-dom";
 import Loading from './components/Loading';
 import { lazy, Suspense } from 'react';
@@ -64,6 +64,7 @@ function App() {
             <Suspense fallback={<Loading />}>
               <Route path="/system" component={isLogin ? withRouter(System) : withRouter(ErrorPage)} />
             </Suspense>
+            <Route component={withRouter(ErrorPage)} />
           </Switch>
         </Router>
       </div>

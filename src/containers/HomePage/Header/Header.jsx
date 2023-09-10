@@ -24,7 +24,7 @@ export default function Header() {
             <div className='icon-bars'>
                 {
                     isHidden ?
-                        <i class="fa-solid fa-xmark fa-xl cursor-pointer" onClick={toggleNavbarMobile}></i>
+                        <i className="fa-solid fa-xmark fa-xl cursor-pointer" onClick={toggleNavbarMobile}></i>
                         :
                         <i className="fa-solid fa-bars fa-xl cursor-pointer" onClick={toggleNavbarMobile} ></i>
                 }
