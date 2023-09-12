@@ -48,15 +48,15 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModal(false)}></i>
                                 </div>
                                 {/*body*/}
-                                <div className="relative p-4 flex-auto text-center">
-                                    <table className="w-full px-3 rounded-lg overflow-hidden">
+                                <div className="relative md:p-4 sm:p-2 flex-auto text-center">
+                                    <table className="w-auto md:px-3 sm:p-2 rounded-lg overflow-hidden">
                                         <thead className="h-14 bg-[#f68122] text-white border border-slate-300 overflow-hidden">
                                             <tr>
-                                                <th className="px-5">ID</th>
+                                                <th className="md:px-5 sm:px-2">ID</th>
                                                 <th>Email</th>
-                                                <th>Họ</th>
-                                                <th>Tên</th>
-                                                <th>Địa chỉ</th>
+                                                <th className="md:table-cell sm:hidden">Họ</th>
+                                                <th className="md:table-cell sm:hidden">Tên</th>
+                                                <th className="md:table-cell sm:hidden">Địa chỉ</th>
                                                 <th>Tác vụ</th>
                                             </tr>
                                         </thead>
@@ -76,17 +76,15 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
                                                                         <tr className="h-14 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
                                                                             <td>{item.id}</td>
                                                                             <td>{item.email}</td>
-                                                                            <td>{item.firstName}</td>
-                                                                            <td>{item.lastName}</td>
-                                                                            <td>{item.address}</td>
+                                                                            <td className="md:table-cell sm:hidden">{item.firstName}</td>
+                                                                            <td className="md:table-cell sm:hidden">{item.lastName}</td>
+                                                                            <td className="md:table-cell sm:hidden">{item.address}</td>
                                                                             <td>
                                                                                 <button className="text-white bg-green-500 hover:bg-green-400 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleApprove(item)}>
                                                                                     <i className="fa-solid fa-check fa-md mr-1"></i>
-                                                                                    Duyệt
                                                                                 </button>
                                                                                 <button className="text-white bg-red-600 hover:bg-red-500 p-2 mr-3 border-none outline-none" name="View" onClick={() => handleReject(item)}>
                                                                                     <i className="fa-solid fa-x fa-md mr-1"></i>
-                                                                                    Từ chối
                                                                                 </button>
                                                                             </td>
                                                                         </tr>
