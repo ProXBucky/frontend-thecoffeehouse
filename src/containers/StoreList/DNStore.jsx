@@ -6,16 +6,16 @@ import Pagination from "../../components/Pagination/Pagination"
 
 export default function DNStore() {
     const [storeArr, setStoreArr] = useState([])
-
-    useEffect(() => {
-        fetchStore()
-    }, [])
-
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const handlePageClick = (selectedPage) => {
         setCurrentPage(selectedPage.selected + 1);
     };
+
+
+    useEffect(() => {
+        fetchStore()
+    }, [])
 
     useEffect(() => {
         fetchStore();
