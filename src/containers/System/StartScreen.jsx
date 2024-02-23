@@ -1,9 +1,21 @@
 import { withRouter } from "react-router-dom"
+import { useHistory } from 'react-router-dom'
+import { userInfoSelector } from '../../redux/selector';
+import { useSelector } from 'react-redux';
+import { useEffect } from "react";
 
 function StartScreen({ authorNavbar }) {
+    const userInfo = useSelector(userInfoSelector)
+    const history = useHistory();
     const handleAuthor = () => {
         authorNavbar()
     }
+
+    useEffect(() => {
+        if (!userInfo) {
+            history.push('/login');
+        }
+    }, [userInfo])
 
     return (
         <div className="flex justify-center items-center min-h-screen">

@@ -7,6 +7,8 @@ import { toast } from "react-toastify"
 import { formatPrice } from "../../utils/formatPrice"
 import { withRouter } from "react-router-dom"
 
+
+// { authorNavbar }
 function DashBoard() {
     const [statistic, setStatistic] = useState({})
     const [bestSeller, setBestSeller] = useState([])
@@ -16,6 +18,7 @@ function DashBoard() {
         fetchDataDashboard()
         fetchSellerBest()
         fetchLastestOrder()
+        // authorNavbar()
     }, [])
 
     const fetchDataDashboard = async () => {

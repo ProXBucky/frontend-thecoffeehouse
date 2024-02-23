@@ -1,12 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { REHYDRATE } from "redux-persist";
 
 export const UserSlice = createSlice({
     name: 'user',
     initialState: {
-        userIsLogined: false,
-        // userIsLogined: true, // tam thoi
-        userInfo: {},
-        isError: false
+        // userIsLogined: sessionStorage.getItem("userEmail")
+        //     ? true : false,
+        // userInfo: sessionStorage.getItem("userEmail")
+        //     ? (sessionStorage.getItem("userEmail")) : {},
+        // isError: false
+
+        userIsLogined: "",
+        userInfo: "",
+        isError: ""
+
     },
     reducers: {
         loginUserSucces: (state, action) => {
@@ -18,8 +25,12 @@ export const UserSlice = createSlice({
             state.userInfo = {}
         }
     },
-    extraReducers: {
-
+    extraReducers: (builder) => {
+        builder.addCase(REHYDRATE, (state) => {
+            if (state.userInfo) {
+                state.userIsLogined = true;
+            }
+        });
     }
 })
 

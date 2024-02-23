@@ -8,7 +8,7 @@ import { lazy, Suspense } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { isLoginedSelector, userInfoSelector } from './redux/selector';
+import { userInfoSelector } from './redux/selector';
 import Login from './containers/Authentication/Login'
 import HomePage from './containers/HomePage/HomePage';
 import Header from './containers/HomePage/Header/Header';
@@ -22,37 +22,32 @@ import SystemHeader from "./containers/System/SystemHeader"
 import DetailProduct from './containers/DetailPage/DetailProduct';
 import DetailStore from './containers/DetailPage/DetailStore';
 import Recruit from './containers/Recruit/Recruit';
-import Cookies from 'js-cookie';
 const System = lazy(() => import('./containers/System/System'));
-import { setToken } from "./redux/Slice/CookieSlice"
+// import Cookies from 'js-cookie';
+// import { setToken } from "./redux/Slice/CookieSlice"
 
 function App() {
-  const dispatch = useDispatch();
-  const cookieValue = Cookies.get('accessToken');
+  // const dispatch = useDispatch();
+  // const cookieValue = Cookies.get('accessToken');
 
-  useEffect(() => {
-    Cookies.set('accessToken', '');
-    dispatch(setToken(''));
-  }, [])
-
-  useEffect(() => {
-    dispatch(setToken(cookieValue));
-  }, [cookieValue])
+  // useEffect(() => {
+  //   Cookies.set('accessToken', '');
+  // }, [])
 
 
-  const isLogin = useSelector(isLoginedSelector)
+  // const isLogin = useSelector(isLoginedSelector)
+  // const userInfo = useSelector(userInfoSelector)
   const userInfo = useSelector(userInfoSelector)
   return (
     <Fragment>
       <div className='max-w-full h-full w-full'>
         <Router>
           <div className='mb-[35px]'>
-            {!isLogin ? <Header /> : <SystemHeader userInfo={userInfo} />}
+            {!userInfo ? <Header /> : <SystemHeader userInfo={userInfo} />}
           </div>
           <Switch>
             <Route exact path="/" component={withRouter(HomePage)} />
             <Route path="/register" component={withRouter(Register)} />
-            <Route path="/404-error" component={withRouter(ErrorPage)} />
             <Route path="/collections" component={withRouter(Collection)} />
             <Route path="/stores" component={withRouter(StoreList)} />
             <Route path="/shopping-cart" component={withRouter(ShoppingCart)} />
@@ -61,10 +56,10 @@ function App() {
             <Route path="/recruit" component={withRouter(Recruit)} />
             <Route path="/products/:category/:id" component={withRouter(DetailProduct)} />
             <Route path="/detail-store/:id" component={withRouter(DetailStore)} />
+            <Route path="/404-error" component={withRouter(ErrorPage)} />
             <Suspense fallback={<Loading />}>
-              <Route path="/system" component={isLogin ? withRouter(System) : withRouter(ErrorPage)} />
+              <Route path="/system" component={userInfo ? withRouter(System) : withRouter(ErrorPage)} />
             </Suspense>
-            <Route component={withRouter(ErrorPage)} />
           </Switch>
         </Router>
       </div>

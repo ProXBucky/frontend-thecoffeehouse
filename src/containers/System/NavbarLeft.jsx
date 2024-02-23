@@ -48,6 +48,10 @@ export default function NavbarLeft({ roleUser }) {
                     {
                         roleUser === 'R2' &&
                         <>
+                            <NavLink className="border-b-2 mt-1 hover:bg-[#f68122] overflow-hidden md:px-3 md:py-4 sm:px-2 sm:py-1 flex items-center xl:text-base lg:text-sm rounded-2xl text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/dashboard">
+                                <i className="fa-solid fa-chart-line fa-xl mr-4"></i>
+                                <label className="font-medium cursor-pointer xl:text-base lg:text-sm">Trang_chủ</label>
+                            </NavLink>
                             <NavLink className="border-b-2 mt-1 hover:bg-[#f68122] overflow-hidden md:px-3 md:py-4 sm:px-2 sm:py-1 flex items-center xl:text-base lg:text-sm rounded-2xl text-black hover:text-white" activeStyle={{ background: "#f68122", color: "white" }} to="/system/manage-product">
                                 <i className="fa-solid fa-mug-saucer fa-xl mr-4 ml-[-4px]"></i>
                                 <label className="font-medium cursor-pointer xl:text-base lg:text-sm">Sản_phẩm</label>

@@ -5,7 +5,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { UserSlice } from "../../redux/Slice/UserSlice";
 import Cookies from 'js-cookie';
-import { clearToken } from "../../redux/Slice/CookieSlice";
+import { clearToken, clearUserInfo } from "../../redux/Slice/CookieSlice";
 import { AppSlice } from '../../redux/Slice/AppSlice';
 
 export default function SystemHeader({ userInfo }) {
@@ -18,12 +18,15 @@ export default function SystemHeader({ userInfo }) {
     }
 
     const handleLogout = async () => {
-        Cookies.set('accessToken', '');
+        Cookies.remove('accessToken')
+        Cookies.remove('userEmail')
         dispatch(clearToken());
-        dispatch(UserSlice.actions.logOutUser())
+        dispatch(clearUserInfo());
         history.push('/')
     }
 
+    // dispatch(UserSlice.actions.logOutUser())
+    sessionStorage.removeItem('userEmail')
 
     return (
         <div className="w-full h-[60px] flex border fixed top-0 justify-between px-5 z-[47] bg-white">

@@ -48,8 +48,8 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModal(false)}></i>
                                 </div>
                                 {/*body*/}
-                                <div className="relative md:p-4 sm:p-2 flex-auto text-center">
-                                    <table className="w-auto md:px-3 sm:p-2 rounded-lg overflow-hidden">
+                                <div className="relative md:p-4 sm:p-2 flex-auto text-center w-full">
+                                    <table className="w-full md:px-3 sm:p-2 rounded-lg overflow-hidden">
                                         <thead className="h-14 bg-[#f68122] text-white border border-slate-300 overflow-hidden">
                                             <tr>
                                                 <th className="md:px-5 sm:px-2">ID</th>
@@ -65,7 +65,9 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
                                             {
                                                 adminNotApprovedArr === 'None' ?
                                                     (
-                                                        <td colSpan="6" className="border py-4 text-lg">Không có dữ liệu</td>
+                                                        <tr>
+                                                            <td colSpan="6" className="border py-4 text-lg">Không có dữ liệu</td>
+                                                        </tr>
                                                     )
                                                     :
                                                     (

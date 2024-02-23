@@ -7,7 +7,7 @@ import { UserSlice } from "../../redux/Slice/UserSlice";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form"
 import Cookies from 'js-cookie';
-import { setToken } from "../../redux/Slice/CookieSlice";
+import { setToken, setUserInfo } from "../../redux/Slice/CookieSlice";
 import NavbarMobile from "../../containers/HomePage/NavbarMobile"
 
 
@@ -35,10 +35,14 @@ export default function Login() {
       password: data.password
     })
     if (res && res.errCode === 0) {
-      Cookies.set('accessToken', res.accessToken, { expires: 1 }); // Set the cookie named 'myCookie' with a value 'cookieValue' that expires in 1 days
+      Cookies.set('accessToken', res.accessToken, { expires: 1 / 144 }); // Set the cookie named 'myCookie' with a value 'cookieValue' that expires in 10 minutes
+      Cookies.set('userEmail', res.email, { expires: 1 / 144 }); // Set the cookie named 'myCookie' with a value 'cookieValue' that expires in 10 minutes
       dispatch(setToken(res.accessToken))
-      history.push('/system') //
-      dispatch(UserSlice.actions.loginUserSucces(res.email))
+      dispatch(setUserInfo(res.email))
+      // sessionStorage.setItem("userEmail", res.email);
+      // dispatch(UserSlice.actions.loginUserSucces(res.email))
+      history.push('/system/dashboard')
+      toast.success("Đăng nhập thành công")
     } else {
       toast.error(res.errMessage)
     }
@@ -55,7 +59,7 @@ export default function Login() {
       <div className="container">
         <div className="content-left md:pt-14 sm:pt-5">
           <h2 className=" text-2xl font-medium pt-4">Đăng nhập</h2>
-          <p className=" text-red-500 text-center">( Chỉ dành cho quản lý và quản trị viên )</p>
+          {/* <p className=" text-red-500 text-center">( Chỉ dành cho quản lý và quản trị viên )</p> */}
 
           <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
             <div className="w-full px-3">
@@ -117,7 +121,6 @@ export default function Login() {
               <p className="text-center mt-2">Tài khoản quản trị viên: <br />
                 admin2@gmail.com <br />
                 admin2@gmail.com
-
               </p>
 
             </div>

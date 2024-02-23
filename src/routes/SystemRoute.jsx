@@ -7,7 +7,8 @@ import {
     Redirect
 } from "react-router-dom";
 import { useSelector } from "react-redux"
-import { isLoginedSelector } from "../redux/selector"
+// import { userInfoSelector } from "../redux/selector"
+// import { useEffect } from "react";
 
 
 import ManageAdmin from "../containers/System/ManageAdmin/ManageAdmin";
@@ -16,19 +17,20 @@ import ManageStore from "../containers/System/ManageStore/ManageStore";
 import ManageOrder from "../containers/System/ManageOrder/ManageOrder";
 import HistoryOrder from "../containers/System/ManageOrder/HistoryOrder";
 import DashBoard from "../containers/System/Dashboard";
-import StartScreen from "../containers/System/StartScreen";
+// import StartScreen from "../containers/System/StartScreen";
+import { cookieSelector } from "../redux/selector"
+import ErrorPage from "../containers/404Page";
 
 
-export default function SystemRoute({ authorNavbar }) {
-    const isLogin = useSelector(isLoginedSelector)
+
+export default function SystemRoute() {
+    let cookieValue = useSelector(cookieSelector)
+
     return (
         <div className="bg-[#f5f2f0]">
             {
-                isLogin ?
+                cookieValue ?
                     <Switch>
-                        <Route path="/system" exact>
-                            <StartScreen authorNavbar={authorNavbar} />
-                        </Route>
                         <Route path="/system/dashboard">
                             <DashBoard />
                         </Route>
@@ -49,7 +51,13 @@ export default function SystemRoute({ authorNavbar }) {
                         </Route>
                     </Switch >
                     :
-                    <Redirect to="/404-error"></Redirect>
+                    <Switch>
+                        <Route path="*">
+                            <ErrorPage />
+                        </Route>
+                    </Switch >
+
+
             }
         </div>
     )

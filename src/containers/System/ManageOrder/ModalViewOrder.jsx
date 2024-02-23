@@ -14,7 +14,7 @@ export default function ModalViewOrder({ showModalView, setShowModalView, orderD
                         <div
                             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ease-linear scroll-smooth"
                         >
-                            <div className="relative w-[80%] my-5 lg:h-[85%] md:h-[85%] md:ml-10 sm:h-[80%]">
+                            <div className="relative w-[95%] my-5 lg:h-[85%] md:h-[85%] md:ml-10 sm:h-[80%]">
 
                                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 
