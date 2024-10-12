@@ -28,36 +28,32 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
                                                 <tbody>
                                                     <>
                                                         <tr>
-                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 bg-[#f68122] lg:w-1/4 md:w-[200px] sm:w-[100px] text-white">ID:</th>
-                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.id}</td>
+                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 text-black lg:w-1/4 md:w-[200px] sm:w-[100px] border-2 ">ID:</th>
+                                                            <td className="px-6 border-2">{dataUser.id}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 bg-[#f68122] lg:w-1/4 md:w-[200px] sm:w-[100px] text-white">Email:</th>
-                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.email}</td>
+                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 text-black lg:w-1/4 md:w-[200px] sm:w-[100px] border-2 ">Email:</th>
+                                                            <td className="px-6 border-2">{dataUser.email}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 bg-[#f68122] lg:w-1/4 md:w-[200px] sm:w-[100px] text-white">Mật khẩu:</th>
-                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.password}</td>
+                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 text-black lg:w-1/4 md:w-[200px] sm:w-[100px] border-2 ">Họ:</th>
+                                                            <td className="px-6 border-2">{dataUser.firstName}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 bg-[#f68122] lg:w-1/4 md:w-[200px] sm:w-[100px] text-white">Họ:</th>
-                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.firstName}</td>
+                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 text-black lg:w-1/4 md:w-[200px] sm:w-[100px] border-2 ">Tên:</th>
+                                                            <td className="px-6 border-2">{dataUser.lastName}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 bg-[#f68122] lg:w-1/4 md:w-[200px] sm:w-[100px] text-white">Tên:</th>
-                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.lastName}</td>
+                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 text-black lg:w-1/4 md:w-[200px] sm:w-[100px] border-2 ">Địa chỉ:</th>
+                                                            <td className="px-6 border-2">{dataUser.address}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 bg-[#f68122] lg:w-1/4 md:w-[200px] sm:w-[100px] text-white">Địa chỉ:</th>
-                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.address}</td>
+                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 text-black lg:w-1/4 md:w-[200px] sm:w-[100px] border-2 ">SĐT:</th>
+                                                            <td className="px-6 border-2">{dataUser.phone}</td>
                                                         </tr>
                                                         <tr>
-                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 bg-[#f68122] lg:w-1/4 md:w-[200px] sm:w-[100px] text-white">SĐT:</th>
-                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.phone}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 bg-[#f68122] lg:w-1/4 md:w-[200px] sm:w-[100px] text-white">Vai trò:</th>
-                                                            <td className="px-6 bg-[#f6c7a0]">{dataUser.roleData && dataUser.roleData.valueVn}</td>
+                                                            <th className="md:h-12 sm:h-10 md:px-5 sm:px-2 text-black lg:w-1/4 md:w-[200px] sm:w-[100px] border-2 ">Vai trò:</th>
+                                                            <td className="px-6 border-2">{dataUser.roleValueVn}</td>
                                                         </tr>
                                                     </>
                                                 </tbody>
@@ -68,7 +64,7 @@ export default function ModalViewAdmin({ showModalView, setShowModalView, dataUs
                                 <div className="flex items-center justify-end p-6  border-solid border-slate-200 rounded-b">
                                     <div>
                                         <button
-                                            className="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
+                                            className="bg-red-500  active:bg-red-600 font-bold uppercase text-sm px-6 py-3 text-white rounded shadow hover:shadow-lg outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
                                             onClick={() => setShowModalView(false)}
                                         >
                                             Hủy

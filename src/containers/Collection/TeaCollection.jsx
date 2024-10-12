@@ -3,6 +3,7 @@ import { fetchAllProductByCategory } from "../../api/appAPI"
 import { useHistory } from "react-router-dom"
 import ProductList from "./ProductList"
 import Pagination from "../../components/Pagination/Pagination"
+import { toast } from "react-toastify"
 
 
 export default function TeaCollection() {
@@ -11,9 +12,12 @@ export default function TeaCollection() {
 
     const fetchDataProduct = async () => {
         const res = await fetchAllProductByCategory('CA2', currentPage, 6, 0)
-        if (res && (res.errCode === 0 || res.errCode === 1)) {
-            setAllProductArr(res.data)
-            setTotalPages(res.totalPages)
+        if (res.status === 200) {
+            setAllProductArr(res.data.data)
+            setTotalPages(res.data.totalPages)
+        }
+        else {
+            toast.error("Lỗi hệ thống")
         }
     }
 
@@ -26,15 +30,15 @@ export default function TeaCollection() {
     useEffect(() => {
         window.scrollTo(0, 0)
         fetchDataProduct()
-    }, [])
+    }, [currentPage])
 
-    useEffect(() => {
-        fetchDataProduct();
-    }, [currentPage]);
+    // useEffect(() => {
+    //     fetchDataProduct();
+    // }, []);
 
 
     const handleDetail = (item) => {
-        history.push(`/products/${item.category}/${item.id}`)
+        history.push(`/products/${item.categoryId}/${item.id}`)
 
     }
 

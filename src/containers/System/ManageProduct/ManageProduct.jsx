@@ -3,7 +3,7 @@ import ModalDeleteProduct from "./ModalDeleteProduct"
 import ModalViewProduct from "./ModalViewProduct"
 import ModalEditProduct from "./ModalEditProduct"
 import { useEffect, useState, useCallback } from "react"
-import { fetchAllcodeCategory, fetchAllcodeSize } from "../../../redux/Slice/AppSlice"
+import { fetchAllcodeCategory } from "../../../redux/Slice/AppSlice"
 import { useDispatch } from "react-redux"
 import { decodeBase64Func, encodeBase64Func } from "../../../utils/base64"
 import { fetchAllProductByCategory } from "../../../api/appAPI"
@@ -11,6 +11,7 @@ import { formatPrice } from "../../../utils/formatPrice"
 import RiseLoader from "react-spinners/RiseLoader"
 import { withRouter } from "react-router-dom"
 import Pagination from "../../../components/Pagination/Pagination"
+import { toast } from "react-toastify"
 
 
 function ManageProduct() {
@@ -25,9 +26,12 @@ function ManageProduct() {
 
     const fetchDataProduct = async () => {
         const res = await fetchAllProductByCategory('ALL', currentPage, 6, 0)
-        if (res && (res.errCode === 0 || res.errCode === 1)) {
-            setAllProductArr(res.data)
-            setTotalPages(res.totalPages)
+        if (res.status === 200) {
+            setAllProductArr(res.data.data)
+            setTotalPages(res.data.totalPages)
+        }
+        else {
+            toast.error("Lỗi hệ thống")
         }
     }
 
@@ -38,15 +42,14 @@ function ManageProduct() {
     };
 
     useEffect(() => {
-        // dispatch(fetchAllcodeSize())
         fetchDataProduct()
         dispatch(fetchAllcodeCategory())
         window.scrollTo(0, 0)
-    }, [])
+    }, [currentPage])
 
-    useEffect(() => {
-        fetchDataProduct();
-    }, [currentPage]);
+    // useEffect(() => {
+    //     fetchDataProduct();
+    // }, []);
 
 
     const fetchRequest = useCallback(() => {

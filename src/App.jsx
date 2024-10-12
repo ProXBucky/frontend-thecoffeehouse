@@ -23,20 +23,9 @@ import DetailProduct from './containers/DetailPage/DetailProduct';
 import DetailStore from './containers/DetailPage/DetailStore';
 import Recruit from './containers/Recruit/Recruit';
 const System = lazy(() => import('./containers/System/System'));
-// import Cookies from 'js-cookie';
-// import { setToken } from "./redux/Slice/CookieSlice"
 
 function App() {
-  // const dispatch = useDispatch();
-  // const cookieValue = Cookies.get('accessToken');
 
-  // useEffect(() => {
-  //   Cookies.set('accessToken', '');
-  // }, [])
-
-
-  // const isLogin = useSelector(isLoginedSelector)
-  // const userInfo = useSelector(userInfoSelector)
   const userInfo = useSelector(userInfoSelector)
   return (
     <Fragment>

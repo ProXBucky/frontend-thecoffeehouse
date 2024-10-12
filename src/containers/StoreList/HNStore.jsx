@@ -2,14 +2,11 @@ import { fetchAllStoreByCity } from "../../api/appAPI"
 import { useState, useEffect } from "react"
 import StoreListComponent from "./StoreListComponent"
 import Pagination from "../../components/Pagination/Pagination"
+import { toast } from "react-toastify"
 
 export default function HNStore() {
     const [storeArr, setStoreArr] = useState([])
 
-    useEffect(() => {
-        fetchStore()
-        window.scrollTo(0, 0)
-    }, [])
 
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
@@ -18,17 +15,22 @@ export default function HNStore() {
     };
 
     useEffect(() => {
-        fetchStore();
-    }, [currentPage]);
+        fetchStore()
+        window.scrollTo(0, 0)
+    }, [currentPage])
+    // useEffect(() => {
+    //     fetchStore();
+    // }, []);
 
 
     const fetchStore = async () => {
         const res = await fetchAllStoreByCity('C1', currentPage, 4, 0)
-        if (res && (res.errCode === 0 || res.errCode === 1)) {
-            setStoreArr(res.data)
-            setTotalPages(res.totalPages)
-        } else {
-            console.log(res.errMessage)
+        if (res.status === 200) {
+            setStoreArr(res.data.data)
+            setTotalPages(res.data.totalPages)
+        }
+        else {
+            toast.error("Lỗi hệ thống")
         }
     }
 

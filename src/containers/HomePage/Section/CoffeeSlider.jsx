@@ -2,6 +2,7 @@ import { fetchAllProductByCategory } from "../../../api/appAPI"
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import SliderSection from "./SliderSection";
+import { toast } from "react-toastify";
 
 
 export default function CoffeeSlider({ settings }) {
@@ -14,14 +15,17 @@ export default function CoffeeSlider({ settings }) {
 
     const fetchProduct = async () => {
         const res = await fetchAllProductByCategory('ALL', 0, 0, 15) // CA1, Coffee limit 8
-        // console.log(res.data)
-        if (res && res.errCode === 0) {
-            setProductArr(res.data)
+
+        if (res.status === 200) {
+            setProductArr(res.data.data)
+        }
+        else {
+            toast.error("Lỗi hệ thống")
         }
     }
 
     const handleDetail = (item) => {
-        history.push(`/products/${item.category}/${item.id}`)
+        history.push(`/products/${item.categoryId}/${item.id}`)
     }
 
     const handleNavigation = () => {

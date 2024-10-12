@@ -2,6 +2,7 @@ import { fetchAllStoreByCity } from "../../api/appAPI"
 import { useState, useEffect } from "react"
 import StoreListComponent from "./StoreListComponent"
 import Pagination from "../../components/Pagination/Pagination"
+import { toast } from "react-toastify"
 
 
 export default function DNStore() {
@@ -13,9 +14,9 @@ export default function DNStore() {
     };
 
 
-    useEffect(() => {
-        fetchStore()
-    }, [])
+    // useEffect(() => {
+    //     fetchStore()
+    // }, [])
 
     useEffect(() => {
         fetchStore();
@@ -23,11 +24,12 @@ export default function DNStore() {
 
     const fetchStore = async () => {
         const res = await fetchAllStoreByCity('C3', currentPage, 4, 0)
-        if (res && (res.errCode === 0 || res.errCode === 1)) {
-            setStoreArr(res.data)
-            setTotalPages(res.totalPages)
-        } else {
-            console.log(res.errMessage)
+        if (res.status === 200) {
+            setStoreArr(res.data.data)
+            setTotalPages(res.data.totalPages)
+        }
+        else {
+            toast.error("Lỗi hệ thống")
         }
     }
 

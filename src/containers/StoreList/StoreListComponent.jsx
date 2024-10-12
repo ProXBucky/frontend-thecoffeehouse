@@ -63,8 +63,8 @@ export default function StoreListComponent({ storeArr }) {
                                             <div className="rounded-lg overflow-hidden">
                                                 <Slider {...settings} className="w-full relative">
                                                     {
-                                                        item.imageData && item.imageData.length > 0 &&
-                                                        item.imageData.map((item, index) => {
+                                                        item.image && item.image.length > 0 &&
+                                                        item.image.map((item, index) => {
                                                             return (
                                                                 <div className="rounded-2xl overflow-hidden cursor-pointer bg-contain bg-center" key={index} style={{ boxShadow: '1px 1px 13px 0px #00000040' }} onClick={() => handleDetail(item)}>
                                                                     <img src={(item.image)} className="h-auto hover:scale-105 duration-150" />

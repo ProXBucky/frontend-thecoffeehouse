@@ -1,17 +1,38 @@
 import { toast } from "react-toastify"
 import { deleteAdmin } from "../../../api/adminAPI"
+import { useSelector } from "react-redux"
+import { cookieSelector } from "../../../redux/selector"
 
 export default function ModalDeleteAdmin({ showModalDelete, setShowModalDelete, dataUser, fetchRequest }) {
 
+    const accessToken = useSelector(cookieSelector)
     const handleAction = async () => {
-        let res = await deleteAdmin(dataUser.id)
-        if (res.errCode === 0) {
-            toast.success('Xóa nhân viên thành công')
-            fetchRequest()
+        try {
+            let res = await deleteAdmin(dataUser.id, accessToken)
+            if (res.status === 200) {
+                toast.success('Xóa nhân viên thành công')
+                fetchRequest()
+            }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 404) {
+                    toast.error("Không tìm thấy thông tin người dùng")
+                }
+                else if (status === 401) {
+                    toast.error("Phiên làm việc đã hết hạn")
+                }
+                else if (status === 403) {
+                    toast.error("Bạn không có quyền xóa")
+                }
+                else {
+                    toast.error('Lỗi hệ thống');
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
             setShowModalDelete(false)
-        } else {
-            toast.error('Lỗi hệ thống')
-
         }
     }
 

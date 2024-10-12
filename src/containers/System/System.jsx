@@ -4,33 +4,34 @@ import NavbarLeft from "./NavbarLeft";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { cookieSelector } from "../../redux/selector"
-import axios from "axios";
 import NavbarLeftMobile from "./NavbarLeftMobile";
+import { authorSystem } from "../../api/adminAPI";
 
 export default function System() {
     const [roleUser, setRoleUser] = useState('')
     let cookieValue = useSelector(cookieSelector)
-    let headers = { Authorization: `Bearer ${cookieValue}` }
-
     const isHidden = useSelector((state) => state.app.isHiddenNavbar)
     const zIndexValue = isHidden ? "2" : "-2"
-    // const zIndexAtt = !isHidden ? "1" : "-1"
 
-    const authorSystem = () => {
-        return axios.get(`${import.meta.env.VITE_BACKEND_PORT}/api/author`, { headers })
-    }
 
     const authorNavbar = async () => {
-        let res = await authorSystem()
-        if (res && res.data && res.data.errCode === 0) {
-            if (res.data.roleId === 'R1') {
-                setRoleUser('R1')
+        try {
+            let res = await authorSystem(cookieValue)
+            if (res.status === 200) {
+                if (res.data === "ROLE_ADMIN") {
+                    setRoleUser('R1')
+                }
+                else if (res.data === "ROLE_STAFF") {
+                    setRoleUser('R2')
+                }
             }
-            else if (res.data.roleId === 'R2') {
-                setRoleUser('R2')
+        } catch (error) {
+            if (error.response) {
+                toast.error('Lỗi hệ thống');
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
             }
-        } else {
-            toast.error('Lỗi server')
+        } finally {
         }
     }
 

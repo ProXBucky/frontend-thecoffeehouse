@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { cityAllcodeSelector } from "../../../redux/selector"
+import { cityAllcodeSelector, cookieSelector } from "../../../redux/selector"
 import { updateStoreData } from "../../../api/adminAPI"
 import { toast } from "react-toastify"
 import RiseLoader from "react-spinners/RiseLoader"
@@ -25,31 +25,55 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
         return check
     }
 
+    const accessToken = useSelector(cookieSelector)
+
     const handleAction = async () => {
-        if (validateForm()) {
-            setLoading(true)
-            let res = await updateStoreData({
-                id: dataStore.id,  //for findOne
-                nameStore: dataStore.nameStore,
-                address: dataStore.address,
-                cityId: dataStore.cityId,
-                description: dataStore.description,
-                shortDescription: dataStore.shortDescription,
-                mapLink: dataStore.mapLink,
-                mapHTML: dataStore.mapHTML,
-                image: dataStore.image
-            })
-            if (res.errCode === 0) {
-                setLoading(false)
-                toast.success('Cập nhật thông tin thành công')
-                fetchRequest()
-                setShowModalEdit(false)
-            } else {
-                setLoading(false)
-                toast.error('Lỗi hệ thống')
+        try {
+            if (validateForm()) {
+                setLoading(true)
+                let res = await updateStoreData({
+                    id: dataStore.id,  //for findOne
+                    nameStore: dataStore.nameStore,
+                    address: dataStore.address,
+                    cityId: dataStore.cityId,
+                    description: dataStore.description,
+                    shortDescription: dataStore.shortDescription,
+                    mapLink: dataStore.mapLink,
+                    mapHTML: dataStore.mapHTML,
+                    image: dataStore.image
+                }, accessToken)
+                if (res.status === 200) {
+                    toast.success('Cập nhật thông tin thành công')
+                    fetchRequest()
+                }
             }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 400) {
+                    toast.error("Thiếu dữ kiện đầu vào")
+                }
+                else if (status === 404) {
+                    toast.error("Không tìm thấy thông tin cửa hàng")
+                }
+                else if (status === 401) {
+                    toast.error("Phiên làm việc đã hết hạn")
+                }
+                else if (status === 403) {
+                    toast.error("Bạn không có quyền")
+                }
+                else {
+                    toast.error('Lỗi hệ thống')
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
+            setShowModalEdit(false)
+            setLoading(false)
         }
     }
+
 
     const closeModal = () => {
         setShowModalEdit(false)
@@ -71,8 +95,7 @@ export default function ModalEditStore({ showModalEdit, setShowModalEdit, dataSt
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="lg:text-3xl md:text-2xl sm:text-xl font-semibold">
-                                        Sửa thông tin cửa hàng: <br />
-                                        {dataStore.nameStore}
+                                        Sửa thông tin cửa hàng
                                     </h3>
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={closeModal}></i>
                                 </div>

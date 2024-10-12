@@ -15,21 +15,33 @@ import NavbarMobile from "../HomePage/NavbarMobile";
 export default function DetailStore() {
     const { id } = useParams();
     const [detailData, setDetailData] = useState({})
-    const [imgData, setImgData] = useState([])
     const history = useHistory()
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        fetchDataProduct()
+        fetchDataStore()
     }, [])
 
-    const fetchDataProduct = async () => {
-        const respone = await fetchDetailStoreById(id)
-        if (respone && respone.errCode === 0) {
-            setDetailData(respone.data)
-            setImgData(respone.imgData)
-        } else {
-            toast.error('Lỗi hệ thống')
+    const fetchDataStore = async () => {
+        try {
+            const res = await fetchDetailStoreById(id)
+            if (res.status === 200) {
+                setDetailData(res.data)
+            }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 404) {
+                    toast.error("Không tìm thấy thông tin cửa hàng")
+                }
+                else {
+                    toast.error('Lỗi hệ thống')
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
+            setShowModal(false)
         }
     }
 
@@ -85,8 +97,8 @@ export default function DetailStore() {
                     <div className="lg:hidden md:inline-block sm:inline-block md:py-0 pt-10">
                         <Slider {...settingSlider}>
                             {
-                                imgData && imgData.length > 0 &&
-                                imgData.map((item, index) => {
+                                detailData.image && detailData.image.length > 0 &&
+                                detailData.image.map((item, index) => {
                                     return (
                                         <div className="xl:w-[600px] lg:w-[500px] mb-2" key={index}>
                                             <img src={(item.image)} />
@@ -98,8 +110,8 @@ export default function DetailStore() {
                     </div>
                     <div className="pb-5 flex flex-col lg:block md:hidden sm:hidden">
                         {
-                            imgData && imgData.length > 0 &&
-                            imgData.map((item, index) => {
+                            detailData.image && detailData.image.length > 0 &&
+                            detailData.image.map((item, index) => {
                                 return (
                                     <div className="xl:w-[600px] lg:w-[500px] mb-2" key={index}>
                                         <img src={(item.image)} />

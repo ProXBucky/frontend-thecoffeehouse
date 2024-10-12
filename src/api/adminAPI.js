@@ -1,63 +1,212 @@
 import axios from "../../axios";
 
+const API_URL = import.meta.env.VITE_BACKEND_PORT;
 
-const getAdminById = (id) => {
-    return axios.get(`/api/get-admin-by-id?id=${id}`)
-}
+const getAdminById = async (adminId, token) => {
+    try {
+        const response = await axios.get(`${API_URL}/admin/${adminId}`,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-const deleteAdmin = (id) => {
-    return axios.delete(`/api/delete-admin?id=${id}`,)
-}
+const deleteAdmin = async (adminId, token) => {
+    try {
+        const response = await axios.delete(`${API_URL}/admin/${adminId}`,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-// const deleteAdmin = (id) => {
-//     return axios.delete(`/api/delete-admin?id=${id}`, { headers })
-// }
 
-const updateAdminData = (body) => {
-    return axios.put('/api/update-admin-data', body)
-}
+const updateAdminData = async (body, token) => {
+    try {
+        const response = await axios.put(`${API_URL}/admin`,
+            body,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-const createNewProduct = (body) => {
-    return axios.post('/api/create-new-product', body)
-}
 
-// const deleteProduct = (id) => {
-//     return axios.delete(`/api/delete-product?id=${id}`, { headers })
-// }
+const createNewProduct = async (data, token) => {
+    try {
+        const response = await axios.post(`${API_URL}/product`,
+            data,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-const updateProductData = (body) => {
-    return axios.put('/api/update-product-data', body)
-}
+const deleteProduct = async (productId, token) => {
+    try {
+        const response = await axios.delete(`${API_URL}/product/${productId}`,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-const createNewStore = (body) => {
-    return axios.post('/api/create-new-store', body)
-}
+const updateProductData = async (body, token) => {
+    try {
+        const response = await axios.put(`${API_URL}/product`,
+            body,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-const uploadMultiImageStore = (body) => {
-    return axios.post('/api/upload-multi-image-store', body)
-}
+const createNewStore = async (body, token) => {
+    try {
+        const response = await axios.post(`${API_URL}/store`,
+            body,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-// const deleteStore = (id) => {
-//     return axios.delete(`/api/delete-store?id=${id}`, { headers })
-// }
+const deleteStore = async (storeId, token) => {
+    try {
+        const response = await axios.delete(`${API_URL}/store/${storeId}`,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-const updateStoreData = (body) => {
-    return axios.put('/api/update-store-data', body)
-}
+const updateStoreData = async (body, token) => {
+    try {
+        const response = await axios.put(`${API_URL}/store`,
+            body,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-const approveAdminById = (id) => {
-    return axios.put(`/api/approve-admin-by-id?id=${id}`)
-}
+const approveAdminById = async (adminId, token) => {
+    try {
+        const response = await axios.put(`${API_URL}/admin/approved/${adminId}`,
+            {},
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-const createNewManager = (body) => {
-    return axios.post('/api/create-new-manager', body)
-}
+const createNewManager = async (body, token) => {
+    try {
+        const response = await axios.post(`${API_URL}/admin`,
+            body,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
+
+
+const authorSystem = async (token) => {
+    try {
+        const response = await axios.get(`${API_URL}/admin/author`,
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }
+        );
+        return response;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
 
 
 export {
-    deleteAdmin, updateAdminData, getAdminById, createNewProduct, updateProductData, createNewStore,
-    uploadMultiImageStore, updateStoreData, approveAdminById, createNewManager
+    deleteAdmin, updateAdminData, getAdminById, createNewProduct, updateProductData, createNewStore, updateStoreData, approveAdminById, createNewManager,
+    deleteProduct, deleteStore, authorSystem
 }
-
-// getAdminByEmail deleteProduct deleteStore

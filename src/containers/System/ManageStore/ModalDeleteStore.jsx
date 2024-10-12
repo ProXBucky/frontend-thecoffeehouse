@@ -6,35 +6,41 @@ import axios from "axios";
 import RiseLoader from "react-spinners/RiseLoader"
 import { useState } from "react";
 import Loading from "../../../components/Loading";
+import { deleteStore } from "../../../api/adminAPI";
 
 
 export default function ModalDeleteStore({ showModalDelete, setShowModalDelete, dataStore, fetchRequest }) {
     const [loading, setLoading] = useState(false)
     let cookieValue = useSelector(cookieSelector)
-    let headers = { Authorization: `Bearer ${cookieValue}` }
-
-    const deleteStore = (id) => {
-        return axios.delete(`${import.meta.env.VITE_BACKEND_PORT}/api/delete-store?id=${id}`, { headers })
-    }
 
     const handleAction = async () => {
-        setLoading(true)
-        let res = await deleteStore(dataStore.id)
-        if (res.data.errCode === 0) {
+        try {
+            setLoading(true)
+            let res = await deleteStore(dataStore.id, cookieValue)
+            if (res.status === 200) {
+                toast.success('Xóa cửa hàng thành công')
+                fetchRequest()
+            }
+        } catch (error) {
+            console.log(error)
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 401) {
+                    toast.error("Phiên làm việc đã hết hạn")
+                }
+                else if (status === 403) {
+                    toast.error("Bạn không có quyền")
+                }
+                else {
+                    toast.error('Lỗi hệ thống')
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
             setLoading(false)
-            toast.success('Xóa cửa hàng thành công')
-            fetchRequest()
             setShowModalDelete(false)
         }
-        else if (res.data.errCode === 'C') {
-            setLoading(false)
-            toast.error('Chỉ quản lý có quyền xóa')
-        }
-        else {
-            setLoading(false)
-            toast.error('Lỗi hệ thống')
-        }
-        setShowModalDelete(false)
     }
 
     return (
@@ -53,9 +59,7 @@ export default function ModalDeleteStore({ showModalDelete, setShowModalDelete, 
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="lg:text-3xl md:text-2xl sm:text-xl font-semibold">
-                                        Xóa cửa hàng: <br />
-                                        {dataStore.nameStore}
-
+                                        Xóa cửa hàng
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalDelete(false)}></i>

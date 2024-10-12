@@ -1,31 +1,71 @@
 import { toast } from "react-toastify"
 import { deleteAdmin, approveAdminById } from "../../../api/adminAPI"
 import RiseLoader from "react-spinners/RiseLoader"
+import { useSelector } from "react-redux"
+import { cookieSelector } from "../../../redux/selector"
 
 
 export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApprovedArr, fetchRequest }) {
 
-    const handleApprove = async (item) => {
-        let res = await approveAdminById(item.id)
-        if (res.errCode === 0) {
-            toast.success('Duyệt thành công')
-            fetchRequest()
-            setShowModal(false)
-        } else {
-            toast.error('Lỗi hệ thống')
+    const accessToken = useSelector(cookieSelector)
 
+    const handleApprove = async (item) => {
+        try {
+            let res = await approveAdminById(item.id, accessToken)
+            if (res.status === 200) {
+                toast.success('Duyệt thành công')
+                fetchRequest()
+            }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 404) {
+                    toast.error("Không tìm thấy thông tin người dùng")
+                }
+                else if (status === 401) {
+                    toast.error("Phiên làm việc đã hết hạn")
+                }
+                else if (status === 403) {
+                    toast.error("Bạn không có quyền")
+                }
+                else {
+                    toast.error('Lỗi hệ thống')
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
+            setShowModal(false)
         }
     }
 
     const handleReject = async (item) => {
-        let res = await deleteAdmin(item.id)
-        if (res.errCode === 0) {
-            toast.success('Từ chối thành công')
-            fetchRequest()
+        try {
+            let res = await deleteAdmin(item.id, accessToken)
+            if (res.status === 200) {
+                toast.success('Từ chối thành công')
+                fetchRequest()
+            }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 404) {
+                    toast.error("Không tìm thấy thông tin người dùng")
+                }
+                else if (status === 401) {
+                    toast.error("Phiên làm việc đã hết hạn")
+                }
+                else if (status === 403) {
+                    toast.error("Bạn không có quyền xóa")
+                }
+                else {
+                    toast.error('Lỗi hệ thống');
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
             setShowModal(false)
-        } else {
-            toast.error('Lỗi hệ thống')
-
         }
     }
 
@@ -54,6 +94,7 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
                                             <tr>
                                                 <th className="md:px-5 sm:px-2">ID</th>
                                                 <th>Email</th>
+                                                <th>Vai trò</th>
                                                 <th className="md:table-cell sm:hidden">Họ</th>
                                                 <th className="md:table-cell sm:hidden">Tên</th>
                                                 <th className="md:table-cell sm:hidden">Địa chỉ</th>
@@ -75,9 +116,10 @@ export default function ModalApproveAdmin({ showModal, setShowModal, adminNotApp
                                                             (
                                                                 adminNotApprovedArr.map((item, index) => {
                                                                     return (
-                                                                        <tr className="h-14 font-medium text-base odd:bg-neutral-100 even:bg-slate-200 border border-slate-300 overflow-hidden" key={index}>
+                                                                        <tr className="h-14 font-medium text-base border border-slate-300 overflow-hidden" key={index}>
                                                                             <td>{item.id}</td>
                                                                             <td>{item.email}</td>
+                                                                            <td>{item.roleValueVn}</td>
                                                                             <td className="md:table-cell sm:hidden">{item.firstName}</td>
                                                                             <td className="md:table-cell sm:hidden">{item.lastName}</td>
                                                                             <td className="md:table-cell sm:hidden">{item.address}</td>

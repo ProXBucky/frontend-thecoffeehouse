@@ -72,18 +72,18 @@ export default function OrderList({ cart, isViewFunction }) {
                             )
                             :
                             (
-                                cart.OrderData && cart.OrderData.map((product) => (
-                                    <tr key={product.id} className="border-b-2 md:text-base sm:text-xs">
+                                cart.detailOrderResponses && cart.detailOrderResponses.map((product) => (
+                                    <tr key={product.orderDetail.id} className="border-b-2 md:text-base sm:text-xs">
                                         <td className="md:w-[200px] sm:w-[75px] md:px-10 sm:px-3 py-5">
-                                            <img src={product.ProductData ? (product.ProductData.image) : "Dữ liệu đã bị xóa"} alt={product.ProductData ? product.ProductData.name : "Dữ liệu đã bị xóa"} />
-                                            <p>{product.ProductData ? product.ProductData.name : "Dữ liệu đã bị xóa"}</p>
+                                            <img src={product.product.image ? (product.product.image) : "Dữ liệu đã bị xóa"} alt={product.product.name ? product.product.name : "Dữ liệu đã bị xóa"} />
+                                            <p>{product.product.name ? product.product.name : "Dữ liệu đã bị xóa"}</p>
                                         </td>
-                                        <td>{product.ProductData ? formatPrice(product.ProductData.originalPrice) : "Dữ liệu đã bị xóa"} VND</td>
+                                        <td>{product.product.originalPrice ? formatPrice(product.product.originalPrice) : "Dữ liệu đã bị xóa"} VND</td>
                                         <td>
-                                            <span className="md:text-lg sm:text-base">{product.quantity}</span>
+                                            <span className="md:text-lg sm:text-base">{product.orderDetail.quantity}</span>
                                         </td>
                                         <td>
-                                            {product.ProductData ? formatPrice(product.ProductData.originalPrice * product.quantity) : "Dữ liệu đã bị xóa"} VND
+                                            {product.product ? formatPrice(product.product.originalPrice * product.orderDetail.quantity) : "Dữ liệu đã bị xóa"} VND
                                         </td>
                                     </tr>
                                 ))

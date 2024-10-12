@@ -1,39 +1,46 @@
 import { toast } from "react-toastify"
 import { useSelector } from "react-redux";
 import { cookieSelector } from "../../../redux/selector"
-import axios from "axios";
-import RiseLoader from "react-spinners/RiseLoader"
 import { useState } from "react";
 import Loading from "../../../components/Loading";
+import { deleteProduct } from "../../../api/adminAPI";
 
 
 export default function ModalDeleteProduct({ showModalDelete, setShowModalDelete, dataProduct, fetchRequest }) {
     const [loading, setLoading] = useState(false)
     let cookieValue = useSelector(cookieSelector)
-    let headers = { Authorization: `Bearer ${cookieValue}` }
-
-    const deleteProduct = (id) => {
-        return axios.delete(`${import.meta.env.VITE_BACKEND_PORT}/api/delete-product?id=${id}`, { headers })
-    }
 
     const handleAction = async () => {
-        setLoading(true)
-        let res = await deleteProduct(dataProduct.id)
-        if (res.data.errCode === 0) {
+        try {
+            setLoading(true)
+            let res = await deleteProduct(dataProduct.id, cookieValue)
+            if (res.status === 200) {
+                toast.success('Xóa sản phẩm thành công')
+                fetchRequest()
+            }
+        } catch (error) {
+            console.log(error)
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 404) {
+                    toast.error('Không tìm thấy sản phẩm')
+                }
+                else if (status === 401) {
+                    toast.error('Phiên làm việc đã hết')
+                }
+                else if (status === 403) {
+                    toast.error('Bạn không có quyền')
+                }
+                else {
+                    toast.error('Lỗi hệ thống')
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
             setLoading(false)
-            toast.success('Xóa sản phẩm thành công')
             setShowModalDelete(false)
-            fetchRequest()
         }
-        else if (res.data.errCode === 'C') {
-            setLoading(false)
-            toast.error('Chỉ quản lý có quyền xóa')
-        }
-        else {
-            setLoading(false)
-            toast.error('Lỗi hệ thống')
-        }
-        setShowModalDelete(false)
     }
 
     return (

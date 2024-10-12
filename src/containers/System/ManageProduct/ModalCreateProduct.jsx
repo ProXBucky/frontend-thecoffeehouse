@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { useSelector } from "react-redux"
-import { categoryAllcodeSelector, sizeAllcodeSelector } from "../../../redux/selector"
+import { categoryAllcodeSelector, cookieSelector, sizeAllcodeSelector } from "../../../redux/selector"
 import { encodeBase64Func } from "../../../utils/base64";
 import { createNewProduct } from "../../../api/adminAPI"
 import RiseLoader from "react-spinners/RiseLoader"
@@ -67,25 +67,43 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
         return check
     }
 
-
+    const accessToken = useSelector(cookieSelector)
     const handleAction = async () => {
-        if (validateForm()) {
-            setLoading(true)
-            const response = await createNewProduct({
-                name: inputValues.name,
-                originalPrice: inputValues.originalPrice,
-                category: inputValues.category,
-                image: inputValues.image,
-                description: inputValues.description
-            })
-            if (response.errCode === 0) {
-                setLoading(false)
-                toast.success('Thêm sản phẩm mới thành công')
-            } else {
-                setLoading(false)
-                toast.error('Lỗi hệ thống')
-
+        console.log(inputValues)
+        try {
+            if (validateForm()) {
+                setLoading(true)
+                const response = await createNewProduct({
+                    name: inputValues.name,
+                    originalPrice: inputValues.originalPrice,
+                    categoryId: inputValues.category,
+                    image: inputValues.image,
+                    description: inputValues.description
+                }, accessToken)
+                if (response.status === 200) {
+                    toast.success('Thêm sản phẩm mới thành công')
+                    fetchRequest()
+                }
             }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 400) {
+                    toast.error("Thiếu dữ kiện đầu vào")
+                }
+                else if (status === 401) {
+                    toast.error("Phiên làm việc đã hết hạn")
+                }
+                else if (status === 403) {
+                    toast.error("Bạn không có quyền xóa")
+                }
+                else {
+                    toast.error('Lỗi hệ thống')
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
             setInputValues({
                 name: '',
                 originalPrice: '',
@@ -93,12 +111,12 @@ export default function ModalCreateProduct({ showModalCreate, setShowModalCreate
                 image: '',
                 description: ''
             })
+            setLoading(false)
             setFile('')
-            // setSelectedCheckboxes([])
             setShowModalCreate(false)
-            fetchRequest()
         }
     }
+
 
     const closeModal = () => {
         setInputValues({

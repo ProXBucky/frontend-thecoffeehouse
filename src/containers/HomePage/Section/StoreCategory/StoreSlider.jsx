@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { decodeBase64Func } from "../../../../utils/base64";
 import { useHistory } from "react-router-dom";
 import RiseLoader from "react-spinners/RiseLoader"
+import { toast } from "react-toastify";
 
 
 export default function StoreSlider() {
@@ -17,8 +18,11 @@ export default function StoreSlider() {
 
     const fetchStore = async () => {
         const res = await fetchAllStoreByCity('ALL', 0, 0, 3)
-        if (res && res.errCode === 0) {
-            setStoreArr(res.data)
+        if (res.status === 200) {
+            setStoreArr(res.data.data)
+        }
+        else {
+            toast.error("Lỗi hệ thống")
         }
     }
 
@@ -180,8 +184,8 @@ export default function StoreSlider() {
                                         <div className="lg:w-3/5 md:w-full">
                                             <Slider {...settingImage} className="w-full px-2">
                                                 {
-                                                    item && item.imageData && item.imageData.length > 0 &&
-                                                    item.imageData.map((item, index) => {
+                                                    item && item.image && item.image.length > 0 &&
+                                                    item.image.map((item, index) => {
                                                         return (
                                                             <div className="relative flex justify-center" key={index}>
                                                                 <img src={(item.image)} className="xl:h-[500px] lg:h-[400px] mx-auto rounded-xl" />

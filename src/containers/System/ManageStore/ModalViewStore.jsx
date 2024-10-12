@@ -53,8 +53,7 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="lg:text-3xl md:text-2xl sm:text-xl font-semibold">
-                                        Thông tin cửa hàng: <br />
-                                        {dataStore.nameStore}
+                                        Thông tin cửa hàng
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={() => setShowModalView(false)}></i>
@@ -64,8 +63,8 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                     <div className="xl:w-1/2 lg:w-full h-auto">
                                         <Slider {...settings}>
                                             {
-                                                dataStore && dataStore.imageData && dataStore.imageData.length > 0 &&
-                                                dataStore.imageData.map((item, index) => {
+                                                dataStore && dataStore.image && dataStore.image.length > 0 &&
+                                                dataStore.image.map((item, index) => {
                                                     return (
                                                         <div key={index} className="md:h-[300px] sm:h-[200px] w-full">
                                                             <img src={(item.image)} className="md:h-[300px] sm:h-[200px] mx-auto" />
@@ -75,22 +74,19 @@ export default function ModalViewStore({ showModalView, setShowModalView, dataSt
                                             }
                                         </Slider >
                                         <p className="text-xl font-medium mt-2">Mô tả cửa hàng rút gọn: </p>
-                                        <textarea className="border-2 outline-none bg-white p-2 w-full" rows={3}
-                                            value={dataStore.shortDescription}
-                                            disabled
-                                        >
-                                        </textarea>
+                                        <p>{dataStore.shortDescription}
+                                        </p>
+
+
                                     </div>
                                     <div className="xl:w-1/2 lg:w-full font-normal text-base xl:pl-20">
                                         <p className="text-xl font-medium">Tên cửa hàng: </p>{dataStore.nameStore}
                                         <p className="text-xl font-medium mt-7">Địa chỉ: </p>{dataStore.address}
-                                        <p className="text-xl font-medium mt-7">Thành phố: </p>{dataStore.cityData.valueVn}
+                                        <p className="text-xl font-medium mt-7">Thành phố: </p>{dataStore.cityName}
                                         <p className="text-xl font-medium mt-7">Mô tả cửa hàng: </p>
-                                        <textarea className=" border-2 outline-none bg-white p-2 w-full" rows={6}
-                                            value={dataStore.description}
-                                            disabled
-                                        >
-                                        </textarea>
+                                        <p>
+                                            {dataStore.description}
+                                        </p>
                                     </div>
                                 </div>
                                 {/* Footer */}

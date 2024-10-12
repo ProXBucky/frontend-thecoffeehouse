@@ -20,11 +20,11 @@ export default function DetailProduct() {
     const history = useHistory()
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        fetchDataProduct()
-        fetchDataDiffientProduct()
-    }, [])
+    // useEffect(() => {
+    //     window.scrollTo(0, 0)
+    //     fetchDataProduct()
+    //     fetchDataDiffientProduct()
+    // }, [])
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -33,25 +33,39 @@ export default function DetailProduct() {
     }, [id, category])
 
     const fetchDataProduct = async () => {
-        const respone = await fetchDetailProductById(id)
-        if (respone && respone.errCode === 0) {
-            setDetailData(respone.data)
-        } else {
-            toast.error('Lỗi hệ thống')
+        try {
+            const res = await fetchDetailProductById(id)
+            if (res.status === 200) {
+                setDetailData(res.data)
+            }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 404) {
+                    toast.error("Không tìm thấy thông tin sản phẩm")
+                }
+                else {
+                    toast.error('Lỗi hệ thống')
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
         }
     }
 
     const fetchDataDiffientProduct = async () => {
-        const respone = await fetchAllProductByCategory(category, 0, 0, 5)
-        if (respone && respone.errCode === 0) {
-            setDiffProduct(respone.data)
-        } else {
-            toast.error('Lỗi hệ thống')
+        const res = await fetchAllProductByCategory(category, 0, 0, 5)
+        if (res.status === 200) {
+            setDiffProduct(res.data.data)
+        }
+        else {
+            toast.error("Lỗi hệ thống")
         }
     }
 
     const handleDetail = (item) => {
-        history.push(`/products/${item.category}/${item.id}`)
+        history.push(`/products/${item.categoryId}/${item.id}`)
     }
 
 

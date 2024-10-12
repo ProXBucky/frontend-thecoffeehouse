@@ -30,26 +30,40 @@ export default function Login() {
 
 
   const onSubmit = async (data) => {
-    let res = await loginUser({
-      email: data.email,
-      password: data.password
-    })
-    if (res && res.errCode === 0) {
-      Cookies.set('accessToken', res.accessToken, { expires: 1 / 144 }); // Set the cookie named 'myCookie' with a value 'cookieValue' that expires in 10 minutes
-      Cookies.set('userEmail', res.email, { expires: 1 / 144 }); // Set the cookie named 'myCookie' with a value 'cookieValue' that expires in 10 minutes
-      dispatch(setToken(res.accessToken))
-      dispatch(setUserInfo(res.email))
-      // sessionStorage.setItem("userEmail", res.email);
-      // dispatch(UserSlice.actions.loginUserSucces(res.email))
-      history.push('/system/dashboard')
-      toast.success("Đăng nhập thành công")
-    } else {
-      toast.error(res.errMessage)
+    try {
+      let res = await loginUser({
+        email: data.email,
+        password: data.password
+      })
+      if (res.status === 200) {
+        Cookies.set('accessToken', res.data.token, { expires: 1 / 48 });
+        Cookies.set('userEmail', res.data.email, { expires: 1 / 48 });
+        dispatch(setToken(res.data.token))
+        dispatch(setUserInfo(res.data.email))
+        history.push('/system/dashboard')
+        toast.success("Đăng nhập thành công")
+      }
+    } catch (error) {
+      if (error.response) {
+        const { status, data } = error.response;
+        if (status === 404) {
+          toast.error("Email này chưa đăng ký")
+        }
+        else if (status === 400) {
+          toast.error("Tài khoản chưa được duyệt bởi quản trị viên")
+        }
+        else {
+          toast.error("Sai mật khẩu hoặc tài khoản")
+        }
+      } else {
+        toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+      }
+    } finally {
+      reset({
+        email: '',
+        password: ''
+      });
     }
-    reset({
-      email: '',
-      password: ''
-    });
   }
 
 
@@ -59,8 +73,6 @@ export default function Login() {
       <div className="container">
         <div className="content-left md:pt-14 sm:pt-5">
           <h2 className=" text-2xl font-medium pt-4">Đăng nhập</h2>
-          {/* <p className=" text-red-500 text-center">( Chỉ dành cho quản lý và quản trị viên )</p> */}
-
           <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
             <div className="w-full px-3">
               <label className="label mb-2 text-black">
@@ -90,14 +102,20 @@ export default function Login() {
                 <div className="relative">
                   <input
                     {...register("password", {
-                      required: "Mật khẩu là trường bắt buộc",
-                      pattern: {
-                        value:
-                          /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
-                        message:
-                          "Mật khẩu phải có ít nhất 6 kí tự, 1 chữ hoa, 1 chữ thường, 1 số, 1 kí tự đặc biệt",
+                      minLength: {
+                        value: 3,
+                        message: "Mật khẩu phải có ít nhất 3 kí tự",
                       },
                     })}
+                    // {...register("password", {
+                    //   required: "Mật khẩu là trường bắt buộc",
+                    //   pattern: {
+                    //     value:
+                    //       /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
+                    //     message:
+                    //       "Mật khẩu phải có ít nhất 6 kí tự, 1 chữ hoa, 1 chữ thường, 1 số, 1 kí tự đặc biệt",
+                    //   },
+                    // })}
                     type={typePassword ? 'password' : 'text'}
                     className="w-full bg-gray-100 border rounded py-3 px-4 mb-3  focus:outline-none text-black"
                     placeholder="********"
@@ -112,17 +130,6 @@ export default function Login() {
             <p className="py-3 text-center">Nếu bạn chưa có tài khoản, hãy đăng ký <Link to="/register">tại đây</Link></p>
             <div className="flex justify-center">
               <button className="rounded-full md:px-16 sm:px-4 md:mt-3 sm:mt-1 text-white bg-black" type="submit">Đăng nhập</button>
-            </div>
-            <div className="flex md:justify-between md:flex-row sm:flex-col sm:gap-5 mt-5">
-              <p className="text-center mt-2">Tài khoản quản lý: <br />
-                admin1@gmail.com <br />
-                admin1@gmail.com
-              </p>
-              <p className="text-center mt-2">Tài khoản quản trị viên: <br />
-                admin2@gmail.com <br />
-                admin2@gmail.com
-              </p>
-
             </div>
           </form>
         </div>

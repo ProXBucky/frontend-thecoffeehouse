@@ -6,6 +6,8 @@ import { toast } from "react-toastify"
 // import RiseLoader from "react-spinners/RiseLoader"
 import { formatPrice } from "../../utils/formatPrice"
 import { withRouter } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { cookieSelector } from "../../redux/selector"
 
 
 // { authorNavbar }
@@ -13,6 +15,7 @@ function DashBoard() {
     const [statistic, setStatistic] = useState({})
     const [bestSeller, setBestSeller] = useState([])
     const [lastestOrder, setLastestOrder] = useState([])
+    const accessToken = useSelector(cookieSelector)
 
     useEffect(() => {
         fetchDataDashboard()
@@ -22,8 +25,8 @@ function DashBoard() {
     }, [])
 
     const fetchDataDashboard = async () => {
-        const res = await fetchStatisticsApp()
-        if (res && res.errCode === 0) {
+        const res = await fetchStatisticsApp(accessToken)
+        if (res.status === 200) {
             setStatistic(res.data)
         } else {
             toast.error('Lỗi hệ thống')
@@ -32,7 +35,7 @@ function DashBoard() {
 
     const fetchSellerBest = async () => {
         const res = await fetchBestSeller(5)
-        if (res && (res.errCode === 0 || res.errCode === 1)) {
+        if (res.status === 200) {
             setBestSeller(res.data)
         } else {
             toast.error('Lỗi hệ thống')
@@ -40,11 +43,27 @@ function DashBoard() {
     }
 
     const fetchLastestOrder = async () => {
-        const res = await getLastestOrder(5)
-        if (res && (res.errCode === 0 || res.errCode === 1)) {
-            setLastestOrder(res.data)
-        } else {
-            toast.error('Lỗi hệ thống')
+        try {
+            const res = await getLastestOrder(5, accessToken)
+            if (res.status === 200) {
+                setLastestOrder(res.data)
+            }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 401) {
+                    toast.error("Phiên làm việc đã hết")
+                }
+                else if (status === 403) {
+                    toast.error("Bạn không có quyền")
+                }
+                else {
+                    toast.error('Lỗi hệ thống')
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
         }
     }
 
@@ -109,7 +128,7 @@ function DashBoard() {
                             <i className="fa-solid fa-landmark fa-2xl"></i>
                         </div>
                         <div className="md:w-3/4 sm:w-full text-center">
-                            <span className="font-medium lg:text-3xl md:text-2xl">{increaseNumberEffect((statistic.totalIncome))}</span>
+                            <span className="font-medium lg:text-3xl md:text-2xl">{increaseNumberEffect((statistic.totalIncomes))}</span>
                             <p className="font-medium lg:text-sm md:text-xs sm:text-[10px] text-gray-500">Tổng thu nhập (VNĐ)</p>
                         </div>
                     </div>
@@ -139,19 +158,19 @@ function DashBoard() {
                                             return (
                                                 <tr className="border-b-2 h-12" key={index}>
                                                     <td>
-                                                        {`${item.UserData && item.UserData.firstName} ${item.UserData && item.UserData.lastName}`}
+                                                        {`${item.user && item.user.firstName} ${item.user && item.user.lastName}`}
                                                     </td>
                                                     <td>
-                                                        {formatPrice(item.totalPrice)} VNĐ
+                                                        {formatPrice(item.order.totalPrice)} VNĐ
                                                     </td>
                                                     <td>
-                                                        {item.timeOrder}
+                                                        {item.order.timeOrder}
                                                     </td>
                                                     <td>
 
-                                                        {item.statusPayment === 'SP1' && <span className="text-white md:bg-red-500 md:text-white sm:text-red-500 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
-                                                        {item.statusPayment === 'SP2' && <span className="text-white md:bg-green-500 md:text-white sm:text-green-500 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
-                                                        {item.statusPayment === 'SP3' && <span className="text-white md:bg-blue-600 md:text-white sm:text-blue-600 p-1 rounded-lg">{item.StatusData.valueVn}</span>}
+                                                        {item.order.statusId === 'SP1' && <span className="text-white md:bg-red-500 md:text-white sm:text-red-500 p-1 rounded-lg">{item.statusOrder.statusVN}</span>}
+                                                        {item.order.statusId === 'SP2' && <span className="text-white md:bg-green-500 md:text-white sm:text-green-500 p-1 rounded-lg">{item.statusOrder.statusVN}</span>}
+                                                        {item.order.statusId === 'SP3' && <span className="text-white md:bg-blue-600 md:text-white sm:text-blue-600 p-1 rounded-lg">{item.statusOrder.statusVN}</span>}
 
                                                     </td>
                                                 </tr>

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { categoryAllcodeSelector, sizeAllcodeSelector } from "../../../redux/selector"
+import { categoryAllcodeSelector, cookieSelector, sizeAllcodeSelector } from "../../../redux/selector"
 import { updateProductData } from "../../../api/adminAPI"
 import { toast } from "react-toastify"
 import RiseLoader from "react-spinners/RiseLoader"
@@ -9,7 +9,7 @@ import Loading from "../../../components/Loading"
 // handleChangeChecked, selectedCheckboxes,
 export default function ModalEditProduct({ showModalEdit, setShowModalEdit, dataProduct, handleOnChange, fetchRequest, file, setFile, handlePreviewImage }) {
     const cateArr = useSelector(categoryAllcodeSelector)
-    // const sizeArr = useSelector(sizeAllcodeSelector)
+    const accessToken = useSelector(cookieSelector)
 
     const [loading, setLoading] = useState(false)
 
@@ -34,29 +34,47 @@ export default function ModalEditProduct({ showModalEdit, setShowModalEdit, data
 
 
     const handleAction = async () => {
-        if (validateForm()) {
-            setLoading(true)
-            let res = await updateProductData({
-                id: dataProduct.id,  //for findOne
-                name: dataProduct.name,
-                description: dataProduct.description,
-                category: dataProduct.category,
-                // size: selectedCheckboxes.toString(),
-                image: dataProduct.image,
-                originalPrice: dataProduct.originalPrice,
-            })
-            if (res.errCode === 0) {
-                setLoading(false)
-                toast.success('Cập nhật thông tin thành công')
-                fetchRequest()
-                setShowModalEdit(false)
-            } else {
-                setLoading(false)
-                toast.error('Lỗi hệ thống')
+        try {
+            if (validateForm()) {
+                setLoading(true)
+                let res = await updateProductData({
+                    id: dataProduct.id,  //for findOne
+                    name: dataProduct.name,
+                    description: dataProduct.description,
+                    categoryId: dataProduct.category,
+                    image: dataProduct.image,
+                    originalPrice: dataProduct.originalPrice,
+                }, accessToken)
+                if (res.status === 200) {
+                    toast.success('Cập nhật thông tin thành công')
+                    fetchRequest()
+                }
             }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 404) {
+                    toast.error("Không tìm thấy sản phẩm")
+                }
+                else if (status === 401) {
+                    toast.error("Phiên làm việc đã hết hạn")
+                }
+                else if (status === 403) {
+                    toast.error("Bạn không có quyền")
+                }
+                else {
+                    toast.error('Lỗi hệ thống')
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
+            setShowModalEdit(false)
+            setLoading(false)
             setFile('')
         }
     }
+
 
 
     return (

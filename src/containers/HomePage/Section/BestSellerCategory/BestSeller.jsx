@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { decodeBase64Func } from "../../../../utils/base64";
 import { formatPrice } from "../../../../utils/formatPrice";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 export default function BestSeller() {
@@ -16,14 +17,17 @@ export default function BestSeller() {
 
     const fetchProduct = async () => {
         const res = await fetchBestSeller(6) // limit 6
-        if (res && res.errCode === 0) {
+        if (res.status === 200) {
             setProductArr(res.data)
+        }
+        else {
+            toast.error("Lỗi hệ thống")
         }
     }
 
 
     const handleDetail = (item) => {
-        history.push(`/products/${item.category}/${item.id}`)
+        history.push(`/products/${item.categoryId}/${item.id}`)
     }
 
     const navigatorPage = () => {

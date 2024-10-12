@@ -5,7 +5,7 @@ import ModalDeleteAdmin from "./ModalDeleteAdmin"
 import ModalViewAdmin from "./ModalViewAdmin"
 import ModalApproveAdmin from "./ModalApproveAdmin"
 import { fetchAllAdmins, fetchAllAdminsNotApproved } from "../../../redux/Slice/AppSlice"
-import { adminArrSelector, adminNotApprovedArrSelector } from "../../../redux/selector"
+import { adminArrSelector, adminNotApprovedArrSelector, cookieSelector } from "../../../redux/selector"
 import { useDispatch, useSelector } from "react-redux"
 import RiseLoader from "react-spinners/RiseLoader"
 import { withRouter } from "react-router-dom"
@@ -23,18 +23,20 @@ function ManageAdmin() {
     const dispatch = useDispatch()
     const adminArr = useSelector(adminArrSelector)
     const adminNotApprovedArr = useSelector(adminNotApprovedArrSelector)
-
-    useEffect(() => {
-        dispatch(fetchAllAdmins())
-        dispatch(fetchAllAdminsNotApproved())
-        window.scrollTo(0, 0)
-    }, [])
-
+    const accessToken = useSelector(cookieSelector)
 
     const fetchRequest = useCallback(() => {
-        dispatch(fetchAllAdmins())
-        dispatch(fetchAllAdminsNotApproved())
-    }, [adminArr]);
+        if (accessToken) {
+            dispatch(fetchAllAdmins(accessToken));
+            dispatch(fetchAllAdminsNotApproved(accessToken));
+        }
+    }, [dispatch, accessToken]);
+
+    useEffect(() => {
+        fetchRequest();
+        window.scrollTo(0, 0);
+    }, [fetchRequest]);
+
 
     const handleCreate = () => {
         setShowModalCreate(true)
@@ -76,8 +78,8 @@ function ManageAdmin() {
             <ModalCreateManager showModalCreateManager={showModalCreateManager} setShowModalCreateManager={setShowModalCreateManager} fetchRequest={fetchRequest} />
             <div className="lg:p-10 md:p-3 sm:p-3 text-sm">
                 <p className="md:text-2xl sm:text-xl font-medium lg:inline-block md:block sm:block">Quản lý nhân viên</p>
-                <button className="text-white bg-[#f68122] lg:ml-6 md:ml-0 md:mt-2 sm:mt-2 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreateManager()}>Tạo mới nhân viên quản lý</button>
-                <button className="text-white bg-[#f68122] md:ml-6 sm:mt-2 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreate()}>Tạo mới quản trị viên</button>
+                <button className="text-white bg-[#f68122] lg:ml-6 md:ml-0 md:mt-2 sm:mt-2 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreateManager()}>Tạo mới quản trị viên</button>
+                <button className="text-white bg-[#f68122] md:ml-6 sm:mt-2 hover:bg-[#f68122c4] hover:border-white" name="Create" onClick={() => handleCreate()}>Tạo mới nhân viên</button>
                 <button className="text-white bg-[#f68122] ml-6 hover:bg-[#f68122c4] hover:border-white relative" name="Approved" onClick={() => handleApprove()}>
                     Đang chờ
                     <span className="bg-red-500 border text-white px-2 rounded-full absolute top-[-10px] right-[-10px]">{adminNotApprovedArr === 'None' ? '0' : adminNotApprovedArr.length}</span>
@@ -88,6 +90,7 @@ function ManageAdmin() {
                             <tr>
                                 <th className="md:px-5 sm:px-3">ID</th>
                                 <th>Email</th>
+                                <th>Vai trò</th>
                                 <th>Họ</th>
                                 <th>Tên</th>
                                 <th className="md:table-cell sm:hidden">Địa chỉ</th>
@@ -108,8 +111,9 @@ function ManageAdmin() {
                                                 adminArr.map((item, index) => {
                                                     return (
                                                         <tr className="h-14 font-medium bg-white border-slate-300 overflow-hidden border-b" key={index}>
-                                                            <td>{item.id} {item.roleId === 'R1' ? <i className="fa-solid fa-key text-red-400"></i> : ' '}</td>
+                                                            <td>{item.id}</td>
                                                             <td>{item.email}</td>
+                                                            <td>{item.roleValueVn}</td>
                                                             <td>{item.firstName}</td>
                                                             <td>{item.lastName}</td>
                                                             <td className="md:table-cell sm:hidden">{item.address}</td>

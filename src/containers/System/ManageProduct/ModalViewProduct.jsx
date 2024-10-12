@@ -28,21 +28,23 @@ export default function ModalViewProduct({ showModalView, setShowModalView, data
                                         <div className="md:w-1/2 sm:w-full md:mt-20 sm:mt-5">
                                             <label className="text-xl font-medium">Tên sản phẩm: </label>{dataProduct.name}<br />
                                             <label className="text-xl font-medium">Giá tiền: </label>{formatPrice(dataProduct.originalPrice)}(VND)<br />
-                                            <label className="text-xl font-medium">Thể loại:</label> {dataProduct.categoryData.valueVn}<br />
+                                            <label className="text-xl font-medium">Thể loại: </label>
+                                            {dataProduct.categoryId === "CA1" && "Cà phê"}
+                                            {dataProduct.categoryId === "CA2" && "Trà"}
+                                            {dataProduct.categoryId === "CA3" && "Bánh ngọt và Snack"}
+                                            {dataProduct.categoryId === "CA4" && "Đá xay"}
+
+                                            <br />
                                         </div>
                                         <div className="md:w-1/2 sm:w-full flex justify-center h-[255px] ">
                                             <img src={(dataProduct.image)} className="cover h-[255px] w-[255px] overflow-hidden cursor-pointer rounded-xl" style={{ boxShadow: '0px 0px 13px 0px #00000040' }} />
                                         </div>
                                     </div>
                                     <div className="w-full mt-5 ">
-                                        <label className="text-xl font-medium">Mô tả sản phẩm</label><br />
-                                        <textarea className=" border-2 outline-none bg-white p-2 w-full h-fit"
-                                            name="description"
-                                            value={dataProduct.description}
-                                            rows={4}
-                                            disabled
-                                        >
-                                        </textarea>
+                                        <label className="text-xl font-medium">Mô tả sản phẩm</label><br /><br />
+                                        <p>
+                                            {dataProduct.description}
+                                        </p>
                                     </div>
                                 </div>
 

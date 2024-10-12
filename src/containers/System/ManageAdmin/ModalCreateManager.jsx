@@ -3,6 +3,8 @@ import { createNewManager } from "../../../api/adminAPI"
 import { useState } from "react";
 import RiseLoader from "react-spinners/RiseLoader"
 import Loading from "../../../components/Loading";
+import { useSelector } from "react-redux";
+import { cookieSelector } from "../../../redux/selector";
 
 export default function ModalCreateManager({ showModalCreateManager, setShowModalCreateManager, fetchRequest }) {
 
@@ -35,27 +37,46 @@ export default function ModalCreateManager({ showModalCreateManager, setShowModa
         return check
     }
 
-    const handleAction = async () => {
-        if (validateForm()) {
-            setLoading(true)
-            let res = await createNewManager({
-                email: inputValues.email,
-                password: inputValues.password,
-                firstName: inputValues.firstName,
-                lastName: inputValues.lastName,
-                address: inputValues.address,
-                phone: inputValues.phone
-            })
-            if (res.errCode === 0) {
-                setLoading(false)
-                toast.success('Thêm quản lý thành công')
-            } else {
-                setLoading(false)
-                toast.error('Lỗi hệ thống')
+    const accessToken = useSelector(cookieSelector)
 
+    const handleAction = async () => {
+        try {
+            if (validateForm()) {
+                setLoading(true)
+                let res = await createNewManager({
+                    email: inputValues.email,
+                    password: inputValues.password,
+                    firstName: inputValues.firstName,
+                    lastName: inputValues.lastName,
+                    address: inputValues.address,
+                    phone: inputValues.phone
+                }, accessToken)
+                if (res.status === 200) {
+                    toast.success('Thêm quản trị viên thành công')
+                    fetchRequest()
+                }
             }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 409) {
+                    toast.error("Email đã tồn tại, vui lòng chọn email khác")
+                }
+                else if (status === 401) {
+                    toast.error("Phiên làm việc đã hết hạn")
+                }
+                else if (status === 403) {
+                    toast.error("Bạn không có quyền")
+                }
+                else {
+                    toast.error('Lỗi hệ thống')
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
+            setLoading(false)
             setInputValues(initStateInput)
-            fetchRequest()
             setShowModalCreateManager(false)
         }
     }
@@ -81,7 +102,7 @@ export default function ModalCreateManager({ showModalCreateManager, setShowModa
 
                                 <div className="flex items-start justify-between p-5 pl-14 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="lg:text-3xl md:text-2xl sm:text-xl font-semibold">
-                                        Tạo mới nhân viên quản lý
+                                        Tạo mới quản trị viên
                                     </h3>
 
                                     <i className="fa-solid fa-x fa-lg cursor-pointer mt-5 mr-4" onClick={handleClose}></i>

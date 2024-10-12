@@ -1,9 +1,9 @@
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux"
-import { cityAllcodeSelector } from "../../../redux/selector"
+import { cityAllcodeSelector, cookieSelector } from "../../../redux/selector"
 import { encodeBase64Func } from "../../../utils/base64";
-import { createNewStore, uploadMultiImageStore } from "../../../api/adminAPI"
+import { createNewStore } from "../../../api/adminAPI"
 import RiseLoader from "react-spinners/RiseLoader"
 import Loading from "../../../components/Loading";
 
@@ -36,9 +36,7 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         images.forEach(async (image) => {
             newImageUrls.push(URL.createObjectURL(image))
             let base64Img = await encodeBase64Func(image)
-            base64Arr.push({
-                base64Image: base64Img
-            })
+            base64Arr.push(base64Img)
         });
         setImageURLs(newImageUrls);
         setInputValues({ ...inputValues, ['image']: base64Arr });
@@ -72,28 +70,45 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
         return check
     }
 
+    const accessToken = useSelector(cookieSelector)
+
     const handleAction = async () => {
-        if (validateForm()) {
-            setLoading(true)
-            const response = await createNewStore({
-                nameStore: inputValues.nameStore,
-                address: inputValues.address,
-                cityId: inputValues.cityId,
-                mapLink: inputValues.mapLink,
-                mapHTML: inputValues.mapHTML,
-                description: inputValues.description,
-                shortDescription: inputValues.shortDescription,
-                image: inputValues.image
-            })
+        try {
+            if (validateForm()) {
+                setLoading(true)
+                const response = await createNewStore({
+                    nameStore: inputValues.nameStore,
+                    address: inputValues.address,
+                    cityId: inputValues.cityId,
+                    mapLink: inputValues.mapLink,
+                    mapHTML: inputValues.mapHTML,
+                    description: inputValues.description,
+                    shortDescription: inputValues.shortDescription,
+                    image: inputValues.image
+                }, accessToken)
 
-            if (response.errCode === 0) {
-                setLoading(false)
-                toast.success('Tạo cửa hàng thành công')
-            } else {
-                setLoading(false)
-                toast.error('Lỗi hệ thống')
-
+                if (response.status === 200) {
+                    toast.success('Tạo cửa hàng thành công')
+                    fetchRequest()
+                }
             }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 401) {
+                    toast.error("Phiên làm việc đã hết hạn")
+                }
+                else if (status === 403) {
+                    toast.error("Bạn không có quyền")
+                }
+                else {
+                    toast.error('Lỗi hệ thống')
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
+            setLoading(false)
             setInputValues({
                 nameStore: '',
                 address: '',
@@ -108,9 +123,9 @@ export default function ModalCreateStore({ showModalCreate, setShowModalCreate, 
             setImageURLs([])
             setImages('')
             setShowModalCreate(false)
-            fetchRequest()
         }
     }
+
 
 
     return (

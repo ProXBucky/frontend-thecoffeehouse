@@ -16,29 +16,41 @@ export default function Register() {
     }
 
     const onSubmit = async (data) => {
-        let res = await registerUser({
-            email: data.email,
-            password: data.password,
-            firstName: data.firstName,
-            lastName: data.lastName,
-            address: data.address,
-            phone: data.phone
-        })
-        if (res.errCode === 0) {
-            toast.success('Đăng ký thành công, vui lòng chờ duyệt từ quản trị viên')
-            history.push('/login');
-        } else {
-            toast.error(res.errMessage)
+        try {
+            let res = await registerUser({
+                email: data.email,
+                password: data.password,
+                firstName: data.firstName,
+                lastName: data.lastName,
+                address: data.address,
+                phone: data.phone
+            });
+            if (res && res.status === 200) {
+                toast.success('Đăng ký thành công, vui lòng chờ duyệt từ quản trị viên');
+                history.push('/login');
+            }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 409) {
+                    toast.error('Email đã được đăng ký, hãy chọn email khác');
+                } else {
+                    toast.error(data.message || 'Lỗi hệ thống');
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
+            reset({
+                email: '',
+                password: '',
+                firstName: '',
+                lastName: '',
+                address: '',
+                phone: ''
+            });
         }
-        reset({
-            email: '',
-            password: '',
-            firstName: '',
-            lastName: '',
-            address: '',
-            phone: ''
-        });
-    }
+    };
 
     return (
         <>
@@ -77,14 +89,20 @@ export default function Register() {
                                             <input className="w-full bg-gray-100 border border-gray-200 rounded py-3 px-4 mb-3  focus:outline-none text-black"
                                                 type={typePassword ? 'password' : 'text'} placeholder="************"
                                                 {...register("password", {
-                                                    required: "Mật khẩu là trường bắt buộc",
-                                                    pattern: {
-                                                        value:
-                                                            /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
-                                                        message:
-                                                            "Mật khẩu phải có ít nhất 6 kí tự, 1 chữ hoa, 1 chữ thường, 1 số, 1 kí tự đặc biệt",
+                                                    minLength: {
+                                                        value: 3,
+                                                        message: "Mật khẩu phải có ít nhất 3 kí tự",
                                                     },
                                                 })}
+                                            // {...register("password", {
+                                            //     required: "Mật khẩu là trường bắt buộc",
+                                            //     pattern: {
+                                            //         value:
+                                            //             /^(?=.*[0-9])(?=.*[!@#$%^&*.,])[a-zA-Z0-9!@#$%^&*.,]{6,16}$/,
+                                            //         message:
+                                            //             "Mật khẩu phải có ít nhất 6 kí tự, 1 chữ hoa, 1 chữ thường, 1 số, 1 kí tự đặc biệt",
+                                            //     },
+                                            // })}
                                             />
                                             {typePassword ? <i className="absolute top-[25%] right-5 cursor-pointer fa-regular fa-eye" onClick={handleHideShowPassword}></i> : <i className="absolute top-[25%] right-5 cursor-pointer fa-regular fa-eye-slash" onClick={handleHideShowPassword}></i>}
                                         </div>

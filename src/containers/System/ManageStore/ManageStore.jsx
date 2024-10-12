@@ -10,6 +10,7 @@ import { decodeBase64Func, encodeBase64Func } from "../../../utils/base64"
 import RiseLoader from "react-spinners/RiseLoader"
 import { withRouter } from "react-router-dom"
 import Pagination from "../../../components/Pagination/Pagination"
+import { toast } from "react-toastify"
 
 function ManageStore() {
     const [showModalCreate, setShowModalCreate] = useState(false)
@@ -28,9 +29,12 @@ function ManageStore() {
 
     const fetchDataStore = async () => {
         const res = await fetchAllStoreByCity('ALL', currentPage, 4, 0)
-        if (res && (res.errCode === 0 || res.errCode === 1)) {
-            setAllStoreArr(res.data)
-            setTotalPages(res.totalPages)
+        if (res.status === 200) {
+            setAllStoreArr(res.data.data)
+            setTotalPages(res.data.totalPages)
+        }
+        else {
+            toast.error("Lỗi hệ thống")
         }
     }
     const [images, setImages] = useState([]);
@@ -41,16 +45,42 @@ function ManageStore() {
         setCurrentPage(selectedPage.selected + 1);
     };
 
+    // useEffect(() => {
+    //     fetchDataStore();
+    // }, [currentPage]);
+
+
+    // useEffect(() => {
+    //     dispatch(fetchAllcodeCity())
+    //     fetchDataStore()
+    //     window.scrollTo(0, 0)
+    // }, [])
+
+    // useEffect(() => {
+    //     handleImageStore()
+    // }, [images]);
+
     useEffect(() => {
+        // Gọi fetchAllcodeCity và sau đó fetchDataStore
+        const fetchData = async () => {
+            await dispatch(fetchAllcodeCity());
+            await fetchDataStore();
+            window.scrollTo(0, 0);
+        };
+
+        fetchData();
+    }, []); // Chỉ chạy 1 lần khi component mount
+
+    useEffect(() => {
+        // Gọi handleImageStore khi images thay đổi
+        handleImageStore();
+    }, [images]);
+
+    useEffect(() => {
+        // Gọi fetchDataStore khi currentPage thay đổi
         fetchDataStore();
     }, [currentPage]);
 
-
-    useEffect(() => {
-        dispatch(fetchAllcodeCity())
-        fetchDataStore()
-        window.scrollTo(0, 0)
-    }, [])
 
     const fetchRequest = useCallback(() => {
         fetchDataStore()
@@ -76,9 +106,7 @@ function ManageStore() {
     }
 
 
-    useEffect(() => {
-        handleImageStore()
-    }, [images]);
+
 
     const handleImageStore = () => {
         let newImageUrls = [];
@@ -87,9 +115,7 @@ function ManageStore() {
         images.forEach(async (image) => {
             newImageUrls.push(URL.createObjectURL(image))
             let base64Img = await encodeBase64Func(image)
-            base64Arr.push({
-                base64Image: base64Img
-            })
+            base64Arr.push(base64Img)
         });
         setImageURLs(newImageUrls);
         setDataStore({ ...dataStore, ['image']: base64Arr });
@@ -151,15 +177,15 @@ function ManageStore() {
                                                                 <tr className="h-12 font-medium md:text-sm sm:text-xs bg-white border-b border-slate-300 overflow-hidden" key={index}>
                                                                     <td className="p-6 lg:block md:hidden sm:hidden flex justify-center">
                                                                         {
-                                                                            item && item.imageData && item.imageData.length > 0 &&
+                                                                            item && item.image && item.image.length > 0 &&
                                                                             <div className="rounded-xl overflow-hidden">
-                                                                                <img src={(item.imageData[0].image)} className="xl:w-[300px] xl:h-[180px] lg:w-[250px] lg:h-[120px] md:w-[250px] " />
+                                                                                <img src={(item.image[0].image)} className="xl:w-[300px] xl:h-[180px] lg:w-[250px] lg:h-[120px] md:w-[250px] " />
                                                                             </div>
                                                                         }
                                                                     </td>
                                                                     <td className="border-x-2">{item.nameStore}</td>
                                                                     <td>{item.address}</td>
-                                                                    <td className="border-x-2">{item.cityData.valueVn}</td>
+                                                                    <td className="border-x-2">{item.cityName}</td>
                                                                     <td className="xl:w-20 lg:w-14 sm:w-12 py-2">
                                                                         <button className="mb-2 text-white bg-green-500 hover:bg-green-400 lg:p-2 sm:p-1 w-2/3 border-none outline-none" name="View" onClick={() => handleView(item)}>
                                                                             <i className="fa-regular fa-eye fa-md"></i>

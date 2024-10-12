@@ -1,26 +1,46 @@
 import { toast } from "react-toastify"
 import { updateAdminData } from "../../../api/adminAPI"
+import { useSelector } from "react-redux"
+import { cookieSelector } from "../../../redux/selector"
 
 export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUser, handleOnChange, fetchRequest }) {
 
+    const accessToken = useSelector(cookieSelector)
     const handleAction = async () => {
-        let res = await updateAdminData({
-            id: dataUser.id,  //for findOne
-            password: dataUser.password,
-            firstName: dataUser.firstName,
-            lastName: dataUser.lastName,
-            address: dataUser.address,
-            phone: dataUser.phone
-        })
-        if (res.errCode === 0) {
-            toast.success('Cập nhật thông tin thành công')
-            fetchRequest()
+        try {
+            let res = await updateAdminData({
+                id: dataUser.id,  //for findOne
+                password: dataUser.password,
+                firstName: dataUser.firstName,
+                lastName: dataUser.lastName,
+                address: dataUser.address,
+                phone: dataUser.phone
+            }, accessToken)
+            if (res.status === 200) {
+                toast.success('Cập nhật thông tin thành công')
+                fetchRequest()
+            }
+        } catch (error) {
+            if (error.response) {
+                const { status, data } = error.response;
+                if (status === 404) {
+                    toast.error("Không tìm thấy người dùng")
+                }
+                else if (status === 401) {
+                    toast.error("Phiên làm việc đã hết hạn")
+                }
+                else if (status === 403) {
+                    toast.error("Bạn không có quyền xóa")
+                }
+                else {
+                    toast.error('Lỗi hệ thống');
+                }
+            } else {
+                toast.error('Lỗi kết nối hoặc không có phản hồi từ server');
+            }
+        } finally {
             setShowModalEdit(false)
-        } else {
-            toast.error('Lỗi hệ thống')
-
         }
-
     }
 
 
@@ -49,44 +69,44 @@ export default function ModalEditAdmin({ showModalEdit, setShowModalEdit, dataUs
                                                     <tbody>
                                                         <>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">ID:</th>
-                                                                <td className="bg-[#f8a159]">
+                                                                <th className="h-12 text-black border-2">ID:</th>
+                                                                <td className="border-2">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" disabled value={dataUser.id} name="id" onChange={handleOnChange} />
                                                                 </td>
                                                             </tr>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">Email:</th>
-                                                                <td className="bg-[#f8a159]">
+                                                                <th className="h-12 text-black border-2">Email:</th>
+                                                                <td className="border-2">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" disabled value={dataUser.email} name="email" onChange={handleOnChange} />
                                                                 </td>
                                                             </tr>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">Mật khẩu:</th>
-                                                                <td className="bg-[#f6c7a0]">
+                                                                <th className="h-12 text-black border-2">Mật khẩu:</th>
+                                                                <td className="border-2">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.password} name="password" onChange={handleOnChange} />
                                                                 </td>
                                                             </tr>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">Họ:</th>
-                                                                <td className="bg-[#f6c7a0]">
+                                                                <th className="h-12 text-black border-2">Họ:</th>
+                                                                <td className="border-2">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.firstName} name="firstName" onChange={handleOnChange} />
                                                                 </td>
                                                             </tr>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">Tên:</th>
-                                                                <td className="bg-[#f6c7a0]">
+                                                                <th className="h-12 text-black border-2">Tên:</th>
+                                                                <td className="border-2">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.lastName} name="lastName" onChange={handleOnChange} />
                                                                 </td>
                                                             </tr>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">Địa chỉ:</th>
-                                                                <td className="bg-[#f6c7a0]">
+                                                                <th className="h-12 text-black border-2">Địa chỉ:</th>
+                                                                <td className="border-2">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.address} name="address" onChange={handleOnChange} />
                                                                 </td>
                                                             </tr>
                                                             <tr className="div">
-                                                                <th className="h-12 bg-[#f68122] text-white">SĐT:</th>
-                                                                <td className="bg-[#f6c7a0]">
+                                                                <th className="h-12 text-black border-2">SĐT:</th>
+                                                                <td className="border-2">
                                                                     <input className="px-6 py-3 bg-transparent w-full outline-none" value={dataUser.phone} name="phone" onChange={handleOnChange} />
                                                                 </td>
                                                             </tr>
